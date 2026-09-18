@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const FEATURED = ["dart", "boat", "catapult", "cube", "tower", "crane", "chute", "hat"];
+const FEATURED = ["beam", "dart", "boat", "catapult", "cube", "tower", "crane", "hat"];
 
 function Home() {
   const read = useReadLevel();

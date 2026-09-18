@@ -36,7 +36,7 @@ export const UNITS: {
     days: "3–4 periods",
     grades: "3–8",
     body: "Columns, beams, hulls, and tension links. Fail mode is the lesson.",
-    labs: ["tower", "bridge", "chain", "boat"],
+    labs: ["beam", "tower", "bridge", "chain", "boat"],
   },
   {
     id: "machines",

@@ -946,4 +946,136 @@ export const MORE_LABS: Lab[] = [
       extend: "Waxed paper or a crayon rub as a coating — a materials upgrade, labeled.",
     },
   },
+  {
+    id: "beam",
+    name: "Brick Beam Challenge",
+    family: "hold",
+    teConcept:
+      "Engineering design under a kit constraint: a paper-and-stick beam spans the Testing Canyon and holds a live brick load",
+    grades: "6–8",
+    time: "45–50 min",
+    materials: [
+      "6 sheets of paper",
+      "6 sticks",
+      "36 in of tape (one yard — that is all)",
+      "testing circle",
+      "bricks",
+      "Testing Canyon Cart (or two desks as a practice canyon)",
+    ],
+    mst: ["ED", "TR", "TS", "MT"],
+    blurb: c(
+      "Crew of 2 or 3. Six papers, six sticks, 36 inches of tape. Build a beam that holds the testing circle plus one brick for 7 seconds. Then add bricks.",
+      "Form a crew. Name a Crew Leader. Using only 6 sheets, 6 sticks, and 36\" of tape, construct a beam that holds the testing circle plus 1 brick on the Testing Canyon Cart for 6–7 seconds. Extra bricks are the contest.",
+      "A beam is a member loaded in bending across a span. Paper supplies area; sticks supply stiffness; tape is a scarce joining resource. Constraints are musts. Criteria are how many extra bricks survive the count.",
+    ),
+    challenge:
+      "Hold the testing circle plus 1 brick on the Testing Canyon Cart for 6–7 seconds. Add bricks for the contest.",
+    spec: "Pass: testing circle + 1 brick, hands off, 6–7 s. Contest: extra bricks, same count. Fail modes to name: sag, twist, end slip, tape tear.",
+    steps: [
+      {
+        title: "Form a crew",
+        minutes: "4 min",
+        visual: "beam-crew",
+        body: c(
+          "Find 2 or 3 people. Pick a Crew Leader for now. Who is absent today? Write the names.",
+          "Crew of 2 or 3. Decide: who is Crew Leader for this period? Who is absent? The Leader calls the test. Everyone still builds.",
+          "Roles are for the period, not forever. Leader = calls GO, records the count, watches hands. Absent partners get a named job when they return: tester or sketcher.",
+        ),
+        tip: c(
+          "A crew of one is allowed if the class is short. The teacher is not your third.",
+          "Crew Leader is not “the only one who touches paper.” The Leader talks. Hands stay on the kit.",
+          "If a student is out, do not wait. Build. Leave a labeled sketch so they can join the contest round.",
+        ),
+      },
+      {
+        title: "Read the kit",
+        minutes: "4 min",
+        visual: "beam-kit",
+        body: c(
+          "Count: 6 papers. 6 sticks. 36 inches of tape — one yard, that is all. You may not borrow.",
+          "Constraints (musts): 6 sheets, 6 sticks, 36\" tape, no extra tape from the drawer. Criteria (how we judge): hold 1 brick 6–7 s, then extra bricks.",
+          "A yard of tape is a joining budget. Spend it on joints, not wrapping. Sticks are compression/tension members; paper is webbing and flanges. Write the kit on the sketch before you cut.",
+        ),
+      },
+      {
+        title: "Two ideas",
+        minutes: "6 min",
+        visual: "beam-ideas",
+        body: c(
+          "Idea A: roll paper into tubes and tape sticks along them. Idea B: fold a tall zigzag beam. Draw both. Circle one.",
+          "Sketch an I-beam (paper web, stick flanges), a rolled-tube girder, or a triangle truss. Depth (taller beam) usually beats more layers. Circle v1 and say why in one sentence.",
+          "Bending stiffness grows with depth. A 3 cm tall I will out-hold a 6-layer pancake of the same paper. Sticks on the top and bottom chords; paper as the web. Predict fail mode before you tape.",
+        ),
+      },
+      {
+        title: "Build v1",
+        minutes: "16 min",
+        visual: "beam-build",
+        body: c(
+          "Build the idea you circled. Save tape. Stand the beam across a small gap on your desk as soon as you can.",
+          "Craftsmanship: even rolls, sharp folds, tape only at joints. Length must sit on both sides of the canyon plus a little extra. A desk practice span first — do not wait for the cart.",
+          "Quality control: flanges parallel, web not wrinkled, tape tabs short. If a stick is the whole span, paper must keep it from rolling. A round tube is a column; a beam wants a tall thin profile.",
+        ),
+        tip: c(
+          "Do not use all the tape on the first joint.",
+          "Measure the canyon before the last cut. Too short cannot be taped longer.",
+          "Leave 4–6 in of tape unspent until after the first desk test. Iteration needs a budget.",
+        ),
+      },
+      {
+        title: "Canyon test",
+        minutes: "8 min",
+        visual: "beam-test",
+        body: c(
+          "On the Testing Canyon Cart: set the beam, set the testing circle, set ONE brick. Hands off. Crew Leader counts to seven. Did it hold?",
+          "Cart spec: beam on the canyon, testing circle on the beam, 1 brick on the circle. Hands off. 6–7 s. Pass / fail. Name the fail: sag, twist, slip, or tape tear. Nobody’s hands under the brick.",
+          "Live load on a simply supported span. The circle spreads the brick; it is not the structure. Record time-to-fail if under 6 s. A pass with 2 cm of sag is still a pass — note the sag for the contest.",
+        ),
+      },
+      {
+        title: "Add bricks",
+        minutes: "8 min",
+        visual: "beam-contest",
+        body: c(
+          "If one brick held, add another. Count to seven again. Keep going. The crew with the most bricks that stay wins.",
+          "Contest criterion: extra bricks, same 6–7 s count, same circle. One change allowed between bricks if you still have tape. Stop when it fails. Score = last brick that held the full count.",
+          "Optimization under a leftover-tape constraint. You may stiffen once. Trade height of stack vs. twisting. A 3-brick pass with a named fail mode beats a lucky 4-brick collapse you cannot explain.",
+        ),
+      },
+    ],
+    vocab: [
+      { term: "beam", meaning: "A long part that holds a load across a gap", es: "viga" },
+      { term: "constraint", meaning: "A must: 6 sheets, 6 sticks, 36 in of tape", es: "límite" },
+      { term: "load", meaning: "The brick (and extra bricks) the beam has to hold", es: "carga" },
+      { term: "span", meaning: "The empty gap the beam has to cross", es: "luz / tramo" },
+      { term: "crew", meaning: "Your team of 2 or 3 for this period", es: "equipo" },
+    ],
+    ell: "Crew of 2 or 3. Six papers. Six sticks. One yard of tape. Hold one brick. Count seven. Then add bricks.",
+    sped: "Pre-rolled paper tubes they tape to sticks. A desk canyon with books as the load if bricks are a safety IEP note. Crew Leader can be the counter only. One-brick pass is the grade; contest is optional.",
+    ta: "Do not hold the beam during the count. Hands never under the brick. If it fails: “What happened first — sag, twist, or slip?” Tape is theirs to budget; do not fetch more.",
+    plan: {
+      hook: "A flat sheet folds under a brick. Same paper, plus six sticks and one yard of tape — can a crew hold the canyon?",
+      objectives: [
+        "Form a crew of 2–3 and name a Crew Leader.",
+        "Design a beam under written kit constraints (6 sheets, 6 sticks, 36\" tape).",
+        "Hold the testing circle plus 1 brick for 6–7 seconds on the Testing Canyon Cart.",
+        "Name a fail mode and, if it passed, add bricks for the contest.",
+      ],
+      assessment: [
+        "Crew names and a Leader on the sketch.",
+        "Two idea sketches, one circled.",
+        "Pass/fail on 1 brick × 6–7 s, fail mode named.",
+        "Contest score = last brick that held the count.",
+      ],
+      snags: [
+        "Using the whole yard of tape on the first joint.",
+        "Beam too short for the canyon.",
+        "Hands under the brick “to be safe” — that is not a test.",
+        "Building until the bell with no desk practice.",
+        "Borrowing tape from another crew.",
+      ],
+      extend:
+        "No-stick round: paper only, same tape budget. Or photograph the winning section and label web, flange, and joint.",
+    },
+  },
 ];

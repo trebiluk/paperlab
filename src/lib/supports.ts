@@ -106,6 +106,7 @@ export const SAFETY = [
   "Allergies: leftover food is not a bridge load. Use an eraser, glue stick, or coins.",
   "Water labs (boat, cup): trays on every desk, towels ready, no walking with a wet model.",
   "Catapult: eraser payload only. Downrange is a wall or empty floor — never a face.",
+  "Brick Beam: bricks sit on the testing circle only. Nobody’s hands under the beam. Crew Leader says GO. If it fails, step back — then pick up bricks. Closed-toe shoes in the canyon lane.",
   "Chair-height drops (chute, copter): the teacher stands on the chair, or use a marked shelf. Students count.",
 ];
 

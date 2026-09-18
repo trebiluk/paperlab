@@ -54,6 +54,7 @@ export function ExtraScene(id: string) {
   if (id.startsWith("hat")) return <Hat step={id} />;
   if (id.startsWith("mobius")) return <Mobius step={id} />;
   if (id.startsWith("cup")) return <Cup step={id} />;
+  if (id.startsWith("beam")) return <Beam step={id} />;
   return null;
 }
 
@@ -495,3 +496,137 @@ function Cup({ step }: { step: string }) {
     </g>
   );
 }
+
+function Brick({ x, y, w = 36, h = 22 }: { x: number; y: number; w?: number; h?: number }) {
+  const hole = h * 0.22;
+  return (
+    <g>
+      <rect x={x} y={y} width={w} height={h} rx={3} fill="#c97b7b" stroke="var(--color-ink)" strokeWidth={1.6} />
+      {[0.22, 0.5, 0.78].map((t) => (
+        <circle key={t} cx={x + w * t} cy={y + h * 0.5} r={hole} fill="#f4e7dc" stroke="var(--color-ink)" strokeWidth={1} />
+      ))}
+    </g>
+  );
+}
+
+function Canyon() {
+  return (
+    <g>
+      <rect x={8} y={118} width={70} height={36} rx={4} fill="var(--color-pine)" />
+      <rect x={162} y={118} width={70} height={36} rx={4} fill="var(--color-pine)" />
+      <path
+        d="M78 154 L78 128 Q120 148 162 128 L162 154 Z"
+        fill="var(--color-bg-warm, #efe6d6)"
+        stroke="var(--color-ink)"
+        strokeWidth={1.4}
+      />
+    </g>
+  );
+}
+
+function Beam({ step }: { step: string }) {
+  if (step === "beam-crew") {
+    return (
+      <g>
+        {[70, 120, 170].map((cx, i) => (
+          <g key={cx}>
+            <circle cx={cx} cy={70} r={16} fill={i === 1 ? "var(--color-pine)" : "var(--color-toy-top)"} stroke="var(--color-ink)" strokeWidth={2} />
+            <rect x={cx - 18} y={90} width={36} height={40} rx={12} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+          </g>
+        ))}
+        <text x="120" y="56" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-pine-fg, #fff)">
+          L
+        </text>
+        <Caption>Crew of 2 or 3 · name a Leader</Caption>
+      </g>
+    );
+  }
+  if (step === "beam-kit") {
+    return (
+      <g>
+        {[0, 1, 2].map((r) =>
+          [0, 1].map((c) => (
+            <rect
+              key={`${r}-${c}`}
+              x={28 + c * 38}
+              y={28 + r * 28}
+              width={32}
+              height={24}
+              fill="var(--color-face-front)"
+              stroke="var(--color-ink)"
+              strokeWidth={1.5}
+            />
+          )),
+        )}
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <rect
+            key={i}
+            x={130}
+            y={30 + i * 12}
+            width={72}
+            height={7}
+            rx={2}
+            fill="var(--color-toy-left)"
+            stroke="var(--color-ink)"
+            strokeWidth={1}
+          />
+        ))}
+        <rect x={28} y={122} width={90} height={22} rx={11} fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <text x="73" y="137" textAnchor="middle" fontSize="11" fontWeight={700} fill="var(--color-ink)">
+          36″
+        </text>
+        <Caption>6 sheets · 6 sticks · one yard of tape</Caption>
+      </g>
+    );
+  }
+  if (step === "beam-ideas") {
+    return (
+      <g>
+        <rect x={28} y={70} width={70} height={50} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+        <rect x={28} y={58} width={70} height={12} fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <rect x={28} y={120} width={70} height={12} fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <text x="63" y="100" textAnchor="middle" fontSize="11" fontWeight={700} fill="var(--color-pine)">
+          I
+        </text>
+        <polygon points="140,128 158,48 176,128 194,48 212,128" fill="none" stroke="var(--color-ink)" strokeWidth={2} />
+        <line x1="140" y1="128" x2="212" y2="128" stroke="var(--color-ink)" strokeWidth={2} />
+        <Caption>I-beam or triangle truss</Caption>
+      </g>
+    );
+  }
+  if (step === "beam-build") {
+    return (
+      <g>
+        <rect x={36} y={72} width={168} height={28} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+        <rect x={36} y={60} width={168} height={12} rx={2} fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <rect x={36} y={100} width={168} height={12} rx={2} fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <line x1="70" y1="72" x2="70" y2="100" stroke="var(--color-tape)" strokeWidth={4} />
+        <line x1="170" y1="72" x2="170" y2="100" stroke="var(--color-tape)" strokeWidth={4} />
+        <Caption>Paper web · stick flanges · tape the joints</Caption>
+      </g>
+    );
+  }
+  if (step === "beam-test") {
+    return (
+      <g>
+        <Canyon />
+        <rect x={40} y={96} width={160} height={16} rx={2} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+        <ellipse cx="120" cy="92" rx="28" ry={10} fill="var(--color-surface-2)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <Brick x={102} y={70} />
+        <Caption>Circle + 1 brick · hands off · count 7</Caption>
+      </g>
+    );
+  }
+  return (
+    <g>
+      <Canyon />
+      <rect x={40} y={88} width={160} height={16} rx={2} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+      <ellipse cx="120" cy={84} rx="28" ry={10} fill="var(--color-surface-2)" stroke="var(--color-ink)" strokeWidth={1.6} />
+      <Brick x={102} y={62} />
+      <Brick x={102} y={40} />
+      <Brick x={102} y={18} />
+      <Caption>Contest: add bricks · same count</Caption>
+    </g>
+  );
+}
+
