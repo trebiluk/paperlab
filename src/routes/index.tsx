@@ -61,7 +61,7 @@ function Home() {
           </div>
         </div>
         <div className="relative overflow-hidden rounded-xl bg-bg-warm p-2 shadow-card sm:p-3">
-          <div className="aspect-[5/4] w-full">
+          <div className="aspect-square w-full sm:aspect-[5/4]">
             <ShopStillLife />
           </div>
           <p className="mt-1 pb-1 text-center text-sm text-muted">BertyBot · shop teacher, paper edition</p>
