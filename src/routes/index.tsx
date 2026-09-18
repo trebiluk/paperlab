@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, ClipboardList, Layers, Ruler, Scissors, Shapes } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
-import { Berty } from "@/components/berty";
+import { ShopStillLife } from "@/components/berty";
 import { Button } from "@/components/ui/button";
 import { LabSvg } from "@/components/lab-svg";
 import { APP_NAME, APP_TAGLINE } from "@/lib/brand";
@@ -60,9 +60,11 @@ function Home() {
             </Button>
           </div>
         </div>
-        <div className="relative flex flex-col items-center gap-4">
-          <Berty size={220} />
-          <p className="text-center text-sm text-muted">BertyBot · shop teacher, paper edition</p>
+        <div className="relative overflow-hidden rounded-xl bg-bg-warm p-2 shadow-card sm:p-3">
+          <div className="aspect-[5/4] w-full">
+            <ShopStillLife />
+          </div>
+          <p className="mt-1 pb-1 text-center text-sm text-muted">BertyBot · shop teacher, paper edition</p>
         </div>
       </section>
 
@@ -141,7 +143,7 @@ function Home() {
                   params={{ id }}
                   className="card-lift fold-ear flex h-full flex-col rounded-xl bg-surface text-ink shadow-card"
                 >
-                  <div className="aspect-[4/3] p-2">
+                  <div className="lab-frame aspect-[4/3] p-2">
                     <LabSvg visual={labThumb(lab)} />
                   </div>
                   <div className="flex flex-col gap-1 p-4 pt-0">
@@ -182,7 +184,7 @@ function Home() {
               </Link>
             </Button>
           </div>
-          <div className="mx-auto aspect-[4/3] w-full max-w-sm">
+          <div className="lab-frame mx-auto aspect-[4/3] w-full max-w-sm p-2">
             <LabSvg visual="box-walls" />
           </div>
         </div>

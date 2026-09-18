@@ -1,4 +1,16 @@
 import { ExtraScene } from "@/components/lab-svg-extra";
+import {
+  Caption,
+  Cut,
+  Desk,
+  FoldArrow,
+  LabBackdrop,
+  LabDefs,
+  PaperPoly,
+  PaperSheet,
+  Valley,
+  ViewChip,
+} from "@/components/paper-gfx";
 import { cn } from "@/lib/utils";
 
 export function LabSvg({
@@ -16,27 +28,19 @@ export function LabSvg({
       aria-label={visual.replace(/-/g, " ")}
       shapeRendering="geometricPrecision"
     >
+      <LabDefs />
+      <LabBackdrop />
       <Scene id={visual} />
     </svg>
   );
 }
 
-function Sheet({ x, y, w, h, fill = "var(--color-face-front)" }: { x: number; y: number; w: number; h: number; fill?: string }) {
-  return (
-    <rect x={x} y={y} width={w} height={h} fill={fill} stroke="var(--color-ink)" strokeWidth={2} strokeLinejoin="round" />
-  );
+function Sheet(props: { x: number; y: number; w: number; h: number; fill?: string }) {
+  return <PaperSheet {...props} />;
 }
 
-function Caption({ children, y = 170 }: { children: string; y?: number }) {
-  return (
-    <text x="120" y={y} textAnchor="middle" fontSize="12" fill="var(--color-ink-soft)" fontFamily="Figtree, sans-serif" fontWeight={600}>
-      {children}
-    </text>
-  );
-}
-
-function Dash({ x1, y1, x2, y2 }: { x1: number; y1: number; x2: number; y2: number }) {
-  return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--color-pine)" strokeWidth={1.8} strokeDasharray="7 5" strokeLinecap="round" />;
+function Dash(props: { x1: number; y1: number; x2: number; y2: number }) {
+  return <Valley {...props} />;
 }
 
 function Scene({ id }: { id: string }) {
@@ -61,8 +65,10 @@ function Scene({ id }: { id: string }) {
 function DefaultPaper() {
   return (
     <g>
+      <ViewChip label="DEV" />
       <Sheet x={70} y={22} w={100} h={130} />
       <Dash x1={120} y1={22} x2={120} y2={152} />
+      <FoldArrow d="M138 70 Q158 88 138 108" />
       <Caption>One sheet</Caption>
     </g>
   );
@@ -72,8 +78,10 @@ function Dart({ step }: { step: string }) {
   if (step === "dart-1") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={80} y={18} w={80} h={140} />
         <Dash x1={120} y1={18} x2={120} y2={158} />
+        <FoldArrow d="M142 50 Q162 78 142 110" />
         <Caption>Center crease</Caption>
       </g>
     );
@@ -81,18 +89,24 @@ function Dart({ step }: { step: string }) {
   if (step === "dart-2") {
     return (
       <g>
-        <polygon points="120,20 168,78 168,158 72,158 72,78" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} strokeLinejoin="round" />
+        <ViewChip label="DEV" />
+        <PaperPoly points="120,20 168,78 168,158 72,158 72,78" />
         <Dash x1={120} y1={20} x2={120} y2={158} />
-        <polygon points="120,20 168,78 120,78" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <polygon points="120,20 72,78 120,78" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <PaperPoly points="120,20 168,78 120,78" fill="var(--color-toy-top)" />
+        <PaperPoly points="120,20 72,78 120,78" fill="var(--color-toy-left)" />
+        <FoldArrow d="M168 58 Q148 48 128 58" />
+        <FoldArrow d="M72 58 Q92 48 112 58" />
         <Caption>Corners in twice</Caption>
       </g>
     );
   }
   return (
     <g>
-      <polygon points="36,92 200,70 200,86 120,96 200,106 200,122 36,100" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} strokeLinejoin="round" />
-      <polygon points="120,80 200,70 200,86 120,96" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={1.5} />
+      <ViewChip label="TOP" />
+      <Desk y={136} />
+      <PaperPoly points="28,100 208,72 208,90 118,102 208,114 208,132 28,108" />
+      <PaperPoly points="118,84 208,72 208,90 118,102" fill="var(--color-toy-top)" />
+      <PaperPoly points="118,102 208,114 208,132 118,118" fill="var(--color-toy-left)" />
       <Caption>Wings match</Caption>
     </g>
   );
@@ -102,9 +116,11 @@ function Glider({ step }: { step: string }) {
   if (step === "glider-1") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={50} y={40} w={140} h={100} />
         <rect x={50} y={40} width={140} height={22} fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <rect x={50} y={62} width={140} height={14} fill="var(--color-moss)" opacity={0.5} />
+        <rect x={50} y={62} width={140} height={14} fill="var(--color-moss)" opacity={0.45} />
+        <FoldArrow d="M70 38 Q70 22 90 22" />
         <Caption>Heavy front strip</Caption>
       </g>
     );
@@ -112,18 +128,20 @@ function Glider({ step }: { step: string }) {
   if (step === "glider-2") {
     return (
       <g>
-        <polygon points="28,90 212,90 200,70 40,70" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
-        <polygon points="28,90 212,90 200,108 40,108" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-        <rect x={108} y={70} width={24} height={50} fill="var(--color-pine)" />
+        <ViewChip label="FRONT" />
+        <PaperPoly points="28,96 212,96 200,72 40,72" fill="var(--color-toy-top)" />
+        <PaperPoly points="28,96 212,96 200,118 40,118" />
+        <rect x={108} y={72} width={24} height={56} fill="var(--color-pine)" stroke="var(--color-ink)" strokeWidth={1.4} />
         <Caption>Wide wings</Caption>
       </g>
     );
   }
   return (
     <g>
-      <polygon points="30,96 210,96 198,78 42,78" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
-      <path d="M50 78 Q70 68 90 78" fill="none" stroke="var(--color-pine)" strokeWidth={2} />
-      <path d="M150 78 Q170 68 190 78" fill="none" stroke="var(--color-pine)" strokeWidth={2} />
+      <ViewChip label="FRONT" />
+      <PaperPoly points="30,104 210,104 198,82 42,82" fill="var(--color-toy-top)" />
+      <path d="M50 82 Q70 68 90 82" fill="none" stroke="var(--color-pine)" strokeWidth={2.2} />
+      <path d="M150 82 Q170 68 190 82" fill="none" stroke="var(--color-pine)" strokeWidth={2.2} />
       <Caption>Tiny up-bend to trim</Caption>
     </g>
   );
@@ -133,9 +151,13 @@ function Tower({ step }: { step: string }) {
   if (step === "tower-spec") {
     return (
       <g>
+        <ViewChip label="FRONT" />
         <Sheet x={40} y={50} w={70} h={90} />
-        <line x1={150} y1={30} x2={150} y2={150} stroke="var(--color-pine)" strokeWidth={3} />
-        <polygon points="150,30 144,42 156,42" fill="var(--color-pine)" />
+        <line x1={158} y1={28} x2={158} y2={150} stroke="var(--color-pine)" strokeWidth={3} />
+        <polygon points="158,28 151,42 165,42" fill="var(--color-pine)" />
+        <text x="174" y="92" fontSize="11" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
+          up
+        </text>
         <Caption>Tallest that stands</Caption>
       </g>
     );
@@ -143,8 +165,11 @@ function Tower({ step }: { step: string }) {
   if (step === "tower-ideas") {
     return (
       <g>
-        <rect x={40} y={40} width={50} height={110} rx={22} fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
-        <path d="M120 150 L128 40 L136 150 L144 40 L152 150 L160 40 L168 150" fill="none" stroke="var(--color-ink)" strokeWidth={2} />
+        <ViewChip label="ISO" />
+        <ellipse cx="64" cy="42" rx="22" ry="8" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <rect x={42} y={42} width={44} height={108} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+        <ellipse cx="64" cy="150" rx="22" ry="8" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <path d="M128 150 L138 36 L148 150 L158 36 L168 150 L178 36 L188 150" fill="none" stroke="var(--color-ink)" strokeWidth={2.2} strokeLinejoin="round" />
         <Caption>Tube or zigzag</Caption>
       </g>
     );
@@ -152,19 +177,35 @@ function Tower({ step }: { step: string }) {
   if (step === "tower-make") {
     return (
       <g>
-        <ellipse cx="120" cy="42" rx="28" ry="10" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
-        <rect x={92} y={42} width={56} height={108} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-        <ellipse cx="120" cy="150" rx="28" ry="10" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
-        <Dash x1={120} y1={48} x2={120} y2={148} />
+        <ViewChip label="ISO" />
+        <Desk />
+        <ellipse cx="120" cy="36" rx="30" ry="11" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
+        <rect x={90} y={36} width={60} height={112} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+        <rect x={90} y={36} width={60} height={112} fill="url(#lab-grain)" />
+        <ellipse cx="120" cy="148" rx="30" ry="11" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
+        <Dash x1={120} y1={42} x2={120} y2={144} />
         <Caption>Roll a column</Caption>
       </g>
     );
   }
   return (
     <g>
-      <rect x={100} y={36} width={40} height={100} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-      <line x1={88} y1={36} x2={88} y2={150} stroke="var(--color-pine)" strokeWidth={2} />
-      <text x="78" y="100" fontSize="11" fill="var(--color-pine)" fontWeight={700} transform="rotate(-90 78 100)">cm</text>
+      <ViewChip label="FRONT" />
+      <Desk />
+      <rect x={102} y={28} width={36} height={120} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+      <rect x={102} y={28} width={36} height={120} fill="url(#lab-grain)" />
+      <line x1={84} y1={28} x2={84} y2={148} stroke="var(--color-pine)" strokeWidth={2} />
+      <text
+        x="74"
+        y="100"
+        fontSize="11"
+        fill="var(--color-pine)"
+        fontWeight={700}
+        transform="rotate(-90 74 100)"
+        fontFamily="Figtree, sans-serif"
+      >
+        cm
+      </text>
       <Caption>Hands off · count ten</Caption>
     </g>
   );
@@ -173,15 +214,23 @@ function Tower({ step }: { step: string }) {
 function Bridge({ step }: { step: string }) {
   const books = (
     <g>
-      <rect x={18} y={110} width={54} height={36} fill="var(--color-pine)" />
-      <rect x={168} y={110} width={54} height={36} fill="var(--color-pine)" />
+      <rect x={16} y={108} width={56} height={14} fill="var(--color-pine)" />
+      <rect x={18} y={120} width={52} height={12} fill="var(--color-moss)" />
+      <rect x={20} y={132} width={48} height={12} fill="var(--color-toy-right)" stroke="var(--color-ink)" strokeWidth={1} />
+      <rect x={168} y={108} width={56} height={14} fill="var(--color-pine)" />
+      <rect x={170} y={120} width={52} height={12} fill="var(--color-moss)" />
+      <rect x={172} y={132} width={48} height={12} fill="var(--color-toy-right)" stroke="var(--color-ink)" strokeWidth={1} />
     </g>
   );
   if (step === "bridge-gap") {
     return (
       <g>
+        <ViewChip label="FRONT" />
         {books}
-        <Dash x1={72} y1={128} x2={168} y2={128} />
+        <Dash x1={72} y1={126} x2={168} y2={126} />
+        <text x="120" y="118" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
+          span
+        </text>
         <Caption>Span the gap</Caption>
       </g>
     );
@@ -189,9 +238,10 @@ function Bridge({ step }: { step: string }) {
   if (step === "bridge-flat") {
     return (
       <g>
+        <ViewChip label="FRONT" />
         {books}
-        <path d="M28 110 Q120 150 212 110" fill="none" stroke="var(--color-ink)" strokeWidth={3} />
-        <circle cx="120" cy="142" r="8" fill="var(--color-tape)" />
+        <path d="M28 108 Q120 158 212 108" fill="none" stroke="var(--color-ink)" strokeWidth={3.2} />
+        <circle cx="120" cy="146" r="8" fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth={1} />
         <Caption>Flat sheet fails</Caption>
       </g>
     );
@@ -199,17 +249,20 @@ function Bridge({ step }: { step: string }) {
   if (step === "bridge-beam") {
     return (
       <g>
+        <ViewChip label="ISO" />
         {books}
-        <path d="M28 88 L72 88 L72 108 L168 108 L168 88 L212 88 L212 118 L28 118 Z" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+        <PaperPoly points="24,84 72,84 72,106 168,106 168,84 216,84 216,122 24,122" />
+        <rect x={72} y={84} width={96} height={8} fill="var(--color-toy-left)" />
         <Caption>Fold a beam</Caption>
       </g>
     );
   }
   return (
     <g>
+      <ViewChip label="FRONT" />
       {books}
-      <rect x={40} y={92} width={160} height={20} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-      <rect x={108} y={72} width={24} height={22} rx={3} fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth={1.4} />
+      <PaperPoly points="36,90 204,90 204,114 36,114" />
+      <rect x={108} y={68} width={24} height={24} rx={3} fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth={1.4} />
       <Caption>Load in the middle</Caption>
     </g>
   );
@@ -219,8 +272,9 @@ function Popup({ step }: { step: string }) {
   if (step === "popup-card") {
     return (
       <g>
-        <polygon points="40,40 120,58 120,150 40,132" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
-        <polygon points="120,58 200,40 200,132 120,150" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+        <ViewChip label="ISO" />
+        <PaperPoly points="36,38 120,58 120,152 36,132" fill="var(--color-toy-left)" />
+        <PaperPoly points="120,58 204,38 204,132 120,152" />
         <Caption>The card is a hinge</Caption>
       </g>
     );
@@ -228,10 +282,11 @@ function Popup({ step }: { step: string }) {
   if (step === "popup-cut") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={70} y={20} w={100} h={140} />
         <line x1={120} y1={20} x2={120} y2={160} stroke="var(--color-ink)" strokeWidth={2} />
-        <line x1={120} y1={55} x2={148} y2={55} stroke="var(--color-danger)" strokeWidth={2.4} />
-        <line x1={120} y1={95} x2={148} y2={95} stroke="var(--color-danger)" strokeWidth={2.4} />
+        <Cut x1={120} y1={55} x2={150} y2={55} />
+        <Cut x1={120} y1={95} x2={150} y2={95} />
         <Caption>Two cuts from the fold</Caption>
       </g>
     );
@@ -239,18 +294,21 @@ function Popup({ step }: { step: string }) {
   if (step === "popup-v") {
     return (
       <g>
-        <polygon points="36,50 120,70 120,150 36,130" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
-        <polygon points="120,70 204,50 204,130 120,150" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-        <polygon points="92,88 148,88 148,118 92,118" fill="var(--color-toy-top)" stroke="var(--color-pine)" strokeWidth={2} />
+        <ViewChip label="ISO" />
+        <PaperPoly points="36,50 120,70 120,150 36,130" fill="var(--color-toy-left)" />
+        <PaperPoly points="120,70 204,50 204,130 120,150" />
+        <PaperPoly points="90,84 150,84 150,118 90,118" fill="var(--color-toy-top)" />
+        <FoldArrow d="M150 100 Q170 100 170 80" />
         <Caption>Push the step through</Caption>
       </g>
     );
   }
   return (
     <g>
-      <polygon points="36,50 120,70 120,150 36,130" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
-      <polygon points="120,70 204,50 204,130 120,150" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-      <polygon points="100,48 140,48 132,88 108,88" fill="var(--color-pine)" stroke="var(--color-ink)" strokeWidth={1.6} />
+      <ViewChip label="ISO" />
+      <PaperPoly points="36,50 120,70 120,150 36,130" fill="var(--color-toy-left)" />
+      <PaperPoly points="120,70 204,50 204,130 120,150" />
+      <PaperPoly points="100,44 140,44 132,86 108,86" fill="var(--color-pine)" />
       <Caption>Glue on the step only</Caption>
     </g>
   );
@@ -260,9 +318,11 @@ function Pinwheel({ step }: { step: string }) {
   if (step === "square-cut") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={78} y={22} w={84} h={120} />
-        <polygon points="78,106 162,22 162,106" fill="var(--color-toy-top)" opacity={0.7} stroke="var(--color-ink)" strokeWidth={1.6} />
-        <rect x={78} y={22} width={84} height={22} fill="var(--color-tape)" opacity={0.85} />
+        <PaperPoly points="78,106 162,22 162,106" fill="var(--color-toy-top)" />
+        <rect x={78} y={22} width={84} height={22} fill="var(--color-tape)" opacity={0.9} />
+        <Cut x1={78} y1={106} x2={162} y2={106} />
         <Caption>Cut the leftover strip</Caption>
       </g>
     );
@@ -270,10 +330,13 @@ function Pinwheel({ step }: { step: string }) {
   if (step === "pinwheel-cut") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={55} y={22} w={130} h={130} />
         <Dash x1={55} y1={22} x2={185} y2={152} />
         <Dash x1={185} y1={22} x2={55} y2={152} />
-        <circle cx="120" cy="87" r="10" fill="var(--color-surface)" stroke="var(--color-pine)" strokeWidth={2} />
+        <Cut x1={55} y1={22} x2={108} y2={75} />
+        <Cut x1={185} y1={22} x2={132} y2={75} />
+        <circle cx="120" cy="87" r="11" fill="var(--color-surface)" stroke="var(--color-pine)" strokeWidth={2} />
         <Caption>Stop before the middle</Caption>
       </g>
     );
@@ -281,12 +344,15 @@ function Pinwheel({ step }: { step: string }) {
   if (step === "pinwheel-fold" || step === "pinwheel-axle" || step === "pinwheel-spin") {
     return (
       <g>
-        <polygon points="120,20 148,78 120,90 92,78" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <polygon points="200,90 142,78 120,90 142,102" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <polygon points="120,160 92,102 120,90 148,102" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <polygon points="40,90 98,102 120,90 98,78" fill="var(--color-moss)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <circle cx="120" cy="90" r="7" fill="var(--color-pine)" />
-        <Caption>{step === "pinwheel-axle" ? "Pin through the hub" : step === "pinwheel-spin" ? "Blow · not too tight" : "Every other point in"}</Caption>
+        <ViewChip label="FRONT" />
+        <PaperPoly points="120,16 152,76 120,90 88,76" fill="var(--color-toy-top)" />
+        <PaperPoly points="204,90 144,76 120,90 144,104" />
+        <PaperPoly points="120,164 88,104 120,90 152,104" fill="var(--color-toy-left)" />
+        <PaperPoly points="36,90 96,104 120,90 96,76" fill="var(--color-moss)" />
+        <circle cx="120" cy="90" r="8" fill="var(--color-pine)" stroke="var(--color-ink)" strokeWidth={1.2} />
+        <Caption>
+          {step === "pinwheel-axle" ? "Pin through the hub" : step === "pinwheel-spin" ? "Blow · not too tight" : "Every other point in"}
+        </Caption>
       </g>
     );
   }
@@ -297,6 +363,7 @@ function Box({ step }: { step: string }) {
   if (step === "box-star") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={55} y={22} w={130} h={130} />
         <Dash x1={120} y1={22} x2={120} y2={152} />
         <Dash x1={55} y1={87} x2={185} y2={87} />
@@ -309,11 +376,13 @@ function Box({ step }: { step: string }) {
   if (step === "box-blintz") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={55} y={22} w={130} h={130} />
-        <polygon points="55,22 120,87 55,152" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.5} />
-        <polygon points="185,22 120,87 185,152" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={1.5} />
-        <polygon points="55,22 185,22 120,87" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.5} />
-        <polygon points="55,152 185,152 120,87" fill="var(--color-moss)" stroke="var(--color-ink)" strokeWidth={1.5} />
+        <PaperPoly points="55,22 120,87 55,152" fill="var(--color-toy-left)" />
+        <PaperPoly points="185,22 120,87 185,152" fill="var(--color-toy-top)" />
+        <PaperPoly points="55,22 185,22 120,87" />
+        <PaperPoly points="55,152 185,152 120,87" fill="var(--color-moss)" />
+        <FoldArrow d="M70 36 Q96 60 112 78" />
         <Caption>Corners to center</Caption>
       </g>
     );
@@ -321,18 +390,22 @@ function Box({ step }: { step: string }) {
   if (step === "box-fill") {
     return (
       <g>
-        <polygon points="80,70 160,70 176,92 64,92" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
-        <polygon points="64,92 176,92 176,140 64,140" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-        <rect x={100} y={108} width={40} height={18} fill="var(--color-tape)" />
+        <ViewChip label="ISO" />
+        <PaperPoly points="80,68 160,68 178,92 62,92" fill="var(--color-toy-top)" />
+        <PaperPoly points="62,92 178,92 178,142 62,142" />
+        <PaperPoly points="178,92 198,80 198,128 178,142" fill="var(--color-pine)" />
+        <rect x={100} y={110} width={40} height={18} fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth={1} />
         <Caption>Fit a product</Caption>
       </g>
     );
   }
   return (
     <g>
-      <polygon points="88,48 152,48 168,70 72,70" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
-      <polygon points="72,70 168,70 168,128 72,128" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-      <polygon points="168,70 188,58 188,116 168,128" fill="var(--color-pine)" stroke="var(--color-ink)" strokeWidth={2} />
+      <ViewChip label="ISO" />
+      <PaperPoly points="88,44 152,44 170,68 70,68" fill="var(--color-toy-top)" />
+      <PaperPoly points="70,68 170,68 170,130 70,130" />
+      <PaperPoly points="170,68 192,54 192,116 170,130" fill="var(--color-pine)" />
+      <Valley x1={70} y1={88} x2={170} y2={88} />
       <Caption>Lift walls · tuck locks</Caption>
     </g>
   );
@@ -342,6 +415,7 @@ function Frog({ step }: { step: string }) {
   if (step === "frog-rect") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={70} y={40} w={100} h={100} />
         <Caption>A squat rectangle</Caption>
       </g>
@@ -350,19 +424,22 @@ function Frog({ step }: { step: string }) {
   if (step === "frog-hop") {
     return (
       <g>
-        <ellipse cx="90" cy="120" rx="36" ry="14" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
-        <path d="M90 120 Q140 40 190 88" fill="none" stroke="var(--color-pine)" strokeWidth={2} strokeDasharray="6 5" />
-        <ellipse cx="190" cy="96" rx="20" ry="10" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <ViewChip label="SIDE" />
+        <Desk y={140} />
+        <ellipse cx="86" cy="122" rx="36" ry="14" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
+        <path d="M90 118 Q140 36 194 86" fill="none" stroke="var(--color-pine)" strokeWidth={2.2} strokeDasharray="6 5" markerEnd="url(#lab-arrow)" />
+        <ellipse cx="194" cy="94" rx="20" ry="10" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={1.6} />
         <Caption>Press · hop · mark</Caption>
       </g>
     );
   }
   return (
     <g>
-      <polygon points="70,70 170,70 158,118 82,118" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
-      <polygon points="82,118 158,118 170,150 70,150" fill="var(--color-moss)" stroke="var(--color-ink)" strokeWidth={2} />
-      <rect x={92} y={78} width={14} height={12} fill="var(--color-surface-2)" />
-      <rect x={134} y={78} width={14} height={12} fill="var(--color-surface-2)" />
+      <ViewChip label="SIDE" />
+      <PaperPoly points="70,70 170,70 158,118 82,118" fill="var(--color-toy-top)" />
+      <PaperPoly points="82,118 158,118 170,150 70,150" fill="var(--color-moss)" />
+      <rect x={92} y={78} width={14} height={12} fill="var(--color-surface-2)" stroke="var(--color-ink)" strokeWidth={1} />
+      <rect x={134} y={78} width={14} height={12} fill="var(--color-surface-2)" stroke="var(--color-ink)" strokeWidth={1} />
       <Caption>The back is a spring</Caption>
     </g>
   );
@@ -372,9 +449,9 @@ function Lantern({ step }: { step: string }) {
   if (step === "lantern-safe") {
     return (
       <g>
-        <circle cx="120" cy="80" r="36" fill="none" stroke="var(--color-danger)" strokeWidth={4} />
-        <line x1={96} y1={56} x2={144} y2={104} stroke="var(--color-danger)" strokeWidth={4} />
-        <rect x={108} y={70} width={24} height={32} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <circle cx="120" cy="78" r="40" fill="none" stroke="var(--color-danger)" strokeWidth={4} />
+        <line x1={94} y1={52} x2={146} y2={104} stroke="var(--color-danger)" strokeWidth={4} />
+        <PaperPoly points="108,64 132,64 132,104 108,104" />
         <Caption>No open flame</Caption>
       </g>
     );
@@ -382,9 +459,10 @@ function Lantern({ step }: { step: string }) {
   if (step === "lantern-slits") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={60} y={24} w={120} h={128} />
         {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-          <line key={i} x1={78} y1={40 + i * 16} x2={162} y2={40 + i * 16} stroke="var(--color-danger)" strokeWidth={2} />
+          <Cut key={i} x1={78} y1={40 + i * 16} x2={162} y2={40 + i * 16} />
         ))}
         <Caption>Stop before the rails</Caption>
       </g>
@@ -393,9 +471,11 @@ function Lantern({ step }: { step: string }) {
   if (step === "lantern-roll") {
     return (
       <g>
-        <ellipse cx="120" cy="40" rx="40" ry="14" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
-        <rect x={80} y={40} width={80} height={100} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-        <ellipse cx="120" cy="140" rx="40" ry="14" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
+        <ViewChip label="ISO" />
+        <ellipse cx="120" cy="40" rx="42" ry="14" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
+        <rect x={78} y={40} width={84} height={100} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+        <rect x={78} y={40} width={84} height={100} fill="url(#lab-grain)" />
+        <ellipse cx="120" cy="140" rx="42" ry="14" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
         <Caption>Join a cylinder</Caption>
       </g>
     );
@@ -403,19 +483,23 @@ function Lantern({ step }: { step: string }) {
   if (step === "lantern-handle") {
     return (
       <g>
-        <path d="M90 36 Q120 8 150 36" fill="none" stroke="var(--color-pine)" strokeWidth={3} />
-        <ellipse cx="120" cy="50" rx="42" ry="12" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
-        <path d="M78 50 Q78 100 120 110 Q162 100 162 50" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+        <ViewChip label="FRONT" />
+        <path d="M88 34 Q120 4 152 34" fill="none" stroke="var(--color-pine)" strokeWidth={4} strokeLinecap="round" />
+        <ellipse cx="120" cy="50" rx="44" ry="12" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
+        <path d="M76 50 Q76 104 120 116 Q164 104 164 50" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+        <path d="M76 50 Q76 104 120 116 Q164 104 164 50" fill="url(#lab-grain)" />
         <Caption>Strip becomes a handle</Caption>
       </g>
     );
   }
   return (
     <g>
-      <ellipse cx="120" cy="48" rx="36" ry="12" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
-      <path d="M84 48 Q70 100 120 130 Q170 100 156 48" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+      <ViewChip label="FRONT" />
+      <ellipse cx="120" cy="46" rx="38" ry="12" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
+      <path d="M82 46 Q66 102 120 134 Q174 102 158 46" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+      <path d="M82 46 Q66 102 120 134 Q174 102 158 46" fill="url(#lab-grain)" />
       {[0, 1, 2, 3, 4].map((i) => (
-        <path key={i} d={`M${92 + i * 12} 70 Q120 100 ${92 + i * 12} 118`} fill="none" stroke="var(--color-ink)" strokeWidth={1.4} />
+        <path key={i} d={`M${90 + i * 12} 68 Q120 102 ${90 + i * 12} 122`} fill="none" stroke="var(--color-ink)" strokeWidth={1.4} />
       ))}
       <Caption>Push the ends · ribs open</Caption>
     </g>
@@ -425,17 +509,19 @@ function Lantern({ step }: { step: string }) {
 function Teller({ step }: { step: string }) {
   const petals = (
     <g>
-      <polygon points="120,28 168,76 120,100 72,76" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
-      <polygon points="168,76 168,124 120,100" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-      <polygon points="120,100 168,124 72,124" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
-      <polygon points="72,76 120,100 72,124" fill="var(--color-moss)" stroke="var(--color-ink)" strokeWidth={2} />
+      <PaperPoly points="120,24 172,74 120,100 68,74" fill="var(--color-toy-top)" />
+      <PaperPoly points="172,74 172,126 120,100" />
+      <PaperPoly points="120,100 172,126 68,126" fill="var(--color-toy-left)" />
+      <PaperPoly points="68,74 120,100 68,126" fill="var(--color-moss)" />
     </g>
   );
   if (step === "teller-1") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={55} y={22} w={130} h={130} />
-        <polygon points="55,22 185,22 120,87" fill="var(--color-toy-top)" opacity={0.8} />
+        <PaperPoly points="55,22 185,22 120,87" fill="var(--color-toy-top)" />
+        <FoldArrow d="M70 36 Q96 58 112 78" />
         <Caption>Corners in · twice</Caption>
       </g>
     );
@@ -443,8 +529,11 @@ function Teller({ step }: { step: string }) {
   if (step === "teller-3") {
     return (
       <g>
+        <ViewChip label="TOP" />
         {petals}
-        <text x="120" y="62" textAnchor="middle" fontSize="11" fontWeight={700} fill="var(--color-ink)">word</text>
+        <text x="120" y="62" textAnchor="middle" fontSize="11" fontWeight={700} fill="var(--color-ink)" fontFamily="Figtree, sans-serif">
+          word
+        </text>
         <Caption>Colors · numbers · facts</Caption>
       </g>
     );
@@ -452,6 +541,7 @@ function Teller({ step }: { step: string }) {
   if (step === "teller-use") {
     return (
       <g>
+        <ViewChip label="TOP" />
         {petals}
         <Caption>Partner picks · you operate</Caption>
       </g>
@@ -459,6 +549,7 @@ function Teller({ step }: { step: string }) {
   }
   return (
     <g>
+      <ViewChip label="TOP" />
       {petals}
       <Caption>Open both ways</Caption>
     </g>
@@ -469,9 +560,10 @@ function Weave({ step }: { step: string }) {
   if (step === "weave-cut") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={70} y={20} w={100} h={140} />
         {[28, 52, 76].map((x) => (
-          <line key={x} x1={70 + x} y1={20} x2={70 + x} y2={160} stroke="var(--color-danger)" strokeWidth={2} />
+          <Cut key={x} x1={70 + x} y1={20} x2={70 + x} y2={160} />
         ))}
         <Caption>Even strips</Caption>
       </g>
@@ -480,10 +572,20 @@ function Weave({ step }: { step: string }) {
   if (step === "weave-warp") {
     return (
       <g>
+        <ViewChip label="TOP" />
         {[0, 1, 2, 3, 4].map((i) => (
-          <rect key={i} x={48 + i * 30} y={28} width={22} height={124} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.5} />
+          <rect
+            key={i}
+            x={48 + i * 30}
+            y={28}
+            width={22}
+            height={124}
+            fill="var(--color-face-front)"
+            stroke="var(--color-ink)"
+            strokeWidth={1.5}
+          />
         ))}
-        <rect x={44} y={24} width={152} height={12} fill="var(--color-tape)" />
+        <rect x={44} y={24} width={152} height={12} fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth={1} />
         <Caption>Warp · tape is a loom</Caption>
       </g>
     );
@@ -491,6 +593,7 @@ function Weave({ step }: { step: string }) {
   if (step === "weave-mat") {
     return (
       <g>
+        <ViewChip label="TOP" />
         <rect x={50} y={30} width={140} height={120} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
         {[0, 1, 2, 3, 4, 5].map((r) =>
           [0, 1, 2, 3, 4].map((c) => (
@@ -510,6 +613,7 @@ function Weave({ step }: { step: string }) {
   }
   return (
     <g>
+      <ViewChip label="TOP" />
       {[0, 1, 2, 3, 4].map((i) => (
         <rect key={`w${i}`} x={48 + i * 30} y={28} width={22} height={124} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.4} />
       ))}
@@ -524,10 +628,11 @@ function Copter({ step }: { step: string }) {
   if (step === "copter-cut") {
     return (
       <g>
+        <ViewChip label="DEV" />
         <Sheet x={100} y={16} w={40} h={148} />
-        <line x1={120} y1={16} x2={120} y2={88} stroke="var(--color-danger)" strokeWidth={2.4} />
-        <line x1={100} y1={96} x2={112} y2={96} stroke="var(--color-danger)" strokeWidth={2} />
-        <line x1={128} y1={96} x2={140} y2={96} stroke="var(--color-danger)" strokeWidth={2} />
+        <Cut x1={120} y1={16} x2={120} y2={88} />
+        <Cut x1={100} y1={96} x2={112} y2={96} />
+        <Cut x1={128} y1={96} x2={140} y2={96} />
         <Caption>Slit · shoulders · stem</Caption>
       </g>
     );
@@ -535,19 +640,21 @@ function Copter({ step }: { step: string }) {
   if (step === "copter-drop") {
     return (
       <g>
+        <ViewChip label="FRONT" />
         <rect x={112} y={70} width={16} height={70} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <polygon points="120,70 178,48 178,62 120,84" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <polygon points="120,70 62,92 62,106 120,84" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <path d="M120 28 L120 66" stroke="var(--color-pine)" strokeWidth={2} strokeDasharray="5 4" />
+        <PaperPoly points="120,70 178,46 178,62 120,84" fill="var(--color-toy-top)" />
+        <PaperPoly points="120,70 62,92 62,108 120,84" fill="var(--color-toy-left)" />
+        <path d="M120 18 L120 64" stroke="var(--color-pine)" strokeWidth={2} strokeDasharray="5 4" markerEnd="url(#lab-arrow)" />
         <Caption>Drop · do not throw</Caption>
       </g>
     );
   }
   return (
     <g>
+      <ViewChip label="FRONT" />
       <rect x={112} y={70} width={16} height={70} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
-      <polygon points="120,70 186,52 186,66 120,84" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={1.6} />
-      <polygon points="120,70 54,88 54,102 120,84" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.6} />
+      <PaperPoly points="120,70 186,50 186,66 120,84" fill="var(--color-toy-top)" />
+      <PaperPoly points="120,70 54,88 54,104 120,84" fill="var(--color-toy-left)" />
       <Caption>One blade toward · one away</Caption>
     </g>
   );
@@ -556,9 +663,11 @@ function Copter({ step }: { step: string }) {
 function FlyTest() {
   return (
     <g>
-      <line x1={40} y1={140} x2={210} y2={140} stroke="var(--color-ink)" strokeWidth={2} />
-      <rect x={36} y={128} width={10} height={24} fill="var(--color-tape)" />
-      <polygon points="70,100 150,86 150,98 110,104 150,110 150,122 70,108" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
+      <ViewChip label="SIDE" />
+      <Desk y={140} />
+      <rect x={32} y={128} width={10} height={24} fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth={1} />
+      <PaperPoly points="64,96 158,78 158,92 112,100 158,108 158,122 64,106" />
+      <path d="M70 88 Q120 70 170 84" fill="none" stroke="var(--color-pine)" strokeWidth={1.6} strokeDasharray="5 4" />
       <Caption>Same line · write the number</Caption>
     </g>
   );
@@ -567,16 +676,16 @@ function FlyTest() {
 function Iterate() {
   return (
     <g>
+      <ViewChip label="DEV" />
       <Sheet x={28} y={40} w={70} h={90} fill="var(--color-surface-2)" />
-      <text x="63" y="88" textAnchor="middle" fontSize="14" fontWeight={700} fill="var(--color-muted)">v1</text>
-      <path d="M108 85 L132 85" stroke="var(--color-pine)" strokeWidth={2.4} markerEnd="url(#lab-arrow)" />
+      <text x="63" y="88" textAnchor="middle" fontSize="14" fontWeight={700} fill="var(--color-muted)" fontFamily="Figtree, sans-serif">
+        v1
+      </text>
+      <FoldArrow d="M108 85 L132 85" />
       <Sheet x={142} y={40} w={70} h={90} />
-      <text x="177" y="88" textAnchor="middle" fontSize="14" fontWeight={700} fill="var(--color-pine)">v2</text>
-      <defs>
-        <marker id="lab-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-pine)" />
-        </marker>
-      </defs>
+      <text x="177" y="88" textAnchor="middle" fontSize="14" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
+        v2
+      </text>
       <Caption>Change one thing</Caption>
     </g>
   );
@@ -585,20 +694,39 @@ function Iterate() {
 function System() {
   return (
     <g>
+      <ViewChip label="DEV" />
       {[
         [28, "In"],
         [98, "Process"],
         [168, "Out"],
       ].map(([x, label]) => (
         <g key={String(label)}>
-          <rect x={Number(x)} y={60} width={52} height={52} rx={8} fill="var(--color-surface)" stroke="var(--color-ink)" strokeWidth={2} />
-          <text x={Number(x) + 26} y={90} textAnchor="middle" fontSize="11" fontWeight={700} fill="var(--color-ink)">
+          <rect
+            x={Number(x)}
+            y={58}
+            width={52}
+            height={52}
+            rx={8}
+            fill="var(--color-surface)"
+            stroke="var(--color-ink)"
+            strokeWidth={2}
+            filter="url(#lab-shadow)"
+          />
+          <text
+            x={Number(x) + 26}
+            y={88}
+            textAnchor="middle"
+            fontSize="11"
+            fontWeight={700}
+            fill="var(--color-ink)"
+            fontFamily="Figtree, sans-serif"
+          >
             {label}
           </text>
         </g>
       ))}
-      <path d="M80 86 H96" stroke="var(--color-pine)" strokeWidth={2} />
-      <path d="M150 86 H166" stroke="var(--color-pine)" strokeWidth={2} />
+      <FoldArrow d="M80 84 H96" />
+      <FoldArrow d="M150 84 H166" />
       <Caption>Name the three parts</Caption>
     </g>
   );

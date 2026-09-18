@@ -208,7 +208,7 @@ function Stepper({ labId }: { labId: string }) {
         </article>
       </div>
       <aside className="order-first self-start lg:order-none lg:sticky lg:top-28">
-        <div className="overflow-hidden rounded-xl bg-bg-warm p-2 sm:p-3">
+        <div className="lab-frame overflow-hidden rounded-xl p-2 sm:p-3">
           <div className="mx-auto aspect-[4/3] w-full max-w-[22rem]">
             <LabSvg visual={current.visual} />
           </div>

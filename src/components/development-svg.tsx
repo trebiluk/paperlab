@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import {
   DimBadge,
   DrawingDefs,
+  grainUrl,
   hatchUrl,
   LetterBadge,
   shadowUrl,
@@ -294,14 +295,22 @@ export function DevelopmentSvg({
       ) : null}
 
       {FACES.map((face) => (
-        <rect
-          key={face.id}
-          x={originX + face.c * s}
-          y={originY + face.r * s}
-          width={s}
-          height={s}
-          fill={layers.labels ? face.fill : "var(--color-paper)"}
-        />
+        <g key={face.id}>
+          <rect
+            x={originX + face.c * s}
+            y={originY + face.r * s}
+            width={s}
+            height={s}
+            fill={layers.labels ? face.fill : "var(--color-paper)"}
+          />
+          <rect
+            x={originX + face.c * s}
+            y={originY + face.r * s}
+            width={s}
+            height={s}
+            fill={grainUrl(uid)}
+          />
+        </g>
       ))}
 
       {layers.tabs

@@ -26,6 +26,15 @@ export function DrawingDefs({
           strokeWidth={Math.max(s * 0.007, 0.7)}
         />
       </pattern>
+      <pattern
+        id={`${uid}-grain`}
+        width={Math.max(s * 0.06, 5)}
+        height={Math.max(s * 0.06, 5)}
+        patternUnits="userSpaceOnUse"
+      >
+        <circle cx={s * 0.012} cy={s * 0.02} r={Math.max(s * 0.004, 0.35)} fill="var(--color-ink)" opacity="0.08" />
+        <circle cx={s * 0.04} cy={s * 0.045} r={Math.max(s * 0.003, 0.28)} fill="var(--color-ink)" opacity="0.05" />
+      </pattern>
       <filter
         id={`${uid}-shadow`}
         x="-8%"
@@ -47,6 +56,10 @@ export function DrawingDefs({
 
 export function hatchUrl(uid: string) {
   return `url(#${uid}-hatch)`;
+}
+
+export function grainUrl(uid: string) {
+  return `url(#${uid}-grain)`;
 }
 
 export function shadowUrl(uid: string) {

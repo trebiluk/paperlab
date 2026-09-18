@@ -30,16 +30,19 @@ function Sheet({
   fill?: string;
 }) {
   return (
-    <rect
-      x={box.x}
-      y={box.y}
-      width={box.w}
-      height={box.h}
-      fill={fill}
-      stroke="var(--color-ink)"
-      strokeWidth={2.2}
-      strokeLinejoin="round"
-    />
+    <g filter="url(#ori-shadow)">
+      <rect
+        x={box.x}
+        y={box.y}
+        width={box.w}
+        height={box.h}
+        fill={fill}
+        stroke="var(--color-ink)"
+        strokeWidth={2.2}
+        strokeLinejoin="round"
+      />
+      <rect x={box.x} y={box.y} width={box.w} height={box.h} fill="url(#ori-grain)" />
+    </g>
   );
 }
 
@@ -63,6 +66,13 @@ function Arrow({
 function Defs() {
   return (
     <defs>
+      <pattern id="ori-grain" width="7" height="7" patternUnits="userSpaceOnUse">
+        <circle cx="1.2" cy="2.2" r="0.4" fill="var(--color-ink)" opacity="0.07" />
+        <circle cx="4.8" cy="5.1" r="0.3" fill="var(--color-ink)" opacity="0.05" />
+      </pattern>
+      <filter id="ori-shadow" x="-8%" y="-6%" width="116%" height="120%">
+        <feDropShadow dx="0" dy="1.6" stdDeviation="1.2" floodColor="rgb(28 25 21)" floodOpacity="0.16" />
+      </filter>
       <marker
         id="ori-arrow"
         viewBox="0 0 10 10"

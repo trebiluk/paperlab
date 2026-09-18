@@ -17,6 +17,16 @@ export function TechniqueSvg({
       aria-label={label(id)}
       shapeRendering="geometricPrecision"
     >
+      <defs>
+        <pattern id="fold-grain" width="7" height="7" patternUnits="userSpaceOnUse">
+          <circle cx="1.2" cy="2.2" r="0.4" fill="var(--color-ink)" opacity="0.07" />
+          <circle cx="4.8" cy="5" r="0.3" fill="var(--color-ink)" opacity="0.05" />
+        </pattern>
+        <filter id="fold-shadow" x="-10%" y="-8%" width="120%" height="130%">
+          <feDropShadow dx="0" dy="1.5" stdDeviation="1.2" floodColor="rgb(28 25 21)" floodOpacity="0.16" />
+        </filter>
+      </defs>
+      <rect width="240" height="180" fill="var(--color-bg-warm)" />
       <ArrowDef id={marker} />
       {id === "crease" ? <Crease /> : null}
       {id === "valley" ? <Valley marker={marker} /> : null}
@@ -105,13 +115,16 @@ function Paper({
   fill?: string;
 }) {
   return (
-    <polygon
-      points={points}
-      fill={fill}
-      stroke="var(--color-ink)"
-      strokeWidth={2}
-      strokeLinejoin="round"
-    />
+    <g filter="url(#fold-shadow)">
+      <polygon
+        points={points}
+        fill={fill}
+        stroke="var(--color-ink)"
+        strokeWidth={2}
+        strokeLinejoin="round"
+      />
+      <polygon points={points} fill="url(#fold-grain)" />
+    </g>
   );
 }
 

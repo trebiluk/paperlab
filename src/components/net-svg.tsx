@@ -2,7 +2,7 @@ import { useId } from "react";
 import { netBounds, type Hexomino } from "@/lib/nets";
 import { PAPERS, sheetLayout, type PaperId } from "@/lib/paper";
 import { cn } from "@/lib/utils";
-import { DimBadge, DrawingDefs, shadowUrl, svgMeasure } from "@/components/drawing-marks";
+import { DimBadge, DrawingDefs, grainUrl, shadowUrl, svgMeasure } from "@/components/drawing-marks";
 
 const FILLS = [
   "var(--color-face-front)",
@@ -24,6 +24,7 @@ export function NetSvg({
   className?: string;
   stroke?: string;
 }) {
+  const uid = "net";
   const { minX, minY, cols, rows } = netBounds(net.cells);
   const gap = 0.07;
   const pad = 0.22;
@@ -37,22 +38,32 @@ export function NetSvg({
       role="img"
       aria-label={`${net.name} cube net`}
     >
+      <DrawingDefs uid={uid} s={1} />
       {net.cells.map(([x, y], i) => {
         const px = x - minX + pad;
         const py = y - minY + pad;
         return (
-          <rect
-            key={`${x}-${y}`}
-            x={px + gap / 2}
-            y={py + gap / 2}
-            width={1 - gap}
-            height={1 - gap}
-            rx={0.07}
-            fill={colored ? FILLS[i % FILLS.length] : "var(--color-paper)"}
-            stroke={stroke}
-            strokeWidth={0.04}
-            strokeLinejoin="round"
-          />
+          <g key={`${x}-${y}`} filter={shadowUrl(uid)}>
+            <rect
+              x={px + gap / 2}
+              y={py + gap / 2}
+              width={1 - gap}
+              height={1 - gap}
+              rx={0.07}
+              fill={colored ? FILLS[i % FILLS.length] : "var(--color-paper)"}
+              stroke={stroke}
+              strokeWidth={0.04}
+              strokeLinejoin="round"
+            />
+            <rect
+              x={px + gap / 2}
+              y={py + gap / 2}
+              width={1 - gap}
+              height={1 - gap}
+              rx={0.07}
+              fill={grainUrl(uid)}
+            />
+          </g>
         );
       })}
     </svg>

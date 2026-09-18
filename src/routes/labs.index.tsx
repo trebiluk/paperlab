@@ -71,7 +71,7 @@ function LabsIndex() {
               params={{ id: lab.id }}
               className="card-lift fold-ear flex h-full flex-col rounded-xl bg-surface text-ink shadow-card"
             >
-              <div className="aspect-[4/3] p-2">
+              <div className="lab-frame aspect-[4/3] p-2">
                 <LabSvg visual={labThumb(lab)} />
               </div>
               <div className="flex flex-1 flex-col gap-2 p-4 pt-0">
