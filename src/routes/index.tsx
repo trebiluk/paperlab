@@ -64,7 +64,7 @@ function Home() {
           <div className="aspect-square w-full sm:aspect-[5/4]">
             <ShopStillLife />
           </div>
-          <p className="mt-1 pb-1 text-center text-sm text-muted">BertyBot · shop teacher, paper edition</p>
+          <p className="mt-1 pb-1 text-center text-sm text-muted">BertyBot · cut, fold, glue</p>
         </div>
       </section>
 

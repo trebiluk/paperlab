@@ -1,131 +1,191 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Iso box: top vertex (ox, oy), half-width s, height h.
- * Right step (+s, +s/2), left step (−s, +s/2), down (0, h).
+ * True 2:1 isometric prism.
+ * Right step (rx, rx/2), left step (−lx, lx/2), down (0, h).
  */
-function IsoBox({
+function IsoPrism({
   ox,
   oy,
-  s,
+  rx,
+  lx,
   h,
   top = "var(--color-toy-top)",
   left = "var(--color-toy-left)",
   right = "var(--color-pine)",
   grain,
+  grid,
 }: {
   ox: number;
   oy: number;
-  s: number;
+  rx: number;
+  lx: number;
   h: number;
   top?: string;
   left?: string;
   right?: string;
   grain?: string;
+  grid?: string;
 }) {
-  const topPts = `${ox},${oy} ${ox + s},${oy + s / 2} ${ox},${oy + s} ${ox - s},${oy + s / 2}`;
-  const leftPts = `${ox - s},${oy + s / 2} ${ox},${oy + s} ${ox},${oy + s + h} ${ox - s},${oy + s / 2 + h}`;
-  const rightPts = `${ox},${oy + s} ${ox + s},${oy + s / 2} ${ox + s},${oy + s / 2 + h} ${ox},${oy + s + h}`;
+  const T = [ox, oy] as const;
+  const TR = [ox + rx, oy + rx / 2] as const;
+  const TF = [ox + rx - lx, oy + rx / 2 + lx / 2] as const;
+  const TL = [ox - lx, oy + lx / 2] as const;
+  const D = h;
+  const pts = (a: readonly number[], b: readonly number[], c: readonly number[], d: readonly number[]) =>
+    `${a[0]},${a[1]} ${b[0]},${b[1]} ${c[0]},${c[1]} ${d[0]},${d[1]}`;
+  const topPts = pts(T, TR, TF, TL);
+  const leftPts = pts(TL, TF, [TF[0], TF[1] + D], [TL[0], TL[1] + D]);
+  const rightPts = pts(TF, TR, [TR[0], TR[1] + D], [TF[0], TF[1] + D]);
   return (
     <g>
-      <polygon points={topPts} fill={top} stroke="var(--color-ink)" strokeWidth="1.2" strokeLinejoin="round" />
-      <polygon points={leftPts} fill={left} stroke="var(--color-ink)" strokeWidth="1.2" strokeLinejoin="round" />
-      <polygon points={rightPts} fill={right} stroke="var(--color-ink)" strokeWidth="1.2" strokeLinejoin="round" />
+      <polygon points={topPts} fill={top} stroke="var(--color-ink)" strokeWidth="1.15" strokeLinejoin="round" />
+      <polygon points={leftPts} fill={left} stroke="var(--color-ink)" strokeWidth="1.15" strokeLinejoin="round" />
+      <polygon points={rightPts} fill={right} stroke="var(--color-ink)" strokeWidth="1.15" strokeLinejoin="round" />
       {grain ? (
         <>
           <polygon points={topPts} fill={grain} />
           <polygon points={leftPts} fill={grain} />
         </>
       ) : null}
+      {grid ? (
+        <>
+          <polygon points={topPts} fill={grid} />
+          <polygon points={leftPts} fill={grid} />
+          <polygon points={rightPts} fill={grid} />
+        </>
+      ) : null}
     </g>
   );
 }
 
-function BertyBody({ grain }: { grain?: string }) {
+/** Map an 8×8 pixel sheet onto the front-left face of an iso prism. */
+function PixelFace({
+  ox,
+  oy,
+  rx,
+  lx,
+  h,
+  cells,
+}: {
+  ox: number;
+  oy: number;
+  rx: number;
+  lx: number;
+  h: number;
+  cells: number[][];
+}) {
+  const n = 8;
+  const colors = ["transparent", "var(--color-ink)", "var(--color-surface-2)", "var(--color-pine)", "var(--color-tape)"];
+  return (
+    <g transform={`matrix(${rx} ${rx / 2} 0 ${h} ${ox - lx} ${oy + lx / 2})`}>
+      {cells.map((row, y) =>
+        row.map((c, x) =>
+          c ? (
+            <rect
+              key={`${x}-${y}`}
+              x={x / n + 0.01}
+              y={y / n + 0.01}
+              width={1 / n - 0.02}
+              height={1 / n - 0.02}
+              fill={colors[c]}
+            />
+          ) : null,
+        ),
+      )}
+    </g>
+  );
+}
+
+/** Original robot skin — not a Minecraft character. 0 empty, 1 ink, 2 white. */
+const BERTY_FACE = [
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 2, 2, 0, 0, 2, 2, 0],
+  [0, 2, 1, 0, 0, 2, 1, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 1, 0, 0, 0, 0, 1, 0],
+  [0, 0, 1, 1, 1, 1, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+];
+
+function GlueTab({ x, y, w = 10, h = 8 }: { x: number; y: number; w?: number; h?: number }) {
   return (
     <g>
-      {/* shadow */}
-      <ellipse cx="60" cy="132" rx="28" ry="5.5" fill="var(--color-ink)" opacity="0.14" />
+      <polygon
+        points={`${x},${y} ${x + w},${y + h * 0.35} ${x + w},${y + h * 0.65} ${x},${y + h}`}
+        fill="var(--color-face-front)"
+        stroke="var(--color-ink)"
+        strokeWidth="0.9"
+      />
+      <line
+        x1={x}
+        y1={y}
+        x2={x}
+        y2={y + h}
+        stroke="var(--color-ink)"
+        strokeWidth="0.8"
+        strokeDasharray="2 1.4"
+      />
+    </g>
+  );
+}
 
-      {/* left arm (down, holding a pencil) */}
-      <g>
-        <path
-          d="M33 80 L16 102 L24 106 L40 84 Z"
-          fill="var(--color-toy-left)"
-          stroke="var(--color-ink)"
-          strokeWidth="1.2"
-          strokeLinejoin="round"
-        />
-        <ellipse cx="18" cy="108" rx="8" ry="7" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth="1.1" />
-        <rect x="5" y="96" width="5" height="26" rx="1.2" fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth="0.85" />
-        <polygon points="5,96 10,96 7.5,88" fill="var(--color-pine)" />
+function BertyBody({ grain, grid }: { grain?: string; grid?: string }) {
+  const head = { ox: 78, oy: 20, rx: 18, lx: 18, h: 18 };
+  return (
+    <g>
+      <ellipse cx="78" cy="138" rx="30" ry="5.5" fill="var(--color-ink)" opacity="0.14" />
+
+      {/* far leg */}
+      <IsoPrism ox={88} oy={106} rx={8} lx={8} h={22} top="var(--color-moss)" left="var(--color-toy-left)" right="var(--color-pine)" grain={grain} grid={grid} />
+      {/* near leg */}
+      <IsoPrism ox={68} oy={108} rx={8} lx={8} h={22} top="var(--color-moss)" left="var(--color-toy-left)" right="var(--color-pine)" grain={grain} grid={grid} />
+
+      {/* torso — same width as the head, half as deep (Steve proportions) */}
+      <IsoPrism
+        ox={78}
+        oy={54}
+        rx={18}
+        lx={10}
+        h={32}
+        top="var(--color-toy-top)"
+        left="var(--color-toy-left)"
+        right="var(--color-pine)"
+        grain={grain}
+        grid={grid}
+      />
+      <GlueTab x={96} y={76} />
+
+      {/* chest pixels */}
+      <g transform={`matrix(18 9 0 32 ${78 - 10} ${54 + 5})`}>
+        <rect x="0.28" y="0.36" width="0.14" height="0.14" fill="var(--color-pine)" />
+        <rect x="0.48" y="0.36" width="0.14" height="0.14" fill="var(--color-ok)" />
       </g>
 
-      {/* right arm (waving) */}
-      <g>
-        <path
-          d="M84 74 L112 46 L120 54 L92 80 Z"
-          fill="var(--color-pine)"
-          stroke="var(--color-ink)"
-          strokeWidth="1.2"
-          strokeLinejoin="round"
-        />
-        <ellipse cx="118" cy="46" rx="10" ry="9" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth="1.15" />
-        <path
-          d="M124 36 L128 28 M130 44 L138 40 M128 54 L134 60"
-          stroke="var(--color-ink)"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-      </g>
+      {/* left arm — box glued at the shoulder */}
+      <IsoPrism ox={54} oy={58} rx={8} lx={8} h={28} top="var(--color-toy-top)" left="var(--color-face-front)" right="var(--color-moss)" grain={grain} grid={grid} />
 
-      {/* body */}
-      <IsoBox ox={60} oy={62} s={26} h={30} grain={grain} />
+      {/* right arm — box at the other shoulder */}
+      <IsoPrism ox={102} oy={56} rx={8} lx={8} h={28} top="var(--color-toy-top)" left="var(--color-face-front)" right="var(--color-moss)" grain={grain} grid={grid} />
 
-      {/* chest panel */}
-      <rect x="42" y="90" width="16" height="14" rx="2" fill="var(--color-surface-2)" stroke="var(--color-ink)" strokeWidth="0.9" />
-      <circle cx="47" cy="97" r="2.1" fill="var(--color-pine)" />
-      <circle cx="53" cy="97" r="2.1" fill="var(--color-ok)" />
-
-      {/* neck */}
-      <rect x="54" y="58" width="12" height="7" rx="1" fill="var(--color-moss)" stroke="var(--color-ink)" strokeWidth="0.9" />
-
-      {/* head */}
-      <IsoBox
-        ox={60}
-        oy={22}
-        s={18}
-        h={18}
+      {/* head cube */}
+      <IsoPrism
+        ox={head.ox}
+        oy={head.oy}
+        rx={head.rx}
+        lx={head.lx}
+        h={head.h}
         top="var(--color-face-top)"
         left="var(--color-face-front)"
         right="var(--color-moss)"
         grain={grain}
+        grid={grid}
       />
+      <PixelFace {...head} cells={BERTY_FACE} />
 
-      {/* antenna */}
-      <rect x="58.4" y="8" width="3.2" height="14" rx="0.6" fill="var(--color-pine)" />
-      <polygon points="60,1 70,12 50,12" fill="var(--color-pine)" stroke="var(--color-ink)" strokeWidth="0.8" strokeLinejoin="round" />
-      <polygon points="60,1 50,12 60,12" fill="var(--color-moss)" />
-      <circle cx="60" cy="13" r="2.4" fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth="0.7" />
-
-      {/* face on the front-left head face */}
-      <ellipse cx="47.5" cy="41.5" rx="5.2" ry="5.6" fill="var(--color-surface-2)" stroke="var(--color-ink)" strokeWidth="1" />
-      <ellipse cx="58.5" cy="43.5" rx="5.2" ry="5.6" fill="var(--color-surface-2)" stroke="var(--color-ink)" strokeWidth="1" />
-      <circle cx="48.8" cy="42.4" r="2.2" fill="var(--color-ink)" />
-      <circle cx="59.8" cy="44.4" r="2.2" fill="var(--color-ink)" />
-      <circle cx="50" cy="41.4" r="0.75" fill="var(--color-surface-2)" />
-      <circle cx="61" cy="43.4" r="0.75" fill="var(--color-surface-2)" />
-      <path
-        d="M47 52 Q53.5 57.5 60.5 53"
-        fill="none"
-        stroke="var(--color-ink)"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-      />
-
-      {/* feet */}
-      <rect x="32" y="124" width="18" height="8" rx="1.5" fill="var(--color-face-right)" stroke="var(--color-ink)" strokeWidth="1" />
-      <rect x="70" y="124" width="18" height="8" rx="1.5" fill="var(--color-face-right)" stroke="var(--color-ink)" strokeWidth="1" />
+      {/* antenna cube */}
+      <IsoPrism ox={78} oy={6} rx={5.5} lx={5.5} h={6.5} top="var(--color-tape)" left="var(--color-toy-left)" right="var(--color-pine)" grid={grid} />
     </g>
   );
 }
@@ -137,6 +197,9 @@ function GrainDefs({ uid }: { uid: string }) {
         <circle cx="1" cy="2" r="0.35" fill="#1c1915" opacity="0.08" />
         <circle cx="4" cy="4.5" r="0.28" fill="#1c1915" opacity="0.06" />
       </pattern>
+      <pattern id={`${uid}-pixels`} width="4" height="4" patternUnits="userSpaceOnUse">
+        <path d="M 4 0 L 0 0 0 4" fill="none" stroke="#1c1915" strokeWidth="0.35" opacity="0.16" />
+      </pattern>
       <filter id={`${uid}-shadow`} x="-25%" y="-15%" width="150%" height="150%">
         <feDropShadow dx="0" dy="1.6" stdDeviation="1.2" floodColor="rgb(28 25 21)" floodOpacity="0.2" />
       </filter>
@@ -144,7 +207,85 @@ function GrainDefs({ uid }: { uid: string }) {
   );
 }
 
-/** Paper-cube shop teacher — head, body, waving arm, pencil. */
+/** Head net — the Minecraft-foldable version of Berty. Cut solid, fold dashed, glue the tabs. */
+function HeadNet({ x = 0, y = 0, s = 18 }: { x?: number; y?: number; s?: number }) {
+  const tab = s * 0.32;
+  const faceAt = (fx: number, fy: number) => (
+    <g>
+      {BERTY_FACE.map((row, py) =>
+        row.map((c, px) =>
+          c ? (
+            <rect
+              key={`${px}-${py}`}
+              x={fx + (px * s) / 8 + 0.4}
+              y={fy + (py * s) / 8 + 0.4}
+              width={s / 8 - 0.7}
+              height={s / 8 - 0.7}
+              fill={c === 1 ? "var(--color-ink)" : "var(--color-surface-2)"}
+            />
+          ) : null,
+        ),
+      )}
+    </g>
+  );
+  const cell = (cx: number, cy: number, fill: string, dashed = true) => (
+    <rect
+      x={cx}
+      y={cy}
+      width={s}
+      height={s}
+      fill={fill}
+      stroke="var(--color-ink)"
+      strokeWidth="1.05"
+      strokeDasharray={dashed ? "2.4 1.6" : undefined}
+    />
+  );
+  const tri = (pts: string) => (
+    <polygon
+      points={pts}
+      fill="var(--color-face-front)"
+      stroke="var(--color-ink)"
+      strokeWidth="1"
+      strokeDasharray="2.2 1.5"
+    />
+  );
+  const ox = x + tab + s;
+  const oy = y + tab;
+  return (
+    <g>
+      {/* paper sheet behind */}
+      <rect
+        x={x - 6}
+        y={y - 8}
+        width={s * 4 + tab * 2 + 18}
+        height={s * 3 + tab * 2 + 16}
+        rx="2"
+        fill="var(--color-paper)"
+        stroke="var(--color-ink)"
+        strokeWidth="1.2"
+      />
+      <text x={x + 4} y={y + 2} fontSize="7" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
+        HEAD · cut — fold -- glue
+      </text>
+      {/* top */}
+      {cell(ox, oy, "var(--color-face-top)")}
+      {tri(`${ox},${oy} ${ox + s / 2},${oy - tab} ${ox + s},${oy}`)}
+      {/* row: left, front, right, back */}
+      {cell(ox - s, oy + s, "var(--color-face-left)")}
+      {cell(ox, oy + s, "var(--color-face-front)", false)}
+      {faceAt(ox, oy + s)}
+      {cell(ox + s, oy + s, "var(--color-moss)")}
+      {cell(ox + 2 * s, oy + s, "var(--color-face-back)")}
+      {tri(`${ox - s},${oy + s} ${ox - s - tab},${oy + s + s / 2} ${ox - s},${oy + 2 * s}`)}
+      {tri(`${ox + 3 * s},${oy + s} ${ox + 3 * s + tab},${oy + s + s / 2} ${ox + 3 * s},${oy + 2 * s}`)}
+      {/* bottom */}
+      {cell(ox, oy + 2 * s, "var(--color-face-bottom)")}
+      {tri(`${ox},${oy + 3 * s} ${ox + s / 2},${oy + 3 * s + tab} ${ox + s},${oy + 3 * s}`)}
+    </g>
+  );
+}
+
+/** Paper-cube shop teacher — papercraft figure: cube head, box limbs, pixel face. */
 export function Berty({
   size = 64,
   className,
@@ -154,16 +295,16 @@ export function Berty({
 }) {
   return (
     <svg
-      viewBox="0 0 140 140"
+      viewBox="0 0 150 150"
       width={size}
       height={size}
       className={cn("shrink-0", className)}
       role="img"
-      aria-label="BertyBot, a paper-cube robot"
+      aria-label="BertyBot, a paper-cube robot foldable"
     >
       <GrainDefs uid="berty" />
-      <g filter="url(#berty-shadow)" transform="translate(8 0)">
-        <BertyBody grain="url(#berty-grain)" />
+      <g filter="url(#berty-shadow)" transform="translate(4 0)">
+        <BertyBody grain="url(#berty-grain)" grid="url(#berty-pixels)" />
       </g>
     </svg>
   );
@@ -172,32 +313,29 @@ export function Berty({
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" className={cn("size-8 shrink-0", className)} aria-hidden>
-      <polygon points="16,2 21,8 16,8" fill="var(--color-pine)" />
-      <polygon points="16,2 11,8 16,8" fill="var(--color-moss)" />
-      <rect x="15.2" y="8" width="1.6" height="2.2" fill="var(--color-pine)" />
-      {/* tiny head */}
-      <polygon points="16,10.5 23,14.5 16,18.5 9,14.5" fill="var(--color-face-top)" />
-      <polygon points="9,14.5 16,18.5 16,24 9,20" fill="var(--color-face-front)" />
-      <polygon points="16,18.5 23,14.5 23,20 16,24" fill="var(--color-moss)" />
-      <circle cx="13.2" cy="18.2" r="1.15" fill="var(--color-surface-2)" />
-      <circle cx="16.6" cy="18.8" r="1.15" fill="var(--color-surface-2)" />
-      <circle cx="13.4" cy="18.4" r="0.45" fill="var(--color-ink)" />
-      <circle cx="16.8" cy="19" r="0.45" fill="var(--color-ink)" />
-      {/* body hint */}
-      <polygon points="16,24 22,27 16,30 10,27" fill="var(--color-toy-top)" />
-      <polygon points="10,27 16,30 16,31.5 10,28.5" fill="var(--color-toy-left)" />
+      <polygon points="16,3 24,7.5 16,12 8,7.5" fill="var(--color-face-top)" />
+      <polygon points="8,7.5 16,12 16,22 8,17.5" fill="var(--color-face-front)" />
+      <polygon points="16,12 24,7.5 24,17.5 16,22" fill="var(--color-moss)" />
+      {/* pixel eyes */}
+      <rect x="10.2" y="11.2" width="2.6" height="2.6" fill="var(--color-surface-2)" />
+      <rect x="14.4" y="12.2" width="2.6" height="2.6" fill="var(--color-surface-2)" />
+      <rect x="11.2" y="12.2" width="1.1" height="1.1" fill="var(--color-ink)" />
+      <rect x="15.4" y="13.2" width="1.1" height="1.1" fill="var(--color-ink)" />
+      <rect x="11.4" y="16.4" width="5.2" height="1.1" fill="var(--color-ink)" />
+      <polygon points="16,22 22,25 16,28.5 10,25" fill="var(--color-toy-top)" />
+      <polygon points="10,25 16,28.5 16,31 10,27.5" fill="var(--color-toy-left)" />
     </svg>
   );
 }
 
-/** Home hero: Berty standing on a shop desk. Props stay on the desk — not on the robot. */
+/** Home hero: assembled papercraft Berty + the printed head net on the desk. */
 export function ShopStillLife({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 280 240"
       className={cn("h-full w-full", className)}
       role="img"
-      aria-label="BertyBot, a paper robot, standing on a shop desk"
+      aria-label="BertyBot papercraft figure and his cube-net foldable on a shop desk"
     >
       <defs>
         <pattern id="still-grid" width="14" height="14" patternUnits="userSpaceOnUse">
@@ -207,6 +345,9 @@ export function ShopStillLife({ className }: { className?: string }) {
           <circle cx="1" cy="2" r="0.4" fill="var(--color-ink)" opacity="0.07" />
           <circle cx="5" cy="5" r="0.3" fill="var(--color-ink)" opacity="0.05" />
         </pattern>
+        <pattern id="still-pixels" width="4" height="4" patternUnits="userSpaceOnUse">
+          <path d="M 4 0 L 0 0 0 4" fill="none" stroke="#1c1915" strokeWidth="0.35" opacity="0.14" />
+        </pattern>
         <filter id="still-shadow" x="-15%" y="-10%" width="130%" height="140%">
           <feDropShadow dx="0" dy="2" stdDeviation="1.6" floodColor="rgb(28 25 21)" floodOpacity="0.18" />
         </filter>
@@ -214,39 +355,18 @@ export function ShopStillLife({ className }: { className?: string }) {
       <rect width="280" height="240" fill="var(--color-bg-warm)" />
       <rect width="280" height="240" fill="url(#still-grid)" opacity="0.45" />
 
-      {/* desk */}
-      <rect x="16" y="196" width="248" height="12" rx="2" fill="var(--color-face-right)" stroke="var(--color-ink)" strokeWidth="1.4" />
-      <rect x="24" y="208" width="10" height="20" fill="var(--color-toy-right)" />
-      <rect x="246" y="208" width="10" height="20" fill="var(--color-toy-right)" />
+      <rect x="14" y="198" width="252" height="12" rx="2" fill="var(--color-face-right)" stroke="var(--color-ink)" strokeWidth="1.4" />
+      <rect x="22" y="210" width="10" height="20" fill="var(--color-toy-right)" />
+      <rect x="248" y="210" width="10" height="20" fill="var(--color-toy-right)" />
 
-      {/* dart parked on the desk, left — clearly a plane, not an arm */}
-      <g filter="url(#still-shadow)" transform="translate(18 168) rotate(-8)">
-        <polygon
-          points="4,18 78,8 78,16 40,20 78,24 78,32 4,22"
-          fill="var(--color-face-front)"
-          stroke="var(--color-ink)"
-          strokeWidth="1.3"
-        />
-        <polygon points="40,12 78,8 78,16 40,20" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth="1.1" />
+      {/* printed head net — the foldable, clear of the figure */}
+      <g filter="url(#still-shadow)" transform="translate(158 114) rotate(-5)">
+        <HeadNet s={15} />
       </g>
 
-      {/* cube on the right */}
-      <g filter="url(#still-shadow)" transform="translate(198 148)">
-        <polygon points="28,4 54,18 28,32 2,18" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth="1.2" />
-        <polygon points="2,18 28,32 28,56 2,42" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth="1.2" />
-        <polygon points="28,32 54,18 54,42 28,56" fill="var(--color-pine)" stroke="var(--color-ink)" strokeWidth="1.2" />
-        <polygon points="28,4 54,18 28,32 2,18" fill="url(#still-grain)" />
-      </g>
-
-      {/* tape roll on the desk edge */}
-      <g transform="translate(198 188)">
-        <ellipse cx="18" cy="12" rx="16" ry="7" fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth="1.2" />
-        <ellipse cx="18" cy="10" rx="7" ry="3.2" fill="var(--color-surface-2)" stroke="var(--color-ink)" strokeWidth="0.9" />
-      </g>
-
-      {/* Berty — the robot, standing on the desk */}
-      <g filter="url(#still-shadow)" transform="translate(78 18) scale(1.22)">
-        <BertyBody grain="url(#still-grain)" />
+      {/* assembled figure */}
+      <g filter="url(#still-shadow)" transform="translate(-6 18) scale(1.22)">
+        <BertyBody grain="url(#still-grain)" grid="url(#still-pixels)" />
       </g>
     </svg>
   );

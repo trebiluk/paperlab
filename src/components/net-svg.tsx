@@ -26,10 +26,13 @@ export function NetSvg({
 }) {
   const uid = "net";
   const { minX, minY, cols, rows } = netBounds(net.cells);
-  const gap = 0.07;
-  const pad = 0.22;
+  const tab = 0.28;
+  const pad = 0.42;
   const vbW = cols + pad * 2;
   const vbH = rows + pad * 2;
+  const key = (x: number, y: number) => `${x},${y}`;
+  const have = new Set(net.cells.map(([x, y]) => key(x, y)));
+  const has = (x: number, y: number) => have.has(key(x, y));
 
   return (
     <svg
@@ -42,27 +45,40 @@ export function NetSvg({
       {net.cells.map(([x, y], i) => {
         const px = x - minX + pad;
         const py = y - minY + pad;
+        const fill = colored ? FILLS[i % FILLS.length] : "var(--color-paper)";
         return (
-          <g key={`${x}-${y}`} filter={shadowUrl(uid)}>
-            <rect
-              x={px + gap / 2}
-              y={py + gap / 2}
-              width={1 - gap}
-              height={1 - gap}
-              rx={0.07}
-              fill={colored ? FILLS[i % FILLS.length] : "var(--color-paper)"}
-              stroke={stroke}
-              strokeWidth={0.04}
-              strokeLinejoin="round"
-            />
-            <rect
-              x={px + gap / 2}
-              y={py + gap / 2}
-              width={1 - gap}
-              height={1 - gap}
-              rx={0.07}
-              fill={grainUrl(uid)}
-            />
+          <g key={key(x, y)}>
+            {!has(x + 1, y) ? (
+              <polygon
+                points={`${px + 1},${py + 0.18} ${px + 1 + tab},${py + 0.5} ${px + 1},${py + 0.82}`}
+                fill="var(--color-face-front)"
+                stroke={stroke}
+                strokeWidth={0.035}
+                strokeDasharray="0.08 0.06"
+              />
+            ) : null}
+            {!has(x, y + 1) ? (
+              <polygon
+                points={`${px + 0.18},${py + 1} ${px + 0.5},${py + 1 + tab} ${px + 0.82},${py + 1}`}
+                fill="var(--color-face-front)"
+                stroke={stroke}
+                strokeWidth={0.035}
+                strokeDasharray="0.08 0.06"
+              />
+            ) : null}
+            <rect x={px} y={py} width={1} height={1} fill={fill} stroke="none" />
+            <rect x={px} y={py} width={1} height={1} fill={grainUrl(uid)} />
+            {/* cut = solid outer, fold = dashed inner */}
+            {!has(x - 1, y) && <line x1={px} y1={py} x2={px} y2={py + 1} stroke={stroke} strokeWidth={0.045} />}
+            {!has(x + 1, y) && <line x1={px + 1} y1={py} x2={px + 1} y2={py + 1} stroke={stroke} strokeWidth={0.045} />}
+            {!has(x, y - 1) && <line x1={px} y1={py} x2={px + 1} y2={py} stroke={stroke} strokeWidth={0.045} />}
+            {!has(x, y + 1) && <line x1={px} y1={py + 1} x2={px + 1} y2={py + 1} stroke={stroke} strokeWidth={0.045} />}
+            {has(x + 1, y) && (
+              <line x1={px + 1} y1={py} x2={px + 1} y2={py + 1} stroke={stroke} strokeWidth={0.04} strokeDasharray="0.09 0.07" />
+            )}
+            {has(x, y + 1) && (
+              <line x1={px} y1={py + 1} x2={px + 1} y2={py + 1} stroke={stroke} strokeWidth={0.04} strokeDasharray="0.09 0.07" />
+            )}
           </g>
         );
       })}
