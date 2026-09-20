@@ -2,7 +2,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft, Clock, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { pageTitle } from "@/lib/brand";
-import { getLab, isLabId } from "@/lib/labs";
+import { getLab, isLabId, familyName } from "@/lib/labs";
 import { ELL, IEP, SAFETY, SPED, TA, TA_DAY, CLOSING, HOME_LANG } from "@/lib/supports";
 import { MST_KEY_IDEAS, mstName } from "@/lib/mst";
 import { unitsFor } from "@/lib/units";
@@ -53,7 +53,7 @@ function PlanPage() {
         <Meta label="Time" value={lab.time} />
         <Meta label="Grouping" value="Solo + pair test" />
         <Meta label="MST 5" value={lab.mst.join(" · ")} />
-        <Meta label="Family" value={lab.family} />
+        <Meta label="Family" value={familyName(lab.family)} />
       </dl>
 
       <div className="no-print mt-6 flex flex-wrap gap-3">

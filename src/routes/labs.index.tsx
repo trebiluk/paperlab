@@ -1,9 +1,12 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { LabSvg } from "@/components/lab-svg";
+import { ArrowRight } from "lucide-react";
+import { LabCard } from "@/components/lab-card";
+import { Button } from "@/components/ui/button";
 import { pageTitle } from "@/lib/brand";
-import { FAMILIES, LABS, type LabFamily, labThumb } from "@/lib/labs";
-import { pickRead, useReadLevel } from "@/lib/lesson";
-import { mstName } from "@/lib/mst";
+import { FAMILIES, LABS, getLab, type LabFamily } from "@/lib/labs";
+import { useReadLevel } from "@/lib/lesson";
+import { countDone, nextUndoneId, useDoneLabs } from "@/lib/progress";
+import { PERIOD_PATH, UNITS } from "@/lib/units";
 import { cn } from "@/lib/utils";
 
 const FAM_IDS = FAMILIES.map((f) => f.id);
@@ -22,7 +25,11 @@ export const Route = createFileRoute("/labs/")({
 function LabsIndex() {
   const read = useReadLevel();
   const { family } = Route.useSearch();
-  const list = family ? LABS.filter((l) => l.family === family) : LABS;
+  const doneSet = useDoneLabs();
+  const list = family ? LABS.filter((l) => l.family === family) : null;
+  const made = countDone(PERIOD_PATH, doneSet);
+  const nextId = nextUndoneId(PERIOD_PATH, doneSet);
+  const next = getLab(nextId);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
@@ -38,21 +45,55 @@ function LabsIndex() {
         on the lab page.
       </p>
 
+      <div className="mt-6 flex flex-wrap items-end justify-between gap-3">
+        <div className="min-w-[12rem] flex-1">
+          <p className="text-sm text-ink-soft">
+            <span className="font-medium text-ink tabular-nums">
+              {made} of {PERIOD_PATH.length}
+            </span>{" "}
+            made on this Chromebook
+          </p>
+          <div
+            className="mt-2 h-1 max-w-sm overflow-hidden rounded-full bg-bg-warm"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={PERIOD_PATH.length}
+            aria-valuenow={made}
+            aria-label="Labs made on this device"
+          >
+            <div
+              className="h-full origin-left bg-pine"
+              style={{ transform: `scaleX(${PERIOD_PATH.length ? made / PERIOD_PATH.length : 0})` }}
+            />
+          </div>
+        </div>
+        {next && made < PERIOD_PATH.length ? (
+          <Button asChild variant="secondary">
+            <Link to="/labs/$id" params={{ id: next.id }} search={{ step: 1 }}>
+              {made === 0 ? "Start here" : "Continue"}
+              <span className="font-normal text-ink-soft">· {next.name}</span>
+              <ArrowRight className="size-4" />
+            </Link>
+          </Button>
+        ) : null}
+      </div>
+
       <div className="mt-6 flex flex-wrap gap-2">
         <Link
           to="/labs"
+          search={{ family: undefined, step: undefined }}
           className={cn(
             "flex h-11 items-center rounded-full px-4 text-sm font-medium",
             !family ? "bg-pine text-pine-fg" : "bg-surface text-ink-soft shadow-card",
           )}
         >
-          All
+          Year path
         </Link>
         {FAMILIES.map((f) => (
           <Link
             key={f.id}
             to="/labs"
-            search={{ family: f.id }}
+            search={{ family: f.id, step: undefined }}
             className={cn(
               "flex h-11 items-center rounded-full px-4 text-sm font-medium",
               family === f.id ? "bg-pine text-pine-fg" : "bg-surface text-ink-soft shadow-card",
@@ -63,31 +104,36 @@ function LabsIndex() {
         ))}
       </div>
 
-      <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {list.map((lab) => (
-          <li key={lab.id}>
-            <Link
-              to="/labs/$id"
-              params={{ id: lab.id }}
-              className="card-lift fold-ear flex h-full flex-col rounded-xl bg-surface text-ink shadow-card"
-            >
-              <div className="lab-frame aspect-[4/3] p-2">
-                <LabSvg visual={labThumb(lab)} />
-              </div>
-              <div className="flex flex-1 flex-col gap-2 p-4 pt-0">
-                <p className="text-xs font-medium tracking-wide text-muted">
-                  {lab.grades} · {lab.time}
-                </p>
-                <h2 className="font-display text-xl font-semibold">{lab.name}</h2>
-                <p className="text-sm text-ink-soft">{pickRead(read, lab.blurb)}</p>
-                <p className="mt-auto pt-2 text-xs text-muted">
-                  {lab.mst.map(mstName).join(" · ")}
-                </p>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {list ? (
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {list.map((lab) => (
+            <li key={lab.id}>
+              <LabCard lab={lab} read={read} done={doneSet.has(lab.id)} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        UNITS.map((u) => (
+          <section key={u.id} className="mt-10">
+            <p className="text-xs font-medium tracking-wide text-pine">
+              {u.days} · grades {u.grades}
+            </p>
+            <h2 className="mt-1 font-display text-2xl font-semibold">{u.name}</h2>
+            <p className="mt-1 max-w-2xl text-sm text-ink-soft">{u.body}</p>
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {u.labs.map((id) => {
+                const lab = getLab(id);
+                if (!lab) return null;
+                return (
+                  <li key={id}>
+                    <LabCard lab={lab} read={read} done={doneSet.has(id)} />
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ))
+      )}
     </div>
   );
 }

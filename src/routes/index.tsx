@@ -1,14 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, ClipboardList, Layers, Ruler, Scissors, Shapes } from "lucide-react";
+import { ArrowRight, BookOpen, ClipboardList, Layers, Ruler, Scissors } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { ShopStillLife } from "@/components/berty";
+import { LabCard } from "@/components/lab-card";
 import { Button } from "@/components/ui/button";
 import { LabSvg } from "@/components/lab-svg";
 import { APP_NAME, APP_TAGLINE } from "@/lib/brand";
-import { FAMILIES, LABS, labThumb } from "@/lib/labs";
+import { LATEST_UPDATE, formatShopDate } from "@/lib/changelog";
+import { FAMILIES, LABS, getLab } from "@/lib/labs";
 import { MST5_STATEMENT } from "@/lib/mst";
-import { pickRead, useReadLevel } from "@/lib/lesson";
-import { UNITS } from "@/lib/units";
+import { useReadLevel } from "@/lib/lesson";
+import { countDone, nextUndoneId, useDoneLabs } from "@/lib/progress";
+import { PERIOD_PATH, UNITS } from "@/lib/units";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -21,6 +24,9 @@ const FEATURED = ["beam", "dart", "boat", "catapult", "cube", "tower", "crane", 
 
 function Home() {
   const read = useReadLevel();
+  const doneSet = useDoneLabs();
+  const made = countDone(PERIOD_PATH, doneSet);
+  const next = getLab(nextUndoneId(PERIOD_PATH, doneSet));
 
   return (
     <AppShell>
@@ -50,8 +56,8 @@ function Home() {
           </ul>
           <div className="flex flex-wrap gap-3">
             <Button asChild size="lg">
-              <Link to="/labs">
-                Open the labs
+              <Link to="/labs/$id" params={{ id: next?.id ?? "folds" }} search={{ step: 1 }}>
+                {made === 0 ? "Start here" : "Continue"}
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
@@ -59,6 +65,11 @@ function Home() {
               <Link to="/plans">Teacher plans</Link>
             </Button>
           </div>
+          <p className="text-sm text-muted">
+            {made === 0
+              ? "Start the shop with folding techniques — six moves on scrap."
+              : `${made} of ${PERIOD_PATH.length} made on this Chromebook · next is ${next?.name ?? "the labs"}.`}
+          </p>
         </div>
         <div className="relative overflow-hidden rounded-xl bg-bg-warm p-2 shadow-card sm:p-3">
           <div className="aspect-square w-full sm:aspect-[5/4]">
@@ -77,6 +88,23 @@ function Home() {
             <ArrowRight className="size-3.5" />
           </Link>
         </blockquote>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
+        <div className="rounded-xl bg-surface p-5 shadow-card sm:flex sm:items-start sm:justify-between sm:gap-6 sm:p-6">
+          <div>
+            <p className="text-xs font-medium tracking-wide text-pine">What’s new · {formatShopDate(LATEST_UPDATE.date)}</p>
+            <h2 className="mt-1 font-display text-xl font-semibold">{LATEST_UPDATE.title}</h2>
+            <p className="mt-2 max-w-xl text-sm text-ink-soft">{LATEST_UPDATE.items[0]}</p>
+          </div>
+          <Link
+            to="/updates"
+            className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-medium text-pine sm:mt-0 sm:shrink-0"
+          >
+            Shop notes
+            <ArrowRight className="size-3.5" />
+          </Link>
+        </div>
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-4 px-4 py-10 sm:px-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -102,7 +130,7 @@ function Home() {
           {UNITS.map((u) => (
             <li key={u.id}>
               <Link
-                to="/plans"
+                to="/labs"
                 className="card-lift flex h-full flex-col rounded-xl bg-surface p-5 text-ink shadow-card"
               >
                 <p className="text-xs font-medium tracking-wide text-pine">
@@ -126,10 +154,7 @@ function Home() {
             </h2>
           </div>
           <Button asChild variant="ghost">
-            <Link to="/labs">
-              <Shapes className="size-4" />
-              All labs
-            </Link>
+            <Link to="/labs">All labs</Link>
           </Button>
         </div>
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -138,20 +163,7 @@ function Home() {
             if (!lab) return null;
             return (
               <li key={id}>
-                <Link
-                  to="/labs/$id"
-                  params={{ id }}
-                  className="card-lift fold-ear flex h-full flex-col rounded-xl bg-surface text-ink shadow-card"
-                >
-                  <div className="lab-frame aspect-[4/3] p-2">
-                    <LabSvg visual={labThumb(lab)} />
-                  </div>
-                  <div className="flex flex-col gap-1 p-4 pt-0">
-                    <p className="text-xs font-medium tracking-wide text-muted">{lab.family} · {lab.time}</p>
-                    <h3 className="font-display text-lg font-semibold">{lab.name}</h3>
-                    <p className="text-sm text-ink-soft">{pickRead(read, lab.blurb)}</p>
-                  </div>
-                </Link>
+                <LabCard lab={lab} read={read} done={doneSet.has(id)} compact />
               </li>
             );
           })}

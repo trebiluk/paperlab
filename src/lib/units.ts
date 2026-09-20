@@ -59,3 +59,14 @@ export const UNITS: {
 export function unitsFor(labId: string) {
   return UNITS.filter((u) => u.labs.includes(labId));
 }
+
+/** Year order: walk this list, not the data-file order. */
+export const PERIOD_PATH = UNITS.flatMap((u) => u.labs);
+
+export function unitForLab(labId: string) {
+  return UNITS.find((u) => u.labs.includes(labId));
+}
+
+export function pathIndex(labId: string) {
+  return PERIOD_PATH.indexOf(labId);
+}

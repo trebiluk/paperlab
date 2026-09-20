@@ -80,6 +80,13 @@
     text-wrap: balance;
   }
 
+  h1,
+  h2,
+  h3,
+  [tabindex="-1"] {
+    scroll-margin-top: 8rem;
+  }
+
   p {
     text-wrap: pretty;
   }

@@ -1,5 +1,6 @@
 import type { MstCode } from "./mst";
 import { MORE_LABS } from "./more-labs";
+import { PERIOD_PATH } from "./units";
 
 export type LabFamily = "make" | "fly" | "hold" | "move" | "fold" | "draw";
 export type Copy = { easy: string; class: string; stretch: string };
@@ -1090,10 +1091,38 @@ export function labThumb(lab: Lab) {
   return "iterate";
 }
 
+export function familyName(id: LabFamily) {
+  return FAMILIES.find((f) => f.id === id)?.name ?? id;
+}
+
+export function parseStepParam(value: unknown): number | undefined {
+  const n = Number(value);
+  if (Number.isInteger(n) && n >= 1 && n <= 24) return n;
+  return undefined;
+}
+
+export function clampStepIndex(stepParam: number | undefined, count: number) {
+  if (count <= 0) return 0;
+  const i = (stepParam ?? 1) - 1;
+  return Math.min(Math.max(i, 0), count - 1);
+}
+
+export function minutesOf(label: string) {
+  const n = parseInt(label, 10);
+  return Number.isFinite(n) ? n : 0;
+}
+
+export function labsInPath() {
+  return PERIOD_PATH.map((id) => getLab(id)).filter((l): l is Lab => Boolean(l));
+}
+
 export function labNeighbors(id: string) {
-  const i = LAB_IDS.indexOf(id);
+  const path = PERIOD_PATH.includes(id) ? PERIOD_PATH : LAB_IDS;
+  const i = path.indexOf(id);
+  const prevId = path[(i - 1 + path.length) % path.length];
+  const nextId = path[(i + 1) % path.length];
   return {
-    prev: LABS[(i - 1 + LABS.length) % LABS.length],
-    next: LABS[(i + 1) % LABS.length],
+    prev: LABS.find((l) => l.id === prevId) ?? LABS[0],
+    next: LABS.find((l) => l.id === nextId) ?? LABS[0],
   };
 }

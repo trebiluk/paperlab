@@ -53,7 +53,7 @@ function MathPage() {
               <input
                 type="range"
                 min={spec.unit === "in" ? 1 : 3}
-                max={spec.unit === "in" ? 5 : 12}
+                max={spec.square}
                 step={spec.unit === "in" ? 0.25 : 0.1}
                 value={edge}
                 onChange={(e) => setEdge(Number(e.target.value))}
@@ -85,7 +85,7 @@ function MathPage() {
               />
               <BigStat
                 label="Paper left over"
-                value={`${wastePct.toFixed(1)}%`}
+                value={waste < 0 ? "Won’t fit as a net" : `${wastePct.toFixed(1)}%`}
               />
             </dl>
           </div>

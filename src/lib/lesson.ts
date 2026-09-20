@@ -1,7 +1,8 @@
 import { useSyncExternalStore } from "react";
 import { DEFAULT_PAPER, isPaperId, type PaperId } from "./paper";
 
-const PAPER_KEY = "osc-paper-v2";
+const PAPER_KEY = "ppl-paper-v1";
+const PAPER_KEY_LEGACY = "osc-paper-v2";
 const READ_KEY = "ppl-read-v1";
 const ROLE_KEY = "ppl-role-v1";
 
@@ -65,11 +66,11 @@ let role: RoomRole = "student";
 const listeners = new Set<() => void>();
 
 if (typeof window !== "undefined") {
-  const savedPaper = window.localStorage.getItem(PAPER_KEY);
+  const savedPaper = window.localStorage.getItem(PAPER_KEY) ?? window.localStorage.getItem(PAPER_KEY_LEGACY);
   if (savedPaper && isPaperId(savedPaper)) paper = savedPaper;
   const savedRead = window.localStorage.getItem(READ_KEY);
   if (savedRead && isReadLevel(savedRead)) readLevel = savedRead;
-  const savedRole = window.localStorage.getItem(ROLE_KEY);
+  const savedRole = window.sessionStorage.getItem(ROLE_KEY);
   if (savedRole && isRole(savedRole)) role = savedRole;
 }
 
@@ -77,9 +78,10 @@ function emit() {
   for (const listener of listeners) listener();
 }
 
-function persist(key: string, value: string) {
+function persist(key: string, value: string, store: "local" | "session" = "local") {
   try {
-    window.localStorage.setItem(key, value);
+    const s = store === "session" ? window.sessionStorage : window.localStorage;
+    s.setItem(key, value);
   } catch {
     /* ignore */
   }
@@ -117,7 +119,7 @@ export function getRole() {
 export function setRole(next: RoomRole) {
   if (role === next) return;
   role = next;
-  persist(ROLE_KEY, next);
+  persist(ROLE_KEY, next, "session");
   emit();
 }
 export function useRole() {

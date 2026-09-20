@@ -29,7 +29,7 @@ function StudioPage() {
   return (
     <AppShell>
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-        <p className="text-sm font-medium tracking-wide text-pine">Cube studio</p>
+        <p className="text-sm font-medium tracking-wide text-pine">Studio</p>
         <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
           The original make, still sharp.
         </h1>

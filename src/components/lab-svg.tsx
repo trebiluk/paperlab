@@ -4,6 +4,7 @@ import {
   Cut,
   Desk,
   FoldArrow,
+  GfxProvider,
   LabBackdrop,
   LabDefs,
   PaperPoly,
@@ -12,6 +13,7 @@ import {
   ViewChip,
 } from "@/components/paper-gfx";
 import { cn } from "@/lib/utils";
+import { useId } from "react";
 
 export function LabSvg({
   visual,
@@ -20,6 +22,7 @@ export function LabSvg({
   visual: string;
   className?: string;
 }) {
+  const uid = useId().replace(/:/g, "");
   return (
     <svg
       viewBox="0 0 240 180"
@@ -28,9 +31,11 @@ export function LabSvg({
       aria-label={visual.replace(/-/g, " ")}
       shapeRendering="geometricPrecision"
     >
-      <LabDefs />
-      <LabBackdrop />
-      <Scene id={visual} />
+      <GfxProvider uid={uid}>
+        <LabDefs uid={uid} />
+        <LabBackdrop uid={uid} />
+        <Scene id={visual} />
+      </GfxProvider>
     </svg>
   );
 }
@@ -59,17 +64,19 @@ function Scene({ id }: { id: string }) {
   if (id === "spec-line" || id === "fly-test") return <FlyTest />;
   if (id === "iterate") return <Iterate />;
   if (id === "system") return <System />;
-  return ExtraScene(id) ?? <DefaultPaper />;
+  const extra = ExtraScene(id);
+  if (extra) return extra;
+  return <DefaultPaper missing={id} />;
 }
 
-function DefaultPaper() {
+function DefaultPaper({ missing }: { missing?: string }) {
   return (
     <g>
       <ViewChip label="DEV" />
       <Sheet x={70} y={22} w={100} h={130} />
       <Dash x1={120} y1={22} x2={120} y2={152} />
       <FoldArrow d="M138 70 Q158 88 138 108" />
-      <Caption>One sheet</Caption>
+      <Caption>{missing ? `Missing: ${missing}` : "One sheet"}</Caption>
     </g>
   );
 }

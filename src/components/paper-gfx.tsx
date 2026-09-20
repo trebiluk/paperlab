@@ -1,6 +1,18 @@
 /** Shared shop-drawing kit for lab diagrams: grain, grid, folds, views. */
 
+import { createContext, useContext, type ReactNode } from "react";
+
 const FONT = "Figtree, sans-serif";
+
+const GfxUidContext = createContext("lab");
+
+export function GfxProvider({ uid, children }: { uid: string; children: ReactNode }) {
+  return <GfxUidContext.Provider value={uid}>{children}</GfxUidContext.Provider>;
+}
+
+export function useGfxUid() {
+  return useContext(GfxUidContext);
+}
 
 export function LabDefs({ uid = "lab" }: { uid?: string }) {
   return (
@@ -36,11 +48,13 @@ export function LabDefs({ uid = "lab" }: { uid?: string }) {
   );
 }
 
-export function LabBackdrop({ uid = "lab" }: { uid?: string }) {
+export function LabBackdrop({ uid }: { uid?: string }) {
+  const ctx = useGfxUid();
+  const id = uid ?? ctx;
   return (
     <g aria-hidden>
-      <rect width="240" height="180" fill={`url(#${uid}-desk)`} />
-      <rect width="240" height="180" fill={`url(#${uid}-grid)`} opacity="0.5" />
+      <rect width="240" height="180" fill={`url(#${id}-desk)`} />
+      <rect width="240" height="180" fill={`url(#${id}-grid)`} opacity="0.5" />
       <rect
         x="4"
         y="12"
@@ -115,7 +129,7 @@ export function PaperSheet({
   w,
   h,
   fill = "var(--color-face-front)",
-  uid = "lab",
+  uid,
 }: {
   x: number;
   y: number;
@@ -124,10 +138,12 @@ export function PaperSheet({
   fill?: string;
   uid?: string;
 }) {
+  const ctx = useGfxUid();
+  const id = uid ?? ctx;
   return (
-    <g filter={`url(#${uid}-shadow)`}>
+    <g filter={`url(#${id}-shadow)`}>
       <rect x={x} y={y} width={w} height={h} fill={fill} stroke="var(--color-ink)" strokeWidth={2} strokeLinejoin="round" />
-      <rect x={x} y={y} width={w} height={h} fill={`url(#${uid}-grain)`} />
+      <rect x={x} y={y} width={w} height={h} fill={`url(#${id}-grain)`} />
     </g>
   );
 }
@@ -136,17 +152,19 @@ export function PaperPoly({
   points,
   fill = "var(--color-face-front)",
   strokeWidth = 2,
-  uid = "lab",
+  uid,
 }: {
   points: string;
   fill?: string;
   strokeWidth?: number;
   uid?: string;
 }) {
+  const ctx = useGfxUid();
+  const id = uid ?? ctx;
   return (
-    <g filter={`url(#${uid}-shadow)`}>
+    <g filter={`url(#${id}-shadow)`}>
       <polygon points={points} fill={fill} stroke="var(--color-ink)" strokeWidth={strokeWidth} strokeLinejoin="round" />
-      <polygon points={points} fill={`url(#${uid}-grain)`} />
+      <polygon points={points} fill={`url(#${id}-grain)`} />
     </g>
   );
 }
@@ -227,11 +245,13 @@ export function Cut({
 
 export function FoldArrow({
   d,
-  uid = "lab",
+  uid,
 }: {
   d: string;
   uid?: string;
 }) {
+  const ctx = useGfxUid();
+  const id = uid ?? ctx;
   return (
     <path
       d={d}
@@ -239,7 +259,7 @@ export function FoldArrow({
       stroke="var(--color-pine)"
       strokeWidth={2.2}
       strokeLinecap="round"
-      markerEnd={`url(#${uid}-arrow)`}
+      markerEnd={`url(#${id}-arrow)`}
     />
   );
 }

@@ -23,6 +23,7 @@ import { Route as StandardsRouteImport } from './routes/standards'
 import { Route as StudioRouteImport } from './routes/studio'
 import { Route as SupportsRouteImport } from './routes/supports'
 import { Route as TeacherRouteImport } from './routes/teacher'
+import { Route as UpdatesRouteImport } from './routes/updates'
 import { Route as FoldablesIndexRouteImport } from './routes/foldables.index'
 import { Route as FoldablesIdRouteImport } from './routes/foldables.$id'
 import { Route as LabsIndexRouteImport } from './routes/labs.index'
@@ -100,6 +101,11 @@ const TeacherRoute = TeacherRouteImport.update({
   path: '/teacher',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UpdatesRoute = UpdatesRouteImport.update({
+  id: '/updates',
+  path: '/updates',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FoldablesIndexRoute = FoldablesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/studio': typeof StudioRoute
   '/supports': typeof SupportsRoute
   '/teacher': typeof TeacherRoute
+  '/updates': typeof UpdatesRoute
   '/foldables/$id': typeof FoldablesIdRoute
   '/labs/$id': typeof LabsIdRoute
   '/plans/$id': typeof PlansIdRoute
@@ -165,6 +172,7 @@ export interface FileRoutesByTo {
   '/studio': typeof StudioRoute
   '/supports': typeof SupportsRoute
   '/teacher': typeof TeacherRoute
+  '/updates': typeof UpdatesRoute
   '/foldables/$id': typeof FoldablesIdRoute
   '/labs/$id': typeof LabsIdRoute
   '/plans/$id': typeof PlansIdRoute
@@ -188,6 +196,7 @@ export interface FileRoutesById {
   '/studio': typeof StudioRoute
   '/supports': typeof SupportsRoute
   '/teacher': typeof TeacherRoute
+  '/updates': typeof UpdatesRoute
   '/foldables/$id': typeof FoldablesIdRoute
   '/labs/$id': typeof LabsIdRoute
   '/plans/$id': typeof PlansIdRoute
@@ -212,6 +221,7 @@ export interface FileRouteTypes {
     | '/studio'
     | '/supports'
     | '/teacher'
+    | '/updates'
     | '/foldables/$id'
     | '/labs/$id'
     | '/plans/$id'
@@ -231,6 +241,7 @@ export interface FileRouteTypes {
     | '/studio'
     | '/supports'
     | '/teacher'
+    | '/updates'
     | '/foldables/$id'
     | '/labs/$id'
     | '/plans/$id'
@@ -253,6 +264,7 @@ export interface FileRouteTypes {
     | '/studio'
     | '/supports'
     | '/teacher'
+    | '/updates'
     | '/foldables/$id'
     | '/labs/$id'
     | '/plans/$id'
@@ -276,6 +288,7 @@ export interface RootRouteChildren {
   StudioRoute: typeof StudioRoute
   SupportsRoute: typeof SupportsRoute
   TeacherRoute: typeof TeacherRoute
+  UpdatesRoute: typeof UpdatesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -378,6 +391,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TeacherRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/updates': {
+      id: '/updates'
+      path: '/updates'
+      fullPath: '/updates'
+      preLoaderRoute: typeof UpdatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/foldables/': {
       id: '/foldables/'
       path: '/'
@@ -476,6 +496,7 @@ const rootRouteChildren: RootRouteChildren = {
   StudioRoute: StudioRoute,
   SupportsRoute: SupportsRoute,
   TeacherRoute: TeacherRoute,
+  UpdatesRoute: UpdatesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

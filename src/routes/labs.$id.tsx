@@ -1,17 +1,33 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowLeft, ArrowRight, ClipboardList } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, Check, ClipboardList, Link2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LabSvg } from "@/components/lab-svg";
 import { pageTitle } from "@/lib/brand";
-import { getLab, isLabId, labNeighbors } from "@/lib/labs";
+import {
+  FAMILIES,
+  clampStepIndex,
+  familyName,
+  getLab,
+  isLabId,
+  labNeighbors,
+  minutesOf,
+  parseStepParam,
+  type Lab,
+} from "@/lib/labs";
 import { pickRead, useReadLevel, useRole } from "@/lib/lesson";
-import { ELL, SPED, TA, DESIGN_LOOP } from "@/lib/supports";
+import { toggleLabDone, useLabDone } from "@/lib/progress";
+import { ELL, SAFETY, SPED, TA, DESIGN_LOOP } from "@/lib/supports";
 import { mstName } from "@/lib/mst";
+import { PERIOD_PATH, pathIndex, unitForLab } from "@/lib/units";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/labs/$id")({
   component: LabPage,
+  validateSearch: (s: Record<string, unknown>): { step?: number } => {
+    const step = parseStepParam(s.step);
+    return step ? { step } : {};
+  },
   head: ({ params }) => ({
     meta: [{ title: pageTitle(getLab(params.id)?.name ?? "Lab") }],
   }),
@@ -22,36 +38,68 @@ function LabPage() {
   const lab = getLab(id);
   const read = useReadLevel();
   const role = useRole();
+  const done = useLabDone(id);
 
   if (!lab || !isLabId(id)) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16">
         <p className="text-ink-soft">That lab is not on the list.</p>
         <Button asChild className="mt-4">
-          <Link to="/labs">All labs</Link>
+          <Link to="/labs" search={{ family: undefined, step: undefined }}>
+            All labs
+          </Link>
         </Button>
       </div>
     );
   }
 
   const { prev, next } = labNeighbors(lab.id);
+  const unit = unitForLab(lab.id);
+  const idx = pathIndex(lab.id);
+  const family = FAMILIES.find((f) => f.id === lab.family);
+  const easy = read === "easy";
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-      <Link to="/labs" className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-pine">
-        <ArrowLeft className="size-3.5" />
-        All labs
-      </Link>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <Link
+          to="/labs"
+          search={{ family: undefined, step: undefined }}
+          className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-pine"
+        >
+          <ArrowLeft className="size-3.5" />
+          All labs
+        </Link>
+        <button
+          type="button"
+          onClick={() => toggleLabDone(lab.id)}
+          aria-pressed={done}
+          className={cn(
+            "inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-sm font-medium",
+            done ? "bg-ok/15 text-ok" : "bg-surface text-ink-soft shadow-card",
+          )}
+        >
+          <Check className="size-4" aria-hidden />
+          {done ? "Made on this Chromebook" : "We made this"}
+        </button>
+      </div>
+
       <p className="mt-4 text-sm font-medium tracking-wide text-pine">
-        {lab.family} · {lab.grades} · {lab.time}
+        {familyName(lab.family)}
+        {unit ? ` · ${unit.name}` : ""}
+        {idx >= 0 ? ` · ${idx + 1} of ${PERIOD_PATH.length}` : ""}
+        {` · ${lab.grades} · ${lab.time}`}
       </p>
       <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
         {lab.name}
       </h1>
-      <p className={cn("mt-4 max-w-2xl text-ink-soft", read === "easy" && "text-lg leading-relaxed")}>
+      <p className={cn("mt-4 max-w-2xl text-ink-soft", easy && "text-lg leading-relaxed")}>
         {pickRead(read, lab.blurb)}
       </p>
-      <p className="mt-3 max-w-2xl text-sm text-muted">{lab.teConcept}</p>
+      {easy ? null : (
+        <p className="mt-3 max-w-2xl text-sm text-muted">{lab.teConcept}</p>
+      )}
+
       <ul className="mt-4 flex flex-wrap gap-2">
         {lab.mst.map((code) => (
           <li key={code} className="rounded-full bg-bg-warm px-3 py-1.5 text-xs font-medium text-pine">
@@ -59,18 +107,45 @@ function LabPage() {
           </li>
         ))}
       </ul>
-      {lab.spec ? (
-        <p className="mt-4 max-w-2xl rounded-lg bg-bg-warm px-4 py-3 text-sm text-ink-soft">
+
+      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <div className="rounded-xl bg-surface p-4 shadow-card sm:p-5">
+          <p className="text-xs font-medium tracking-wide text-pine">On the desk</p>
+          <ul className="mt-2 flex flex-wrap gap-2">
+            {lab.materials.map((m) => (
+              <li key={m} className="rounded-full bg-bg-warm px-3 py-1.5 text-sm text-ink">
+                {m}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-xl bg-surface p-4 shadow-card sm:p-5">
+          <p className="text-xs font-medium tracking-wide text-pine">
+            {lab.challenge ? "Challenge" : lab.spec ? "Spec" : "The make"}
+          </p>
+          <p className="mt-2 text-sm text-ink-soft">{lab.challenge ?? lab.spec ?? pickRead(read, lab.blurb)}</p>
+        </div>
+      </div>
+
+      {lab.challenge && lab.spec ? (
+        <p className="mt-3 max-w-2xl rounded-lg bg-bg-warm px-4 py-3 text-sm text-ink-soft">
           <span className="font-medium text-ink">Spec. </span>
           {lab.spec}
         </p>
       ) : null}
 
+      <p className="mt-3 max-w-2xl text-sm text-muted">
+        <span className="font-medium text-ink">Shop rule. </span>
+        {shopRule(lab)}
+      </p>
+
       {lab.studio ? (
         <div className="mt-8 rounded-xl bg-surface p-5 shadow-card sm:p-7">
           <h2 className="font-display text-2xl font-semibold">Open the studio</h2>
           <p className="mt-2 text-ink-soft">
-            This lab has a full stepper, diagrams, and printables in the cube studio.
+            {family
+              ? `Diagrams, a stepper, and printables for this ${family.name.toLowerCase()} lab live in the studio.`
+              : "Diagrams, a stepper, and printables for this lab live in the studio."}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button asChild>
@@ -79,17 +154,19 @@ function LabPage() {
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
-            <Button asChild variant="secondary">
-              <Link to="/plans/$id" params={{ id: lab.id }}>
-                <ClipboardList className="size-4" />
-                Lesson plan
-              </Link>
-            </Button>
+            {role !== "student" ? (
+              <Button asChild variant="secondary">
+                <Link to="/plans/$id" params={{ id: lab.id }}>
+                  <ClipboardList className="size-4" />
+                  Lesson plan
+                </Link>
+              </Button>
+            ) : null}
           </div>
         </div>
-      ) : (
-        <Stepper labId={lab.id} />
-      )}
+      ) : lab.steps.length > 0 ? (
+        <Stepper key={lab.id} lab={lab} nextId={next.id} nextName={next.name} />
+      ) : null}
 
       {role !== "student" ? <RoomNotes labId={lab.id} /> : null}
 
@@ -100,7 +177,7 @@ function LabPage() {
             <li key={v.term} className="rounded-xl bg-surface p-4 shadow-card">
               <p className="font-medium">{v.term}</p>
               <p className="mt-1 text-sm text-ink-soft">{v.meaning}</p>
-              <p className="mt-1 text-xs text-muted">{v.es}</p>
+              {easy ? null : <p className="mt-1 text-xs text-muted">{v.es}</p>}
             </li>
           ))}
         </ul>
@@ -122,18 +199,20 @@ function LabPage() {
 
       <div className="mt-10 flex flex-wrap justify-between gap-3">
         <Button asChild variant="secondary">
-          <Link to="/labs/$id" params={{ id: prev.id }}>
+          <Link to="/labs/$id" params={{ id: prev.id }} search={{ step: 1 }}>
             <ArrowLeft className="size-4" />
             {prev.name}
           </Link>
         </Button>
-        <Button asChild variant="ghost">
-          <Link to="/plans/$id" params={{ id: lab.id }}>
-            Lesson plan
-          </Link>
-        </Button>
+        {role !== "student" ? (
+          <Button asChild variant="ghost">
+            <Link to="/plans/$id" params={{ id: lab.id }}>
+              Lesson plan
+            </Link>
+          </Button>
+        ) : null}
         <Button asChild variant="secondary">
-          <Link to="/labs/$id" params={{ id: next.id }}>
+          <Link to="/labs/$id" params={{ id: next.id }} search={{ step: 1 }}>
             {next.name}
             <ArrowRight className="size-4" />
           </Link>
@@ -143,23 +222,107 @@ function LabPage() {
   );
 }
 
-function Stepper({ labId }: { labId: string }) {
-  const lab = getLab(labId);
+function Stepper({
+  lab,
+  nextId,
+  nextName,
+}: {
+  lab: Lab;
+  nextId: string;
+  nextName: string;
+}) {
   const read = useReadLevel();
-  const [step, setStep] = useState(0);
-  if (!lab || lab.steps.length === 0) return null;
+  const role = useRole();
+  const done = useLabDone(lab.id);
+  const search = Route.useSearch();
+  const navigate = Route.useNavigate();
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const skipFocus = useRef(true);
+
+  const count = lab.steps.length;
+  const step = clampStepIndex(search.step, count);
   const current = lab.steps[step];
-  const last = step === lab.steps.length - 1;
+  const last = step === count - 1;
+  const leftMin = lab.steps.slice(step).reduce((sum, s) => sum + minutesOf(s.minutes), 0);
+  const totalMin = lab.steps.reduce((sum, s) => sum + minutesOf(s.minutes), 0) || 1;
+  const spentMin = totalMin - leftMin + minutesOf(current.minutes);
+
+  function go(index: number) {
+    const next = Math.min(Math.max(index, 0), count - 1);
+    if (next === step && search.step === next + 1) return;
+    void navigate({
+      search: (prev) => ({ ...prev, step: next + 1 }),
+      resetScroll: false,
+    });
+  }
+
+  useEffect(() => {
+    const wanted = step + 1;
+    if (search.step !== wanted) {
+      void navigate({
+        search: (prev) => ({ ...prev, step: wanted }),
+        replace: true,
+        resetScroll: false,
+      });
+    }
+  }, [navigate, search.step, step]);
+
+  useEffect(() => {
+    if (skipFocus.current) {
+      skipFocus.current = false;
+      return;
+    }
+    headingRef.current?.focus({ preventScroll: true });
+  }, [step]);
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.altKey || e.ctrlKey || e.metaKey) return;
+      const target = e.target;
+      if (target instanceof HTMLElement) {
+        const tag = target.tagName;
+        if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || target.isContentEditable) return;
+        if (target.closest("header") || target.closest('[role="radiogroup"]')) return;
+      }
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        go(step + 1);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        go(step - 1);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [step, count, navigate, search.step]);
+
+  if (!current) return null;
 
   return (
     <div className="mt-8 grid gap-8 overflow-hidden lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="flex flex-col gap-6">
+        <div className="flex items-center gap-3">
+          <div
+            className="h-1 flex-1 overflow-hidden rounded-full bg-bg-warm"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={totalMin}
+            aria-valuenow={spentMin}
+            aria-label="Minutes through this lab"
+          >
+            <div
+              className="h-full origin-left bg-pine transition-transform duration-200"
+              style={{ transform: `scaleX(${spentMin / totalMin})` }}
+            />
+          </div>
+          <p className="shrink-0 text-xs tabular-nums text-muted">{leftMin} min left</p>
+        </div>
         <ol className="flex gap-1 overflow-x-auto pb-1">
           {lab.steps.map((s, i) => (
-            <li key={s.title}>
+            <li key={`${i}-${s.title}`}>
               <button
                 type="button"
-                onClick={() => setStep(i)}
+                onClick={() => go(i)}
                 className={cn(
                   "flex size-11 items-center justify-center rounded-md text-sm font-medium tabular-nums",
                   i === step ? "bg-pine text-pine-fg" : i < step ? "bg-moss/20 text-pine" : "bg-surface text-muted shadow-card",
@@ -172,12 +335,18 @@ function Stepper({ labId }: { labId: string }) {
             </li>
           ))}
         </ol>
-        <article className="rounded-xl bg-surface p-5 shadow-card sm:p-7">
+        <article className="rounded-xl bg-surface p-5 shadow-card sm:p-7" aria-live="polite">
           <p className="text-xs font-medium tracking-wide text-muted">
-            Step {step + 1} of {lab.steps.length} · {current.minutes}
+            Step {step + 1} of {count} · {current.minutes}
           </p>
-          <h2 className="mt-2 font-display text-2xl font-semibold">{current.title}</h2>
-          <p className={cn("mt-4 text-[17px] leading-relaxed text-ink-soft", read === "easy" && "text-lg")}>
+          <h2
+            ref={headingRef}
+            tabIndex={-1}
+            className="mt-2 font-display text-2xl font-semibold outline-none"
+          >
+            {current.title}
+          </h2>
+          <p className={cn("mt-4 leading-relaxed text-ink-soft", read === "easy" && "text-lg")}>
             {pickRead(read, current.body)}
           </p>
           {current.tip ? (
@@ -186,24 +355,42 @@ function Stepper({ labId }: { labId: string }) {
               {pickRead(read, current.tip)}
             </p>
           ) : null}
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button variant="secondary" onClick={() => setStep((n) => Math.max(0, n - 1))} disabled={step === 0}>
+          {last ? (
+            <div className="mt-4">
+              <button
+                type="button"
+                onClick={() => toggleLabDone(lab.id)}
+                aria-pressed={done}
+                className={cn(
+                  "inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-sm font-medium",
+                  done ? "bg-ok/15 text-ok" : "bg-bg-warm text-ink",
+                )}
+              >
+                <Check className="size-4" aria-hidden />
+                {done ? "Marked as made" : "We made this"}
+              </button>
+            </div>
+          ) : null}
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Button variant="secondary" onClick={() => go(step - 1)} disabled={step === 0}>
               <ArrowLeft className="size-4" />
               Back
             </Button>
             {last ? (
               <Button asChild>
-                <Link to="/plans/$id" params={{ id: lab.id }}>
-                  Plan and assess
+                <Link to="/labs/$id" params={{ id: nextId }} search={{ step: 1 }}>
+                  Next lab · {nextName}
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>
             ) : (
-              <Button onClick={() => setStep((n) => n + 1)}>
+              <Button onClick={() => go(step + 1)}>
                 Keep going
                 <ArrowRight className="size-4" />
               </Button>
             )}
+            <p className="hidden text-xs text-faint sm:block">← → keys</p>
+            {role === "teacher" ? <CopyStepLink /> : null}
           </div>
         </article>
       </div>
@@ -214,9 +401,46 @@ function Stepper({ labId }: { labId: string }) {
           </div>
         </div>
         <p className="mt-3 text-center text-sm font-medium text-ink-soft lg:hidden">{current.title}</p>
+        {role === "teacher" ? (
+          <p className="mt-2 text-center text-xs text-faint" title="Diagram id">
+            {current.visual}
+          </p>
+        ) : null}
       </aside>
     </div>
   );
+}
+
+function CopyStepLink() {
+  const [copied, setCopied] = useState(false);
+  return (
+    <button
+      type="button"
+      className="inline-flex min-h-11 items-center gap-1 text-xs font-medium text-pine"
+      onClick={async () => {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          setCopied(true);
+          window.setTimeout(() => setCopied(false), 1600);
+        } catch {
+          /* clipboard can be blocked on a locked Chromebook */
+        }
+      }}
+    >
+      <Link2 className="size-3.5" aria-hidden />
+      {copied ? "Copied" : "Copy this step"}
+    </button>
+  );
+}
+
+function shopRule(lab: Lab) {
+  if (lab.id === "beam") return SAFETY[8];
+  if (lab.id === "catapult") return SAFETY[7];
+  if (lab.id === "boat" || lab.id === "cup") return SAFETY[6];
+  if (lab.id === "balloon") return SAFETY[3];
+  if (lab.id === "chute" || lab.id === "copter" || lab.id === "pinwheel") return SAFETY[4];
+  if (lab.family === "fly") return SAFETY[1];
+  return SAFETY[0];
 }
 
 function RoomNotes({ labId }: { labId: string }) {

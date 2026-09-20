@@ -531,23 +531,20 @@ function Brick({ x, y, w = 34, h = 20 }: { x: number; y: number; w?: number; h?:
   );
 }
 
-/** Shop hanger: pine stick, jute knot, three strings, round picture circle. */
+/** Shop hanger: pine stick seated on the plywood pads, jute, hanging circle. */
 function Hanger({
-  stickY = 58,
+  stickY = 32,
   circleCy = 118,
-  brick = false,
   bricks = 0,
 }: {
   stickY?: number;
   circleCy?: number;
-  brick?: boolean;
   bricks?: number;
 }) {
-  const n = brick ? Math.max(1, bricks) : bricks;
   return (
     <g>
-      <rect x={76} y={stickY} width={88} height={11} rx={2} fill="var(--color-toy-right)" stroke="var(--color-ink)" strokeWidth={1.6} />
-      <rect x={76} y={stickY} width={88} height={3} fill="var(--color-face-front)" opacity={0.45} />
+      <rect x={24} y={stickY} width={192} height={11} rx={2} fill="var(--color-toy-right)" stroke="var(--color-ink)" strokeWidth={1.6} />
+      <rect x={24} y={stickY} width={192} height={3} fill="var(--color-face-front)" opacity={0.45} />
       <ellipse cx="120" cy={stickY + 6} rx="6" ry="5" fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth={1} />
       <line x1="120" y1={stickY + 10} x2="86" y2={circleCy - 9} stroke="var(--color-ink-soft)" strokeWidth={1.35} />
       <line x1="120" y1={stickY + 10} x2="120" y2={circleCy - 11} stroke="var(--color-ink-soft)" strokeWidth={1.35} />
@@ -555,7 +552,9 @@ function Hanger({
       <ellipse cx="120" cy={circleCy + 3} rx="40" ry="6" fill="var(--color-ink)" opacity="0.1" />
       <ellipse cx="120" cy={circleCy} rx="40" ry="12" fill="var(--color-face-right)" stroke="var(--color-ink)" strokeWidth={1.7} />
       <ellipse cx="120" cy={circleCy - 3} rx="34" ry="8" fill="var(--color-face-front)" opacity={0.55} />
-      {n > 0 ? Array.from({ length: n }, (_, i) => <Brick key={i} x={103} y={circleCy - 14 - i * 18} />) : null}
+      {bricks > 0
+        ? Array.from({ length: bricks }, (_, i) => <Brick key={i} x={103} y={circleCy - 14 - i * 18} />)
+        : null}
     </g>
   );
 }
@@ -567,19 +566,19 @@ function CanyonCart() {
       <ellipse cx="40" cy="160" rx="7" ry="4" fill="var(--color-ink)" />
       <ellipse cx="200" cy="160" rx="7" ry="4" fill="var(--color-ink)" />
       {/* legs */}
-      <rect x="34" y="52" width="8" height="108" fill="#d8d0c0" stroke="var(--color-ink)" strokeWidth={1} />
-      <rect x="198" y="52" width="8" height="108" fill="#d8d0c0" stroke="var(--color-ink)" strokeWidth={1} />
+      <rect x="34" y="52" width="8" height="108" fill="var(--color-face-bottom)" stroke="var(--color-ink)" strokeWidth={1} />
+      <rect x="198" y="52" width="8" height="108" fill="var(--color-face-bottom)" stroke="var(--color-ink)" strokeWidth={1} />
       {/* second shelf */}
       <path
         d="M28 128 H212 V140 H28 Z"
-        fill="#8d8a86"
+        fill="var(--color-muted)"
         stroke="var(--color-ink)"
         strokeWidth={1.5}
       />
       {/* U top shelf */}
       <path
         d="M22 28 H218 V56 H164 V78 H76 V56 H22 Z"
-        fill="#9a9792"
+        fill="var(--color-faint)"
         stroke="var(--color-ink)"
         strokeWidth={2}
         strokeLinejoin="round"
@@ -609,19 +608,19 @@ function Beam({ step }: { step: string }) {
       <g>
         <ViewChip label="TOP" />
         <CanyonCart />
-        <line x1="86" y1="70" x2="154" y2="70" stroke="var(--color-pine)" strokeWidth={2.6} />
-        <line x1="86" y1="66" x2="86" y2="74" stroke="var(--color-pine)" strokeWidth={2} />
-        <line x1="154" y1="66" x2="154" y2="74" stroke="var(--color-pine)" strokeWidth={2} />
-        <text x="120" y="94" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
+        <line x1="76" y1="88" x2="164" y2="88" stroke="var(--color-pine)" strokeWidth={2.6} />
+        <line x1="76" y1="84" x2="76" y2="92" stroke="var(--color-pine)" strokeWidth={2} />
+        <line x1="164" y1="84" x2="164" y2="92" stroke="var(--color-pine)" strokeWidth={2} />
+        <text x="120" y="82" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
           short
         </text>
-        <line x1="48" y1="22" x2="210" y2="22" stroke="var(--color-danger)" strokeWidth={2.4} />
-        <line x1="48" y1="18" x2="48" y2="26" stroke="var(--color-danger)" strokeWidth={2} />
-        <line x1="210" y1="18" x2="210" y2="26" stroke="var(--color-danger)" strokeWidth={2} />
-        <text x="150" y="18" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-danger)" fontFamily="Figtree, sans-serif">
+        <line x1="24" y1="18" x2="216" y2="18" stroke="var(--color-danger)" strokeWidth={2.4} />
+        <line x1="24" y1="14" x2="24" y2="22" stroke="var(--color-danger)" strokeWidth={2} />
+        <line x1="216" y1="14" x2="216" y2="22" stroke="var(--color-danger)" strokeWidth={2} />
+        <text x="120" y="14" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-danger)" fontFamily="Figtree, sans-serif">
           long
         </text>
-        <Hanger stickY={44} circleCy={106} />
+        <Hanger stickY={32} circleCy={108} />
         <Caption>Pick a span · circle must hang free</Caption>
       </g>
     );
@@ -691,9 +690,9 @@ function Beam({ step }: { step: string }) {
       <g>
         <ViewChip label="FRONT" />
         <CanyonCart />
-        <rect x={72} y={44} width={96} height={14} rx={2} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <Hanger stickY={32} circleCy={104} brick />
-        <text x="120" y="146" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
+        <rect x={28} y={30} width={184} height={14} rx={2} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <Hanger stickY={30} circleCy={100} bricks={1} />
+        <text x="120" y="152" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
           air — not the shelf
         </text>
         <Caption>Hang free · stay flat · 1 brick · count 7</Caption>
@@ -704,8 +703,8 @@ function Beam({ step }: { step: string }) {
     <g>
       <ViewChip label="FRONT" />
       <CanyonCart />
-      <rect x={72} y={44} width={96} height={14} rx={2} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
-      <Hanger stickY={32} circleCy={100} bricks={3} />
+      <rect x={28} y={30} width={184} height={14} rx={2} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
+      <Hanger stickY={30} circleCy={96} bricks={3} />
       <Caption>Contest: add bricks · still free and flat</Caption>
     </g>
   );

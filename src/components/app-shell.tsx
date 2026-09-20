@@ -1,9 +1,10 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { PAPERS, PAPER_IDS, type PaperId } from "@/lib/paper";
-import { setPaper, usePaper } from "@/lib/lesson";
+import { setPaper, usePaper, useRole } from "@/lib/lesson";
 import { APP_KICKER, APP_SHORT } from "@/lib/brand";
 import { LogoMark } from "@/components/berty";
 import { ClassroomBar } from "@/components/classroom-bar";
+import { Segmented } from "@/components/segmented";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -20,7 +21,9 @@ function isNavActive(pathname: string, to: string) {
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const paper = usePaper();
+  const role = useRole();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const slim = role === "student";
 
   return (
     <div className="paper-grain min-h-dvh">
@@ -68,7 +71,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </nav>
         </div>
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 pb-2 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
-          <ClassroomBar />
+          <ClassroomBar compact={slim} />
           <PaperToggle paper={paper} full />
         </div>
         <nav className="flex gap-1 overflow-x-auto px-4 pb-3 md:hidden">
@@ -96,6 +99,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="cut-rule mb-6 max-w-xs" />
         <p>BertyBot’s PaperLab · Technology education on a sheet of printer paper.</p>
         <p className="mt-1">NYSED MST Standard 5 · Grades 2–8 · scissors, glue, and a period.</p>
+        <p className="mt-2">
+          <Link to="/updates" className="font-medium text-pine">
+            Shop notes
+          </Link>
+          <span className="text-faint"> · what changed, in class order</span>
+        </p>
       </footer>
     </div>
   );
@@ -103,29 +112,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
 function PaperToggle({ paper, full }: { paper: PaperId; full?: boolean }) {
   return (
-    <div
-      className={cn(
-        "flex h-11 rounded-md bg-bg-warm p-1",
-        full ? "w-full lg:w-auto" : "max-w-full overflow-x-auto",
-      )}
-      role="group"
-      aria-label="Paper size"
-    >
-      {PAPER_IDS.map((id) => (
-        <button
-          key={id}
-          type="button"
-          onClick={() => setPaper(id)}
-          title={`${PAPERS[id].name} · ${PAPERS[id].sheetLabel}`}
-          className={cn(
-            "rounded-[10px] text-sm font-medium transition-colors",
-            full ? "min-h-11 flex-1 px-1.5 lg:px-2.5" : "shrink-0 px-2 sm:px-2.5",
-            paper === id ? "bg-surface text-ink shadow-card" : "text-muted hover:text-ink",
-          )}
-        >
-          {PAPERS[id].shortName}
-        </button>
-      ))}
-    </div>
+    <Segmented
+      label="Paper size"
+      value={paper}
+      full={full}
+      options={PAPER_IDS.map((id) => ({
+        id,
+        name: PAPERS[id].shortName,
+        title: `${PAPERS[id].name} · ${PAPERS[id].sheetLabel}`,
+      }))}
+      onChange={(id) => setPaper(id as PaperId)}
+    />
   );
 }
