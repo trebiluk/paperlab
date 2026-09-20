@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const FEATURED = ["beam", "dart", "boat", "catapult", "cube", "tower", "crane", "hat"];
+const FEATURED = ["kite", "bag", "flower", "grabber", "wallet", "frame", "beam", "whirligig"];
 
 function Home() {
   const read = useReadLevel();
@@ -39,10 +39,10 @@ function Home() {
             Paper is the material. You are the factory.
           </h1>
           <p className="max-w-xl text-lg text-ink-soft">
-            {APP_TAGLINE} {LABS.length} paper labs — darts, boats, catapults,
-            cranes, bridges, hats — with full lesson plans, Easy / Class /
-            Stretch reading, ELL frames, extra-help notes, and helper cards
-            for a teaching assistant.
+            {APP_TAGLINE} {LABS.length} paper labs — kites, bags, frames,
+            grabbers, darts, boats — with a written challenge on every make,
+            Easy / Class / Stretch reading, ELL frames, extra-help notes, and
+            helper cards for a teaching assistant.
           </p>
           <ul className="flex flex-wrap gap-2">
             {["One sheet", "Scissors", "Glue", "A period"].map((chip) => (

@@ -1,3 +1,4 @@
+import { CraftScene } from "@/components/lab-svg-craft";
 import {
   Caption,
   CrewPerson,
@@ -28,7 +29,7 @@ export function ExtraScene(id: string) {
   if (id.startsWith("mobius")) return <Mobius step={id} />;
   if (id.startsWith("cup")) return <Cup step={id} />;
   if (id.startsWith("beam")) return <Beam step={id} />;
-  return null;
+  return CraftScene(id);
 }
 
 function Boat({ step }: { step: string }) {

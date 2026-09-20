@@ -1,3 +1,4 @@
+import { CRAFT_LABS } from "./craft-labs";
 import type { MstCode } from "./mst";
 import { MORE_LABS } from "./more-labs";
 import { PERIOD_PATH } from "./units";
@@ -56,6 +57,8 @@ const CORE_LABS: Lab[] = [
       "Draw a Latin-cross development with glue tabs, cut it, and assemble a cube — the largest that fits on the sheet.",
       "A development is a true-size unfolding. Tabs are joining processes. Optimize face size under the constraint of one sheet.",
     ),
+    challenge: "A closed cube from one sheet. Six faces, no extra squares taped on. Count 6 faces, 12 edges, 8 corners.",
+    spec: "Pass: closed cube from a tabbed development. Stretch: title block and a second net that is not the Latin cross.",
     studio: { to: "/build", search: { path: "net" } },
     steps: [],
     vocab: [
@@ -92,6 +95,8 @@ const CORE_LABS: Lab[] = [
       "Every origami model starts with a square. Fold a short edge onto a long edge, cut the leftover strip, then fold the waterbomb cube and inflate it.",
       "Squaring is a process that wastes a known leftover. The lock is four tucks — a fastener-free joining system.",
     ),
+    challenge: "Inflate a closed cube with no glue. One slow breath. Name the leftover strip — bookmark, not trash.",
+    spec: "Pass: inflated balloon from a square cut on the sheet. Stretch: measure balloon vs. net cube and say why they differ.",
     studio: { to: "/build", search: { path: "origami" } },
     steps: [],
     vocab: [
@@ -124,6 +129,8 @@ const CORE_LABS: Lab[] = [
       "Drawing has line types. Folding has moves. Dashed on a development is a valley.",
       "A crease is a permanent line in the sheet. Valley and mountain are the same crease from opposite sides.",
     ),
+    challenge: "On scrap: show a valley and a mountain on two sides of one crease. Name six moves.",
+    spec: "Pass: fold quiz 3/4, plus one crease that is valley on one side and mountain on the other.",
     studio: { to: "/fold" },
     steps: [],
     vocab: [
@@ -156,6 +163,8 @@ const CORE_LABS: Lab[] = [
       "In geometry it is a net. In technical drawing it is a development — true size, agreed line types.",
       "A working drawing is a communication system. Craftsmanship on the drawing predicts the product.",
     ),
+    challenge: "A development another class could cut: thick = cut, dashed = fold, six legal tabs, letters A–G.",
+    spec: "Pass: conventions quiz 3/4 and a development with legal tabs. Stretch: title block and scale 1:1.",
     studio: { to: "/draw" },
     steps: [],
     vocab: [
@@ -187,6 +196,8 @@ const CORE_LABS: Lab[] = [
       "Only 11 of 35 hexominoes fold into a cube. Faces that stack in space fail.",
       "A net is a spanning tree of faces. Overlap is a geometric constraint, not a taste.",
     ),
+    challenge: "Mark 3 valid and 3 invalid hexominoes. Fold one cheat so the overlap is the proof.",
+    spec: "Pass: fold-or-fail quiz plus one valid net that is not the Latin cross.",
     studio: { to: "/nets" },
     steps: [],
     vocab: [
@@ -218,6 +229,8 @@ const CORE_LABS: Lab[] = [
       "Five more developments on the same paper size. Cylinder and cone add a curved edge — Euler’s formula does not apply the same way.",
       "Curved developments introduce circumference = πd. Tabs still follow one per glue seam, never on a fold.",
     ),
+    challenge: "One extra solid from a development with legal tabs. Name whether F − E + V = 2 applies.",
+    spec: "Pass: finished solid and a correct “polyhedron / curved” call. Stretch: leftover compared to the cube as process waste.",
     studio: { to: "/foldables" },
     steps: [],
     vocab: [
@@ -609,6 +622,8 @@ const CORE_LABS: Lab[] = [
       "A pop-up is a mechanism. Closing the card stores the motion; opening it outputs lift.",
       "Input: rotation of the card. Process: a folded hinge. Output: a face that rises.",
     ),
+    challenge: "Ten open-close cycles. A glued face that still lifts. Name input, process, output.",
+    spec: "Pass: ten cycles without tearing the hinge. Stretch: a second V-fold on the same card.",
     steps: [
       {
         title: "The card",
@@ -672,6 +687,8 @@ const CORE_LABS: Lab[] = [
       "A pinwheel is a rotary system. Wind is the input. Vanes catch it. A shaft holds the center. Too tight a pin = too much friction.",
       "Convert airflow to rotation. Friction at the axle is a loss. History: windmills. Impact: a toy, and a model of a turbine.",
     ),
+    challenge: "Spins from a breath. If it does not, say whether the pin is tight or the vanes are wrong.",
+    spec: "Pass: rotation from a breath, leftover strip reused or labeled as waste. Stretch: two vane sizes, which starts easier?",
     steps: [
       {
         title: "Cut a square",
@@ -735,6 +752,8 @@ const CORE_LABS: Lab[] = [
       "The masu is a traditional measuring box. Cut a square, then fold a container. A slightly larger square makes the lid.",
       "Packaging is a product family: a net with self-locking joints. Volume is a function of fold-in depth. The leftover strip is process waste — or a sleeve.",
     ),
+    challenge: "A locking box that holds an eraser through a 10-shake test. No glue on the walls if the folds lock.",
+    spec: "Pass: 10-shake hold, box still opens. Stretch: a lid from a second square ~5 mm larger.",
     steps: [
       {
         title: "Square the blank",
@@ -797,6 +816,7 @@ const CORE_LABS: Lab[] = [
       "The hopper is a stored-energy system. Your finger is the input. The folded back legs are a spring. Output is a jump.",
       "A sharper reverse-fold on the legs stores more. A data table of three presses beats “it hops.”",
     ),
+    challenge: "Three hops recorded. After one spring change, the median hop grows or it lands upright more often.",
     spec: "Three hops recorded. After one crease improvement, median hop increases or the frog lands upright more often.",
     steps: [
       {
@@ -854,6 +874,8 @@ const CORE_LABS: Lab[] = [
       "Kirigami (cut + fold) turns a rectangle into a cylindrical lantern. Parallel slits expand when the tube is compressed. Electric tea-lights only, never a flame.",
       "A slit pattern is a compliant mechanism: material removed so remaining ribs buckle out on purpose. Fire safety is a constraint.",
     ),
+    challenge: "An expanded lantern that hangs from a leftover-strip handle. No flame — this is a model.",
+    spec: "Pass: hangs, slits open into diamonds, oral why no candle. Stretch: a tapered wrap.",
     steps: [
       {
         title: "Safety spec",
@@ -916,6 +938,8 @@ const CORE_LABS: Lab[] = [
       "The fortune teller is a four-pocket mechanism and an interface. Fill it with lab vocab, not fortunes.",
       "An information system in paper. Layers hide data until a sequence of choices reveals it — a menu, different material.",
     ),
+    challenge: "Opens on both axes. Loaded with this week’s tech words. A partner runs it with no extra talk.",
+    spec: "Pass: both axes, accurate vocab under the flaps. Stretch: a quiz teller — questions on top, answers under.",
     steps: [
       {
         title: "Square and blintz",
@@ -971,6 +995,8 @@ const CORE_LABS: Lab[] = [
       "Weaving makes a new material from strips. Warp (the downs) and weft (the across) lock by friction.",
       "A composite of paper and air: the pattern is the structure. History: baskets and cloth.",
     ),
+    challenge: "A hemmed mat that beats a single strip in a tear test. Pattern is a checkerboard.",
+    spec: "Pass: hemmed mat, oral warp vs. weft. Stretch: over-two under-one twill, or a woven box wall.",
     steps: [
       {
         title: "Cut strips",
@@ -1027,7 +1053,8 @@ const CORE_LABS: Lab[] = [
       "A paper helicopter autorotates. Drop from a measured height. Change blade length or nose mass and time the fall.",
       "Autorotation: airflow up through the rotors produces rotation and some lift. History: maple seeds. Mass vs. blade area is the tradeoff.",
     ),
-    spec: "Three drops from the same height. After one change, say whether hang time went up or down — with numbers.",
+    challenge: "Three drops from the same height. After one change, say whether hang time went up or down — with numbers.",
+    spec: "Same drop height, n=3, then one parameter change (clip or blade length). Report direction with times.",
     steps: [
       {
         title: "Cut the blank",
@@ -1071,7 +1098,7 @@ const CORE_LABS: Lab[] = [
   },
 ];
 
-export const LABS: Lab[] = [...CORE_LABS, ...MORE_LABS];
+export const LABS: Lab[] = [...CORE_LABS, ...MORE_LABS, ...CRAFT_LABS];
 
 export const LAB_IDS = LABS.map((l) => l.id);
 

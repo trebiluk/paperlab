@@ -499,6 +499,8 @@ export const MORE_LABS: Lab[] = [
       "The crane is a sequence of named bases. Miss a mountain/valley and the head will not invert. History: a peace and gift object.",
       "A process document (this lab) is a computer model of folds. The paper still has to take the crease. Craftsmanship is reversible until you press.",
     ),
+    challenge: "A crane that sits on the desk. Head inverted, not torn. Leftover strip named — bookmark or chain link.",
+    spec: "Pass: sits, head inverted. Stretch: who is it for? That need is the spec.",
     steps: [
       {
         title: "Square the blank",

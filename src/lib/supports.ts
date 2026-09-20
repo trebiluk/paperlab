@@ -108,6 +108,9 @@ export const SAFETY = [
   "Catapult: eraser payload only. Downrange is a wall or empty floor — never a face.",
   "Brick Beam: bricks sit on the hanging picture circle only. The circle must hang free — nobody reaches under it during the count. Crew Leader says GO. If it fails, step back, then pick up bricks. Closed-toe shoes at the cart.",
   "Chair-height drops (chute, copter): the teacher stands on the chair, or use a marked shelf. Students count.",
+  "Paper lanterns are models. No candles, no lighters. An electric tea-light only if the teacher says so.",
+  "String toys (whirligig, kite bridle): string stays on the desk until the test. Loops on fingers. Never around a neck.",
+  "Paper grabber: tips away from eyes and faces. Carry an eraser, not a pencil point.",
 ];
 
 export const DESIGN_LOOP = [

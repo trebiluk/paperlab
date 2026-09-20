@@ -439,6 +439,9 @@ function shopRule(lab: Lab) {
   if (lab.id === "boat" || lab.id === "cup") return SAFETY[6];
   if (lab.id === "balloon") return SAFETY[3];
   if (lab.id === "chute" || lab.id === "copter" || lab.id === "pinwheel") return SAFETY[4];
+  if (lab.id === "lantern") return SAFETY[10];
+  if (lab.id === "whirligig" || lab.id === "kite") return SAFETY[11];
+  if (lab.id === "grabber") return SAFETY[12];
   if (lab.family === "fly") return SAFETY[1];
   return SAFETY[0];
 }

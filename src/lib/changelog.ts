@@ -9,6 +9,16 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-20",
+    title: "Seven take-home crafts",
+    items: [
+      "New labs you keep: diamond kite, carry bag, billfold, standing frame, kirigami flower, paper grabber, and whirligig.",
+      "Every lab now has a written challenge on the student page — a test, not just a make.",
+      "Year path grew: bags and frames in Make, kite in Fly, grabber and whirligig in Move, flower with the flakes.",
+      "Shop rules for string toys, grabber tips, and paper lanterns (still no flame).",
+    ],
+  },
+  {
+    date: "2026-09-20",
     title: "Period path, step links, shop notes",
     items: [
       "Labs follow the year order: Start the shop → Make → Fly → Hold → Move → Models.",
