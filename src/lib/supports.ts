@@ -120,7 +120,27 @@ export const DESIGN_LOOP = [
   { id: "make", name: "Make", body: "Build the prototype. Craftsmanship counts." },
   { id: "test", name: "Test", body: "Run it against the spec. Write the number down." },
   { id: "improve", name: "Improve", body: "Change one thing. Test again. Name the tradeoff." },
-];
+] as const;
+
+export type LoopPhase = (typeof DESIGN_LOOP)[number]["id"];
+
+/** Map a lab step onto the design loop so the class can see where they are. */
+export function loopPhaseFor(visual: string, index: number, count: number): LoopPhase {
+  if (visual === "iterate") return "improve";
+  if (visual.includes("ideas")) return "imagine";
+  if (visual === "spec-line" || visual === "beam-crew" || visual === "tower-spec") return "ask";
+  if (
+    visual === "fly-test" ||
+    visual === "system" ||
+    /(?:test|spin|drop|load|shake|contest|carry|walk|water|hop|float)$/.test(visual)
+  ) {
+    return "test";
+  }
+  if (index <= 0) return "ask";
+  if (index === count - 1) return "test";
+  if (index === 1) return "plan";
+  return "make";
+}
 
 export const IEP = {
   principle:

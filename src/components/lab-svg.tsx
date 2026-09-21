@@ -21,17 +21,20 @@ import { useId } from "react";
 export function LabSvg({
   visual,
   className,
+  decorative,
 }: {
   visual: string;
   className?: string;
+  decorative?: boolean;
 }) {
   const uid = useId().replace(/:/g, "");
   return (
     <svg
       viewBox="0 0 240 180"
       className={cn("h-full w-full", className)}
-      role="img"
-      aria-label={visual.replace(/-/g, " ")}
+      role={decorative ? undefined : "img"}
+      aria-hidden={decorative || undefined}
+      aria-label={decorative ? undefined : visual.replace(/-/g, " ")}
       shapeRendering="geometricPrecision"
     >
       <GfxProvider uid={uid}>

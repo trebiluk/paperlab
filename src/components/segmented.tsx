@@ -19,13 +19,17 @@ export function Segmented({
       role="radiogroup"
       aria-label={label}
       onKeyDown={(e) => {
-        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
         const i = options.findIndex((o) => o.id === value);
         if (i < 0) return;
-        const dir = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : -1;
-        const next = options[i + dir];
-        if (!next) return;
+        let nextI = i;
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") nextI = Math.min(i + 1, options.length - 1);
+        else if (e.key === "ArrowLeft" || e.key === "ArrowUp") nextI = Math.max(i - 1, 0);
+        else if (e.key === "Home") nextI = 0;
+        else if (e.key === "End") nextI = options.length - 1;
+        else return;
+        if (nextI === i) return;
         e.preventDefault();
+        const next = options[nextI];
         onChange(next.id);
         const btn = e.currentTarget.querySelector<HTMLButtonElement>(`[data-seg="${next.id}"]`);
         btn?.focus();
@@ -39,11 +43,12 @@ export function Segmented({
             type="button"
             role="radio"
             aria-checked={on}
+            tabIndex={on ? 0 : -1}
             title={o.title}
             data-seg={o.id}
             onClick={() => onChange(o.id)}
             className={cn(
-              "min-h-9 rounded-[10px] px-2.5 text-sm font-medium transition-colors",
+              "min-h-11 rounded-[10px] px-2.5 text-sm font-medium transition-colors",
               full && "flex-1 px-1.5 lg:px-2.5",
               on ? "bg-surface text-ink shadow-card" : "text-muted hover:text-ink",
             )}

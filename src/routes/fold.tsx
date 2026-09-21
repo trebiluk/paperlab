@@ -205,7 +205,11 @@ function FoldQuiz() {
             <p className="font-medium">
               {i + 1}. {q.prompt}
             </p>
-            <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+            <div
+              className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap"
+              role="radiogroup"
+              aria-label={`Question ${i + 1}`}
+            >
               {q.options.map((opt) => {
                 const isSelected = picked[q.id] === opt.id;
                 const correct = show && opt.id === q.answer;
@@ -214,6 +218,8 @@ function FoldQuiz() {
                   <button
                     key={opt.id}
                     type="button"
+                    role="radio"
+                    aria-checked={isSelected}
                     onClick={() => setPicked((p) => ({ ...p, [q.id]: opt.id }))}
                     className={cn(
                       "min-h-11 rounded-md px-4 py-2 text-sm font-medium",
@@ -225,6 +231,7 @@ function FoldQuiz() {
                     )}
                   >
                     {opt.label}
+                    {show && correct ? " · yes" : show && wrong ? " · no" : ""}
                   </button>
                 );
               })}
@@ -240,7 +247,7 @@ function FoldQuiz() {
           Check answers
         </Button>
         {show ? (
-          <p className="text-sm font-medium tabular-nums">
+          <p className="text-sm font-medium tabular-nums" aria-live="polite">
             {score} / {FOLD_QUIZ.length}
           </p>
         ) : null}

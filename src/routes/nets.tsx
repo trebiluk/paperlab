@@ -131,7 +131,7 @@ function Quiz() {
       <div className="mt-6 flex flex-wrap items-center gap-4">
         <Button onClick={() => setRevealed(true)}>Reveal</Button>
         {revealed ? (
-          <p className="text-sm font-medium tabular-nums text-ink-soft">
+          <p className="text-sm font-medium tabular-nums text-ink-soft" aria-live="polite">
             {score} of {QUIZ.length} correct
           </p>
         ) : null}
@@ -165,9 +165,11 @@ function QuizCard({
         <NetSvg net={net} colored={false} />
       </div>
       <p className="text-sm font-medium">{net.name}</p>
-      <div className="flex gap-2">
+      <div className="flex gap-2" role="radiogroup" aria-label={`${net.name}: folds or fails`}>
         <button
           type="button"
+          role="radio"
+          aria-checked={choice === true}
           onClick={() => onChoose(true)}
           className={cn(
             "h-11 flex-1 rounded-md text-sm font-medium",
@@ -178,6 +180,8 @@ function QuizCard({
         </button>
         <button
           type="button"
+          role="radio"
+          aria-checked={choice === false}
           onClick={() => onChoose(false)}
           className={cn(
             "h-11 flex-1 rounded-md text-sm font-medium",

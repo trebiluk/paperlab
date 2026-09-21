@@ -2,7 +2,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft, Clock, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { pageTitle } from "@/lib/brand";
-import { getLab, isLabId, familyName } from "@/lib/labs";
+import { getLab, isLabId, familyName, gradeSpan } from "@/lib/labs";
 import { ELL, IEP, SAFETY, SPED, TA, TA_DAY, CLOSING, HOME_LANG } from "@/lib/supports";
 import { MST_KEY_IDEAS, mstName } from "@/lib/mst";
 import { unitsFor } from "@/lib/units";
@@ -31,6 +31,7 @@ function PlanPage() {
 
   const ideas = MST_KEY_IDEAS.filter((k) => lab.mst.includes(k.code));
   const inUnits = unitsFor(lab.id);
+  const young = gradeSpan(lab.grades)[0] <= 4;
   const flowMins = lab.steps.length
     ? lab.steps.map((s) => ({ min: s.minutes.replace(" min", ""), title: s.title, body: s.body.class }))
     : [
@@ -100,7 +101,7 @@ function PlanPage() {
           {ideas.map((k) => (
             <li key={k.code}>
               <span className="font-medium text-ink">{k.code} · {k.name}. </span>
-              {k.intermediate}
+              {young ? k.elementary : k.intermediate}
             </li>
           ))}
         </ul>
@@ -139,7 +140,7 @@ function PlanPage() {
               <span className="font-medium text-ink">{v.term}</span>
               {" — "}
               {v.meaning}
-              <span className="text-muted"> · {v.es}</span>
+              <span lang="es" className="text-muted"> · {v.es}</span>
             </li>
           ))}
         </ul>

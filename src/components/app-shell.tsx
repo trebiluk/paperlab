@@ -50,13 +50,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               </span>
             </span>
           </Link>
-          <nav className="ml-2 hidden items-center gap-1 md:flex">
+          <nav className="ml-2 hidden items-center gap-1 md:flex" aria-label="Main">
             {NAV.map((item) => {
               const active = isNavActive(pathname, item.to);
               return (
                 <Link
                   key={item.to}
                   to={item.to}
+                  aria-current={active ? "page" : undefined}
                   className={cn(
                     "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     active
@@ -74,13 +75,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <ClassroomBar compact={slim} />
           <PaperToggle paper={paper} full />
         </div>
-        <nav className="flex gap-1 overflow-x-auto px-4 pb-3 md:hidden">
+        <nav className="flex gap-1 overflow-x-auto px-4 pb-3 md:hidden" aria-label="Main">
           {NAV.map((item) => {
             const active = isNavActive(pathname, item.to);
             return (
               <Link
                 key={item.to}
                 to={item.to}
+                aria-current={active ? "page" : undefined}
                 className={cn(
                   "shrink-0 rounded-full px-3 py-2 text-sm font-medium",
                   active
@@ -94,7 +96,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           })}
         </nav>
       </header>
-      <main id="main">{children}</main>
+      <main id="main" tabIndex={-1}>{children}</main>
       <footer className="no-print mx-auto max-w-6xl px-4 py-12 text-sm text-muted sm:px-6">
         <div className="cut-rule mb-6 max-w-xs" />
         <p>BertyBot’s PaperLab · Technology education on a sheet of printer paper.</p>
@@ -103,7 +105,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <Link to="/updates" className="font-medium text-pine">
             Shop notes
           </Link>
-          <span className="text-faint"> · what changed, in class order</span>
+          <span className="text-muted"> · what changed, in class order</span>
         </p>
       </footer>
     </div>

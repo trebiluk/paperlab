@@ -96,6 +96,17 @@
     cursor: pointer;
   }
 
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  [role="radio"]:focus-visible,
+  [role="tab"]:focus-visible,
+  input:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-pine);
+    outline-offset: 2px;
+  }
+
   ::selection {
     background: color-mix(in oklab, var(--color-pine) 22%, white);
     color: var(--color-ink);
@@ -273,8 +284,15 @@
       animation: none;
     }
 
+    .card-lift,
     .card-lift:hover {
+      transition: none;
       transform: none;
+    }
+
+    button,
+    [role="button"] {
+      transition: none;
     }
   }
 }

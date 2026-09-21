@@ -17,7 +17,7 @@ import {
 } from "@/lib/labs";
 import { pickRead, useReadLevel, useRole } from "@/lib/lesson";
 import { toggleLabDone, useLabDone } from "@/lib/progress";
-import { ELL, SAFETY, SPED, TA, DESIGN_LOOP } from "@/lib/supports";
+import { ELL, SAFETY, SPED, TA, DESIGN_LOOP, loopPhaseFor } from "@/lib/supports";
 import { mstName } from "@/lib/mst";
 import { PERIOD_PATH, pathIndex, unitForLab } from "@/lib/units";
 import { cn } from "@/lib/utils";
@@ -35,6 +35,7 @@ export const Route = createFileRoute("/labs/$id")({
 
 function LabPage() {
   const { id } = Route.useParams();
+  const search = Route.useSearch();
   const lab = getLab(id);
   const read = useReadLevel();
   const role = useRole();
@@ -58,6 +59,10 @@ function LabPage() {
   const idx = pathIndex(lab.id);
   const family = FAMILIES.find((f) => f.id === lab.family);
   const easy = read === "easy";
+  const stepI = clampStepIndex(search.step, lab.steps.length);
+  const phase = lab.steps.length
+    ? loopPhaseFor(lab.steps[stepI]?.visual ?? "", stepI, lab.steps.length)
+    : null;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
@@ -97,16 +102,17 @@ function LabPage() {
         {pickRead(read, lab.blurb)}
       </p>
       {easy ? null : (
-        <p className="mt-3 max-w-2xl text-sm text-muted">{lab.teConcept}</p>
+        <>
+          <p className="mt-3 max-w-2xl text-sm text-muted">{lab.teConcept}</p>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {lab.mst.map((code) => (
+              <li key={code} className="rounded-full bg-bg-warm px-3 py-1.5 text-xs font-medium text-pine">
+                {code} · {mstName(code)}
+              </li>
+            ))}
+          </ul>
+        </>
       )}
-
-      <ul className="mt-4 flex flex-wrap gap-2">
-        {lab.mst.map((code) => (
-          <li key={code} className="rounded-full bg-bg-warm px-3 py-1.5 text-xs font-medium text-pine">
-            {code} · {mstName(code)}
-          </li>
-        ))}
-      </ul>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <div className="rounded-xl bg-surface p-4 shadow-card sm:p-5">
@@ -121,18 +127,20 @@ function LabPage() {
         </div>
         <div className="rounded-xl bg-surface p-4 shadow-card sm:p-5">
           <p className="text-xs font-medium tracking-wide text-pine">
-            {lab.challenge ? "Challenge" : lab.spec ? "Spec" : "The make"}
+            {easy ? "The test" : lab.challenge ? "Challenge" : lab.spec ? "Spec" : "The make"}
           </p>
-          <p className="mt-2 text-sm text-ink-soft">{lab.challenge ?? lab.spec ?? pickRead(read, lab.blurb)}</p>
+          <p className={cn("mt-2 text-ink-soft", easy ? "text-lg leading-relaxed" : "text-sm")}>
+            {lab.challenge ?? lab.spec ?? pickRead(read, lab.blurb)}
+          </p>
         </div>
       </div>
 
-      {lab.challenge && lab.spec ? (
+      {easy || !lab.challenge || !lab.spec ? null : (
         <p className="mt-3 max-w-2xl rounded-lg bg-bg-warm px-4 py-3 text-sm text-ink-soft">
           <span className="font-medium text-ink">Spec. </span>
           {lab.spec}
         </p>
-      ) : null}
+      )}
 
       <p className="mt-3 max-w-2xl text-sm text-muted">
         <span className="font-medium text-ink">Shop rule. </span>
@@ -150,7 +158,7 @@ function LabPage() {
           <div className="mt-5 flex flex-wrap gap-3">
             <Button asChild>
               <Link to={lab.studio.to} search={lab.studio.search}>
-                Start
+                Start the make
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
@@ -177,19 +185,47 @@ function LabPage() {
             <li key={v.term} className="rounded-xl bg-surface p-4 shadow-card">
               <p className="font-medium">{v.term}</p>
               <p className="mt-1 text-sm text-ink-soft">{v.meaning}</p>
-              {easy ? null : <p className="mt-1 text-xs text-muted">{v.es}</p>}
+              <p lang="es" className="mt-1 text-sm text-ink-soft">
+                {v.es}
+              </p>
             </li>
           ))}
         </ul>
       </section>
+
+      {easy ? (
+        <section className="mt-10">
+          <h2 className="font-display text-2xl font-semibold">Say it</h2>
+          <p className="mt-2 max-w-2xl text-ink-soft">
+            Partner talk. Home language first is allowed, then one of these.
+          </p>
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            {ELL.frames.slice(0, 4).map((f) => (
+              <li key={f} className="rounded-xl bg-surface p-4 text-lg leading-relaxed text-ink-soft shadow-card">
+                {f}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       {lab.steps.length > 0 ? (
         <section className="mt-10">
           <h2 className="font-display text-2xl font-semibold">Design loop</h2>
           <ol className="mt-4 grid gap-2 sm:grid-cols-3 lg:grid-cols-6">
             {DESIGN_LOOP.map((d) => (
-              <li key={d.id} className="rounded-xl bg-surface p-3 shadow-card">
-                <p className="text-xs font-medium tracking-wide text-pine">{d.name}</p>
+              <li
+                key={d.id}
+                className={cn(
+                  "rounded-xl bg-surface p-3 shadow-card",
+                  phase === d.id && "ring-2 ring-pine/50",
+                )}
+                aria-current={phase === d.id ? "step" : undefined}
+              >
+                <p className="text-xs font-medium tracking-wide text-pine">
+                  {d.name}
+                  {phase === d.id ? " · now" : ""}
+                </p>
                 <p className="mt-1 text-sm text-ink-soft">{d.body}</p>
               </li>
             ))}
@@ -308,6 +344,7 @@ function Stepper({
             aria-valuemin={0}
             aria-valuemax={totalMin}
             aria-valuenow={spentMin}
+            aria-valuetext={`${spentMin} of ${totalMin} minutes`}
             aria-label="Minutes through this lab"
           >
             <div
@@ -335,26 +372,28 @@ function Stepper({
             </li>
           ))}
         </ol>
-        <article className="rounded-xl bg-surface p-5 shadow-card sm:p-7" aria-live="polite">
-          <p className="text-xs font-medium tracking-wide text-muted">
-            Step {step + 1} of {count} · {current.minutes}
-          </p>
-          <h2
-            ref={headingRef}
-            tabIndex={-1}
-            className="mt-2 font-display text-2xl font-semibold outline-none"
-          >
-            {current.title}
-          </h2>
-          <p className={cn("mt-4 leading-relaxed text-ink-soft", read === "easy" && "text-lg")}>
-            {pickRead(read, current.body)}
-          </p>
-          {current.tip ? (
-            <p className="mt-4 rounded-lg bg-bg-warm px-4 py-3 text-sm text-ink-soft">
-              <span className="font-medium text-ink">Tip. </span>
-              {pickRead(read, current.tip)}
+        <article className="rounded-xl bg-surface p-5 shadow-card sm:p-7">
+          <div aria-live="polite">
+            <p className="text-xs font-medium tracking-wide text-muted">
+              Step {step + 1} of {count} · {current.minutes}
             </p>
-          ) : null}
+            <h2
+              ref={headingRef}
+              tabIndex={-1}
+              className="mt-2 font-display text-2xl font-semibold outline-none"
+            >
+              {current.title}
+            </h2>
+            <p className={cn("mt-4 leading-relaxed text-ink-soft", read === "easy" && "text-lg")}>
+              {pickRead(read, current.body)}
+            </p>
+            {current.tip ? (
+              <p className="mt-4 rounded-lg bg-bg-warm px-4 py-3 text-sm text-ink-soft">
+                <span className="font-medium text-ink">Tip. </span>
+                {pickRead(read, current.tip)}
+              </p>
+            ) : null}
+          </div>
           {last ? (
             <div className="mt-4">
               <button
@@ -389,7 +428,7 @@ function Stepper({
                 <ArrowRight className="size-4" />
               </Button>
             )}
-            <p className="hidden text-xs text-faint sm:block">← → keys</p>
+            <p className="hidden text-xs text-muted sm:block">← → keys</p>
             {role !== "student" ? <CopyStepLink /> : null}
           </div>
         </article>
@@ -402,7 +441,7 @@ function Stepper({
         </div>
         <p className="mt-3 text-center text-sm font-medium text-ink-soft lg:hidden">{current.title}</p>
         {role === "teacher" ? (
-          <p className="mt-2 text-center text-xs text-faint" title="Diagram id">
+          <p className="mt-2 text-center text-xs text-muted" title="Diagram id">
             {current.visual}
           </p>
         ) : null}
@@ -417,6 +456,7 @@ function CopyStepLink() {
     <button
       type="button"
       className="inline-flex min-h-11 items-center gap-1 text-xs font-medium text-pine"
+      aria-live="polite"
       onClick={async () => {
         try {
           await navigator.clipboard.writeText(window.location.href);
@@ -466,10 +506,11 @@ function RoomNotes({ labId }: { labId: string }) {
           <span className="font-medium text-ink">This lab. </span>
           {lab.ta}
         </p>
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <Note title="Do" items={TA.do} />
           <Note title="Say" items={TA.say} />
           <Note title="Never" items={TA.dont} />
+          <Note title="Watch" items={TA.watch} />
         </div>
       </section>
     );

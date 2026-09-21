@@ -65,6 +65,7 @@ function LabsIndex() {
             aria-valuemin={0}
             aria-valuemax={PERIOD_PATH.length}
             aria-valuenow={made}
+            aria-valuetext={`${made} of ${PERIOD_PATH.length} labs made`}
             aria-label="Labs made on this device"
           >
             <div
@@ -86,10 +87,11 @@ function LabsIndex() {
         ) : null}
       </div>
 
-      <div className="mt-6 flex flex-wrap gap-2" role="radiogroup" aria-label="Family">
+      <nav className="mt-6 flex flex-wrap gap-2" aria-label="Lab family">
         <Link
           to="/labs"
           search={{ family: undefined, step: undefined, grade }}
+          aria-current={!family ? "page" : undefined}
           className={cn(
             "flex h-11 items-center rounded-full px-4 text-sm font-medium",
             !family ? "bg-pine text-pine-fg" : "bg-surface text-ink-soft shadow-card",
@@ -102,6 +104,7 @@ function LabsIndex() {
             key={f.id}
             to="/labs"
             search={{ family: f.id, step: undefined, grade }}
+            aria-current={family === f.id ? "page" : undefined}
             className={cn(
               "flex h-11 items-center rounded-full px-4 text-sm font-medium",
               family === f.id ? "bg-pine text-pine-fg" : "bg-surface text-ink-soft shadow-card",
@@ -110,9 +113,9 @@ function LabsIndex() {
             {f.name}
           </Link>
         ))}
-      </div>
+      </nav>
 
-      <div className="mt-3 flex flex-wrap gap-2" role="radiogroup" aria-label="Grade band">
+      <nav className="mt-3 flex flex-wrap gap-2" aria-label="Grade band">
         {GRADE_BANDS.map((b) => {
           const on = b.id === "all" ? !grade : grade === b.id;
           return (
@@ -120,6 +123,7 @@ function LabsIndex() {
               key={b.id}
               to="/labs"
               search={{ family, step: undefined, grade: b.id === "all" ? undefined : b.id }}
+              aria-current={on ? "page" : undefined}
               className={cn(
                 "flex h-11 items-center rounded-full px-3 text-sm font-medium",
                 on ? "bg-bg-warm text-ink" : "text-muted hover:text-ink",
@@ -129,7 +133,7 @@ function LabsIndex() {
             </Link>
           );
         })}
-      </div>
+      </nav>
 
       {list ? (
         list.length === 0 ? (
@@ -159,7 +163,7 @@ function LabsIndex() {
             <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {labs.map((lab) => (
                   <li key={lab.id}>
-                    <LabCard lab={lab} read={read} done={doneSet.has(lab.id)} />
+                    <LabCard lab={lab} read={read} done={doneSet.has(lab.id)} titleAs="h3" />
                   </li>
               ))}
             </ul>

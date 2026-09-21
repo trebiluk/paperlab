@@ -46,7 +46,7 @@ function StudioPage() {
                 className="card-lift flex h-full flex-col rounded-xl bg-surface text-ink shadow-card"
               >
                 <div className="aspect-[4/3] p-2">
-                  <LabSvg visual={t.visual} />
+                  <LabSvg visual={t.visual} decorative />
                 </div>
                 <div className="p-4 pt-0">
                   <h2 className="font-display text-lg font-semibold">{t.title}</h2>

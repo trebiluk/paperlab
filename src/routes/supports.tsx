@@ -88,6 +88,9 @@ function SupportsPage() {
           <p>{IEP.principle}</p>
           <div className="mt-4 overflow-x-auto">
             <table className="w-full min-w-[28rem] text-left text-sm">
+              <caption className="sr-only">
+                Supports by need: what to try, and what not to do
+              </caption>
               <thead>
                 <tr className="border-b border-line text-ink">
                   <th className="py-2 pr-3 font-medium">Need</th>

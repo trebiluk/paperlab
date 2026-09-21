@@ -9,6 +9,16 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-21",
+    title: "Easy shows Spanish; keyboard and the design loop",
+    items: [
+      "Easy reading keeps Spanish vocab and sentence frames. Specs and MST codes stay on Class and Stretch.",
+      "The design loop marks the step you are on: Ask, Plan, Make, Test, or Improve.",
+      "Plans for grades 2–4 use the elementary MST wording. Helper cards include what to watch.",
+      "Skip to content, focus rings, and filter chips read as navigation. Diagrams on lab cards stay quiet for a screen reader.",
+    ],
+  },
+  {
+    date: "2026-09-21",
     title: "Print true-size, Easy in the studio, grade bands",
     items: [
       "Print the cube net at 1:1 — the face on the page is the face in the hand. Same for the other solids.",

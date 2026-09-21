@@ -11,13 +11,15 @@ export function LabCard({
   read,
   done,
   compact,
+  titleAs,
 }: {
   lab: Lab;
   read: ReadLevel;
   done?: boolean;
   compact?: boolean;
+  titleAs?: "h2" | "h3";
 }) {
-  const Title = compact ? "h3" : "h2";
+  const Title = titleAs ?? (compact ? "h3" : "h2");
   return (
     <Link
       to="/labs/$id"
@@ -26,7 +28,7 @@ export function LabCard({
       className="card-lift fold-ear flex h-full flex-col rounded-xl bg-surface text-ink shadow-card"
     >
       <div className="lab-frame aspect-[4/3] p-2">
-        <LabSvg visual={labThumb(lab)} />
+        <LabSvg visual={labThumb(lab)} decorative />
       </div>
       <div className={cn("flex flex-1 flex-col p-4 pt-0", compact ? "gap-1" : "gap-2")}>
         <p className="flex items-center gap-2 text-xs font-medium tracking-wide text-muted">

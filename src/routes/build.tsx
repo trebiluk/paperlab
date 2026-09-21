@@ -55,7 +55,7 @@ function BuildPage() {
                 : "From sheet to cube you can hold"}
             </h1>
           </div>
-          <div className="flex rounded-md bg-bg-warm p-1">
+          <div className="flex rounded-md bg-bg-warm p-1" role="radiogroup" aria-label="Studio path">
             <TrackBtn
               active={track === "net"}
               onClick={() => setTrack("net")}
@@ -99,6 +99,8 @@ function TrackBtn({
   return (
     <button
       type="button"
+      role="radio"
+      aria-checked={active}
       onClick={onClick}
       className={cn(
         "min-h-11 rounded-[10px] px-4 py-2 text-sm font-medium",
