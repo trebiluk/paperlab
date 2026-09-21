@@ -27,6 +27,7 @@ function Home() {
   const doneSet = useDoneLabs();
   const made = countDone(PERIOD_PATH, doneSet);
   const next = getLab(nextUndoneId(PERIOD_PATH, doneSet));
+  const allMade = made === PERIOD_PATH.length && made > 0;
 
   return (
     <AppShell>
@@ -55,12 +56,21 @@ function Home() {
             ))}
           </ul>
           <div className="flex flex-wrap gap-3">
-            <Button asChild size="lg">
-              <Link to="/labs/$id" params={{ id: next?.id ?? "folds" }} search={{ step: 1 }}>
-                {made === 0 ? "Start here" : "Continue"}
-                <ArrowRight className="size-4" />
-              </Link>
-            </Button>
+            {allMade ? (
+              <Button asChild size="lg">
+                <Link to="/labs">
+                  Year path
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+            ) : (
+              <Button asChild size="lg">
+                <Link to="/labs/$id" params={{ id: next?.id ?? "folds" }} search={{ step: 1 }}>
+                  {made === 0 ? "Start here" : "Continue"}
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+            )}
             <Button asChild variant="secondary" size="lg">
               <Link to="/plans">Teacher plans</Link>
             </Button>
@@ -68,7 +78,9 @@ function Home() {
           <p className="text-sm text-muted">
             {made === 0
               ? "Start the shop with folding techniques — six moves on scrap."
-              : `${made} of ${PERIOD_PATH.length} made on this Chromebook · next is ${next?.name ?? "the labs"}.`}
+              : allMade
+                ? `All ${PERIOD_PATH.length} made on this Chromebook.`
+                : `${made} of ${PERIOD_PATH.length} made on this Chromebook · next is ${next?.name ?? "the labs"}.`}
           </p>
         </div>
         <div className="relative overflow-hidden rounded-xl bg-bg-warm p-2 shadow-card sm:p-3">
@@ -80,7 +92,7 @@ function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 sm:px-6">
-        <blockquote className="rounded-xl bg-surface p-5 text-[15px] leading-relaxed text-ink-soft shadow-card sm:p-7">
+        <blockquote className="rounded-xl bg-surface p-5 text-base leading-relaxed text-ink-soft shadow-card sm:p-7">
           <p className="text-xs font-medium tracking-wide text-pine">MST Standard 5 · Technology</p>
           <p className="mt-2 font-display text-xl font-semibold text-ink">{MST5_STATEMENT}</p>
           <Link to="/standards" className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-pine">

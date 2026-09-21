@@ -7,10 +7,10 @@ import { SolidCube } from "@/components/folding-cube";
 import { BandsSheet, BlankSheet, SheetNet } from "@/components/net-svg";
 import { DevelopmentSvg } from "@/components/development-svg";
 import { OrigamiSvg } from "@/components/origami-svg";
-import { BUILD_STEPS, ORIGAMI_STEPS } from "@/lib/steps";
+import { BUILD_STEPS, ORIGAMI_STEPS, readStepCopy, readStepTip } from "@/lib/steps";
 import { pageTitle } from "@/lib/brand";
 import { PAPERS, origamiSquare, type PaperId } from "@/lib/paper";
-import { usePaper } from "@/lib/lesson";
+import { usePaper, useReadLevel } from "@/lib/lesson";
 import { cn } from "@/lib/utils";
 
 type Track = "net" | "origami";
@@ -122,6 +122,8 @@ function NetTrack({
   const spec = PAPERS[paper];
   const current = BUILD_STEPS[step];
   const last = step === BUILD_STEPS.length - 1;
+  const read = useReadLevel();
+  const easy = read === "easy";
   return (
     <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="flex flex-col gap-6">
@@ -137,13 +139,13 @@ function NetTrack({
           <h2 className="mt-2 font-display text-2xl font-semibold">
             {current.title}
           </h2>
-          <p className="mt-4 text-[17px] leading-relaxed text-ink-soft">
-            {current.body(spec)}
+          <p className={cn("mt-4 leading-relaxed text-ink-soft", easy ? "text-lg" : "text-base")}>
+            {readStepCopy(current, spec, read)}
           </p>
           {current.tip ? (
             <p className="mt-4 rounded-lg bg-bg-warm px-4 py-3 text-sm text-ink-soft">
               <span className="font-medium text-ink">Tip. </span>
-              {current.tip(spec)}
+              {readStepTip(current, spec, read)}
             </p>
           ) : null}
           <div className="mt-6 flex flex-wrap gap-3">
@@ -229,15 +231,16 @@ function OrigamiTrack({
   const last = step === ORIGAMI_STEPS.length - 1;
   const o = origamiSquare(spec);
   const squarePhase = step <= 3;
+  const read = useReadLevel();
+  const easy = read === "easy";
 
   return (
     <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="flex flex-col gap-6">
         <p className="max-w-2xl text-ink-soft">
-          No glue. First you cut the {spec.name} rectangle into a {o.edgeLabel}{" "}
-          square — the move every origami model starts with. Then you fold the
-          waterbomb cube: valleys, mountains, a collapse, and four tucks.
-          Inflate it with a breath.
+          {easy
+            ? `No glue. Cut a ${o.edgeLabel} square. Then fold. Then blow.`
+            : `No glue. First you cut the ${spec.name} rectangle into a ${o.edgeLabel} square — the move every origami model starts with. Then you fold the waterbomb cube: valleys, mountains, a collapse, and four tucks. Inflate it with a breath.`}
         </p>
         <div className="flex flex-wrap gap-2 text-xs font-medium">
           <span
@@ -270,13 +273,13 @@ function OrigamiTrack({
           <h2 className="mt-2 font-display text-2xl font-semibold">
             {current.title}
           </h2>
-          <p className="mt-4 text-[17px] leading-relaxed text-ink-soft">
-            {current.body(spec)}
+          <p className={cn("mt-4 leading-relaxed text-ink-soft", easy ? "text-lg" : "text-base")}>
+            {readStepCopy(current, spec, read)}
           </p>
           {current.tip ? (
             <p className="mt-4 rounded-lg bg-bg-warm px-4 py-3 text-sm text-ink-soft">
               <span className="font-medium text-ink">Tip. </span>
-              {current.tip(spec)}
+              {readStepTip(current, spec, read)}
             </p>
           ) : null}
           <div className="mt-6 flex flex-wrap gap-3">

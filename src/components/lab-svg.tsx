@@ -11,6 +11,9 @@ import {
   PaperSheet,
   Valley,
   ViewChip,
+  useArrow,
+  useGrain,
+  useShadow,
 } from "@/components/paper-gfx";
 import { cn } from "@/lib/utils";
 import { useId } from "react";
@@ -155,6 +158,7 @@ function Glider({ step }: { step: string }) {
 }
 
 function Tower({ step }: { step: string }) {
+  const grain = useGrain();
   if (step === "tower-spec") {
     return (
       <g>
@@ -188,7 +192,7 @@ function Tower({ step }: { step: string }) {
         <Desk />
         <ellipse cx="120" cy="36" rx="30" ry="11" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
         <rect x={90} y={36} width={60} height={112} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-        <rect x={90} y={36} width={60} height={112} fill="url(#lab-grain)" />
+        <rect x={90} y={36} width={60} height={112} fill={grain} />
         <ellipse cx="120" cy="148" rx="30" ry="11" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
         <Dash x1={120} y1={42} x2={120} y2={144} />
         <Caption>Roll a column</Caption>
@@ -200,7 +204,7 @@ function Tower({ step }: { step: string }) {
       <ViewChip label="FRONT" />
       <Desk />
       <rect x={102} y={28} width={36} height={120} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-      <rect x={102} y={28} width={36} height={120} fill="url(#lab-grain)" />
+      <rect x={102} y={28} width={36} height={120} fill={grain} />
       <line x1={84} y1={28} x2={84} y2={148} stroke="var(--color-pine)" strokeWidth={2} />
       <text
         x="74"
@@ -348,7 +352,7 @@ function Pinwheel({ step }: { step: string }) {
       </g>
     );
   }
-  if (step === "pinwheel-fold" || step === "pinwheel-axle" || step === "pinwheel-spin") {
+  if (step === "pinwheel-fold") {
     return (
       <g>
         <ViewChip label="FRONT" />
@@ -357,9 +361,52 @@ function Pinwheel({ step }: { step: string }) {
         <PaperPoly points="120,164 88,104 120,90 152,104" fill="var(--color-toy-left)" />
         <PaperPoly points="36,90 96,104 120,90 96,76" fill="var(--color-moss)" />
         <circle cx="120" cy="90" r="8" fill="var(--color-pine)" stroke="var(--color-ink)" strokeWidth={1.2} />
-        <Caption>
-          {step === "pinwheel-axle" ? "Pin through the hub" : step === "pinwheel-spin" ? "Blow · not too tight" : "Every other point in"}
-        </Caption>
+        <FoldArrow d="M168 52 Q148 62 136 78" />
+        <FoldArrow d="M72 52 Q92 62 104 78" />
+        <Caption>Every other point in</Caption>
+      </g>
+    );
+  }
+  if (step === "pinwheel-axle") {
+    return (
+      <g>
+        <ViewChip label="SIDE" />
+        <Desk y={142} />
+        <rect x="116" y="48" width="8" height="96" rx="2" fill="var(--color-muted)" stroke="var(--color-ink)" strokeWidth={1.4} />
+        <PaperPoly points="86,70 154,58 164,78 96,90" fill="var(--color-toy-top)" />
+        <PaperPoly points="86,90 154,78 164,98 96,110" fill="var(--color-toy-left)" />
+        <circle cx="120" cy="84" r="7" fill="var(--color-pine)" stroke="var(--color-ink)" strokeWidth={1.2} />
+        <circle cx="120" cy="40" r="10" fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth={1.2} />
+        <Caption>Pin through the hub</Caption>
+      </g>
+    );
+  }
+  if (step === "pinwheel-spin") {
+    return (
+      <g>
+        <ViewChip label="FRONT" />
+        <PaperPoly points="120,16 152,76 120,90 88,76" fill="var(--color-toy-top)" />
+        <PaperPoly points="204,90 144,76 120,90 144,104" />
+        <PaperPoly points="120,164 88,104 120,90 152,104" fill="var(--color-toy-left)" />
+        <PaperPoly points="36,90 96,104 120,90 96,76" fill="var(--color-moss)" />
+        <circle cx="120" cy="90" r="8" fill="var(--color-pine)" stroke="var(--color-ink)" strokeWidth={1.2} />
+        <path
+          d="M28 48 Q48 28 78 38"
+          fill="none"
+          stroke="var(--color-pine)"
+          strokeWidth={2}
+          strokeDasharray="5 4"
+          strokeLinecap="round"
+        />
+        <path
+          d="M212 48 Q192 28 162 38"
+          fill="none"
+          stroke="var(--color-pine)"
+          strokeWidth={2}
+          strokeDasharray="5 4"
+          strokeLinecap="round"
+        />
+        <Caption>Blow · not too tight</Caption>
       </g>
     );
   }
@@ -419,6 +466,7 @@ function Box({ step }: { step: string }) {
 }
 
 function Frog({ step }: { step: string }) {
+  const arrow = useArrow();
   if (step === "frog-rect") {
     return (
       <g>
@@ -434,7 +482,7 @@ function Frog({ step }: { step: string }) {
         <ViewChip label="SIDE" />
         <Desk y={140} />
         <ellipse cx="86" cy="122" rx="36" ry="14" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
-        <path d="M90 118 Q140 36 194 86" fill="none" stroke="var(--color-pine)" strokeWidth={2.2} strokeDasharray="6 5" markerEnd="url(#lab-arrow)" />
+        <path d="M90 118 Q140 36 194 86" fill="none" stroke="var(--color-pine)" strokeWidth={2.2} strokeDasharray="6 5" markerEnd={arrow} />
         <ellipse cx="194" cy="94" rx="20" ry="10" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={1.6} />
         <Caption>Press · hop · mark</Caption>
       </g>
@@ -453,6 +501,7 @@ function Frog({ step }: { step: string }) {
 }
 
 function Lantern({ step }: { step: string }) {
+  const grain = useGrain();
   if (step === "lantern-safe") {
     return (
       <g>
@@ -481,7 +530,7 @@ function Lantern({ step }: { step: string }) {
         <ViewChip label="ISO" />
         <ellipse cx="120" cy="40" rx="42" ry="14" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
         <rect x={78} y={40} width={84} height={100} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-        <rect x={78} y={40} width={84} height={100} fill="url(#lab-grain)" />
+        <rect x={78} y={40} width={84} height={100} fill={grain} />
         <ellipse cx="120" cy="140" rx="42" ry="14" fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={2} />
         <Caption>Join a cylinder</Caption>
       </g>
@@ -494,7 +543,7 @@ function Lantern({ step }: { step: string }) {
         <path d="M88 34 Q120 4 152 34" fill="none" stroke="var(--color-pine)" strokeWidth={4} strokeLinecap="round" />
         <ellipse cx="120" cy="50" rx="44" ry="12" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
         <path d="M76 50 Q76 104 120 116 Q164 104 164 50" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-        <path d="M76 50 Q76 104 120 116 Q164 104 164 50" fill="url(#lab-grain)" />
+        <path d="M76 50 Q76 104 120 116 Q164 104 164 50" fill={grain} />
         <Caption>Strip becomes a handle</Caption>
       </g>
     );
@@ -504,7 +553,7 @@ function Lantern({ step }: { step: string }) {
       <ViewChip label="FRONT" />
       <ellipse cx="120" cy="46" rx="38" ry="12" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
       <path d="M82 46 Q66 102 120 134 Q174 102 158 46" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-      <path d="M82 46 Q66 102 120 134 Q174 102 158 46" fill="url(#lab-grain)" />
+      <path d="M82 46 Q66 102 120 134 Q174 102 158 46" fill={grain} />
       {[0, 1, 2, 3, 4].map((i) => (
         <path key={i} d={`M${90 + i * 12} 68 Q120 102 ${90 + i * 12} 122`} fill="none" stroke="var(--color-ink)" strokeWidth={1.4} />
       ))}
@@ -632,6 +681,7 @@ function Weave({ step }: { step: string }) {
 }
 
 function Copter({ step }: { step: string }) {
+  const arrow = useArrow();
   if (step === "copter-cut") {
     return (
       <g>
@@ -651,7 +701,7 @@ function Copter({ step }: { step: string }) {
         <rect x={112} y={70} width={16} height={70} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
         <PaperPoly points="120,70 178,46 178,62 120,84" fill="var(--color-toy-top)" />
         <PaperPoly points="120,70 62,92 62,108 120,84" fill="var(--color-toy-left)" />
-        <path d="M120 18 L120 64" stroke="var(--color-pine)" strokeWidth={2} strokeDasharray="5 4" markerEnd="url(#lab-arrow)" />
+        <path d="M120 18 L120 64" stroke="var(--color-pine)" strokeWidth={2} strokeDasharray="5 4" markerEnd={arrow} />
         <Caption>Drop · do not throw</Caption>
       </g>
     );
@@ -699,6 +749,7 @@ function Iterate() {
 }
 
 function System() {
+  const shadow = useShadow();
   return (
     <g>
       <ViewChip label="DEV" />
@@ -717,7 +768,7 @@ function System() {
             fill="var(--color-surface)"
             stroke="var(--color-ink)"
             strokeWidth={2}
-            filter="url(#lab-shadow)"
+            filter={shadow}
           />
           <text
             x={Number(x) + 26}

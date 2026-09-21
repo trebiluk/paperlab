@@ -120,7 +120,7 @@ function DrawPage() {
         </section>
 
         <section className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem]">
-          <div className="overflow-hidden rounded-xl bg-surface shadow-card">
+          <div className="rounded-xl bg-surface shadow-card">
             <div className="mx-auto aspect-[3/4] w-full max-w-xl">
               <DevelopmentSvg
                 paper={paper}

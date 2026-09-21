@@ -14,6 +14,17 @@ export function useGfxUid() {
   return useContext(GfxUidContext);
 }
 
+/** Pattern / marker urls for this diagram. Call only under GfxProvider. */
+export function useGrain() {
+  return `url(#${useGfxUid()}-grain)`;
+}
+export function useArrow() {
+  return `url(#${useGfxUid()}-arrow)`;
+}
+export function useShadow() {
+  return `url(#${useGfxUid()}-shadow)`;
+}
+
 export function LabDefs({ uid = "lab" }: { uid?: string }) {
   return (
     <defs>

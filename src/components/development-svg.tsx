@@ -5,7 +5,7 @@ import {
   type LineKind,
   type TabId,
 } from "@/lib/conventions";
-import { PAPERS, sheetLayout, type PaperId } from "@/lib/paper";
+import { PAPERS, sheetLayout, sheetPhysical, type PaperId } from "@/lib/paper";
 import { cn } from "@/lib/utils";
 import {
   DimBadge,
@@ -238,18 +238,21 @@ export function DevelopmentSvg({
 
   const visibleTabs = TABS.filter((t) => tabs.has(t.id));
 
-  const pad = s * 0.1;
-  const dimPad = layers.dimensions ? s * 0.32 : s * 0.06;
+  const pad = s * 0.22 + tabH * 0.15;
+  const dimPad = layers.dimensions ? s * 0.4 : s * 0.1;
   const viewBox =
     crop === "sheet"
       ? `0 0 ${W} ${H}`
       : `${originX - pad} ${originY - pad} ${3 * s + pad * 2} ${4 * s + pad + dimPad}`;
   const dimBelow = crop !== "sheet" || originY + 4 * s + s * 0.3 < H;
   const dimY = dimBelow ? originY + 4 * s + s * 0.14 : originY + 2 * s - s * 0.18;
+  const physical = crop === "sheet" ? sheetPhysical(spec) : null;
 
   return (
     <svg
       viewBox={viewBox}
+      width={physical?.width}
+      height={physical?.height}
       className={cn("h-full w-full", className)}
       role="img"
       aria-label="Cube development drawing with glue tabs"
@@ -519,6 +522,7 @@ export function DevelopmentSvg({
 }
 
 export function LineSample({ kind }: { kind: LineKind | "hidden" | "centre" }) {
+  const uid = useId().replace(/:/g, "");
   const w = 160;
   const h = 36;
   if (kind === "cut") {
@@ -563,7 +567,7 @@ export function LineSample({ kind }: { kind: LineKind | "hidden" | "centre" }) {
     return (
       <svg viewBox={`0 0 ${w} ${h}`} className="h-8 w-full" aria-hidden>
         <defs>
-          <pattern id="sample-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(42)">
+          <pattern id={`${uid}-hatch`} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(42)">
             <line x1="0" y1="0" x2="0" y2="6" stroke="var(--color-moss)" strokeWidth="1.2" />
           </pattern>
         </defs>
@@ -574,7 +578,7 @@ export function LineSample({ kind }: { kind: LineKind | "hidden" | "centre" }) {
           strokeWidth="1.6"
           strokeLinejoin="round"
         />
-        <polygon points="20,6 140,10 140,26 20,30" fill="url(#sample-hatch)" opacity="0.85" />
+        <polygon points="20,6 140,10 140,26 20,30" fill={`url(#${uid}-hatch)`} opacity="0.85" />
       </svg>
     );
   }

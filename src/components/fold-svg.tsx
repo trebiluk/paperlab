@@ -1,5 +1,11 @@
+import { createContext, useContext, useId } from "react";
 import type { FoldKind } from "@/lib/folds";
 import { cn } from "@/lib/utils";
+
+const FoldUid = createContext("fold");
+function useFoldUid() {
+  return useContext(FoldUid);
+}
 
 export function TechniqueSvg({
   id,
@@ -8,7 +14,8 @@ export function TechniqueSvg({
   id: FoldKind;
   className?: string;
 }) {
-  const marker = `f-arrow-${id}`;
+  const uid = useId().replace(/:/g, "");
+  const marker = `${uid}-arrow`;
   return (
     <svg
       viewBox="0 0 240 180"
@@ -17,23 +24,25 @@ export function TechniqueSvg({
       aria-label={label(id)}
       shapeRendering="geometricPrecision"
     >
-      <defs>
-        <pattern id="fold-grain" width="7" height="7" patternUnits="userSpaceOnUse">
-          <circle cx="1.2" cy="2.2" r="0.4" fill="var(--color-ink)" opacity="0.07" />
-          <circle cx="4.8" cy="5" r="0.3" fill="var(--color-ink)" opacity="0.05" />
-        </pattern>
-        <filter id="fold-shadow" x="-10%" y="-8%" width="120%" height="130%">
-          <feDropShadow dx="0" dy="1.5" stdDeviation="1.2" floodColor="rgb(28 25 21)" floodOpacity="0.16" />
-        </filter>
-      </defs>
-      <rect width="240" height="180" fill="var(--color-bg-warm)" />
-      <ArrowDef id={marker} />
-      {id === "crease" ? <Crease /> : null}
-      {id === "valley" ? <Valley marker={marker} /> : null}
-      {id === "mountain" ? <Mountain marker={marker} /> : null}
-      {id === "unfold" ? <Unfold /> : null}
-      {id === "collapse" ? <Collapse marker={marker} /> : null}
-      {id === "tuck" ? <Tuck marker={marker} /> : null}
+      <FoldUid.Provider value={uid}>
+        <defs>
+          <pattern id={`${uid}-grain`} width="7" height="7" patternUnits="userSpaceOnUse">
+            <circle cx="1.2" cy="2.2" r="0.4" fill="var(--color-ink)" opacity="0.07" />
+            <circle cx="4.8" cy="5" r="0.3" fill="var(--color-ink)" opacity="0.05" />
+          </pattern>
+          <filter id={`${uid}-shadow`} x="-10%" y="-8%" width="120%" height="130%">
+            <feDropShadow dx="0" dy="1.5" stdDeviation="1.2" floodColor="rgb(28 25 21)" floodOpacity="0.16" />
+          </filter>
+        </defs>
+        <rect width="240" height="180" fill="var(--color-bg-warm)" />
+        <ArrowDef id={marker} />
+        {id === "crease" ? <Crease /> : null}
+        {id === "valley" ? <Valley marker={marker} /> : null}
+        {id === "mountain" ? <Mountain marker={marker} /> : null}
+        {id === "unfold" ? <Unfold /> : null}
+        {id === "collapse" ? <Collapse marker={marker} /> : null}
+        {id === "tuck" ? <Tuck marker={marker} /> : null}
+      </FoldUid.Provider>
     </svg>
   );
 }
@@ -114,8 +123,9 @@ function Paper({
   points: string;
   fill?: string;
 }) {
+  const uid = useFoldUid();
   return (
-    <g filter="url(#fold-shadow)">
+    <g filter={`url(#${uid}-shadow)`}>
       <polygon
         points={points}
         fill={fill}
@@ -123,7 +133,7 @@ function Paper({
         strokeWidth={2}
         strokeLinejoin="round"
       />
-      <polygon points={points} fill="url(#fold-grain)" />
+      <polygon points={points} fill={`url(#${uid}-grain)`} />
     </g>
   );
 }

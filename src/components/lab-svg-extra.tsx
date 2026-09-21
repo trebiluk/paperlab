@@ -9,6 +9,8 @@ import {
   PaperSheet,
   Valley,
   ViewChip,
+  useArrow,
+  useGrain,
 } from "@/components/paper-gfx";
 
 function Sheet(props: { x: number; y: number; w: number; h: number; fill?: string }) {
@@ -68,6 +70,7 @@ function Boat({ step }: { step: string }) {
 }
 
 function Catapult({ step }: { step: string }) {
+  const arrow = useArrow();
   if (step === "catapult-safe") {
     return (
       <g>
@@ -100,7 +103,7 @@ function Catapult({ step }: { step: string }) {
         <rect x="70" y="108" width="70" height="8" rx="4" fill="var(--color-muted)" />
         <rect x="118" y="70" width="14" height="52" rx="3" fill="var(--color-toy-front)" stroke="var(--color-ink)" strokeWidth={1.6} transform="rotate(-28 125 96)" />
         <rect x="168" y="78" width="18" height="12" rx="2" fill="var(--color-toy-right)" stroke="var(--color-ink)" strokeWidth={1.4} />
-        <path d="M148 82 Q176 48 204 68" fill="none" stroke="var(--color-pine)" strokeWidth={2} strokeDasharray="5 4" markerEnd="url(#lab-arrow)" />
+        <path d="M148 82 Q176 48 204 68" fill="none" stroke="var(--color-pine)" strokeWidth={2} strokeDasharray="5 4" markerEnd={arrow} />
         <Caption>Press · let go · mark</Caption>
       </g>
     );
@@ -118,6 +121,7 @@ function Catapult({ step }: { step: string }) {
 }
 
 function Chute({ step }: { step: string }) {
+  const arrow = useArrow();
   if (step === "chute-canopy") {
     return (
       <g>
@@ -149,7 +153,7 @@ function Chute({ step }: { step: string }) {
       <ellipse cx="120" cy="46" rx="72" ry="16" fill="var(--color-toy-top)" stroke="var(--color-ink)" strokeWidth={2} />
       <path d="M48 46 L120 140 L192 46" fill="none" stroke="var(--color-ink)" strokeWidth={1.6} />
       <circle cx="120" cy="148" r="8" fill="var(--color-muted)" stroke="var(--color-ink)" strokeWidth={1} />
-      <path d="M120 8 L120 30" stroke="var(--color-pine)" strokeWidth={2} strokeDasharray="5 4" markerEnd="url(#lab-arrow)" />
+      <path d="M120 8 L120 30" stroke="var(--color-pine)" strokeWidth={2} strokeDasharray="5 4" markerEnd={arrow} />
       <Caption>Canopy up · drop · count</Caption>
     </g>
   );
@@ -384,7 +388,7 @@ function Ramp({ step }: { step: string }) {
       </g>
     );
   }
-  if (step === "ramp-set" || step === "ramp-steep") {
+  if (step === "ramp-set") {
     return (
       <g>
         <ViewChip label="SIDE" />
@@ -392,6 +396,19 @@ function Ramp({ step }: { step: string }) {
         <PaperPoly points="76,108 210,144 210,152 36,144 36,136" />
         <rect x="88" y="96" width="22" height="14" fill="var(--color-muted)" stroke="var(--color-ink)" strokeWidth={1} />
         <Caption>Same book height</Caption>
+      </g>
+    );
+  }
+  if (step === "ramp-steep") {
+    return (
+      <g>
+        <ViewChip label="SIDE" />
+        <rect x="36" y="72" width="40" height="72" fill="var(--color-toy-right)" stroke="var(--color-ink)" strokeWidth={1.6} />
+        <rect x="40" y="96" width="32" height="2" fill="var(--color-ink)" opacity={0.25} />
+        <PaperPoly points="76,72 188,148 188,156 36,148 36,140" />
+        <rect x="118" y="92" width="22" height="14" fill="var(--color-muted)" stroke="var(--color-ink)" strokeWidth={1} transform="rotate(28 129 99)" />
+        <path d="M142 108 L168 128" stroke="var(--color-pine)" strokeWidth={1.6} strokeDasharray="4 3" />
+        <Caption>Steeper · same start</Caption>
       </g>
     );
   }
@@ -407,12 +424,13 @@ function Ramp({ step }: { step: string }) {
 }
 
 function Hat({ step }: { step: string }) {
+  const grain = useGrain();
   if (step === "hat-user") {
     return (
       <g>
         <ViewChip label="FRONT" />
         <circle cx="120" cy="74" r="36" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
-        <circle cx="120" cy="74" r="36" fill="url(#lab-grain)" />
+        <circle cx="120" cy="74" r="36" fill={grain} />
         <path d="M70 96 Q120 152 170 96" fill="none" stroke="var(--color-pine)" strokeWidth={2} strokeDasharray="6 4" />
         <Caption>Who is it for? Measure</Caption>
       </g>

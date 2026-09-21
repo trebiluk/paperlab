@@ -1,9 +1,15 @@
+import { createContext, useContext, useId } from "react";
 import { PAPERS, origamiSquare, type PaperId } from "@/lib/paper";
 import { cn } from "@/lib/utils";
 import type { OrigamiStep } from "@/lib/steps";
 import { DimBadge, svgMeasure } from "@/components/drawing-marks";
 
 type Box = { x: number; y: number; w: number; h: number };
+
+const OriUid = createContext("ori");
+function useOri() {
+  return useContext(OriUid);
+}
 
 function layout(paper: PaperId): Box & { sq: number; strip: number } {
   const spec = PAPERS[paper];
@@ -29,8 +35,9 @@ function Sheet({
   box: Box;
   fill?: string;
 }) {
+  const uid = useOri();
   return (
-    <g filter="url(#ori-shadow)">
+    <g filter={`url(#${uid}-shadow)`}>
       <rect
         x={box.x}
         y={box.y}
@@ -41,7 +48,7 @@ function Sheet({
         strokeWidth={2.2}
         strokeLinejoin="round"
       />
-      <rect x={box.x} y={box.y} width={box.w} height={box.h} fill="url(#ori-grain)" />
+      <rect x={box.x} y={box.y} width={box.w} height={box.h} fill={`url(#${uid}-grain)`} />
     </g>
   );
 }
@@ -51,6 +58,7 @@ function Arrow({
 }: {
   d: string;
 }) {
+  const uid = useOri();
   return (
     <path
       d={d}
@@ -58,23 +66,24 @@ function Arrow({
       stroke="var(--color-pine)"
       strokeWidth={2.4}
       strokeLinecap="round"
-      markerEnd="url(#ori-arrow)"
+      markerEnd={`url(#${uid}-arrow)`}
     />
   );
 }
 
 function Defs() {
+  const uid = useOri();
   return (
     <defs>
-      <pattern id="ori-grain" width="7" height="7" patternUnits="userSpaceOnUse">
+      <pattern id={`${uid}-grain`} width="7" height="7" patternUnits="userSpaceOnUse">
         <circle cx="1.2" cy="2.2" r="0.4" fill="var(--color-ink)" opacity="0.07" />
         <circle cx="4.8" cy="5.1" r="0.3" fill="var(--color-ink)" opacity="0.05" />
       </pattern>
-      <filter id="ori-shadow" x="-8%" y="-6%" width="116%" height="120%">
+      <filter id={`${uid}-shadow`} x="-8%" y="-6%" width="116%" height="120%">
         <feDropShadow dx="0" dy="1.6" stdDeviation="1.2" floodColor="rgb(28 25 21)" floodOpacity="0.16" />
       </filter>
       <marker
-        id="ori-arrow"
+        id={`${uid}-arrow`}
         viewBox="0 0 10 10"
         refX="8"
         refY="5"
@@ -104,6 +113,7 @@ export function OrigamiSvg({
   const sqTop = y + strip;
   const cx = x + w / 2;
   const cy = y + h / 2;
+  const uid = useId().replace(/:/g, "");
 
   return (
     <svg
@@ -113,6 +123,7 @@ export function OrigamiSvg({
       aria-label={caption(visual, spec.shortLabel)}
       shapeRendering="geometricPrecision"
     >
+      <OriUid.Provider value={uid}>
       <Defs />
       {visual === "orient" ? (
         <g>
@@ -447,6 +458,7 @@ export function OrigamiSvg({
           </text>
         </g>
       ) : null}
+      </OriUid.Provider>
     </svg>
   );
 }

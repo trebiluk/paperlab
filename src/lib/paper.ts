@@ -267,3 +267,16 @@ export function origamiSquare(spec: PaperSpec) {
     leftoverLabel: formatMeasure(leftover, spec.unit),
   };
 }
+
+/** Physical sheet size for 1:1 print (CSS / SVG width-height). */
+export function sheetPhysical(spec: PaperSpec) {
+  const unit = spec.unit === "in" ? "in" : "cm";
+  const width = `${spec.short}${unit}`;
+  const height = `${spec.long}${unit}`;
+  return {
+    width,
+    height,
+    page: `${width} ${height}`,
+    css: `@media print { @page { size: ${width} ${height}; margin: 0; } :root { --sheet-w: ${width}; --sheet-h: ${height}; } }`,
+  };
+}

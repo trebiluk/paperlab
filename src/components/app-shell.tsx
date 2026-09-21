@@ -42,10 +42,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           >
             <LogoMark />
             <span className="leading-tight">
-              <span className="block text-[11px] font-medium tracking-wide text-pine">
+              <span className="block text-xs font-medium tracking-wide text-pine">
                 {APP_KICKER}
               </span>
-              <span className="block font-display text-[17px] font-semibold tracking-tight">
+              <span className="block font-display text-lg font-semibold tracking-tight">
                 {APP_SHORT}
               </span>
             </span>

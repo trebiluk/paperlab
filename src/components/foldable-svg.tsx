@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { FOLDABLES, foldableSize, type FoldableId } from "@/lib/foldables";
-import { PAPERS, sheetLayout, type PaperId } from "@/lib/paper";
+import { PAPERS, sheetLayout, sheetPhysical, type PaperId } from "@/lib/paper";
 import { cn } from "@/lib/utils";
 import {
   DimBadge,
@@ -167,10 +167,13 @@ export function FoldableSvg({
     ? tightBox(id, W, H, size.primary * scale, size.secondary * scale, tabH)
     : { x: 0, y: 0, w: W, h: H };
   const hatch = hatchUrl(uid);
+  const physical = tight ? null : sheetPhysical(spec);
 
   return (
     <svg
       viewBox={`${box.x} ${box.y} ${box.w} ${box.h}`}
+      width={physical?.width}
+      height={physical?.height}
       className={cn("h-full w-full", className)}
       role="img"
       aria-label={`Development of a ${FOLDABLES[id].name}`}

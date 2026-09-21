@@ -45,7 +45,7 @@ function LabPage() {
       <div className="mx-auto max-w-3xl px-4 py-16">
         <p className="text-ink-soft">That lab is not on the list.</p>
         <Button asChild className="mt-4">
-          <Link to="/labs" search={{ family: undefined, step: undefined }}>
+          <Link to="/labs" search={{ family: undefined, step: undefined, grade: undefined }}>
             All labs
           </Link>
         </Button>
@@ -64,7 +64,7 @@ function LabPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <Link
           to="/labs"
-          search={{ family: undefined, step: undefined }}
+          search={{ family: undefined, step: undefined, grade: undefined }}
           className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-pine"
         >
           <ArrowLeft className="size-3.5" />
@@ -390,7 +390,7 @@ function Stepper({
               </Button>
             )}
             <p className="hidden text-xs text-faint sm:block">← → keys</p>
-            {role === "teacher" ? <CopyStepLink /> : null}
+            {role !== "student" ? <CopyStepLink /> : null}
           </div>
         </article>
       </div>
@@ -434,14 +434,21 @@ function CopyStepLink() {
 }
 
 function shopRule(lab: Lab) {
-  if (lab.id === "beam") return SAFETY[8];
-  if (lab.id === "catapult") return SAFETY[7];
-  if (lab.id === "boat" || lab.id === "cup") return SAFETY[6];
-  if (lab.id === "balloon") return SAFETY[3];
-  if (lab.id === "chute" || lab.id === "copter" || lab.id === "pinwheel") return SAFETY[4];
-  if (lab.id === "lantern") return SAFETY[10];
-  if (lab.id === "whirligig" || lab.id === "kite") return SAFETY[11];
-  if (lab.id === "grabber") return SAFETY[12];
+  const byId: Record<string, number> = {
+    beam: 8,
+    catapult: 7,
+    boat: 6,
+    cup: 6,
+    balloon: 3,
+    chute: 4,
+    copter: 4,
+    pinwheel: 4,
+    lantern: 10,
+    whirligig: 11,
+    kite: 11,
+    grabber: 12,
+  };
+  if (lab.id in byId) return SAFETY[byId[lab.id]];
   if (lab.family === "fly") return SAFETY[1];
   return SAFETY[0];
 }

@@ -19,7 +19,7 @@ function StandardsPage() {
         <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
           Standard 5 — Technology
         </h1>
-        <blockquote className="mt-6 rounded-xl bg-surface p-5 text-[17px] leading-relaxed text-ink shadow-card">
+        <blockquote className="mt-6 rounded-xl bg-surface p-5 text-lg leading-relaxed text-ink shadow-card">
           {MST5_STATEMENT}
         </blockquote>
         <p className="mt-4 text-ink-soft">

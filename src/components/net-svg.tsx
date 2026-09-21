@@ -24,7 +24,7 @@ export function NetSvg({
   className?: string;
   stroke?: string;
 }) {
-  const uid = "net";
+  const uid = useId().replace(/:/g, "");
   const { minX, minY, cols, rows } = netBounds(net.cells);
   const tab = 0.28;
   const pad = 0.42;

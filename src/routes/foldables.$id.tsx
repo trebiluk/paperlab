@@ -9,7 +9,7 @@ import {
   foldableSize,
   isFoldableId,
 } from "@/lib/foldables";
-import { PAPERS } from "@/lib/paper";
+import { PAPERS, sheetPhysical } from "@/lib/paper";
 import { usePaper } from "@/lib/lesson";
 
 export const Route = createFileRoute("/foldables/$id")({
@@ -49,9 +49,11 @@ function FoldableDetail() {
   const size = foldableSize(id, paper);
   const euler = f.faces - f.edges + f.vertices;
   const { prev, next } = foldableNeighbors(id);
+  const phys = sheetPhysical(spec);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+      <style>{phys.css}</style>
       <Link
         to="/foldables"
         className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-pine"
@@ -99,7 +101,7 @@ function FoldableDetail() {
       </ul>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem]">
-        <div className="print-net overflow-hidden rounded-xl bg-surface shadow-card print:rounded-none print:shadow-none">
+        <div className="print-net rounded-xl bg-surface shadow-card print:rounded-none print:shadow-none">
           <FoldableSvg id={id} paper={paper} />
         </div>
         <aside className="flex flex-col gap-4 no-print">

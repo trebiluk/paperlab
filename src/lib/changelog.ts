@@ -8,6 +8,17 @@ export type ShopNote = {
 
 export const UPDATES: ShopNote[] = [
   {
+    date: "2026-09-21",
+    title: "Print true-size, Easy in the studio, grade bands",
+    items: [
+      "Print the cube net at 1:1 — the face on the page is the face in the hand. Same for the other solids.",
+      "Easy reading now covers the net cube and origami balloon, not only the period labs.",
+      "Filter the year path by grade band: 2–4, 5–6, or 7–8.",
+      "Pinwheel axle, pinwheel spin, and ramp steep each have their own shop drawing.",
+      "Grain, fold arrows, and net diagrams no longer share one SVG id, so a grid of drawings stays put.",
+    ],
+  },
+  {
     date: "2026-09-20",
     title: "Seven take-home crafts",
     items: [

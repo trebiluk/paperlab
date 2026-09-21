@@ -1153,3 +1153,31 @@ export function labNeighbors(id: string) {
     next: LABS.find((l) => l.id === nextId) ?? LABS[0],
   };
 }
+
+export const GRADE_BANDS = [
+  { id: "all", name: "All grades", lo: 2, hi: 8 },
+  { id: "24", name: "2–4", lo: 2, hi: 4 },
+  { id: "56", name: "5–6", lo: 5, hi: 6 },
+  { id: "78", name: "7–8", lo: 7, hi: 8 },
+] as const;
+
+export type GradeBandId = Exclude<(typeof GRADE_BANDS)[number]["id"], "all">;
+
+export function parseGradeBand(value: unknown): GradeBandId | undefined {
+  if (value === "24" || value === "56" || value === "78") return value;
+  return undefined;
+}
+
+export function gradeSpan(label: string): [number, number] {
+  const m = label.match(/(\d+)\s*[–-]\s*(\d+)/);
+  if (!m) return [2, 8];
+  return [Number(m[1]), Number(m[2])];
+}
+
+export function labFitsBand(lab: Lab, band?: GradeBandId) {
+  if (!band) return true;
+  const range = GRADE_BANDS.find((b) => b.id === band);
+  if (!range) return true;
+  const [lo, hi] = gradeSpan(lab.grades);
+  return lo <= range.hi && hi >= range.lo;
+}

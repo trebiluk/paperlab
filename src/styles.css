@@ -303,10 +303,15 @@
     box-shadow: none !important;
     border-radius: 0 !important;
     overflow: visible !important;
+    background: white !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
   .print-net svg {
-    max-height: 100vh;
-    width: 100%;
+    max-height: none !important;
+    max-width: none !important;
+    width: var(--sheet-w, 8.5in) !important;
+    height: var(--sheet-h, 11in) !important;
   }
 }

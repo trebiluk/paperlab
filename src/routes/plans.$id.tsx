@@ -273,7 +273,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <section className="mt-10">
       <h2 className="font-display text-2xl font-semibold">{title}</h2>
-      <div className="mt-4 text-[15px] leading-relaxed text-ink-soft">{children}</div>
+      <div className="mt-4 text-base leading-relaxed text-ink-soft">{children}</div>
     </section>
   );
 }

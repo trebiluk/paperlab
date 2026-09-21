@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { DevelopmentSvg, LineSample } from "@/components/development-svg";
 import { pageTitle } from "@/lib/brand";
 import { LINE_TYPES } from "@/lib/conventions";
-import { PAPERS } from "@/lib/paper";
+import { PAPERS, sheetPhysical } from "@/lib/paper";
 import { usePaper } from "@/lib/lesson";
 
 export const Route = createFileRoute("/print")({
@@ -18,9 +18,11 @@ export const Route = createFileRoute("/print")({
 function PrintPage() {
   const paper = usePaper();
   const spec = PAPERS[paper];
+  const phys = sheetPhysical(spec);
 
   return (
     <AppShell>
+      <style>{phys.css}</style>
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
         <div className="no-print">
           <p className="text-sm font-medium tracking-wide text-pine">
@@ -41,7 +43,7 @@ function PrintPage() {
           </Button>
         </div>
 
-        <div className="print-net mt-8 overflow-hidden rounded-xl bg-surface shadow-card print:rounded-none print:shadow-none">
+        <div className="print-net mt-8 rounded-xl bg-surface shadow-card print:rounded-none print:shadow-none">
           <DevelopmentSvg
             paper={paper}
             crop="sheet"
