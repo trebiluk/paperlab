@@ -34,6 +34,10 @@ describe("restoreHubBasePath", () => {
       restoreHubBasePath("/__grok/manifest.webmanifest", "/paperlab"),
       "/__grok/manifest.webmanifest",
     );
+    assert.equal(
+      restoreHubBasePath("/fonts/lab.css", "/paperlab"),
+      "/fonts/lab.css",
+    );
   });
 
   it("is a no-op without a hub base", () => {

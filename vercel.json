@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    {
+      "source": "/paperlab/fonts/:path*",
+      "destination": "/fonts/:path*"
+    },
+    {
+      "source": "/paperlab/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/paperlab/favicon.svg",
+      "destination": "/favicon.svg"
+    },
+    {
+      "source": "/paperlab/images/:path*",
+      "destination": "/images/:path*"
+    },
+    {
+      "source": "/paperlab/__grok/:path*",
+      "destination": "/__grok/:path*"
+    }
+  ]
+}

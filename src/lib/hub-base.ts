@@ -10,7 +10,7 @@
 export const HUB_BASE = "/paperlab";
 
 /** Static files the hub already maps onto the origin root. Leave them alone. */
-const ORIGIN_STATIC_PREFIXES = ["/assets/", "/__grok/"];
+const ORIGIN_STATIC_PREFIXES = ["/assets/", "/__grok/", "/fonts/", "/images/"];
 
 export function hubBaseFromRouter(routerBasepath: string | undefined): string {
   const raw = (routerBasepath ?? "").trim();

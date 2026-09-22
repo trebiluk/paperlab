@@ -8,6 +8,14 @@ export type ShopNote = {
 
 export const UPDATES: ShopNote[] = [
   {
+    date: "2026-09-22",
+    title: "Looks stay on the Tech Room door",
+    items: [
+      "Figtree and Fraunces load from this lab, not Google Fonts — Chromebooks keep the type even when outside fonts are blocked.",
+      "Labs, Plans, and Studio links stay under /paperlab/ on apps.kulibert.net.",
+    ],
+  },
+  {
     date: "2026-09-21",
     title: "Easy shows Spanish; keyboard and the design loop",
     items: [
