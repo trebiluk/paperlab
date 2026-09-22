@@ -17,9 +17,9 @@ function PlansIndex() {
         Full lesson plans
       </h1>
       <p className="mt-4 text-ink-soft">
-        One plan per lab: hook, objectives, MST Standard 5, flow, ELL, extra
-        help, helper moves, IEP/504 notes, assessment, and snags. Print from
-        the plan page. Six suggested units below if you want a year-long shop.
+        The top of each plan is the student make: You need, diagrams, one action
+        per line, Done when, Stuck, and Words. Teacher notes follow. Print from
+        the plan page.
       </p>
 
       <h2 className="mt-10 font-display text-2xl font-semibold">Units</h2>

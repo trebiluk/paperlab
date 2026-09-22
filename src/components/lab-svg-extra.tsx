@@ -1,4 +1,5 @@
 import { CraftScene } from "@/components/lab-svg-craft";
+import { StudioPlanScene } from "@/components/studio-plan-scenes";
 import {
   Caption,
   CrewPerson,
@@ -18,6 +19,8 @@ function Sheet(props: { x: number; y: number; w: number; h: number; fill?: strin
 }
 
 export function ExtraScene(id: string) {
+  const studio = StudioPlanScene(id);
+  if (studio) return studio;
   if (id.startsWith("boat")) return <Boat step={id} />;
   if (id.startsWith("catapult")) return <Catapult step={id} />;
   if (id.startsWith("chute")) return <Chute step={id} />;

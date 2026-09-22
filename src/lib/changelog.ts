@@ -9,6 +9,16 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-22",
+    title: "Every plan has kid steps",
+    items: [
+      "Each plan opens with You need, a diagram, and one action per line — the same bar as the locking envelope.",
+      "Studio labs (cube, balloon, folds, drawing, nets, solids) have their own pictures. No “Missing” caption.",
+      "Done when, Stuck, and Words sit on the student make. Labels use an alias, not a legal name.",
+      "The locking envelope plan is unchanged: diagram 5 is still the shake test.",
+    ],
+  },
+  {
+    date: "2026-09-22",
     title: "Envelope plan shows the folds",
     items: [
       "The locking envelope plan leads with five diagrams and twenty short steps.",
