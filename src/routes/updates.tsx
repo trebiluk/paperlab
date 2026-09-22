@@ -23,7 +23,7 @@ function UpdatesPage() {
 
         <ol className="mt-10 grid gap-8">
           {UPDATES.map((note) => (
-            <li key={note.date} className="rounded-xl bg-surface p-5 shadow-card sm:p-7">
+            <li key={`${note.date}-${note.title}`} className="rounded-xl bg-surface p-5 shadow-card sm:p-7">
               <p className="text-xs font-medium tracking-wide text-pine">
                 {formatShopDate(note.date)}
               </p>

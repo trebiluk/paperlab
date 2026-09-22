@@ -1,7 +1,9 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft, Clock, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { pageTitle } from "@/lib/brand";
+import { EnvelopeStudentPlan } from "@/components/envelope-plan";
+import { StudentStepGuide } from "@/components/student-steps";
+import { APP_REV, pageTitle } from "@/lib/brand";
 import { getLab, isLabId, familyName, gradeSpan } from "@/lib/labs";
 import { ELL, IEP, SAFETY, SPED, TA, TA_DAY, CLOSING, HOME_LANG } from "@/lib/supports";
 import { MST_KEY_IDEAS, mstName } from "@/lib/mst";
@@ -33,11 +35,19 @@ function PlanPage() {
   const inUnits = unitsFor(lab.id);
   const young = gradeSpan(lab.grades)[0] <= 4;
   const flowMins = lab.steps.length
-    ? lab.steps.map((s) => ({ min: s.minutes.replace(" min", ""), title: s.title, body: s.body.class }))
+    ? lab.steps.map((s) => ({
+        min: s.minutes.replace(" min", ""),
+        title: s.title,
+        body: s.body.class,
+      }))
     : [
         { min: "5", title: "Hook", body: lab.plan.hook },
-        { min: "25", title: "Studio make", body: "Walk the studio stepper. Pre-fold, then glue or inflate." },
-        { min: "8", title: "Name and test", body: lab.plan.assessment[0] ?? "Hold the product. Count or fly." },
+        { min: "25", title: "Do this", body: lab.ell },
+        {
+          min: "8",
+          title: "Example",
+          body: lab.challenge ?? lab.plan.assessment[0] ?? "Hold the product. Count or fly.",
+        },
       ];
 
   return (
@@ -48,6 +58,10 @@ function PlanPage() {
       </Link>
       <p className="mt-4 text-sm font-medium tracking-wide text-pine">Lesson plan · {lab.grades}</p>
       <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">{lab.name}</h1>
+      <p className="mt-2 text-xs text-muted" data-paperlab-rev={APP_REV}>
+        {APP_REV}
+      </p>
+      {lab.id === "envelope" ? <EnvelopeStudentPlan /> : <StudentStepGuide lab={lab} />}
       <p className="mt-4 text-ink-soft">{lab.teConcept}</p>
 
       <dl className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -124,9 +138,9 @@ function PlanPage() {
                 <Clock className="size-3.5" />
                 {f.min}
               </span>
-              <div>
+              <div className="min-w-0">
                 <h3 className="font-medium text-ink">{f.title}</h3>
-                <p className="mt-1">{f.body}</p>
+                <p className="mt-2">{f.body}</p>
               </div>
             </li>
           ))}

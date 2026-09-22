@@ -9,6 +9,16 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-22",
+    title: "Envelope plan shows the folds",
+    items: [
+      "The locking envelope plan leads with five diagrams and twenty short steps.",
+      "Diagram 5 is the ten-shake test. A finished picture is only a bonus look.",
+      "Done when, Stuck, and Words sit on the same page.",
+      "Other plans lead with Easy steps, a picture, and Done when.",
+    ],
+  },
+  {
+    date: "2026-09-22",
     title: "Watch slip, same sentences as the desk",
     items: [
       "Skills prints a Watch slip: Gold, the eight practice marks, and the evidence sentence — no name.",

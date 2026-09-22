@@ -1,7 +1,7 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
-import { APP_NAME, APP_TAGLINE } from "@/lib/brand";
+import { APP_NAME, APP_REV, APP_TAGLINE } from "@/lib/brand";
 import appCss from "../styles.css?url";
 
 /** Public file URL. Vite `base` is `/` in dev and `/paperlab/` in the hub build. */
@@ -16,6 +16,7 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: APP_NAME },
       { name: "description", content: APP_TAGLINE },
+      { name: "paperlab-rev", content: APP_REV },
       { name: "theme-color", content: "#1f5c4e" },
     ],
     links: [

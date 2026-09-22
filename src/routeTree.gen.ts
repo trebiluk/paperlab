@@ -19,6 +19,7 @@ import { Route as MathRouteImport } from './routes/math'
 import { Route as NetsRouteImport } from './routes/nets'
 import { Route as PlansRouteImport } from './routes/plans'
 import { Route as PrintRouteImport } from './routes/print'
+import { Route as SkillsRouteImport } from './routes/skills'
 import { Route as StandardsRouteImport } from './routes/standards'
 import { Route as StudioRouteImport } from './routes/studio'
 import { Route as SupportsRouteImport } from './routes/supports'
@@ -79,6 +80,11 @@ const PlansRoute = PlansRouteImport.update({
 const PrintRoute = PrintRouteImport.update({
   id: '/print',
   path: '/print',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillsRoute = SkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StandardsRoute = StandardsRouteImport.update({
@@ -148,6 +154,7 @@ export interface FileRoutesByFullPath {
   '/nets': typeof NetsRoute
   '/plans': typeof PlansRouteWithChildren
   '/print': typeof PrintRoute
+  '/skills': typeof SkillsRoute
   '/standards': typeof StandardsRoute
   '/studio': typeof StudioRoute
   '/supports': typeof SupportsRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/math': typeof MathRoute
   '/nets': typeof NetsRoute
   '/print': typeof PrintRoute
+  '/skills': typeof SkillsRoute
   '/standards': typeof StandardsRoute
   '/studio': typeof StudioRoute
   '/supports': typeof SupportsRoute
@@ -192,6 +200,7 @@ export interface FileRoutesById {
   '/nets': typeof NetsRoute
   '/plans': typeof PlansRouteWithChildren
   '/print': typeof PrintRoute
+  '/skills': typeof SkillsRoute
   '/standards': typeof StandardsRoute
   '/studio': typeof StudioRoute
   '/supports': typeof SupportsRoute
@@ -217,6 +226,7 @@ export interface FileRouteTypes {
     | '/nets'
     | '/plans'
     | '/print'
+    | '/skills'
     | '/standards'
     | '/studio'
     | '/supports'
@@ -237,6 +247,7 @@ export interface FileRouteTypes {
     | '/math'
     | '/nets'
     | '/print'
+    | '/skills'
     | '/standards'
     | '/studio'
     | '/supports'
@@ -260,6 +271,7 @@ export interface FileRouteTypes {
     | '/nets'
     | '/plans'
     | '/print'
+    | '/skills'
     | '/standards'
     | '/studio'
     | '/supports'
@@ -284,6 +296,7 @@ export interface RootRouteChildren {
   NetsRoute: typeof NetsRoute
   PlansRoute: typeof PlansRouteWithChildren
   PrintRoute: typeof PrintRoute
+  SkillsRoute: typeof SkillsRoute
   StandardsRoute: typeof StandardsRoute
   StudioRoute: typeof StudioRoute
   SupportsRoute: typeof SupportsRoute
@@ -361,6 +374,13 @@ declare module '@tanstack/react-router' {
       path: '/print'
       fullPath: '/print'
       preLoaderRoute: typeof PrintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skills': {
+      id: '/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof SkillsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/standards': {
@@ -492,6 +512,7 @@ const rootRouteChildren: RootRouteChildren = {
   NetsRoute: NetsRoute,
   PlansRoute: PlansRouteWithChildren,
   PrintRoute: PrintRoute,
+  SkillsRoute: SkillsRoute,
   StandardsRoute: StandardsRoute,
   StudioRoute: StudioRoute,
   SupportsRoute: SupportsRoute,
