@@ -1,5 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { READ_LEVELS, setReadLevel, useReadLevel, type ReadLevel } from "@/lib/lesson";
 import { LABS, getLab, type Lab } from "@/lib/labs";
 import { TECH_ROOM_URL } from "@/lib/room";
@@ -225,33 +233,20 @@ export function LabStage({ lab, children }: { lab: Lab; children: ReactNode }) {
         <h1 className="min-w-0 flex-1 truncate font-display text-xl font-semibold text-ink sm:text-2xl">
           {lab.name}
         </h1>
-        <button
-          type="button"
-          className="inline-flex min-h-11 items-center rounded-md bg-surface px-3 text-sm font-medium text-ink shadow-card md:hidden"
-          aria-expanded={open}
-          onClick={() => setOpen(true)}
-        >
-          Labs
-        </button>
-      </header>
-      <div className="flex min-h-0 flex-1">
-        <aside className="hidden w-72 shrink-0 overflow-y-auto border-r border-line md:block">{pane}</aside>
-        <div className="min-w-0 flex-1 overflow-y-auto px-4 py-6 sm:px-6">{children}</div>
-      </div>
-      {open ? (
-        <div className="fixed inset-0 z-50 md:hidden">
-          <button type="button" className="absolute inset-0 bg-ink/40" aria-label="Close labs" onClick={() => setOpen(false)} />
-          <div className="absolute inset-x-0 bottom-0 max-h-dvh overflow-y-auto rounded-t-xl bg-bg shadow-card">
-            <div className="flex items-center justify-between px-3 pt-3">
-              <p className="font-display text-lg font-semibold">Labs</p>
-              <button type="button" className="inline-flex min-h-11 items-center px-3 text-sm font-medium text-pine" onClick={() => setOpen(false)}>
-                Close
-              </button>
-            </div>
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger className="inline-flex min-h-11 items-center rounded-md bg-surface px-3 text-sm font-medium text-ink shadow-card">
+            Labs
+          </SheetTrigger>
+          <SheetContent side="left" className="w-80 gap-0 overflow-y-auto p-0">
+            <SheetHeader className="border-b border-line pr-14">
+              <SheetTitle>Labs</SheetTitle>
+              <SheetDescription>Units, filters, skills, helper, and search.</SheetDescription>
+            </SheetHeader>
             {pane}
-          </div>
-        </div>
-      ) : null}
+          </SheetContent>
+        </Sheet>
+      </header>
+      <div className="min-h-0 flex-1 overflow-y-auto px-4 py-6 sm:px-6">{children}</div>
     </div>
   );
 }
