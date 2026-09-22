@@ -20,6 +20,9 @@ import { toggleLabDone, useLabDone } from "@/lib/progress";
 import { ELL, SAFETY, SPED, TA, DESIGN_LOOP, loopPhaseFor } from "@/lib/supports";
 import { mstName } from "@/lib/mst";
 import { PERIOD_PATH, pathIndex, unitForLab } from "@/lib/units";
+import { LabWatch } from "@/components/lab-watch";
+import { skillOf, skillsOfLab } from "@/lib/skills";
+import { TECHWORKS_NAME } from "@/lib/room";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/labs/$id")({
@@ -85,7 +88,7 @@ function LabPage() {
           )}
         >
           <Check className="size-4" aria-hidden />
-          {done ? "Made on this Chromebook" : "We made this"}
+          {done ? "Made on this Chromebook" : "We made this · +1 Gold"}
         </button>
       </div>
 
@@ -113,6 +116,22 @@ function LabPage() {
           </ul>
         </>
       )}
+      <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${TECHWORKS_NAME} skills`}>
+        {skillsOfLab(lab).map((id) => {
+          const s = skillOf(id);
+          return (
+            <li key={id}>
+              <Link
+                to="/skills"
+                className="inline-flex h-9 items-center rounded-full bg-surface px-3 text-xs font-medium text-ink shadow-card"
+              >
+                {s?.name ?? id}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+      {done ? <LabWatch labId={lab.id} /> : null}
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <div className="rounded-xl bg-surface p-4 shadow-card sm:p-5">
@@ -406,7 +425,7 @@ function Stepper({
                 )}
               >
                 <Check className="size-4" aria-hidden />
-                {done ? "Marked as made" : "We made this"}
+                {done ? "Marked as made" : "We made this · +1 Gold"}
               </button>
             </div>
           ) : null}

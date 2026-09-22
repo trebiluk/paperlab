@@ -9,6 +9,25 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-22",
+    title: "Watch slip, same sentences as the desk",
+    items: [
+      "Skills prints a Watch slip: Gold, the eight practice marks, and the evidence sentence — no name.",
+      "Copy the sentence or print the slip. Tap 1–4 on the TechWorks desk; that is the grade.",
+      "Same stems as TechWorks: Beginning through Distinguished, observable in the room.",
+    ],
+  },
+  {
+    date: "2026-09-22",
+    title: "Gold XP, eight skills, a door to TechWorks",
+    items: [
+      "Mark a lab made and it counts as Gold XP on this Chromebook — Cub through Legend, same bands as the desk.",
+      "Eight shop skills: Safety, Measure, Draw, Model, Tools, Finish, Present, Team. Practice, not the posted 1–4.",
+      "Skills lives in the bar. The grade and the evidence sentence still live in TechWorks.",
+      "A shop card of the eight skills, two-up, for a desk or a plan book.",
+    ],
+  },
+  {
+    date: "2026-09-22",
     title: "Looks stay on the Tech Room door",
     items: [
       "Figtree and Fraunces load from this lab, not Google Fonts — Chromebooks keep the type even when outside fonts are blocked.",

@@ -1,4 +1,5 @@
 import { Segmented } from "@/components/segmented";
+import { GoldChip } from "@/components/gold-chip";
 import { READ_LEVELS, ROOM_ROLES, setReadLevel, setRole, useReadLevel, useRole, type ReadLevel, type RoomRole } from "@/lib/lesson";
 import { cn } from "@/lib/utils";
 
@@ -7,6 +8,7 @@ export function ClassroomBar({ compact }: { compact?: boolean }) {
   const role = useRole();
   return (
     <div className={cn("flex flex-wrap items-center gap-2", compact && "justify-end")}>
+      <GoldChip compact />
       <Segmented
         label="Reading"
         value={read}

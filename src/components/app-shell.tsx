@@ -6,9 +6,11 @@ import { LogoMark } from "@/components/berty";
 import { ClassroomBar } from "@/components/classroom-bar";
 import { Segmented } from "@/components/segmented";
 import { cn } from "@/lib/utils";
+import { TECHWORKS_NAME, TECHWORKS_URL } from "@/lib/room";
 
 const NAV = [
   { to: "/labs", label: "Labs" },
+  { to: "/skills", label: "Skills" },
   { to: "/studio", label: "Studio" },
   { to: "/plans", label: "Plans" },
   { to: "/supports", label: "Supports" },
@@ -101,6 +103,15 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="cut-rule mb-6 max-w-xs" />
         <p>BertyBot’s PaperLab · Technology education on a sheet of printer paper.</p>
         <p className="mt-1">NYSED MST Standard 5 · Grades 2–8 · scissors, glue, and a period.</p>
+        <p className="mt-2">
+          <Link to="/skills" className="font-medium text-pine">
+            Skills · Gold XP
+          </Link>
+          <span className="text-muted"> · practice on this Chromebook · the 1–4 lives in </span>
+          <a href={TECHWORKS_URL} className="font-medium text-pine" target="_blank" rel="noreferrer">
+            {TECHWORKS_NAME}
+          </a>
+        </p>
         <p className="mt-2">
           <Link to="/updates" className="font-medium text-pine">
             Shop notes

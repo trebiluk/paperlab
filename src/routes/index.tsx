@@ -12,6 +12,8 @@ import { MST5_STATEMENT } from "@/lib/mst";
 import { useReadLevel } from "@/lib/lesson";
 import { countDone, nextUndoneId, useDoneLabs } from "@/lib/progress";
 import { PERIOD_PATH, UNITS } from "@/lib/units";
+import { goldXp, xpIntoLevel } from "@/lib/skills";
+import { TECHWORKS_NAME, TECHWORKS_URL } from "@/lib/room";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -28,6 +30,7 @@ function Home() {
   const made = countDone(PERIOD_PATH, doneSet);
   const next = getLab(nextUndoneId(PERIOD_PATH, doneSet));
   const allMade = made === PERIOD_PATH.length && made > 0;
+  const gold = xpIntoLevel(goldXp(doneSet));
 
   return (
     <AppShell>
@@ -74,6 +77,9 @@ function Home() {
             <Button asChild variant="secondary" size="lg">
               <Link to="/plans">Teacher plans</Link>
             </Button>
+            <Button asChild variant="ghost" size="lg">
+              <Link to="/skills">Skills · Gold</Link>
+            </Button>
           </div>
           <p className="text-sm text-muted">
             {made === 0
@@ -81,6 +87,9 @@ function Home() {
               : allMade
                 ? `All ${PERIOD_PATH.length} made on this Chromebook.`
                 : `${made} of ${PERIOD_PATH.length} made on this Chromebook · next is ${next?.name ?? "the labs"}.`}
+            {gold.xp > 0
+              ? ` · ${gold.xp} Gold · ${gold.band}`
+              : " Gold XP starts when you mark a lab made."}
           </p>
         </div>
         <div className="relative overflow-hidden rounded-xl bg-bg-warm p-2 shadow-card sm:p-3">
@@ -100,6 +109,42 @@ function Home() {
             <ArrowRight className="size-3.5" />
           </Link>
         </blockquote>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
+        <div className="rounded-xl bg-surface p-5 shadow-card sm:flex sm:items-start sm:justify-between sm:gap-6 sm:p-6">
+          <div>
+            <p className="text-xs font-medium tracking-wide text-pine">
+              {TECHWORKS_NAME} · Gold XP
+            </p>
+            <h2 className="mt-1 font-display text-xl font-semibold">
+              Eight skills. Practice here. The 1–4 on the desk.
+            </h2>
+            <p className="mt-2 max-w-xl text-sm text-ink-soft">
+              Safety, measure, draw, model, tools, finish, present, team. Mark a
+              lab made on this Chromebook and it counts as Gold. Print a Watch
+              slip — same sentence the desk will store. The grade still lives
+              in {TECHWORKS_NAME}.
+            </p>
+          </div>
+          <div className="mt-4 flex shrink-0 flex-col items-start gap-2 sm:mt-0">
+            <Link
+              to="/skills"
+              className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-pine"
+            >
+              Skills board
+              <ArrowRight className="size-3.5" />
+            </Link>
+            <a
+              href={TECHWORKS_URL}
+              className="inline-flex min-h-11 items-center text-sm font-medium text-pine"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open {TECHWORKS_NAME}
+            </a>
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
@@ -183,8 +228,8 @@ function Home() {
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-4 px-4 py-12 sm:px-6 sm:grid-cols-2 lg:grid-cols-4">
+        <HelpCard to="/skills" icon={<Layers className="size-5" />} title="Skills · Gold" body="Eight TechWorks skills. Practice on this Chromebook. The 1–4 lives on the desk." />
         <HelpCard to="/supports" icon={<BookOpen className="size-5" />} title="Reading levels" body="Easy, Class, and Stretch. Same lab, three voices. Switch any time." />
-        <HelpCard to="/supports" icon={<Layers className="size-5" />} title="ELL" body="Spanish cognates, sentence frames, picture-first steps." />
         <HelpCard to="/supports" icon={<ClipboardList className="size-5" />} title="Extra help" body="Fine-motor, attention, printed nets, tape instead of glue." />
         <HelpCard to="/supports" icon={<Ruler className="size-5" />} title="Helper cards" body="What a TA says, what they never do, what to watch." />
       </section>
@@ -223,7 +268,7 @@ function HelpCard({
   title,
   body,
 }: {
-  to: "/supports";
+  to: "/supports" | "/skills";
   icon: React.ReactNode;
   title: string;
   body: string;

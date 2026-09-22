@@ -7,6 +7,7 @@ import { FAMILIES, GRADE_BANDS, LABS, getLab, labFitsBand, parseGradeBand, type 
 import { useReadLevel } from "@/lib/lesson";
 import { countDone, nextUndoneId, useDoneLabs } from "@/lib/progress";
 import { PERIOD_PATH, UNITS } from "@/lib/units";
+import { goldXp, xpIntoLevel } from "@/lib/skills";
 import { cn } from "@/lib/utils";
 
 const FAM_IDS = FAMILIES.map((f) => f.id);
@@ -36,6 +37,7 @@ function LabsIndex() {
   const nextId = nextUndoneId(PERIOD_PATH, doneSet);
   const next = getLab(nextId);
   const allMade = made === PERIOD_PATH.length && made > 0;
+  const gold = xpIntoLevel(goldXp(doneSet));
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
@@ -58,6 +60,14 @@ function LabsIndex() {
               {made} of {PERIOD_PATH.length}
             </span>{" "}
             made on this Chromebook
+            {gold.xp > 0 ? (
+              <>
+                {" · "}
+                <Link to="/skills" className="font-medium text-pine">
+                  {gold.xp} Gold · {gold.band}
+                </Link>
+              </>
+            ) : null}
           </p>
           <div
             className="mt-2 h-1 max-w-sm overflow-hidden rounded-full bg-bg-warm"
