@@ -21,6 +21,15 @@ import { renderInstallPage } from "./grok-pwa-plugin.mjs";
 
 const TEMPLATE_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
+test("does not duplicate manifest links that already include a hub prefix", () => {
+  const html =
+    '<html><head><link rel="manifest" href="/paperlab/__grok/manifest.webmanifest"><link rel="apple-touch-icon" href="/paperlab/__grok/icon-180.png"></head></html>';
+  const out = injectGrokPwaHead(html);
+  assert.equal(out.match(/rel="manifest"/g)?.length, 1);
+  assert.equal(out.match(/apple-touch-icon/g)?.length, 1);
+  assert.match(out, /href="\/paperlab\/__grok\/manifest\.webmanifest"/);
+});
+
 test("injects before </head>", () => {
   const out = injectGrokPwaHead("<html><head><title>x</title></head><body></body></html>");
   assert.match(out, /rel="manifest"/);

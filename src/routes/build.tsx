@@ -190,7 +190,7 @@ function NetTrack({
         <div className="overflow-hidden rounded-xl bg-bg-warm p-2 sm:p-3">
           {current.visual === "materials" ? (
             <img
-              src="/images/materials.jpg"
+              src={`${import.meta.env.BASE_URL}images/materials.jpg`}
               alt="A sheet of paper, wooden ruler, scissors, tape, and a pencil on a cream desk."
               className="aspect-[16/10] w-full rounded-lg object-cover outline outline-1 -outline-offset-1 outline-ink/10"
               crossOrigin="anonymous"
