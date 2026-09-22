@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
+  <title id="title">Step 1: Measure the note</title>
+  <desc id="desc">A note card sits on a larger sheet. Measurement arrows show the note is the payload and the wrap needs extra paper on two sides.</desc>
+  <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+      </marker>
+      <marker id="arrowInk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0E17"/>
+      </marker>
+      <style>
+        .ink { fill:#0A0E17; }
+        .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
+        .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
+        .line { stroke:#0A0E17; stroke-width:5; stroke-linejoin:round; stroke-linecap:round; }
+        .crease { stroke:#0A0E17; stroke-width:4; stroke-dasharray:11 9; opacity:.68; stroke-linecap:round; }
+        .arrow { stroke:#2563EB; stroke-width:8; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
+      </style>
+    </defs>
+  <rect x="0" y="0" width="800" height="620" fill="#EEF2F7"/>
+  
+  <circle cx="88" cy="76" r="30" fill="#2563EB"/>
+  <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">1</text>
+  <text x="132" y="82" font-size="32" class="label">Measure the note</text>
+  <text x="132" y="108" font-size="16" class="small">The note is the payload — make the wrap larger on two sides.</text>
+  <rect x="56" y="126" width="688" height="410" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
+
+  <rect x="158" y="168" width="484" height="306" rx="8" fill="#F8FAFC" class="line"/>
+  <text x="400" y="202" text-anchor="middle" font-size="18" class="small">sheet for the wrap</text>
+  <rect x="274" y="252" width="252" height="112" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="6"/>
+  <text x="400" y="301" text-anchor="middle" font-size="26" class="label">NOTE = PAYLOAD</text>
+  <text x="400" y="334" text-anchor="middle" font-size="18" class="small">your message goes here</text>
+  <path d="M274 232 H526" stroke="#2563EB" stroke-width="5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="400" y="222" text-anchor="middle" font-size="20" class="label">measure the note</text>
+  <path d="M244 252 V364" stroke="#2563EB" stroke-width="5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="224" y="316" text-anchor="middle" font-size="17" class="small" transform="rotate(-90 224 316)">note size</text>
+  <path d="M274 386 H526" class="crease"/>
+  <text x="400" y="418" text-anchor="middle" font-size="18" class="small">leave extra paper for the wrap</text>
+  <text x="400" y="580" text-anchor="middle" font-size="22" class="label">Payload first → wrap larger on two sides</text>
+
+</svg>

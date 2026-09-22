@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
+  <title id="title">Step 3: Bottom pocket</title>
+  <desc id="desc">The bottom flap folds up into a pocket. A bold upward arrow and crease line show the fold direction and the pocket opening.</desc>
+  <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+      </marker>
+      <marker id="arrowInk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0E17"/>
+      </marker>
+      <style>
+        .ink { fill:#0A0E17; }
+        .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
+        .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
+        .line { stroke:#0A0E17; stroke-width:5; stroke-linejoin:round; stroke-linecap:round; }
+        .crease { stroke:#0A0E17; stroke-width:4; stroke-dasharray:11 9; opacity:.68; stroke-linecap:round; }
+        .arrow { stroke:#2563EB; stroke-width:8; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
+      </style>
+    </defs>
+  <rect x="0" y="0" width="800" height="620" fill="#EEF2F7"/>
+  
+  <circle cx="88" cy="76" r="30" fill="#2563EB"/>
+  <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">3</text>
+  <text x="132" y="82" font-size="32" class="label">Bottom pocket</text>
+  <text x="132" y="108" font-size="16" class="small">Fold the bottom up to make a pocket for the top flap.</text>
+  <rect x="56" y="126" width="688" height="410" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
+
+  <rect x="158" y="168" width="484" height="300" rx="8" fill="#F8FAFC" class="line"/>
+  <path d="M158 168 L282 220 L282 414 L158 468 Z" fill="#DBEAFE" class="line"/>
+  <path d="M642 168 L518 220 L518 414 L642 468 Z" fill="#DBEAFE" class="line"/>
+  <rect x="282" y="216" width="236" height="202" fill="#FFFFFF" stroke="#0A0E17" stroke-width="5"/>
+  <text x="400" y="286" text-anchor="middle" font-size="26" class="label">NOTE</text>
+  <text x="400" y="318" text-anchor="middle" font-size="17" class="small">side flaps are in</text>
+  <path d="M158 468 L282 414 L518 414 L642 468 Z" fill="#DBEAFE" class="line"/>
+  <path d="M400 454 C400 429 400 402 400 357" class="arrow"/>
+  <line x1="158" y1="468" x2="642" y2="468" class="crease"/>
+  <path d="M283 414 H517" stroke="#2563EB" stroke-width="8" stroke-linecap="round"/>
+  <text x="400" y="396" text-anchor="middle" font-size="21" class="label">POCKET OPENING</text>
+  <text x="400" y="503" text-anchor="middle" font-size="20" class="small">bottom up / doblar arriba</text>
+  <text x="400" y="580" text-anchor="middle" font-size="22" class="label">Bottom flap folds up — leave a pocket opening</text>
+
+</svg>
