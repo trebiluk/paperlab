@@ -9,6 +9,16 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-22",
+    title: "Fold diagrams and a lab pane",
+    items: [
+      "Every plan except the locking envelope now uses a real fold diagram image on each step. You need, numbered steps, and Done when stay.",
+      "The make page is one lab. Top bar is the title and Back to hub.",
+      "A side pane lists Start, Make, Fly, Hold, Move, Fold, and Draw, plus Easy, Class, Stretch, skills, helper, and search.",
+      "On a phone that list is a Labs sheet. The envelope plan is unchanged: diagram 5 is still the shake test.",
+    ],
+  },
+  {
+    date: "2026-09-22",
     title: "Every plan has kid steps",
     items: [
       "Each plan opens with You need, a diagram, and one action per line — the same bar as the locking envelope.",

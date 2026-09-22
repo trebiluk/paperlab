@@ -26,6 +26,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const role = useRole();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const slim = role === "student";
+  const onMake = /^\/labs\/[^/]+$/.test(pathname);
 
   return (
     <div className="paper-grain min-h-dvh">
@@ -35,6 +36,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       >
         Skip to content
       </a>
+      {onMake ? null : (
       <header className="no-print sticky top-0 z-40 border-b border-line/80 bg-bg/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
           <Link
@@ -98,7 +100,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           })}
         </nav>
       </header>
+      )}
       <main id="main" tabIndex={-1}>{children}</main>
+      {onMake ? null : (
       <footer className="no-print mx-auto max-w-6xl px-4 py-12 text-sm text-muted sm:px-6">
         <div className="cut-rule mb-6 max-w-xs" />
         <p>BertyBot’s PaperLab · Technology education on a sheet of printer paper.</p>
@@ -119,6 +123,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <span className="text-muted"> · what changed, in class order</span>
         </p>
       </footer>
+      )}
     </div>
   );
 }

@@ -1,4 +1,3 @@
-import { LabSvg } from "@/components/lab-svg";
 import type { Lab } from "@/lib/labs";
 import { STUDIO_GUIDES, type GuidePhase } from "@/lib/studio-guides";
 
@@ -99,13 +98,15 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
         <p className="mt-2 text-ink-soft">Follow in order. One action each line.</p>
         {phases.map((phase, index) => (
           <figure key={`${phase.title}-${index}`} className="mt-8">
-            <div
-              className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-bg-warm"
+            <img
+              src={`${import.meta.env.BASE_URL}images/plans/${lab.id}/${String(index + 1).padStart(2, "0")}-${phase.visual}.svg`}
+              alt={`Diagram ${index + 1}: ${phase.title}. ${phase.lines[0] ?? "Fold diagram"}.`}
+              width={800}
+              height={620}
               data-diagram={index + 1}
-              data-diagram-visual={phase.visual}
-            >
-              <LabSvg visual={phase.visual} />
-            </div>
+              data-diagram-file={`${String(index + 1).padStart(2, "0")}-${phase.visual}.svg`}
+              className="h-auto w-full rounded-xl bg-bg-warm"
+            />
             <figcaption className="mt-3 text-sm font-medium text-pine">
               Diagram {index + 1} · {phase.title}
             </figcaption>

@@ -7,7 +7,6 @@ import { pageTitle } from "@/lib/brand";
 import {
   FAMILIES,
   clampStepIndex,
-  familyName,
   getLab,
   isLabId,
   labNeighbors,
@@ -18,11 +17,8 @@ import {
 import { pickRead, useReadLevel, useRole } from "@/lib/lesson";
 import { toggleLabDone, useLabDone } from "@/lib/progress";
 import { ELL, SAFETY, SPED, TA, DESIGN_LOOP, loopPhaseFor } from "@/lib/supports";
-import { mstName } from "@/lib/mst";
-import { PERIOD_PATH, pathIndex, unitForLab } from "@/lib/units";
 import { LabWatch } from "@/components/lab-watch";
-import { skillOf, skillsOfLab } from "@/lib/skills";
-import { TECHWORKS_NAME } from "@/lib/room";
+import { LabStage } from "@/components/lab-stage";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/labs/$id")({
@@ -58,8 +54,6 @@ function LabPage() {
   }
 
   const { prev, next } = labNeighbors(lab.id);
-  const unit = unitForLab(lab.id);
-  const idx = pathIndex(lab.id);
   const family = FAMILIES.find((f) => f.id === lab.family);
   const easy = read === "easy";
   const stepI = clampStepIndex(search.step, lab.steps.length);
@@ -68,16 +62,8 @@ function LabPage() {
     : null;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <Link
-          to="/labs"
-          search={{ family: undefined, step: undefined, grade: undefined }}
-          className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-pine"
-        >
-          <ArrowLeft className="size-3.5" />
-          All labs
-        </Link>
+    <LabStage lab={lab}>
+      <div className="flex flex-wrap items-center justify-end gap-3">
         <button
           type="button"
           onClick={() => toggleLabDone(lab.id)}
@@ -91,46 +77,6 @@ function LabPage() {
           {done ? "Made on this Chromebook" : "We made this · +1 Gold"}
         </button>
       </div>
-
-      <p className="mt-4 text-sm font-medium tracking-wide text-pine">
-        {familyName(lab.family)}
-        {unit ? ` · ${unit.name}` : ""}
-        {idx >= 0 ? ` · ${idx + 1} of ${PERIOD_PATH.length}` : ""}
-        {` · ${lab.grades} · ${lab.time}`}
-      </p>
-      <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-        {lab.name}
-      </h1>
-      <p className={cn("mt-4 max-w-2xl text-ink-soft", easy && "text-lg leading-relaxed")}>
-        {pickRead(read, lab.blurb)}
-      </p>
-      {easy ? null : (
-        <>
-          <p className="mt-3 max-w-2xl text-sm text-muted">{lab.teConcept}</p>
-          <ul className="mt-4 flex flex-wrap gap-2">
-            {lab.mst.map((code) => (
-              <li key={code} className="rounded-full bg-bg-warm px-3 py-1.5 text-xs font-medium text-pine">
-                {code} · {mstName(code)}
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-      <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${TECHWORKS_NAME} skills`}>
-        {skillsOfLab(lab).map((id) => {
-          const s = skillOf(id);
-          return (
-            <li key={id}>
-              <Link
-                to="/skills"
-                className="inline-flex h-9 items-center rounded-full bg-surface px-3 text-xs font-medium text-ink shadow-card"
-              >
-                {s?.name ?? id}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
       {done ? <LabWatch labId={lab.id} /> : null}
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -273,7 +219,7 @@ function LabPage() {
           </Link>
         </Button>
       </div>
-    </div>
+    </LabStage>
   );
 }
 
