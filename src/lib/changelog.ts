@@ -14,6 +14,7 @@ export const UPDATES: ShopNote[] = [
       "The locking envelope plan leads with five diagrams and twenty short steps.",
       "Diagram 5 is the ten-shake test. A finished picture is only a bonus look.",
       "Done when, Stuck, and Words sit on the same page.",
+      "Other plans lead with Easy steps, a picture, and Done when.",
     ],
   },
   {
