@@ -1,10 +1,21 @@
 import { Link, useRouterState } from "@tanstack/react-router";
+import { Menu } from "lucide-react";
+import { useEffect, useState } from "react";
 import { PAPERS, PAPER_IDS, type PaperId } from "@/lib/paper";
 import { setPaper, usePaper, useRole } from "@/lib/lesson";
 import { APP_KICKER, APP_SHORT } from "@/lib/brand";
 import { LogoMark } from "@/components/berty";
 import { ClassroomBar } from "@/components/classroom-bar";
+import { GoldChip } from "@/components/gold-chip";
 import { Segmented } from "@/components/segmented";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { TECHWORKS_NAME, TECHWORKS_URL } from "@/lib/room";
 
@@ -38,23 +49,23 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </a>
       {onMake ? null : (
       <header className="no-print sticky top-0 z-40 border-b border-line/80 bg-bg/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2 sm:px-6 lg:py-3">
           <Link
             to="/"
-            className="flex items-center gap-2 text-ink no-underline"
+            className="flex min-w-0 items-center gap-2 text-ink no-underline"
             aria-label={`${APP_KICKER} ${APP_SHORT} home`}
           >
             <LogoMark />
-            <span className="leading-tight">
+            <span className="min-w-0 leading-tight">
               <span className="block text-xs font-medium tracking-wide text-pine">
                 {APP_KICKER}
               </span>
-              <span className="block font-display text-lg font-semibold tracking-tight">
+              <span className="block truncate font-display text-lg font-semibold tracking-tight">
                 {APP_SHORT}
               </span>
             </span>
           </Link>
-          <nav className="ml-2 hidden items-center gap-1 md:flex" aria-label="Main">
+          <nav className="ml-2 hidden items-center gap-1 lg:flex" aria-label="Main">
             {NAV.map((item) => {
               const active = isNavActive(pathname, item.to);
               return (
@@ -74,31 +85,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               );
             })}
           </nav>
+          <SiteMenu pathname={pathname} paper={paper} />
         </div>
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 pb-2 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mx-auto hidden max-w-6xl gap-2 px-4 pb-2 sm:px-6 lg:flex lg:flex-row lg:items-center lg:justify-between">
           <ClassroomBar compact={slim} />
           <PaperToggle paper={paper} full />
         </div>
-        <nav className="flex gap-1 overflow-x-auto px-4 pb-3 md:hidden" aria-label="Main">
-          {NAV.map((item) => {
-            const active = isNavActive(pathname, item.to);
-            return (
-              <Link
-                key={item.to}
-                to={item.to}
-                aria-current={active ? "page" : undefined}
-                className={cn(
-                  "shrink-0 rounded-full px-3 py-2 text-sm font-medium",
-                  active
-                    ? "bg-pine text-pine-fg"
-                    : "bg-surface text-ink-soft shadow-card",
-                )}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
       </header>
       )}
       <main id="main" tabIndex={-1}>{children}</main>
@@ -125,6 +117,62 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </footer>
       )}
     </div>
+  );
+}
+
+function SiteMenu({ pathname, paper }: { pathname: string; paper: PaperId }) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = () => {
+      if (mq.matches) setOpen(false);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  return (
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md bg-surface px-3 text-sm font-medium text-ink shadow-card lg:hidden">
+        <Menu className="size-4" aria-hidden />
+        Menu
+      </SheetTrigger>
+      <SheetContent side="right" className="w-full max-w-sm gap-0 overflow-y-auto p-0">
+        <SheetHeader className="border-b border-line pr-14">
+          <SheetTitle>Menu</SheetTitle>
+          <SheetDescription>Pages, reading, and paper size.</SheetDescription>
+        </SheetHeader>
+        <div className="border-b border-line p-4" onClick={() => setOpen(false)}>
+          <GoldChip />
+        </div>
+        <nav className="flex flex-col p-2" aria-label="Main">
+          {NAV.map((item) => {
+            const active = isNavActive(pathname, item.to);
+            return (
+              <Link
+                key={item.to}
+                to={item.to}
+                aria-current={active ? "page" : undefined}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "flex min-h-11 items-center rounded-md px-3 text-sm font-medium",
+                  active ? "bg-bg-warm text-ink" : "text-ink-soft hover:bg-bg-warm hover:text-ink",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
+        <div className="flex flex-col gap-3 border-t border-line p-4">
+          <p className="text-xs font-medium tracking-wide text-pine">Reading and room</p>
+          <ClassroomBar stacked hideGold />
+          <p className="text-xs font-medium tracking-wide text-pine">Paper size</p>
+          <PaperToggle paper={paper} full />
+        </div>
+      </SheetContent>
+    </Sheet>
   );
 }
 

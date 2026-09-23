@@ -9,6 +9,15 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-22",
+    title: "Phone bar is one row",
+    items: [
+      "On a phone or tablet, the top bar is the logo and Menu. Gold, pages, reading, room, and paper size sit in the menu so the page can show.",
+      "A Chromebook still shows the full bar: pages, Gold, Easy / Class / Stretch, and paper size.",
+      "The lab sheet and the fold diagrams stay.",
+    ],
+  },
+  {
+    date: "2026-09-22",
     title: "Labs open in a side sheet",
     items: [
       "Every plan except the locking envelope now uses a real fold diagram image on each step. You need, numbered steps, and Done when stay.",
