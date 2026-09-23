@@ -38,7 +38,7 @@ function Diagram({
 
 function Step({ n, children }: { n: number; children: React.ReactNode }) {
   return (
-    <li className="grid grid-cols-[2.75rem_minmax(0,1fr)] items-start gap-3 text-lg leading-snug text-ink">
+    <li className="grid grid-cols-[2.75rem_minmax(0,1fr)] items-start gap-3 text-lg font-medium leading-snug text-ink">
       <span className="flex size-11 items-center justify-center rounded-full bg-pine text-base font-semibold text-pine-fg tabular-nums">
         {n}
       </span>
@@ -174,7 +174,7 @@ export function EnvelopeStudentPlan() {
         <h2 id="envelope-done" className="font-display text-2xl font-semibold text-ink">
           Done when
         </h2>
-        <ul className="mt-3 space-y-2">
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-lg text-ink">
           {[
             "Note is inside",
             "Top flap tucks into the pocket",
@@ -182,8 +182,7 @@ export function EnvelopeStudentPlan() {
             "Alias on the front",
             "No hidden tape (unless teacher said OK and you labeled it)",
           ].map((item) => (
-            <li key={item} className="flex min-h-11 items-center gap-3 text-lg text-ink">
-              <span className="size-5 shrink-0 rounded-sm border-2 border-ink" aria-hidden />
+            <li key={item} className="min-h-11">
               {item}
             </li>
           ))}

@@ -96,10 +96,10 @@ export function Caption({ children, y = 170 }: { children: string; y?: number })
       x="120"
       y={y}
       textAnchor="middle"
-      fontSize="11.5"
-      fill="var(--color-ink-soft)"
+      fontSize="13"
+      fill="var(--color-ink)"
       fontFamily={FONT}
-      fontWeight={600}
+      fontWeight={700}
     >
       {children}
     </text>

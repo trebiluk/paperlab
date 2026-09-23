@@ -1,62 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1680" height="440" viewBox="0 0 1680 440" role="img" aria-labelledby="title desc">
-  <title id="title">PaperLab envelope: five steps</title>
-  <desc id="desc">A horizontal five-step board showing measure the note, side flaps first, bottom pocket, tuck lock, and name on front.</desc>
+  <title id="title">PaperLab envelope: five steps — pointed top flap</title>
+  <desc id="desc">Five-panel strip with pointed banker V top flap visible throughout: flat net, sides in, bottom pocket, tuck lock, shake prove on BACK.</desc>
   <defs>
-      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
-      </marker>
-      <marker id="arrowInk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0E17"/>
-      </marker>
-      <style>
-        .ink { fill:#0A0E17; }
-        .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
-        .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
-        .line { stroke:#0A0E17; stroke-width:5; stroke-linejoin:round; stroke-linecap:round; }
-        .crease { stroke:#0A0E17; stroke-width:4; stroke-dasharray:11 9; opacity:.68; stroke-linecap:round; }
-        .arrow { stroke:#2563EB; stroke-width:8; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
-      </style>
-    </defs>
-  
-  <rect x="0" y="0" width="1680" height="430" fill="#EEF2F7"/>
-  <text x="56" y="48" font-size="28" class="label">PAPERLAB ENVELOPE — FIVE STEPS</text>
-  <text x="1624" y="48" text-anchor="end" font-size="18" class="small">note payload → snug folds → tuck lock → shake · alias</text>
-<rect x="32" y="72" width="296" height="330" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/><circle cx="66" cy="108" r="25" fill="#2563EB"/><text x="66" y="117" text-anchor="middle" font-size="24" class="label" style="fill:#FFFFFF">1</text><rect x="362" y="72" width="296" height="330" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/><circle cx="396" cy="108" r="25" fill="#2563EB"/><text x="396" y="117" text-anchor="middle" font-size="24" class="label" style="fill:#FFFFFF">2</text><rect x="692" y="72" width="296" height="330" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/><circle cx="726" cy="108" r="25" fill="#2563EB"/><text x="726" y="117" text-anchor="middle" font-size="24" class="label" style="fill:#FFFFFF">3</text><rect x="1022" y="72" width="296" height="330" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/><circle cx="1056" cy="108" r="25" fill="#2563EB"/><text x="1056" y="117" text-anchor="middle" font-size="24" class="label" style="fill:#FFFFFF">4</text><rect x="1352" y="72" width="296" height="330" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/><circle cx="1386" cy="108" r="25" fill="#2563EB"/><text x="1386" y="117" text-anchor="middle" font-size="24" class="label" style="fill:#FFFFFF">5</text>
-  <text x="104" y="114" font-size="21" class="label">Measure note</text>
-  <rect x="80" y="148" width="200" height="118" fill="#F8FAFC" class="line"/>
-  <rect x="123" y="182" width="114" height="54" fill="#FFFFFF" stroke="#2563EB" stroke-width="5"/>
-  <text x="180" y="216" text-anchor="middle" font-size="16" class="label">PAYLOAD</text>
-  <path d="M123 170 H237" stroke="#2563EB" stroke-width="4" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
-  <text x="180" y="292" text-anchor="middle" font-size="16" class="small">wrap larger on two sides</text>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+    </marker>
+    <style>
+      .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
+      .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
+      .crease { stroke:#0A0E17; stroke-width:3; stroke-dasharray:8 6; opacity:.68; stroke-linecap:round; fill:none; }
+      .arrow { stroke:#2563EB; stroke-width:5; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1680" height="440" fill="#EEF2F7"/>
+  <text x="56" y="48" font-size="26" class="label">PAPERLAB ENVELOPE — POINTED TOP (REGULAR / BIRTHDAY-CARD)</text>
+  <text x="1624" y="48" text-anchor="end" font-size="16" class="small">Diego LOCK · banker V throughout</text>
 
-  <text x="434" y="114" font-size="21" class="label">Side flaps first</text>
-  <rect x="410" y="154" width="200" height="118" fill="#F8FAFC" class="line"/>
-  <path d="M410 154 L458 181 V245 L410 272Z" fill="#DBEAFE" class="line"/>
-  <path d="M610 154 L562 181 V245 L610 272Z" fill="#DBEAFE" class="line"/>
-  <rect x="460" y="184" width="100" height="54" fill="#FFFFFF" stroke="#0A0E17" stroke-width="4"/>
-  <path d="M434 144 L456 181 M586 144 L564 181" class="arrow" style="stroke-width:5"/>
-  <text x="510" y="298" text-anchor="middle" font-size="16" class="small">fold / doblar</text>
+  <rect x="32" y="72" width="296" height="330" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+  <rect x="362" y="72" width="296" height="330" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+  <rect x="692" y="72" width="296" height="330" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+  <rect x="1022" y="72" width="296" height="330" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+  <rect x="1352" y="72" width="296" height="330" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
 
-  <text x="764" y="114" font-size="21" class="label">Bottom pocket</text>
-  <rect x="740" y="154" width="200" height="118" fill="#F8FAFC" class="line"/>
-  <path d="M740 272 L780 244 H900 L940 272Z" fill="#DBEAFE" class="line"/>
-  <path d="M840 265 V204" class="arrow" style="stroke-width:6"/>
-  <path d="M780 244 H900" stroke="#2563EB" stroke-width="5"/>
-  <text x="840" y="298" text-anchor="middle" font-size="16" class="small">bottom up</text>
+  <circle cx="66" cy="108" r="25" fill="#2563EB"/><text x="66" y="117" text-anchor="middle" font-size="24" class="label" style="fill:#FFFFFF">1</text>
+  <circle cx="396" cy="108" r="25" fill="#2563EB"/><text x="396" y="117" text-anchor="middle" font-size="24" class="label" style="fill:#FFFFFF">2</text>
+  <circle cx="726" cy="108" r="25" fill="#2563EB"/><text x="726" y="117" text-anchor="middle" font-size="24" class="label" style="fill:#FFFFFF">3</text>
+  <circle cx="1056" cy="108" r="25" fill="#2563EB"/><text x="1056" y="117" text-anchor="middle" font-size="24" class="label" style="fill:#FFFFFF">4</text>
+  <circle cx="1386" cy="108" r="25" fill="#2563EB"/><text x="1386" y="117" text-anchor="middle" font-size="24" class="label" style="fill:#FFFFFF">5</text>
 
-  <text x="1094" y="114" font-size="21" class="label">Tuck lock</text>
-  <rect x="1070" y="154" width="200" height="118" fill="#F8FAFC" class="line"/>
-  <path d="M1070 272 L1110 246 H1230 L1270 272Z" fill="#DBEAFE" class="line"/>
-  <path d="M1118 154 H1222 L1210 214 H1130Z" fill="#FFFFFF" class="line"/>
-  <path d="M1170 198 V244" class="arrow" style="stroke-width:6"/>
-  <text x="1170" y="298" text-anchor="middle" font-size="16" class="small">top into pocket</text>
+  <!-- P1: flat net pointed -->
+  <text x="104" y="114" font-size="18" class="label">Flat net</text>
+  <rect x="100" y="175" width="120" height="80" fill="#F8FAFC" stroke="#0A0E17" stroke-width="3"/>
+  <polygon points="100,175 220,175 160,120" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3" stroke-linejoin="round"/>
+  <polygon points="100,175 55,215 100,255" fill="#DBEAFE" stroke="#0A0E17" stroke-width="2"/>
+  <polygon points="220,175 265,215 220,255" fill="#DBEAFE" stroke="#0A0E17" stroke-width="2"/>
+  <polygon points="100,255 220,255 205,310 115,310" fill="#DBEAFE" stroke="#0A0E17" stroke-width="2"/>
+  <circle cx="160" cy="120" r="5" fill="#2563EB"/>
+  <text x="160" y="220" text-anchor="middle" font-size="12" class="label">NOTE</text>
+  <text x="160" y="340" text-anchor="middle" font-size="13" class="label">pointed top V</text>
+  <text x="160" y="360" text-anchor="middle" font-size="12" class="small">L·R·bottom flaps</text>
 
-  <text x="1424" y="114" font-size="21" class="label">Shake test</text>
-  <rect x="1400" y="154" width="200" height="118" rx="5" fill="#F8FAFC" class="line"/>
-  <path d="M1401 155 L1500 222 L1599 155" fill="#DBEAFE" class="line"/>
-  <text x="1500" y="250" text-anchor="middle" font-size="17" class="label">10×</text>
-  <line x1="1444" y1="260" x2="1556" y2="260" stroke="#0A0E17" stroke-width="4"/>
-  <text x="1500" y="298" text-anchor="middle" font-size="16" class="small">10× shake · then alias</text>
-<text x="840" y="420" text-anchor="middle" font-size="16" class="small">Fold direction = blue arrows  ·  dashed lines = creases  ·  plain words stay on the art</text>
+  <!-- P2: sides in, pointed up -->
+  <text x="434" y="114" font-size="18" class="label">Sides in</text>
+  <rect x="430" y="175" width="120" height="90" fill="#F8FAFC" stroke="#0A0E17" stroke-width="3"/>
+  <polygon points="430,175 550,175 490,120" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="490" cy="120" r="5" fill="#2563EB"/>
+  <path d="M415 220 H435" class="arrow"/>
+  <path d="M565 220 H545" class="arrow"/>
+  <text x="490" y="225" text-anchor="middle" font-size="12" class="label">NOTE</text>
+  <text x="490" y="340" text-anchor="middle" font-size="13" class="label">FOLD IN · Δ sides</text>
+  <text x="490" y="360" text-anchor="middle" font-size="12" class="small">top pointed up</text>
+
+  <!-- P3: pocket, pointed up -->
+  <text x="764" y="114" font-size="18" class="label">Bottom pocket</text>
+  <polygon points="760,175 880,175 820,120" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="820" cy="120" r="5" fill="#2563EB"/>
+  <rect x="760" y="175" width="120" height="70" fill="#FFFFFF" stroke="#0A0E17" stroke-width="3"/>
+  <rect x="760" y="245" width="120" height="50" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3"/>
+  <line x1="765" y1="245" x2="875" y2="245" stroke="#2563EB" stroke-width="5" stroke-linecap="round"/>
+  <path d="M820 285 V255" class="arrow"/>
+  <text x="820" y="215" text-anchor="middle" font-size="12" class="label">NOTE</text>
+  <text x="820" y="240" text-anchor="middle" font-size="10" class="label" fill="#2563EB" style="fill:#2563EB">LIP</text>
+  <text x="820" y="340" text-anchor="middle" font-size="13" class="label">FOLD UP · LIP</text>
+  <text x="820" y="360" text-anchor="middle" font-size="12" class="small">pointed still up</text>
+
+  <!-- P4: tuck pointed down -->
+  <text x="1094" y="114" font-size="18" class="label">Tuck lock</text>
+  <polygon points="1090,175 1210,175 1150,120" fill="#FFFFFF" stroke="#0A0E17" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="1150" cy="120" r="5" fill="#2563EB"/>
+  <rect x="1090" y="175" width="120" height="100" fill="#F8FAFC" stroke="#0A0E17" stroke-width="3"/>
+  <rect x="1090" y="205" width="120" height="70" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3"/>
+  <line x1="1095" y1="205" x2="1205" y2="205" stroke="#2563EB" stroke-width="5"/>
+  <polyline points="1115,205 1150,240 1185,205" fill="none" stroke="#0A0E17" stroke-width="2" stroke-dasharray="5 4" opacity=".55"/>
+  <path d="M1150 160 V195" class="arrow"/>
+  <text x="1150" y="340" text-anchor="middle" font-size="13" class="label">FOLD DOWN · TUCK</text>
+  <text x="1150" y="360" text-anchor="middle" font-size="12" class="small">V tip under lip</text>
+
+  <!-- P5: BACK pointed sealed -->
+  <text x="1424" y="114" font-size="18" class="label">Shake · BACK</text>
+  <rect x="1435" y="155" width="130" height="120" fill="#F8FAFC" stroke="#0A0E17" stroke-width="3"/>
+  <polygon points="1435,155 1500,210 1565,155" fill="#DBEAFE" opacity=".5"/>
+  <polygon points="1435,155 1565,155 1500,240" fill="#FFFFFF" stroke="#0A0E17" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="1500" cy="240" r="4" fill="#2563EB"/>
+  <text x="1500" y="195" text-anchor="middle" font-size="12" class="label">POINTED</text>
+  <path d="M1415 200 q-12 -16 0 -32" fill="none" stroke="#2563EB" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M1585 200 q12 -16 0 -32" fill="none" stroke="#2563EB" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <text x="1500" y="340" text-anchor="middle" font-size="13" class="label">10× shake</text>
+  <text x="1500" y="360" text-anchor="middle" font-size="12" class="small">seal on BACK</text>
+
+  <text x="840" y="420" text-anchor="middle" font-size="15" class="small">Pointed top flap in every panel · blue = fold · dashed = crease · front stays plain rect</text>
 </svg>

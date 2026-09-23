@@ -1,44 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
-  <title id="title">Step 2: Side flaps first</title>
-  <desc id="desc">Left and right flaps fold inward first, with arrows and dashed crease lines. The note remains snug in the center.</desc>
+  <title id="title">Step 2: Side flaps fold in</title>
+  <desc id="desc">Valley-fold LEFT and RIGHT triangular side flaps inward. Pointed top flap stays up and visible. Bottom flap still open.</desc>
   <defs>
-      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
-      </marker>
-      <marker id="arrowInk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0E17"/>
-      </marker>
-      <style>
-        .ink { fill:#0A0E17; }
-        .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
-        .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
-        .line { stroke:#0A0E17; stroke-width:5; stroke-linejoin:round; stroke-linecap:round; }
-        .crease { stroke:#0A0E17; stroke-width:4; stroke-dasharray:11 9; opacity:.68; stroke-linecap:round; }
-        .arrow { stroke:#2563EB; stroke-width:8; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
-      </style>
-    </defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+    </marker>
+    <style>
+      .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
+      .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
+      .crease { stroke:#0A0E17; stroke-width:4; stroke-dasharray:11 9; opacity:.68; stroke-linecap:round; fill:none; }
+      .arrow { stroke:#2563EB; stroke-width:8; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
+    </style>
+  </defs>
   <rect x="0" y="0" width="800" height="620" fill="#EEF2F7"/>
-  
   <circle cx="88" cy="76" r="30" fill="#2563EB"/>
   <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">2</text>
-  <text x="132" y="82" font-size="32" class="label">Side flaps first</text>
-  <text x="132" y="108" font-size="16" class="small">Fold the left and right sides in before the bottom pocket.</text>
+  <text x="132" y="82" font-size="32" class="label">Side flaps fold in</text>
+  <text x="132" y="108" font-size="16" class="small">Valley · triangular sides · pointed top stays UP</text>
   <rect x="56" y="126" width="688" height="410" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
 
-  <rect x="158" y="178" width="484" height="280" rx="8" fill="#F8FAFC" class="line"/>
-  <path d="M158 178 L282 230 L282 406 L158 458 Z" fill="#DBEAFE" class="line"/>
-  <path d="M642 178 L518 230 L518 406 L642 458 Z" fill="#DBEAFE" class="line"/>
-  <rect x="286" y="244" width="228" height="122" rx="8" fill="#FFFFFF" stroke="#0A0E17" stroke-width="5"/>
-  <text x="400" y="296" text-anchor="middle" font-size="25" class="label">NOTE</text>
-  <text x="400" y="330" text-anchor="middle" font-size="17" class="small">snug against the note</text>
-  <path d="M244 218 C258 238 267 255 278 278" class="arrow"/>
-  <path d="M556 218 C542 238 533 255 522 278" class="arrow"/>
-  <line x1="282" y1="230" x2="282" y2="406" class="crease"/>
-  <line x1="518" y1="230" x2="518" y2="406" class="crease"/>
-  <text x="212" y="212" font-size="19" class="label">LEFT IN</text>
-  <text x="588" y="212" font-size="19" class="label">RIGHT IN</text>
-  <text x="400" y="424" text-anchor="middle" font-size="19" class="small">fold / doblar</text>
-  <text x="400" y="580" text-anchor="middle" font-size="22" class="label">Side flaps first — crease against the note</text>
+  <!-- BODY -->
+  <rect x="260" y="250" width="280" height="180" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5"/>
 
+  <!-- POINTTED TOP still up -->
+  <polygon points="260,250 540,250 400,125" fill="#DBEAFE" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+  <text x="400" y="185" text-anchor="middle" font-size="16" class="label">TOP FLAP</text>
+  <text x="400" y="205" text-anchor="middle" font-size="13" class="label" fill="#2563EB" style="fill:#2563EB">POINTED · stays up</text>
+  <circle cx="400" cy="125" r="7" fill="#2563EB"/>
+
+  <!-- BOTTOM still open -->
+  <polygon points="260,430 540,430 510,535 290,535" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+  <text x="400" y="495" text-anchor="middle" font-size="14" class="small">bottom (later)</text>
+
+  <!-- LEFT triangle flap -->
+  <polygon points="260,250 155,340 260,430" fill="#DBEAFE" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+  <!-- RIGHT triangle flap -->
+  <polygon points="540,250 645,340 540,430" fill="#DBEAFE" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- Creases L/R -->
+  <line x1="260" y1="250" x2="260" y2="430" class="crease"/>
+  <line x1="540" y1="250" x2="540" y2="430" class="crease"/>
+
+  <!-- NOTE -->
+  <rect x="300" y="290" width="200" height="100" rx="6" fill="#FFFFFF" stroke="#0A0E17" stroke-width="5"/>
+  <text x="400" y="340" text-anchor="middle" font-size="24" class="label">NOTE</text>
+  <text x="400" y="365" text-anchor="middle" font-size="14" class="small">payload</text>
+
+  <!-- Press marks -->
+  <g stroke="#0A0E17" stroke-width="3" stroke-linecap="round">
+    <line x1="248" y1="310" x2="272" y2="322"/>
+    <line x1="248" y1="328" x2="272" y2="340"/>
+    <line x1="248" y1="346" x2="272" y2="358"/>
+    <line x1="528" y1="310" x2="552" y2="322"/>
+    <line x1="528" y1="328" x2="552" y2="340"/>
+    <line x1="528" y1="346" x2="552" y2="358"/>
+  </g>
+
+  <!-- Blue valley arrows -->
+  <path d="M195 340 H252" class="arrow"/>
+  <path d="M605 340 H548" class="arrow"/>
+
+  <text x="195" y="280" text-anchor="middle" font-size="13" class="label">LEFT</text>
+  <text x="195" y="298" text-anchor="middle" font-size="13" class="label">FOLD IN</text>
+  <text x="195" y="315" text-anchor="middle" font-size="12" class="small">(valley)</text>
+  <text x="605" y="280" text-anchor="middle" font-size="13" class="label">RIGHT</text>
+  <text x="605" y="298" text-anchor="middle" font-size="13" class="label">FOLD IN</text>
+  <text x="605" y="315" text-anchor="middle" font-size="12" class="small">(valley)</text>
+
+  <!-- Inset: sides as triangles on back -->
+  <rect x="620" y="430" width="110" height="90" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="675" y="450" text-anchor="middle" font-size="11" class="small">back peek</text>
+  <polygon points="640,470 675,458 710,470 710,505 640,505" fill="#F8FAFC" stroke="#0A0E17" stroke-width="2"/>
+  <line x1="675" y1="470" x2="675" y2="505" stroke="#2563EB" stroke-width="2"/>
+  <text x="675" y="530" text-anchor="middle" font-size="10" class="label">Δ sides</text>
+
+  <text x="400" y="580" text-anchor="middle" font-size="18" class="label">FOLD IN (valley) · sides read as triangles · pointed top visible</text>
 </svg>

@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, ClipboardList, Layers, Ruler, Scissors } from "lucide-react";
+import { ArrowRight, Scissors } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { ShopStillLife } from "@/components/berty";
 import { LabCard } from "@/components/lab-card";
 import { Button } from "@/components/ui/button";
 import { LabSvg } from "@/components/lab-svg";
 import { APP_NAME, APP_TAGLINE } from "@/lib/brand";
-import { LATEST_UPDATE, formatShopDate } from "@/lib/changelog";
+import { LATEST_UPDATE } from "@/lib/changelog";
 import { FAMILIES, LABS, getLab } from "@/lib/labs";
 import { MST5_STATEMENT } from "@/lib/mst";
 import { useReadLevel } from "@/lib/lesson";
@@ -148,20 +148,12 @@ function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
-        <div className="rounded-xl bg-surface p-5 shadow-card sm:flex sm:items-start sm:justify-between sm:gap-6 sm:p-6">
-          <div>
-            <p className="text-xs font-medium tracking-wide text-pine">What’s new · {formatShopDate(LATEST_UPDATE.date)}</p>
-            <h2 className="mt-1 font-display text-xl font-semibold">{LATEST_UPDATE.title}</h2>
-            <p className="mt-2 max-w-xl text-sm text-ink-soft">{LATEST_UPDATE.items[0]}</p>
-          </div>
-          <Link
-            to="/updates"
-            className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-medium text-pine sm:mt-0 sm:shrink-0"
-          >
-            Shop notes
-            <ArrowRight className="size-3.5" />
-          </Link>
-        </div>
+        <p className="text-base text-ink">
+          <Link to="/updates" className="font-medium text-pine">
+            What’s new.
+          </Link>{" "}
+          {LATEST_UPDATE.items[0]}
+        </p>
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-4 px-4 py-10 sm:px-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -227,14 +219,7 @@ function Home() {
         </ul>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-4 px-4 py-12 sm:px-6 sm:grid-cols-2 lg:grid-cols-4">
-        <HelpCard to="/skills" icon={<Layers className="size-5" />} title="Skills · Gold" body="Eight TechWorks skills. Practice on this Chromebook. The 1–4 lives on the desk." />
-        <HelpCard to="/supports" icon={<BookOpen className="size-5" />} title="Reading levels" body="Easy, Class, and Stretch. Same lab, three voices. Switch any time." />
-        <HelpCard to="/supports" icon={<ClipboardList className="size-5" />} title="Extra help" body="Fine-motor, attention, printed nets, tape instead of glue." />
-        <HelpCard to="/supports" icon={<Ruler className="size-5" />} title="Helper cards" body="What a TA says, what they never do, what to watch." />
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
         <div className="grid items-center gap-8 overflow-hidden rounded-xl bg-surface p-5 shadow-card sm:p-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <p className="text-sm font-medium tracking-wide text-pine">Studio</p>
@@ -259,27 +244,5 @@ function Home() {
         </div>
       </section>
     </AppShell>
-  );
-}
-
-function HelpCard({
-  to,
-  icon,
-  title,
-  body,
-}: {
-  to: "/supports" | "/skills";
-  icon: React.ReactNode;
-  title: string;
-  body: string;
-}) {
-  return (
-    <Link to={to} className="card-lift flex flex-col gap-3 rounded-xl bg-surface p-5 text-ink shadow-card">
-      <span className="flex size-10 items-center justify-center rounded-md bg-toy-top/55 text-pine">
-        {icon}
-      </span>
-      <h2 className="font-display text-xl font-semibold">{title}</h2>
-      <p className="text-sm text-ink-soft">{body}</p>
-    </Link>
   );
 }

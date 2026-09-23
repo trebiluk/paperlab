@@ -59,7 +59,7 @@ function Badge({ n }: { n: number }) {
 
 function Step({ n, children }: { n: number; children: string }) {
   return (
-    <li className="grid grid-cols-[2.75rem_minmax(0,1fr)] items-start gap-3 text-lg leading-snug text-ink">
+    <li className="grid grid-cols-[2.75rem_minmax(0,1fr)] items-start gap-3 text-lg font-medium leading-snug text-ink">
       <Badge n={n} />
       <span className="pt-2">{children}</span>
     </li>
@@ -128,10 +128,9 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
         <h2 id="plan-done" className="font-display text-2xl font-semibold text-ink">
           Done when
         </h2>
-        <ul className="mt-3 space-y-2">
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-lg text-ink">
           {[...lab.plan.assessment.map(kidLine), "If you label it, write an alias. No legal name."].map((item) => (
-            <li key={item} className="flex min-h-11 items-center gap-3 text-lg text-ink">
-              <span className="size-5 shrink-0 rounded-sm border-2 border-ink" aria-hidden />
+            <li key={item} className="min-h-11">
               {item}
             </li>
           ))}

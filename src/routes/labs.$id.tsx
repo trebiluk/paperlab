@@ -349,7 +349,12 @@ function Stepper({
             >
               {current.title}
             </h2>
-            <p className={cn("mt-4 leading-relaxed text-ink-soft", read === "easy" && "text-lg")}>
+            <p
+              className={cn(
+                "mt-4 leading-relaxed",
+                read === "easy" ? "text-lg font-medium text-ink" : "text-ink-soft",
+              )}
+            >
               {pickRead(read, current.body)}
             </p>
             {current.tip ? (

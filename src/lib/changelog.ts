@@ -9,6 +9,31 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-22",
+    title: "Easy steps read darker",
+    items: [
+      "Easy steps are darker, the empty check boxes are gone, and Help is one line: try the step, ask a peer, then Mr. K.",
+    ],
+  },
+  {
+    date: "2026-09-22",
+    title: "Envelope top flap is pointed",
+    items: [
+      "Locking envelope diagrams now use a birthday-card pointed top flap (V tip), not a flat rectangular wrap.",
+      "Diagram 5 shake shows the BACK with the pointed seal closed. Alias comes after.",
+      "Help / What’s new names this pointed-top cut for class.",
+    ],
+  },
+  {
+    date: "2026-09-22",
+    title: "Envelope folds match the real wrap",
+    items: [
+      "Locking envelope diagrams now show four flaps, valley fold labels, a real pocket lip, and tuck under the lip — not a store mailer.",
+      "Shake test is a rectangular closed wrap. Alias comes after the ten shakes.",
+      "Help / What’s new on this door carries the fold-correct cut for class tomorrow.",
+    ],
+  },
+  {
+    date: "2026-09-22",
     title: "Phone bar is one row",
     items: [
       "On a phone or tablet, the top bar is the logo and Menu. Gold, pages, reading, room, and paper size sit in the menu so the page can show.",

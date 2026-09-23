@@ -50,7 +50,7 @@ export function Segmented({
             className={cn(
               "min-h-11 rounded-[10px] px-2.5 text-sm font-medium transition-colors",
               full && "flex-1 px-1.5 lg:px-2.5",
-              on ? "bg-surface text-ink shadow-card" : "text-muted hover:text-ink",
+              on ? "bg-surface text-ink shadow-card" : "text-ink-soft hover:text-ink",
             )}
           >
             {o.name}
