@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/app-shell";
 import { pageTitle } from "@/lib/brand";
-import { READ_LEVELS, ROOM_ROLES } from "@/lib/lesson";
+import { READ_LEVELS, ROOM_ROLES, useRole } from "@/lib/lesson";
 import { ELL, HOME_LANG, IEP, SAFETY, SPED, TA, TA_DAY } from "@/lib/supports";
 
 export const Route = createFileRoute("/supports")({
@@ -10,6 +10,7 @@ export const Route = createFileRoute("/supports")({
 });
 
 function SupportsPage() {
+  const role = useRole();
   return (
     <AppShell>
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
@@ -84,6 +85,11 @@ function SupportsPage() {
           </ul>
         </Section>
 
+        {role === "student" ? (
+        <Section title="Extra help">
+          <p>Try the step. Ask a peer. Then ask Mr. K.</p>
+        </Section>
+      ) : (
         <Section title="Special education">
           <p>{IEP.principle}</p>
           <div className="mt-4 overflow-x-auto">
@@ -114,6 +120,7 @@ function SupportsPage() {
           <Block title="Access" items={SPED.access} />
           <Block title="Alternates" items={SPED.alt} />
         </Section>
+      )}
 
         <Section title="Teacher assistant">
           <p>{TA.stance}</p>

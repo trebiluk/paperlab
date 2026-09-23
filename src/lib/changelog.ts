@@ -9,6 +9,13 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-23",
+    title: "Start here shows the steps",
+    items: [
+      "Start here opens the scrap steps: a picture, then one fold. Extra help on the student page does not say IEP or 504.",
+    ],
+  },
+  {
+    date: "2026-09-23",
     title: "Billfold diagrams are classroom-correct",
     items: [
       "Billfold now shows five diagrams: portrait valleys, pocket·cover·hems, load three cards, ten-shake prove, one change · retest · alias.",

@@ -19,6 +19,7 @@ import { toggleLabDone, useLabDone } from "@/lib/progress";
 import { ELL, SAFETY, SPED, TA, DESIGN_LOOP, loopPhaseFor } from "@/lib/supports";
 import { LabWatch } from "@/components/lab-watch";
 import { LabStage } from "@/components/lab-stage";
+import { StudentStepGuide } from "@/components/student-steps";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/labs/$id")({
@@ -112,18 +113,24 @@ function LabPage() {
         {shopRule(lab)}
       </p>
 
+      {lab.steps.length === 0 ? <StudentStepGuide lab={lab} /> : null}
+
       {lab.studio ? (
         <div className="mt-8 rounded-xl bg-surface p-5 shadow-card sm:p-7">
-          <h2 className="font-display text-2xl font-semibold">Open the studio</h2>
+          <h2 className="font-display text-2xl font-semibold">
+            {lab.steps.length === 0 ? "See a move bigger" : "Open the studio"}
+          </h2>
           <p className="mt-2 text-ink-soft">
-            {family
-              ? `Diagrams, a stepper, and printables for this ${family.name.toLowerCase()} lab live in the studio.`
-              : "Diagrams, a stepper, and printables for this lab live in the studio."}
+            {lab.steps.length === 0
+              ? "Do the steps above on scrap. Tap a move if you want the picture bigger."
+              : family
+                ? `Diagrams, a stepper, and printables for this ${family.name.toLowerCase()} lab live in the studio.`
+                : "Diagrams, a stepper, and printables for this lab live in the studio."}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button asChild>
               <Link to={lab.studio.to} search={lab.studio.search}>
-                Start the make
+                {lab.steps.length === 0 ? "Bigger picture" : "Start the make"}
                 <ArrowRight className="size-4" />
               </Link>
             </Button>

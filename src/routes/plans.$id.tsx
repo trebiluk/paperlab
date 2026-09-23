@@ -8,6 +8,7 @@ import { getLab, isLabId, familyName, gradeSpan } from "@/lib/labs";
 import { ELL, IEP, SAFETY, SPED, TA, TA_DAY, CLOSING, HOME_LANG } from "@/lib/supports";
 import { MST_KEY_IDEAS, mstName } from "@/lib/mst";
 import { unitsFor } from "@/lib/units";
+import { useRole } from "@/lib/lesson";
 
 export const Route = createFileRoute("/plans/$id")({
   component: PlanPage,
@@ -19,6 +20,7 @@ export const Route = createFileRoute("/plans/$id")({
 function PlanPage() {
   const { id } = Route.useParams();
   const lab = getLab(id);
+  const role = useRole();
 
   if (!lab || !isLabId(id)) {
     return (
@@ -181,6 +183,7 @@ function PlanPage() {
         mix levels in one mouth — pick, then stay.
       </Section>
 
+      {role === "student" ? null : (
       <Section title="Special education / IEP / 504">
         <p>{lab.sped}</p>
         <p className="mt-3">{IEP.principle}</p>
@@ -214,6 +217,7 @@ function PlanPage() {
         </div>
         <p className="mt-3">{SPED.alt[2]}</p>
       </Section>
+      )}
 
       <Section title="Teacher assistant">
         <p>{TA.stance}</p>
