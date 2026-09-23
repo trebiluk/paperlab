@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
+  <title id="title">Step 3: Load three scrap cards</title>
+  <desc id="desc">Slide three library-card-size scrap cards into the pocket. If they will not fit, unfold and make the pocket taller. Close the cover. Tuck into the pocket if the design allows.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+    </marker>
+    <style>
+      .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
+      .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
+      .crease { stroke:#0A0E17; stroke-width:3; stroke-dasharray:8 6; opacity:.7; stroke-linecap:round; fill:none; }
+      .arrow { stroke:#2563EB; stroke-width:7; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="800" height="620" fill="#EEF2F7"/>
+  <circle cx="88" cy="76" r="30" fill="#2563EB"/>
+  <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">3</text>
+  <text x="132" y="82" font-size="30" class="label">Load three cards</text>
+  <text x="132" y="108" font-size="16" class="small">Slide in · taller pocket if needed · close · optional tuck</text>
+  <rect x="56" y="126" width="688" height="410" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
+
+  <!-- Cover lifted above hinge -->
+  <rect x="280" y="160" width="240" height="90" fill="#DBEAFE" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+  <text x="400" y="200" text-anchor="middle" font-size="16" class="label">COVER OPEN</text>
+  <text x="400" y="222" text-anchor="middle" font-size="12" class="small">close after load</text>
+  <line x1="280" y1="250" x2="520" y2="250" class="crease"/>
+
+  <!-- Body + pocket -->
+  <rect x="280" y="250" width="240" height="160" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Pocket face -->
+  <rect x="280" y="310" width="240" height="100" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+  <line x1="292" y1="310" x2="508" y2="310" stroke="#2563EB" stroke-width="5" stroke-linecap="round"/>
+  <!-- Hems -->
+  <rect x="280" y="250" width="20" height="160" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3"/>
+  <rect x="500" y="250" width="20" height="160" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3"/>
+
+  <!-- Three cards entering pocket -->
+  <rect x="320" y="255" width="55" height="85" rx="3" fill="#FEF3C7" stroke="#0A0E17" stroke-width="3" transform="rotate(-6 347 297)"/>
+  <rect x="372" y="248" width="55" height="85" rx="3" fill="#FDE68A" stroke="#0A0E17" stroke-width="3"/>
+  <rect x="424" y="255" width="55" height="85" rx="3" fill="#FEF3C7" stroke="#0A0E17" stroke-width="3" transform="rotate(6 451 297)"/>
+  <text x="347" y="305" text-anchor="middle" font-size="16" class="label">1</text>
+  <text x="400" y="300" text-anchor="middle" font-size="16" class="label">2</text>
+  <text x="451" y="305" text-anchor="middle" font-size="16" class="label">3</text>
+
+  <!-- Slide badge above cover -->
+  <rect x="300" y="130" width="200" height="28" rx="14" fill="#2563EB"/>
+  <text x="400" y="150" text-anchor="middle" font-size="13" fill="#FFFFFF" font-family="Arial,Helvetica,sans-serif" font-weight="700">SLIDE 3 CARDS IN</text>
+  <path d="M400 158 V175" class="arrow"/>
+
+  <!-- Left tip -->
+  <rect x="70" y="280" width="170" height="110" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+  <text x="155" y="312" text-anchor="middle" font-size="13" class="label">won't fit?</text>
+  <text x="155" y="334" text-anchor="middle" font-size="12" class="small">unfold · make</text>
+  <text x="155" y="354" text-anchor="middle" font-size="12" class="small">pocket TALLER</text>
+  <text x="155" y="376" text-anchor="middle" font-size="12" class="label" fill="#2563EB" style="fill:#2563EB">do not force</text>
+
+  <!-- Right tip -->
+  <rect x="560" y="280" width="160" height="110" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+  <text x="640" y="312" text-anchor="middle" font-size="13" class="label">after load</text>
+  <text x="640" y="334" text-anchor="middle" font-size="12" class="small">CLOSE cover</text>
+  <text x="640" y="354" text-anchor="middle" font-size="12" class="small">tuck into pocket</text>
+  <text x="640" y="376" text-anchor="middle" font-size="12" class="label" fill="#2563EB" style="fill:#2563EB">if design allows</text>
+
+  <text x="400" y="440" text-anchor="middle" font-size="13" class="label" fill="#2563EB" style="fill:#2563EB">POCKET LIP</text>
+  <text x="400" y="505" text-anchor="middle" font-size="14" class="small">Library-card scraps · same billfold silhouette</text>
+  <text x="400" y="575" text-anchor="middle" font-size="17" class="label">Three cards in · then close · no tape</text>
+</svg>

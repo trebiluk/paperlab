@@ -8,6 +8,24 @@ export type ShopNote = {
 
 export const UPDATES: ShopNote[] = [
   {
+    date: "2026-09-23",
+    title: "Billfold diagrams are classroom-correct",
+    items: [
+      "Billfold now shows five diagrams: portrait valleys, pocket·cover·hems, load three cards, ten-shake prove, one change · retest · alias.",
+      "Easy lines match the Curriculum wallet lock. Alias comes after the prove. Copy paper only.",
+      "A board strip sits at the top of the plan.",
+    ],
+  },
+  {
+    date: "2026-09-23",
+    title: "Folding techniques diagrams are classroom-correct",
+    items: [
+      "Folding techniques now shows five scrap diagrams: flat scrap, valley toward you, mountain away, fold-and-unfold + tuck, and dashed = valley.",
+      "Easy lines match the Curriculum steps lock. One crease is valley on one side and mountain on the other.",
+      "A board strip sits at the top of the plan. Quiz pass is still 3 out of 4.",
+    ],
+  },
+  {
     date: "2026-09-22",
     title: "Easy steps read darker",
     items: [

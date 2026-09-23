@@ -16,7 +16,7 @@ function Sheet(props: { x: number; y: number; w: number; h: number; fill?: strin
 export function CraftScene(id: string) {
   if (id.startsWith("kite")) return <Kite step={id} />;
   if (id.startsWith("bag")) return <Bag step={id} />;
-  if (id.startsWith("wallet")) return <Wallet step={id} />;
+  if (id.startsWith("wallet") || id === "portrait-valleys" || id === "pocket-cover-hems" || id === "load-cards" || id === "ten-shake" || id === "one-change-retest") return <Wallet step={id} />;
   if (id.startsWith("frame")) return <Frame step={id} />;
   if (id.startsWith("flower")) return <Flower step={id} />;
   if (id.startsWith("grabber")) return <Grabber step={id} />;
@@ -136,7 +136,7 @@ function Bag({ step }: { step: string }) {
 }
 
 function Wallet({ step }: { step: string }) {
-  if (step === "wallet-fold") {
+  if (step === "portrait-valleys") {
     return (
       <g>
         <ViewChip label="DEV" />
@@ -147,7 +147,7 @@ function Wallet({ step }: { step: string }) {
       </g>
     );
   }
-  if (step === "wallet-pocket") {
+  if (step === "pocket-cover-hems") {
     return (
       <g>
         <ViewChip label="FRONT" />
@@ -159,7 +159,7 @@ function Wallet({ step }: { step: string }) {
       </g>
     );
   }
-  if (step === "wallet-cards") {
+  if (step === "load-cards") {
     return (
       <g>
         <ViewChip label="FRONT" />

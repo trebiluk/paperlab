@@ -126,7 +126,7 @@ export type LoopPhase = (typeof DESIGN_LOOP)[number]["id"];
 
 /** Map a lab step onto the design loop so the class can see where they are. */
 export function loopPhaseFor(visual: string, index: number, count: number): LoopPhase {
-  if (visual === "iterate") return "improve";
+  if (visual === "iterate" || visual.includes("retest")) return "improve";
   if (visual.includes("ideas")) return "imagine";
   if (visual === "spec-line" || visual === "beam-crew" || visual === "tower-spec") return "ask";
   if (

@@ -80,24 +80,56 @@ export const STUDIO_GUIDES: Record<string, GuidePhase[]> = {
   ],
   folds: [
     {
-      visual: "studio-folds-valley",
-      title: "Valley",
-      lines: ["Fold the paper toward you", "Press the crease with a fingernail", "That crease is a valley"],
+      visual: "scrap-flat",
+      title: "Scrap flat",
+      lines: [
+        "Put one scrap flat on the desk",
+        "Point to the left edge and the right edge",
+        "Press creases on scrap only. Save the good sheet",
+      ],
     },
     {
-      visual: "studio-folds-mountain",
-      title: "Mountain",
-      lines: ["Flip the fold so the crease points up", "That crease is a mountain"],
+      visual: "valley-toward",
+      title: "Valley toward you",
+      lines: [
+        "Fold the top edge toward you",
+        "Line the edges up",
+        "Press the crease with a fingernail",
+        "Say valley (like a V · pliegue en valle)",
+        "Leave it folded so you can see the V",
+      ],
     },
     {
-      visual: "studio-folds-book",
-      title: "Book fold",
-      lines: ["Fold edge to edge like a book", "Open it", "The line stays"],
+      visual: "mountain-away",
+      title: "Mountain away",
+      lines: [
+        "Unfold the scrap once",
+        "Flip the sheet over",
+        "Fold the same line away from you",
+        "Press the crease hard",
+        "Say mountain (like a peak · pliegue en montaña)",
+        "Check: one crease · valley on one side · mountain on the other",
+      ],
     },
     {
-      visual: "studio-folds-valley",
-      title: "Say it",
-      lines: ["Point to a line", "Say valley or mountain", "A partner checks you"],
+      visual: "fold-unfold-tuck",
+      title: "Fold-and-unfold + tuck",
+      lines: [
+        "On a new scrap, fold edge to edge. Press. Unfold. That is fold-and-unfold",
+        "Fold two corners in to make a small pocket",
+        "Tuck a flap into the pocket. That is a tuck",
+        "Pinch several creases at once so the middle sinks. That is a collapse",
+      ],
+    },
+    {
+      visual: "dashed-valley-match",
+      title: "Dashed = valley",
+      lines: [
+        "Look at a dashed fold line on the screen or board",
+        "Point and say: dashed = valley",
+        "Name six moves: valley · mountain · crease · fold-and-unfold · collapse · tuck",
+        "Take the fold quiz. Pass = 3 out of 4",
+      ],
     },
   ],
   draw: [

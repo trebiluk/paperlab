@@ -76,6 +76,23 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
 
   return (
     <div className="mt-6" data-student-guide={lab.id}>
+      {lab.id === "folds" ? (
+        <img
+          src={`${import.meta.env.BASE_URL}images/plans/folds/folds-steps-board.svg`}
+          alt="Overview of five fold diagrams: scrap flat, valley toward you, mountain away, fold-and-unfold plus tuck, and dashed equals valley."
+          width={1680}
+          height={440}
+          className="mb-8 h-auto w-full rounded-xl"
+        />
+      ) : lab.id === "wallet" ? (
+        <img
+          src={`${import.meta.env.BASE_URL}images/plans/wallet/wallet-steps-board.svg`}
+          alt="Overview of five billfold diagrams: portrait valleys, pocket cover hems, load cards, ten-shake prove, one change retest alias."
+          width={1680}
+          height={440}
+          className="mb-8 h-auto w-full rounded-xl"
+        />
+      ) : null}
       <section aria-labelledby="plan-need">
         <h2 id="plan-need" className="font-display text-2xl font-semibold text-ink">
           You need

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
+  <title id="title">Step 5: One change and retest</title>
+  <desc id="desc">Change one thing: deeper pocket or tighter side hems. Reload three cards. Shake ten times again. Wallet still opens and closes. No hidden tape. Alias may appear small on the cover after prove.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+    </marker>
+    <style>
+      .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
+      .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
+      .arrow { stroke:#2563EB; stroke-width:6; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="800" height="620" fill="#EEF2F7"/>
+  <circle cx="88" cy="76" r="30" fill="#2563EB"/>
+  <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">5</text>
+  <text x="132" y="82" font-size="30" class="label">One change · retest</text>
+  <text x="132" y="108" font-size="16" class="small">Change ONE · reload 3 · shake 10 · still opens · no tape</text>
+  <rect x="56" y="126" width="688" height="410" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
+
+  <!-- Panel A: choose ONE change -->
+  <rect x="76" y="148" width="300" height="230" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+  <text x="226" y="178" text-anchor="middle" font-size="15" class="label">A · CHANGE ONE</text>
+
+  <!-- Option 1: deeper pocket -->
+  <rect x="96" y="195" width="120" height="140" rx="10" fill="#EEF2F7" stroke="#2563EB" stroke-width="3"/>
+  <rect x="112" y="220" width="88" height="50" fill="#F8FAFC" stroke="#0A0E17" stroke-width="3"/>
+  <rect x="112" y="250" width="88" height="55" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3"/>
+  <path d="M156 275 V300" class="arrow"/>
+  <text x="156" y="320" text-anchor="middle" font-size="11" class="label">DEEPER</text>
+  <text x="156" y="335" text-anchor="middle" font-size="11" class="label">POCKET</text>
+
+  <!-- OR -->
+  <text x="226" y="270" text-anchor="middle" font-size="14" class="label" fill="#2563EB" style="fill:#2563EB">OR</text>
+
+  <!-- Option 2: tighter hems -->
+  <rect x="236" y="195" width="120" height="140" rx="10" fill="#EEF2F7" stroke="#2563EB" stroke-width="3"/>
+  <rect x="252" y="230" width="88" height="70" fill="#F8FAFC" stroke="#0A0E17" stroke-width="3"/>
+  <rect x="252" y="230" width="14" height="70" fill="#DBEAFE" stroke="#0A0E17" stroke-width="2"/>
+  <rect x="326" y="230" width="14" height="70" fill="#DBEAFE" stroke="#0A0E17" stroke-width="2"/>
+  <path d="M245 265 H258" class="arrow"/>
+  <path d="M347 265 H334" class="arrow"/>
+  <text x="296" y="320" text-anchor="middle" font-size="11" class="label">TIGHTER</text>
+  <text x="296" y="335" text-anchor="middle" font-size="11" class="label">HEMS</text>
+
+  <!-- Panel B: retest -->
+  <rect x="400" y="148" width="320" height="230" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+  <text x="560" y="178" text-anchor="middle" font-size="15" class="label">B · RETEST</text>
+
+  <!-- Closed wallet after change + alias small -->
+  <rect x="470" y="200" width="180" height="90" fill="#F8FAFC" stroke="#0A0E17" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="470" y="200" width="180" height="50" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3"/>
+  <rect x="470" y="200" width="14" height="90" fill="#DBEAFE" stroke="#0A0E17" stroke-width="2"/>
+  <rect x="636" y="200" width="14" height="90" fill="#DBEAFE" stroke="#0A0E17" stroke-width="2"/>
+  <!-- small alias after prove -->
+  <rect x="510" y="212" width="100" height="22" rx="4" fill="#FFFFFF" stroke="#0A0E17" stroke-width="2"/>
+  <text x="560" y="228" text-anchor="middle" font-size="11" class="small">alias</text>
+  <!-- cards stay -->
+  <rect x="500" y="258" width="30" height="20" rx="2" fill="#FEF3C7" stroke="#0A0E17" stroke-width="2"/>
+  <rect x="540" y="258" width="30" height="20" rx="2" fill="#FDE68A" stroke="#0A0E17" stroke-width="2"/>
+  <rect x="580" y="258" width="30" height="20" rx="2" fill="#FEF3C7" stroke="#0A0E17" stroke-width="2"/>
+
+  <rect x="470" y="305" width="180" height="36" rx="18" fill="#2563EB"/>
+  <text x="560" y="329" text-anchor="middle" font-size="16" fill="#FFFFFF" font-family="Arial,Helvetica,sans-serif" font-weight="700">SHAKE 10 AGAIN</text>
+  <text x="560" y="360" text-anchor="middle" font-size="12" class="small">reload 3 cards first</text>
+
+  <!-- Bottom checklist strip -->
+  <rect x="76" y="396" width="644" height="110" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+  <text x="100" y="428" font-size="15" class="label">C · AFTER TEST</text>
+  <rect x="100" y="445" width="170" height="44" rx="10" fill="#DCFCE7" stroke="#0A0E17" stroke-width="2"/>
+  <text x="185" y="473" text-anchor="middle" font-size="13" class="label">opens + closes</text>
+  <rect x="290" y="445" width="170" height="44" rx="10" fill="#DCFCE7" stroke="#0A0E17" stroke-width="2"/>
+  <text x="375" y="473" text-anchor="middle" font-size="13" class="label">3 cards stay</text>
+  <rect x="480" y="445" width="210" height="44" rx="10" fill="#FEF3C7" stroke="#0A0E17" stroke-width="2"/>
+  <text x="585" y="473" text-anchor="middle" font-size="13" class="label">NO hidden tape</text>
+
+  <text x="400" y="575" text-anchor="middle" font-size="17" class="label">One change only · prove again · alias after prove</text>
+</svg>

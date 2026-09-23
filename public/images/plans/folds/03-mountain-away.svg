@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
+  <title id="title">Step 3: Mountain fold away</title>
+  <desc id="desc">Unfold the scrap, flip it over, and fold the same crease away from you. One crease is a valley on one side and a mountain (peak) on the other. Label: MOUNTAIN / pliegue en montaña.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+    </marker>
+    <style>
+      .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
+      .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
+      .crease { stroke:#0A0E17; stroke-width:4; stroke-dasharray:11 9; opacity:.75; stroke-linecap:round; fill:none; }
+      .arrow { stroke:#2563EB; stroke-width:7; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="800" height="620" fill="#EEF2F7"/>
+  <circle cx="88" cy="76" r="30" fill="#2563EB"/>
+  <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">3</text>
+  <text x="132" y="82" font-size="32" class="label">Mountain fold away</text>
+  <text x="132" y="108" font-size="16" class="small">Unfold · flip · same line away · dual-side crease</text>
+  <rect x="56" y="126" width="688" height="410" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
+
+  <!-- LEFT PANEL: THIS SIDE = mountain (fold away, peak up) -->
+  <rect x="90" y="160" width="300" height="280" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+  <text x="240" y="188" text-anchor="middle" font-size="15" class="label">THIS SIDE</text>
+
+  <!-- Scrap folded away — mountain peak silhouette (zig like ^) -->
+  <!-- Bottom leaf -->
+  <polygon points="140,360 240,250 340,360" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Show ridge as solid peak line meeting at top -->
+  <polyline points="140,360 240,250 340,360" fill="none" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Tint the near face slightly -->
+  <polygon points="140,360 240,250 240,380" fill="#DBEAFE" stroke="#0A0E17" stroke-width="4" stroke-linejoin="round" opacity="0.85"/>
+  <polygon points="340,360 240,250 240,380" fill="#F8FAFC" stroke="#0A0E17" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- Peak mark -->
+  <circle cx="240" cy="250" r="7" fill="#2563EB"/>
+  <path d="M240 220 V245" class="arrow"/>
+  <text x="240" y="210" text-anchor="middle" font-size="13" class="label" fill="#2563EB" style="fill:#2563EB">AWAY</text>
+
+  <rect x="145" y="400" width="190" height="28" rx="8" fill="#DBEAFE" stroke="#0A0E17" stroke-width="2"/>
+  <text x="240" y="420" text-anchor="middle" font-size="14" class="label">MOUNTAIN · peak</text>
+
+  <!-- RIGHT PANEL: OTHER SIDE = valley -->
+  <rect x="410" y="160" width="300" height="280" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+  <text x="560" y="188" text-anchor="middle" font-size="15" class="label">FLIP · OTHER SIDE</text>
+
+  <!-- Same scrap silhouette, now valley V -->
+  <rect x="460" y="240" width="200" height="140" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5"/>
+  <!-- Folded flap meeting as V -->
+  <polyline points="460,240 560,310 660,240" fill="none" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+  <polygon points="460,240 560,310 660,240 660,380 460,380" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Inner V valley shading -->
+  <polygon points="480,250 560,300 640,250" fill="#DBEAFE" opacity="0.7"/>
+  <line x1="460" y1="240" x2="660" y2="240" class="crease"/>
+
+  <polyline points="520,270 560,300 600,270" fill="none" stroke="#2563EB" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="560" y="340" text-anchor="middle" font-size="14" class="label" fill="#2563EB" style="fill:#2563EB">VALLEY · V</text>
+
+  <rect x="465" y="400" width="190" height="28" rx="8" fill="#DBEAFE" stroke="#0A0E17" stroke-width="2"/>
+  <text x="560" y="420" text-anchor="middle" font-size="14" class="label">same crease</text>
+
+  <!-- Center bridge label -->
+  <text x="400" y="500" text-anchor="middle" font-size="16" class="label">ONE crease · mountain one side · valley the other</text>
+  <text x="400" y="525" text-anchor="middle" font-size="14" class="small">Say: MOUNTAIN (pliegue en montaña)</text>
+
+  <text x="400" y="575" text-anchor="middle" font-size="18" class="label">Fold the same line AWAY · press hard</text>
+</svg>
