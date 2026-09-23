@@ -11,7 +11,7 @@ export const UPDATES: ShopNote[] = [
     date: "2026-09-23",
     title: "Start here shows the steps",
     items: [
-      "Start here opens the scrap steps: a picture, then one fold. Extra help on the student page does not say IEP or 504.",
+      "Start here opens the scrap steps: a picture, then one fold. Extra help stays one short line.",
     ],
   },
   {
