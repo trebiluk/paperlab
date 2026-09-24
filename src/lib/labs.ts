@@ -129,7 +129,7 @@ const CORE_LABS: Lab[] = [
       "Drawing has line types. Folding has moves. Dashed on a development is a valley.",
       "A crease is a permanent line in the sheet. Valley and mountain are the same crease from opposite sides.",
     ),
-    challenge: "On scrap: show a valley and a mountain on two sides of one crease. Name six moves.",
+    challenge: "On scrap: one crease that is a valley on one side and a mountain on the other. Then the fold quiz, 3 out of 4.",
     spec: "Pass: fold quiz 3/4, plus one crease that is valley on one side and mountain on the other.",
     studio: { to: "/fold" },
     steps: [],

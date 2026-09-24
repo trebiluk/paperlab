@@ -64,7 +64,53 @@ function LabPage() {
 
   return (
     <LabStage lab={lab}>
-      <div className="flex flex-wrap items-center justify-end gap-3">
+      <p className="max-w-2xl text-sm text-ink">
+        <span className="font-medium">Shop rule. </span>
+        {shopRule(lab)}
+      </p>
+
+      {lab.steps.length === 0 ? <StudentStepGuide lab={lab} /> : null}
+
+      {lab.studio ? (
+        <div className="mt-8 rounded-xl bg-surface p-5 shadow-card sm:p-7">
+          <h2 className="font-display text-2xl font-semibold">
+            {lab.id === "folds"
+              ? "Fold quiz"
+              : lab.steps.length === 0
+                ? "See a move bigger"
+                : "Open the studio"}
+          </h2>
+          <p className="mt-2 text-ink-soft">
+            {lab.id === "folds"
+              ? "Do the folds above on scrap. Then answer the quiz. Pass is 3 out of 4."
+              : lab.steps.length === 0
+                ? "Do the steps above on scrap. Tap a move if you want the picture bigger."
+                : family
+                  ? `Diagrams, a stepper, and printables for this ${family.name.toLowerCase()} lab live in the studio.`
+                  : "Diagrams, a stepper, and printables for this lab live in the studio."}
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Button asChild>
+              <Link to={lab.studio.to} search={lab.studio.search}>
+                {lab.id === "folds" ? "Fold quiz" : lab.steps.length === 0 ? "Bigger picture" : "Start the make"}
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+            {role !== "student" ? (
+              <Button asChild variant="secondary">
+                <Link to="/plans/$id" params={{ id: lab.id }}>
+                  <ClipboardList className="size-4" />
+                  Lesson plan
+                </Link>
+              </Button>
+            ) : null}
+          </div>
+        </div>
+      ) : lab.steps.length > 0 ? (
+        <Stepper key={lab.id} lab={lab} nextId={next.id} nextName={next.name} />
+      ) : null}
+
+      <div className="mt-8 flex flex-wrap items-center justify-end gap-3">
         <button
           type="button"
           onClick={() => toggleLabDone(lab.id)}
@@ -101,52 +147,12 @@ function LabPage() {
         </div>
       </div>
 
-      {easy || !lab.challenge || !lab.spec ? null : (
+      {role === "student" || easy || !lab.challenge || !lab.spec ? null : (
         <p className="mt-3 max-w-2xl rounded-lg bg-bg-warm px-4 py-3 text-sm text-ink-soft">
           <span className="font-medium text-ink">Spec. </span>
           {lab.spec}
         </p>
       )}
-
-      <p className="mt-3 max-w-2xl text-sm text-muted">
-        <span className="font-medium text-ink">Shop rule. </span>
-        {shopRule(lab)}
-      </p>
-
-      {lab.steps.length === 0 ? <StudentStepGuide lab={lab} /> : null}
-
-      {lab.studio ? (
-        <div className="mt-8 rounded-xl bg-surface p-5 shadow-card sm:p-7">
-          <h2 className="font-display text-2xl font-semibold">
-            {lab.steps.length === 0 ? "See a move bigger" : "Open the studio"}
-          </h2>
-          <p className="mt-2 text-ink-soft">
-            {lab.steps.length === 0
-              ? "Do the steps above on scrap. Tap a move if you want the picture bigger."
-              : family
-                ? `Diagrams, a stepper, and printables for this ${family.name.toLowerCase()} lab live in the studio.`
-                : "Diagrams, a stepper, and printables for this lab live in the studio."}
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Button asChild>
-              <Link to={lab.studio.to} search={lab.studio.search}>
-                {lab.steps.length === 0 ? "Bigger picture" : "Start the make"}
-                <ArrowRight className="size-4" />
-              </Link>
-            </Button>
-            {role !== "student" ? (
-              <Button asChild variant="secondary">
-                <Link to="/plans/$id" params={{ id: lab.id }}>
-                  <ClipboardList className="size-4" />
-                  Lesson plan
-                </Link>
-              </Button>
-            ) : null}
-          </div>
-        </div>
-      ) : lab.steps.length > 0 ? (
-        <Stepper key={lab.id} lab={lab} nextId={next.id} nextName={next.name} />
-      ) : null}
 
       {role !== "student" ? <RoomNotes labId={lab.id} /> : null}
 

@@ -83,7 +83,7 @@ function Home() {
           </div>
           <p className="text-sm text-muted">
             {made === 0
-              ? "Start the shop with folding techniques — six moves on scrap."
+              ? "Start the shop with folding techniques — valley and mountain on scrap."
               : allMade
                 ? `All ${PERIOD_PATH.length} made on this Chromebook.`
                 : `${made} of ${PERIOD_PATH.length} made on this Chromebook · next is ${next?.name ?? "the labs"}.`}
