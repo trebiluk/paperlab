@@ -121,7 +121,7 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
               height={520}
               data-diagram={index + 1}
               data-diagram-file={file}
-              className="h-auto w-full rounded-xl bg-white object-contain"
+              className="h-auto w-full rounded-xl bg-surface object-contain"
             />
             <figcaption className="mt-3 text-sm font-medium text-pine">
               Diagram {index + 1} · {phase.title}

@@ -114,7 +114,7 @@ function LabPage() {
           aria-pressed={done}
           className={cn(
             "inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-sm font-medium",
-            done ? "bg-ok/15 text-ok" : "bg-surface text-ink-soft shadow-card",
+            done ? "bg-ok/15 text-ok" : "bg-pine text-pine-fg",
           )}
         >
           <Check className="size-4" aria-hidden />

@@ -28,6 +28,8 @@ const NAV = [
   { to: "/standards", label: "MST 5" },
 ] as const;
 
+const STUDENT_NAV = NAV.filter((item) => item.to === "/labs" || item.to === "/skills" || item.to === "/studio");
+
 function isNavActive(pathname: string, to: string) {
   return pathname === to || pathname.startsWith(`${to}/`);
 }
@@ -37,6 +39,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const role = useRole();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const slim = role === "student";
+  const links = slim ? STUDENT_NAV : NAV;
   const onMake = /^\/labs\/[^/]+$/.test(pathname);
 
   return (
@@ -66,7 +69,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             </span>
           </Link>
           <nav className="ml-2 hidden items-center gap-1 lg:flex" aria-label="Main">
-            {NAV.map((item) => {
+            {links.map((item) => {
               const active = isNavActive(pathname, item.to);
               return (
                 <Link
@@ -85,7 +88,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               );
             })}
           </nav>
-          <SiteMenu pathname={pathname} paper={paper} />
+          <SiteMenu pathname={pathname} paper={paper} links={links} />
         </div>
         <div className="mx-auto hidden max-w-6xl gap-2 px-4 pb-2 sm:px-6 lg:flex lg:flex-row lg:items-center lg:justify-between">
           <ClassroomBar compact={slim} />
@@ -97,30 +100,44 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {onMake ? null : (
       <footer className="no-print mx-auto max-w-6xl px-4 py-12 text-sm text-muted sm:px-6">
         <div className="cut-rule mb-6 max-w-xs" />
-        <p>BertyBot’s PaperLab · Technology education on a sheet of printer paper.</p>
-        <p className="mt-1">NYSED MST Standard 5 · Grades 2–8 · scissors, glue, and a period.</p>
-        <p className="mt-2">
-          <Link to="/skills" className="font-medium text-pine">
-            Skills · Gold XP
-          </Link>
-          <span className="text-muted"> · practice on this Chromebook · the 1–4 lives in </span>
-          <a href={TECHWORKS_URL} className="font-medium text-pine" target="_blank" rel="noreferrer">
-            {TECHWORKS_NAME}
-          </a>
-        </p>
-        <p className="mt-2">
-          <Link to="/updates" className="font-medium text-pine">
-            Shop notes
-          </Link>
-          <span className="text-muted"> · what changed, in class order</span>
-        </p>
+        <p>BertyBot’s PaperLab · one sheet of printer paper.</p>
+        {slim ? (
+          <p className="mt-1">Mark a lab made on this Chromebook. That is Gold.</p>
+        ) : (
+          <>
+            <p className="mt-1">NYSED MST Standard 5 · Grades 2–8 · scissors, glue, and a period.</p>
+            <p className="mt-2">
+              <Link to="/skills" className="font-medium text-pine">
+                Skills · Gold XP
+              </Link>
+              <span className="text-muted"> · practice on this Chromebook · the 1–4 lives in </span>
+              <a href={TECHWORKS_URL} className="font-medium text-pine" target="_blank" rel="noreferrer">
+                {TECHWORKS_NAME}
+              </a>
+            </p>
+            <p className="mt-2">
+              <Link to="/updates" className="font-medium text-pine">
+                Shop notes
+              </Link>
+              <span className="text-muted"> · what changed, in class order</span>
+            </p>
+          </>
+        )}
       </footer>
       )}
     </div>
   );
 }
 
-function SiteMenu({ pathname, paper }: { pathname: string; paper: PaperId }) {
+function SiteMenu({
+  pathname,
+  paper,
+  links,
+}: {
+  pathname: string;
+  paper: PaperId;
+  links: readonly { to: string; label: string }[];
+}) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -147,7 +164,7 @@ function SiteMenu({ pathname, paper }: { pathname: string; paper: PaperId }) {
           <GoldChip />
         </div>
         <nav className="flex flex-col p-2" aria-label="Main">
-          {NAV.map((item) => {
+          {links.map((item) => {
             const active = isNavActive(pathname, item.to);
             return (
               <Link

@@ -4,7 +4,7 @@ import { LabCard } from "@/components/lab-card";
 import { Button } from "@/components/ui/button";
 import { pageTitle } from "@/lib/brand";
 import { FAMILIES, GRADE_BANDS, LABS, getLab, labFitsBand, parseGradeBand, type GradeBandId, type LabFamily } from "@/lib/labs";
-import { useReadLevel } from "@/lib/lesson";
+import { useReadLevel, useRole } from "@/lib/lesson";
 import { countDone, nextUndoneId, useDoneLabs } from "@/lib/progress";
 import { PERIOD_PATH, UNITS } from "@/lib/units";
 import { goldXp, xpIntoLevel } from "@/lib/skills";
@@ -28,6 +28,7 @@ export const Route = createFileRoute("/labs/")({
 
 function LabsIndex() {
   const read = useReadLevel();
+  const student = useRole() === "student";
   const { family, grade } = Route.useSearch();
   const doneSet = useDoneLabs();
   const list = family
@@ -42,15 +43,15 @@ function LabsIndex() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       <p className="text-sm font-medium tracking-wide text-pine">
-        {LABS.length} paper labs · MST Standard 5
+        {student ? "Pick one make." : `${LABS.length} paper labs · MST Standard 5`}
       </p>
       <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-        Pick a make.
+        {student ? "What do you want to make?" : "Pick a make."}
       </h1>
       <p className="mt-4 max-w-2xl text-ink-soft">
-        Every lab is one sheet (or a square cut from one), a written spec, and a
-        test. Switch Easy / Class / Stretch in the bar. Helpers see extra notes
-        on the lab page.
+        {student
+          ? "Open one lab. Follow the picture. One move each line. Tap We made this when it matches."
+          : "Every lab is one sheet (or a square cut from one), a written spec, and a test. Switch Easy / Class / Stretch in the bar. Helpers see extra notes on the lab page."}
       </p>
 
       <div className="mt-6 flex flex-wrap items-end justify-between gap-3">

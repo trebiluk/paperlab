@@ -23,13 +23,15 @@ export function ClassroomBar({
       )}
     >
       {hideGold ? null : <GoldChip compact />}
-      <Segmented
-        label="Reading"
-        value={read}
-        full={stacked}
-        options={READ_LEVELS.map((l) => ({ id: l.id, name: l.name, title: l.note }))}
-        onChange={(id) => setReadLevel(id as ReadLevel)}
-      />
+      {role === "student" ? null : (
+        <Segmented
+          label="Reading"
+          value={read}
+          full={stacked}
+          options={READ_LEVELS.map((l) => ({ id: l.id, name: l.name, title: l.note }))}
+          onChange={(id) => setReadLevel(id as ReadLevel)}
+        />
+      )}
       <Segmented
         label="Room"
         value={role}

@@ -9,7 +9,7 @@ import { APP_NAME, APP_TAGLINE } from "@/lib/brand";
 import { LATEST_UPDATE } from "@/lib/changelog";
 import { FAMILIES, LABS, getLab } from "@/lib/labs";
 import { MST5_STATEMENT } from "@/lib/mst";
-import { useReadLevel } from "@/lib/lesson";
+import { useReadLevel, useRole } from "@/lib/lesson";
 import { countDone, nextUndoneId, useDoneLabs } from "@/lib/progress";
 import { PERIOD_PATH, UNITS } from "@/lib/units";
 import { goldXp, xpIntoLevel } from "@/lib/skills";
@@ -26,6 +26,8 @@ const FEATURED = ["kite", "bag", "flower", "grabber", "wallet", "frame", "beam",
 
 function Home() {
   const read = useReadLevel();
+  const role = useRole();
+  const student = role === "student";
   const doneSet = useDoneLabs();
   const made = countDone(PERIOD_PATH, doneSet);
   const next = getLab(nextUndoneId(PERIOD_PATH, doneSet));
@@ -37,16 +39,15 @@ function Home() {
       <section className="mx-auto grid max-w-6xl items-center gap-10 overflow-x-clip px-4 py-10 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:py-16">
         <div className="hero-copy flex flex-col gap-6">
           <p className="text-sm font-medium tracking-wide text-pine">
-            Technology education · Grades 2–8 · NYSED MST Standard 5
+            {student ? "One sheet. One period." : "Technology education · Grades 2–8 · NYSED MST Standard 5"}
           </p>
           <h1 className="font-display text-[2.4rem] leading-[1.08] font-semibold tracking-tight text-ink sm:text-5xl">
-            Paper is the material. You are the factory.
+            {student ? "Make something with one sheet." : "Paper is the material. You are the factory."}
           </h1>
           <p className="max-w-xl text-lg text-ink-soft">
-            {APP_TAGLINE} {LABS.length} paper labs — kites, bags, frames,
-            grabbers, darts, boats — with a written challenge on every make,
-            Easy / Class / Stretch reading, ELL frames, extra-help notes, and
-            helper cards for a teaching assistant.
+            {student
+              ? "Tap Start here. The first job is a valley fold, then a mountain fold, on scrap."
+              : `${APP_TAGLINE} ${LABS.length} paper labs — kites, bags, frames, grabbers, darts, boats — with a written challenge on every make, Easy / Class / Stretch reading, ELL frames, extra-help notes, and helper cards for a teaching assistant.`}
           </p>
           <ul className="flex flex-wrap gap-2">
             {["One sheet", "Scissors", "Glue", "A period"].map((chip) => (
@@ -74,22 +75,27 @@ function Home() {
                 </Link>
               </Button>
             )}
-            <Button asChild variant="secondary" size="lg">
-              <Link to="/plans">Teacher plans</Link>
-            </Button>
-            <Button asChild variant="ghost" size="lg">
-              <Link to="/skills">Skills · Gold</Link>
-            </Button>
+            {student ? null : (
+              <>
+                <Button asChild variant="secondary" size="lg">
+                  <Link to="/plans">Teacher plans</Link>
+                </Button>
+                <Button asChild variant="ghost" size="lg">
+                  <Link to="/skills">Skills · Gold</Link>
+                </Button>
+              </>
+            )}
           </div>
           <p className="text-sm text-muted">
-            {made === 0
+            {student && made === 0
+              ? "When the fold matches the picture, tap We made this."
+              : made === 0
               ? "Start the shop with folding techniques — valley and mountain on scrap."
               : allMade
                 ? `All ${PERIOD_PATH.length} made on this Chromebook.`
                 : `${made} of ${PERIOD_PATH.length} made on this Chromebook · next is ${next?.name ?? "the labs"}.`}
-            {gold.xp > 0
-              ? ` · ${gold.xp} Gold · ${gold.band}`
-              : " Gold XP starts when you mark a lab made."}
+            {student || gold.xp === 0 ? "" : ` · ${gold.xp} Gold · ${gold.band}`}
+            {!student && gold.xp === 0 ? " Gold XP starts when you mark a lab made." : ""}
           </p>
         </div>
         <div className="relative overflow-hidden rounded-xl bg-bg-warm p-2 shadow-card sm:p-3">
@@ -100,6 +106,7 @@ function Home() {
         </div>
       </section>
 
+      {student ? null : (
       <section className="mx-auto max-w-6xl px-4 sm:px-6">
         <blockquote className="rounded-xl bg-surface p-5 text-base leading-relaxed text-ink-soft shadow-card sm:p-7">
           <p className="text-xs font-medium tracking-wide text-pine">MST Standard 5 · Technology</p>
@@ -110,7 +117,10 @@ function Home() {
           </Link>
         </blockquote>
       </section>
+      )}
 
+      {student ? null : (
+      <>
       <section className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
         <div className="rounded-xl bg-surface p-5 shadow-card sm:flex sm:items-start sm:justify-between sm:gap-6 sm:p-6">
           <div>
@@ -243,6 +253,8 @@ function Home() {
           </div>
         </div>
       </section>
+      </>
+      )}
     </AppShell>
   );
 }

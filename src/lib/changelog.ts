@@ -9,6 +9,13 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-24",
+    title: "Start here is the first tap",
+    items: [
+      "A student sees one job first: valley, then mountain, on scrap. Tap We made this when it matches. Teacher pages stay on the teacher room.",
+    ],
+  },
+  {
+    date: "2026-09-24",
     title: "One shop style on every lab",
     items: [
       "Every lab uses the same step page. Pictures use the shop colors: paper, ink, and pine.",
