@@ -1,66 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
-  <title id="title">Step 1: Portrait sheet — long valley and mid valley</title>
-  <desc id="desc">Hold one sheet tall (portrait). Fold in half the long way, press, open. Fold a mid-height valley across, press, open. Lower half is the pocket zone.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
-    </marker>
-    <style>
-      .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
-      .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
-      .crease { stroke:#0A0E17; stroke-width:4; stroke-dasharray:11 9; opacity:.75; stroke-linecap:round; fill:none; }
-      .arrow { stroke:#2563EB; stroke-width:7; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
-    </style>
-  </defs>
-  <rect x="0" y="0" width="800" height="620" fill="#EEF2F7"/>
-  <circle cx="88" cy="76" r="30" fill="#2563EB"/>
-  <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">1</text>
-  <text x="132" y="82" font-size="30" class="label">Portrait · long valley · mid valley</text>
-  <text x="132" y="108" font-size="16" class="small">1 sheet tall · fold long way · mid crease · open both</text>
-  <rect x="56" y="126" width="688" height="410" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
-
-  <!-- Portrait sheet silhouette W240 H320 (shared 1→5 open) -->
-  <rect x="280" y="150" width="240" height="320" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
-
-  <!-- Lower half = pocket zone tint -->
-  <rect x="280" y="310" width="240" height="160" fill="#DBEAFE" opacity="0.55"/>
-  <rect x="280" y="310" width="240" height="160" fill="none" stroke="#2563EB" stroke-width="3" stroke-dasharray="6 5"/>
-
-  <!-- LONG valley (vertical center) — fold in half long way -->
-  <line x1="400" y1="150" x2="400" y2="470" class="crease"/>
-  <!-- MID valley (horizontal mid-height) -->
-  <line x1="280" y1="310" x2="520" y2="310" class="crease"/>
-
-  <!-- Press marks on long crease -->
-  <g stroke="#0A0E17" stroke-width="3" stroke-linecap="round">
-    <line x1="388" y1="200" x2="412" y2="212"/>
-    <line x1="388" y1="240" x2="412" y2="252"/>
-    <line x1="388" y1="360" x2="412" y2="372"/>
-    <line x1="388" y1="400" x2="412" y2="412"/>
-  </g>
-
-  <!-- LONG VALLEY callout -->
-  <path d="M400 200 H200" class="arrow"/>
-  <rect x="70" y="170" width="130" height="70" rx="12" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3"/>
-  <text x="135" y="200" text-anchor="middle" font-size="14" class="label">LONG</text>
-  <text x="135" y="222" text-anchor="middle" font-size="14" class="label">VALLEY</text>
-
-  <!-- MID VALLEY callout -->
-  <path d="M520 310 H640" class="arrow"/>
-  <rect x="640" y="275" width="90" height="70" rx="12" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3"/>
-  <text x="685" y="305" text-anchor="middle" font-size="14" class="label">MID</text>
-  <text x="685" y="327" text-anchor="middle" font-size="14" class="label">VALLEY</text>
-
-  <!-- POCKET ZONE label -->
-  <rect x="310" y="370" width="180" height="56" rx="12" fill="#FFFFFF" stroke="#2563EB" stroke-width="4"/>
-  <text x="400" y="398" text-anchor="middle" font-size="18" class="label" fill="#2563EB" style="fill:#2563EB">POCKET ZONE</text>
-  <text x="400" y="418" text-anchor="middle" font-size="12" class="small">lower half · bolsillo</text>
-
-  <!-- Portrait badge -->
-  <rect x="300" y="158" width="100" height="28" rx="8" fill="#0A0E17"/>
-  <text x="350" y="178" text-anchor="middle" font-size="13" fill="#FFFFFF" font-family="Arial,Helvetica,sans-serif" font-weight="700">PORTRAIT</text>
-
-  <text x="400" y="510" text-anchor="middle" font-size="14" class="small">Press · open · creases stay (dashed = valley)</text>
-  <text x="400" y="575" text-anchor="middle" font-size="17" class="label">Sheet tall · long fold · mid fold · pocket below mid</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Two valleys, then open</title>
+<desc>Fold the tall sheet in half the long way and open it. Fold the bottom up to the middle and open it.</desc>
+<rect width="800" height="520" fill="#ffffff"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#111111"/>
+  </marker>
+</defs>
+<text x="200" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">1  Long fold, then open</text>
+<rect x="100" y="70" width="180" height="280" fill="#fffdf6" stroke="#111111" stroke-width="4"/>
+<line x1="190" y1="70" x2="190" y2="350" fill="none" stroke="#111111" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
+<line x1="120" y1="180" x2="175" y2="180" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="560" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">2  Cross fold, then open</text>
+<rect x="470" y="70" width="180" height="280" fill="#fffdf6" stroke="#111111" stroke-width="4"/>
+<line x1="470" y1="210" x2="650" y2="210" fill="none" stroke="#111111" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
+<line x1="560" y1="300" x2="560" y2="225" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 </svg>

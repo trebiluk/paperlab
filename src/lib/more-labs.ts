@@ -507,7 +507,7 @@ export const MORE_LABS: Lab[] = [
         minutes: "4 min",
         visual: "square-cut",
         body: c(
-          "Short edge onto long edge. Cut the leftover. Keep the strip.",
+          "Fold a short edge onto a long edge. Cut off the extra strip. Open the square. Keep the strip.",
           "Same square process as the balloon. The strip is a named leftover — bookmark or chain link, not trash.",
           "A non-square crane is a different, worse product. Squaring is quality control.",
         ),
@@ -517,7 +517,7 @@ export const MORE_LABS: Lab[] = [
         minutes: "8 min",
         visual: "crane-base",
         body: c(
-          "Fold the square in half both ways, and corner to corner both ways. Collapse it into a smaller square with two flaps.",
+          "Fold the square in half. Open it. Fold it in half the other way. Open it. Fold one corner to the opposite corner. Open it. Fold the other corners together. Open it. Push the sides in until you have a smaller square.",
           "Book folds and diagonals, then a square base (like a smaller square with pockets). If it will not sit flat, a crease is on the wrong side.",
           "The square base is a module. Many models share it. Naming the base is process vocabulary.",
         ),
@@ -532,7 +532,7 @@ export const MORE_LABS: Lab[] = [
         minutes: "10 min",
         visual: "crane-bird",
         body: c(
-          "Fold two skinny points up for a tail and a neck. Inside-fold a tiny head on the neck.",
+          "Fold both side corners to the middle line. Lift one point up. That is the neck. Lift the other point up. That is the tail.",
           "Narrow the sides, then pull two opposite points up. Invert a small head on one point. Stretch the wings.",
           "The head is an inside reverse fold — a living hinge. Forcing it tears; unfolding a little first is allowed.",
         ),
@@ -542,7 +542,7 @@ export const MORE_LABS: Lab[] = [
         minutes: "6 min",
         visual: "crane-done",
         body: c(
-          "Wings out. It should sit. The leftover strip gets your name.",
+          "Fold a tiny head on the neck. Open the wings. Set it on the desk. It should sit. Write your alias on the leftover strip. No legal name.",
           "A crane that sits is a pass. A crane that will not puff slightly needs a gentler pull on the back.",
           "History: the crane as gift and as a peace object. Who is yours for? That is the need.",
         ),

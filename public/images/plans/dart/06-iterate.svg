@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img">
-  <title>Diagram 6: Change one thing</title>
-  <desc>Fold diagram for Change one thing. Paper, crease, and the one move.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
-    </marker>
-  </defs>
-  <rect width="800" height="620" fill="#EEF2F7"/>
-  <circle cx="64" cy="64" r="28" fill="#2563EB"/>
-  <text x="64" y="74" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#FFFFFF">6</text>
-  <text x="108" y="74" font-size="32" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">Change one thing</text>
-  <rect x="40" y="112" width="720" height="440" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
-  <g transform="translate(80,150)"><rect x="40" y="60" width="200" height="180" rx="8" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5"/><rect x="360" y="60" width="200" height="180" rx="8" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5"/><text x="140" y="160" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">v1</text><text x="460" y="160" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">v2</text><line x1="260" y1="150" x2="340" y2="150" stroke="#2563EB" stroke-width="7" stroke-linecap="round" marker-end="url(#arrow)"/><text x="320" y="340" text-anchor="middle" font-size="18" font-family="Arial,Helvetica,sans-serif" font-weight="600" fill="#475569">change one thing only</text></g>
-  <text x="400" y="582" text-anchor="middle" font-size="22" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">Change one thing</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>One change</title>
+<desc>Change one thing only, such as both wing tips up a little. Fly three more times.</desc>
+<rect width="800" height="520" fill="#ffffff"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#111111"/>
+  </marker>
+</defs>
+<polygon points="180,180 420,230 180,280" fill="#fffdf6" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<path d="M260 230 L460 300" fill="none" stroke="#111" stroke-width="4"/>
+<path d="M430 292 L470 318" fill="none" stroke="#111" stroke-width="4"/>
+<text x="400" y="380" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">one change: both tips up a little</text>
+<text x="400" y="450" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">then three more throws</text>
 </svg>

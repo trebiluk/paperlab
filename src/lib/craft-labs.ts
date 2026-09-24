@@ -199,7 +199,7 @@ export const CRAFT_LABS: Lab[] = [
         minutes: "4 min",
         visual: "portrait-valleys",
         body: c(
-          "Hold the sheet tall. Fold in half the long way. Press. Open. Fold a mid-height valley across. Press. Open. Lower half will be the pocket.",
+          "Hold the sheet tall. Fold the left edge to the right edge. Press. Open it. Fold the bottom edge up to the middle. Press. Open it.",
           "Portrait · long valley · mid valley. Pocket zone is the lower half.",
           "A billfold starts as a folio. Pocket height is the design choice.",
         ),
@@ -209,7 +209,7 @@ export const CRAFT_LABS: Lab[] = [
         minutes: "8 min",
         visual: "pocket-cover-hems",
         body: c(
-          "Fold the bottom third up for a pocket. Fold the top third down for a cover. Fold each side in about 1 cm for hems. Leave the cover blank for now.",
+          "Fold the bottom third up. That is the pocket. Fold the top third down. That is the cover. Fold each side in a little. Those are the hems.",
           "Bottom third = pocket. Top third = cover. Side hems ~1 cm. Alias comes after the prove.",
           "Side hems retain the load. Skip them and the shake test will teach why.",
         ),
@@ -219,7 +219,7 @@ export const CRAFT_LABS: Lab[] = [
         minutes: "4 min",
         visual: "load-cards",
         body: c(
-          "Slide in three scrap cards. If they will not fit, unfold and make the pocket taller. Do not force. Close the cover.",
+          "Slide in one scrap card. Slide in a second card. Slide in a third card. Close the cover.",
           "Three cards. Too tight → taller pocket. Close cover · tuck OK.",
           "Fit is a spec: adjust pocket height, not card size.",
         ),
@@ -229,7 +229,7 @@ export const CRAFT_LABS: Lab[] = [
         minutes: "6 min",
         visual: "ten-shake",
         body: c(
-          "Hold the wallet shut over the desk. Shake ten times. Pass = all three cards stay. Fail = side slip, flap open, or pocket too shallow.",
+          "Hold the wallet shut over the desk. Shake it ten times. All three cards must stay.",
           "10× shake over the desk. Prove first — no alias yet.",
           "Control: one shake with the flap open shows why the cover exists.",
         ),
@@ -239,7 +239,7 @@ export const CRAFT_LABS: Lab[] = [
         minutes: "6 min",
         visual: "one-change-retest",
         body: c(
-          "Change one thing: deeper pocket or tighter hems. Load three cards. Shake ten again. Check it still opens. Write your alias on the cover. No legal name.",
+          "Change one thing only. Make the pocket deeper, or make the sides tighter. Load three cards. Shake ten times again. Write your alias on the cover. No legal name.",
           "One change · retest · alias after prove. No hidden tape.",
           "Retention vs capacity. Name the tradeoff.",
         ),

@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img">
-  <title>Diagram 3: Tail and neck</title>
-  <desc>Fold diagram for Tail and neck. Paper, crease, and the one move.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
-    </marker>
-  </defs>
-  <rect width="800" height="620" fill="#EEF2F7"/>
-  <circle cx="64" cy="64" r="28" fill="#2563EB"/>
-  <text x="64" y="74" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#FFFFFF">3</text>
-  <text x="108" y="74" font-size="32" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">Tail and neck</text>
-  <rect x="40" y="112" width="720" height="440" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
-  <g transform="translate(80,150)"><polygon points="300,40 360,140 520,160 360,180 300,300 240,180 80,160 240,140" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/><text x="300" y="350" text-anchor="middle" font-size="18" font-family="Arial,Helvetica,sans-serif" font-weight="600" fill="#475569">wings out · head down</text></g>
-  <text x="400" y="582" text-anchor="middle" font-size="22" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">Tail and neck</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Neck and tail</title>
+<desc>Fold the side corners to the middle. Lift one point for the neck and one point for the tail.</desc>
+<rect width="800" height="520" fill="#ffffff"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#111111"/>
+  </marker>
+</defs>
+<text x="200" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">1  Sides to the middle</text>
+<polygon points="80,80 240,80 160,280" fill="#fffdf6" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<line x1="160" y1="80" x2="160" y2="280" fill="none" stroke="#111111" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
+<line x1="100" y1="140" x2="150" y2="160" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<line x1="220" y1="140" x2="170" y2="160" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="560" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">2  Lift two points</text>
+<polygon points="480,260 560,80 640,260" fill="#fffdf6" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="500,260 560,160 620,260" fill="none" stroke="#111" stroke-width="3"/>
+<line x1="520" y1="300" x2="530" y2="240" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<line x1="600" y1="300" x2="590" y2="240" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="400" y="430" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">one point is the neck, one is the tail</text>
 </svg>

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img">
-  <title>Diagram 4: The product</title>
-  <desc>Fold diagram for The product. Paper, crease, and the one move.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
-    </marker>
-  </defs>
-  <rect width="800" height="620" fill="#EEF2F7"/>
-  <circle cx="64" cy="64" r="28" fill="#2563EB"/>
-  <text x="64" y="74" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#FFFFFF">4</text>
-  <text x="108" y="74" font-size="32" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">The product</text>
-  <rect x="40" y="112" width="720" height="440" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
-  <g transform="translate(80,150)"><polygon points="300,40 360,140 520,160 360,180 300,300 240,180 80,160 240,140" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/><text x="300" y="350" text-anchor="middle" font-size="18" font-family="Arial,Helvetica,sans-serif" font-weight="600" fill="#475569">wings out · head down</text></g>
-  <text x="400" y="582" text-anchor="middle" font-size="22" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">The product</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Wings out</title>
+<desc>Fold a tiny head. Open the wings. The crane sits. Write an alias on the leftover strip.</desc>
+<rect width="800" height="520" fill="#ffffff"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#111111"/>
+  </marker>
+</defs>
+<polygon points="400,80 470,160 560,150 470,200 520,320 400,240 280,320 330,200 240,150 330,160" fill="#fffdf6" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<path d="M470 160 L520 120" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+<text x="530" y="110" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">tiny head</text>
+<text x="400" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">wings out, it sits</text>
+<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">alias on the strip, no legal name</text>
 </svg>

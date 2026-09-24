@@ -55,24 +55,27 @@ export const STUDIO_GUIDES: Record<string, GuidePhase[]> = {
       visual: "box-star",
       title: "Plus and X",
       lines: [
-        "Fold edge to edge. Open. That is the plus",
-        "Fold corner to corner both ways. Open. That is the X",
+        "Fold the left edge to the right edge. Open it",
+        "Fold the top edge to the bottom edge. Open it",
+        "Fold one corner to the opposite corner. Open it",
+        "Fold the other corners together. Open it",
       ],
     },
     {
       visual: "studio-balloon-pinch",
       title: "Collapse",
       lines: [
-        "Pinch the middle",
-        "Let the creases fall into a small square",
-        "If it will not fall, the X is on the wrong side. Unfold. Flip those folds",
+        "Pinch the middle of each side",
+        "Let the paper fall into a small triangle",
+        "If it will not fall, unfold. Flip the X folds. Try again",
       ],
     },
     {
       visual: "studio-balloon-puff",
       title: "Blow",
       lines: [
-        "Tuck four flaps into the pockets",
+        "Tuck one flap into a pocket",
+        "Tuck the other three flaps",
         "Blow once, slow",
         "No glue. It should puff into a cube",
       ],

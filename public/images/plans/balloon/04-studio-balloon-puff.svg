@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img">
-  <title>Diagram 4: Blow</title>
-  <desc>Fold diagram for Blow. Paper, crease, and the one move.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
-    </marker>
-  </defs>
-  <rect width="800" height="620" fill="#EEF2F7"/>
-  <circle cx="64" cy="64" r="28" fill="#2563EB"/>
-  <text x="64" y="74" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#FFFFFF">4</text>
-  <text x="108" y="74" font-size="32" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">Blow</text>
-  <rect x="40" y="112" width="720" height="440" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
-  <g transform="translate(80,150)"><polygon points="160,94 350,94 394,50 204,50" fill="#E7F0EA" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/><polygon points="160,94 350,94 350,204 160,204" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/><polygon points="350,94 394,50 394,160 350,204" fill="#C9DDD4" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/><line x1="120" y1="200" x2="200" y2="160" stroke="#2563EB" stroke-width="7" stroke-linecap="round" marker-end="url(#arrow)"/><text x="280" y="340" text-anchor="middle" font-size="18" font-family="Arial,Helvetica,sans-serif" font-weight="600" fill="#475569">blow once · no glue</text></g>
-  <text x="400" y="582" text-anchor="middle" font-size="22" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">Blow</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Tuck and blow</title>
+<desc>Tuck the flaps into the pockets. Blow once. No glue.</desc>
+<rect width="800" height="520" fill="#ffffff"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#111111"/>
+  </marker>
+</defs>
+<polygon points="180,120 300,220 180,320" fill="#fffdf6" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<line x1="220" y1="180" x2="230" y2="230" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="240" y="380" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">tuck flaps in</text>
+<line x1="340" y1="220" x2="470" y2="220" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<polygon points="520,160 640,160 700,200 580,200" fill="#f3eee4" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="520,160 580,200 580,320 520,280" fill="#fffdf6" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="580,200 700,200 700,320 580,320" fill="#fff" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<text x="600" y="400" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">blow once</text>
 </svg>

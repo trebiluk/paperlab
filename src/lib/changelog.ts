@@ -9,6 +9,13 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-24",
+    title: "More labs show the move",
+    items: [
+      "Dart, wallet, crane, balloon, cube, and tower now show one move in the picture. The words match that picture.",
+    ],
+  },
+  {
+    date: "2026-09-24",
     title: "Real valley and mountain pictures",
     items: [
       "Folding steps now say the move in the picture. Valley is toward you. Mountain is away. Then the fold quiz.",

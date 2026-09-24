@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img">
-  <title>Diagram 4: Wings</title>
-  <desc>Fold diagram for Wings. Paper, crease, and the one move.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
-    </marker>
-  </defs>
-  <rect width="800" height="620" fill="#EEF2F7"/>
-  <circle cx="64" cy="64" r="28" fill="#2563EB"/>
-  <text x="64" y="74" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#FFFFFF">4</text>
-  <text x="108" y="74" font-size="32" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">Wings</text>
-  <rect x="40" y="112" width="720" height="440" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
-  <g transform="translate(80,150)"><polygon points="60,110 200,90 200,150 60,170" fill="#F4E6C8" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/><polygon points="340,110 200,90 200,150 340,170" fill="#F4E6C8" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/><polygon points="200,40 240,90 200,220 160,90" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/><line x1="200" y1="44" x2="200" y2="216" stroke="#0A0E17" stroke-width="4" stroke-dasharray="12 9" stroke-linecap="round"/><text x="200" y="250" text-anchor="middle" font-size="18" font-family="Arial,Helvetica,sans-serif" font-weight="600" fill="#475569">center crease</text></g>
-  <text x="400" y="582" text-anchor="middle" font-size="22" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#0A0E17">Wings</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Wings</title>
+<desc>Fold in half so the point stays outside. Fold one wing down. Flip. Fold the other wing to match.</desc>
+<rect width="800" height="520" fill="#ffffff"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#111111"/>
+  </marker>
+</defs>
+<text x="200" y="48" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">1  Fold in half</text>
+<polygon points="120,90 280,90 200,160" fill="#fffdf6" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="140,160 260,160 260,400 140,400" fill="#fffdf6" stroke="#111" stroke-width="4"/>
+<text x="200" y="450" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">point stays outside</text>
+<text x="560" y="48" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">2  Wings down, match them</text>
+<polygon points="430,220 700,250 430,280" fill="#fffdf6" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="500,250 700,300 500,330" fill="#fffdf6" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<line x1="560" y1="200" x2="560" y2="245" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="600" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">one wing, then the other</text>
 </svg>

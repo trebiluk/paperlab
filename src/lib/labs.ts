@@ -270,7 +270,7 @@ const CORE_LABS: Lab[] = [
         minutes: "3 min",
         visual: "spec-line",
         body: c(
-          "The plane must fly past the tape on the floor. Three tries, then one change, then three more.",
+          "Find the tape line on the floor. The plane has to fly past it. You get three throws. Then one change. Then three more.",
           "Write the spec: one sheet, no required cuts, pass the 4 m line in 2 of 3 flights. A spec is the test, not a hope.",
           "Constraints: one sheet, one period. Spec: 2/3 flights beyond 4 m after a single documented change.",
         ),
@@ -280,7 +280,7 @@ const CORE_LABS: Lab[] = [
         minutes: "3 min",
         visual: "dart-1",
         body: c(
-          "Short edge at the bottom. Fold in half the long way. Open it. The middle line stays.",
+          "Turn the sheet tall. Fold the left edge to the right edge. Press the crease. Open it. The middle line stays.",
           "Portrait. Fold in half lengthwise, edge to edge. Unfold. That valley is the fuselage centerline.",
           "A centerline crease is a datum. Later folds reference it like a construction grid.",
         ),
@@ -291,7 +291,7 @@ const CORE_LABS: Lab[] = [
         minutes: "6 min",
         visual: "dart-2",
         body: c(
-          "Fold the two top corners in to the middle line. Then fold those new edges in to the middle again. Sharp point.",
+          "Fold the top left corner to the middle line. Fold the top right corner to the middle line. Fold each new edge to the middle line. You have a sharp point.",
           "Fold the top corners to the centerline. Crease. Fold the new long edges to the centerline again. The nose is a dart.",
           "Two successive 45-degree folds pack mass into the nose. Nose-heavy darts fly farther; tail-heavy darts stall.",
         ),
@@ -301,7 +301,7 @@ const CORE_LABS: Lab[] = [
         minutes: "5 min",
         visual: "dart-3",
         body: c(
-          "Fold the plane in half so the point stays pointy. Fold one wing down. Flip. Fold the other so both match.",
+          "Fold the paper in half on the middle line. Keep the point on the outside. Fold one wing down. Flip the plane. Fold the other wing so they match.",
           "Fold in half along the centerline. Fold each wing down so the top edge meets the bottom of the body. Match left and right.",
           "Matching wings is quality control. A little dihedral (tips up) adds roll stability.",
         ),
@@ -311,7 +311,7 @@ const CORE_LABS: Lab[] = [
         minutes: "8 min",
         visual: "fly-test",
         body: c(
-          "Stand on the start line. Throw gentle, straight. Mark where it lands. Three times. Write the numbers.",
+          "Stand at the start. Throw straight and gentle. Mark where it lands. Do that three times.",
           "Three flights, same throw. Partner marks landings. Record distance. Circle the best and the worst.",
           "Hold launch height constant. Record three distances. Use the median — do not let one lucky throw write the story.",
         ),
@@ -322,7 +322,7 @@ const CORE_LABS: Lab[] = [
         minutes: "10 min",
         visual: "iterate",
         body: c(
-          "Pick one change: wing tips up, a tiny fold on the back of the wings, or a slower throw. Fly three more times.",
+          "Change one thing only. Bend both wing tips up a little, or throw slower. Fly three more times.",
           "Choose one input: dihedral, a 2 mm elevator fold, or launch. Label the plane v2. Three more flights. Compare.",
           "Document the independent variable. A tradeoff: more stability can cost distance. Name it.",
         ),
@@ -461,7 +461,7 @@ const CORE_LABS: Lab[] = [
         minutes: "4 min",
         visual: "tower-spec",
         body: c(
-          "One paper. The tower must stand alone. We count to ten. Tallest wins.",
+          "Use one sheet. The tower must stand with no hands on it. Count to ten. The tallest one that stays up wins.",
           "Write constraints: 1 sheet, free-standing, 10 s, 20 min make time. Optional: one tape strip. Sketch two ideas first.",
           "Constraints vs. criteria: constraints are musts. Criteria are how we judge (height, then footprint).",
         ),
@@ -471,7 +471,7 @@ const CORE_LABS: Lab[] = [
         minutes: "5 min",
         visual: "tower-ideas",
         body: c(
-          "Idea A: roll a tube. Idea B: fold a zigzag. Draw both. Circle the one you will try first.",
+          "Draw a tube. Draw a zigzag. Circle the one you will build first.",
           "Sketch a tube column, a folded beam, or a tripod of rolled legs. Pick one and say why in one sentence.",
           "Generate then evaluate. A tripod resists tipping; a single tube needs a wide base or it is a slenderness problem.",
         ),
@@ -481,7 +481,7 @@ const CORE_LABS: Lab[] = [
         minutes: "10 min",
         visual: "tower-make",
         body: c(
-          "Build your first idea. Roll tight if it is a tube. Stand it up as soon as you can.",
+          "Build the idea you circled. If it is a tube, roll it tight. Stand it up before you add more.",
           "Craftsmanship: even rolls, sharp locks. A soft roll buckles. Stand early — a tower that only works in your hands is not free-standing.",
           "Quality control: circular tubes, even overlaps. If you use tape, it is a joint, not a sculpture wrap.",
         ),
@@ -491,7 +491,7 @@ const CORE_LABS: Lab[] = [
         minutes: "4 min",
         visual: "tower-test",
         body: c(
-          "Hands off. Count to ten. If it falls, that is data. Measure how tall it was.",
+          "Take your hands off. Count to ten. If it falls, that is data. Measure how tall it was.",
           "Hands off, 10 s. Measure height in cm. Record fail mode: tip, buckle, unwind.",
           "Fail mode is the lesson. Tipping = base too small. Buckling = wall too thin. Unwinding = joint failure.",
         ),
@@ -501,7 +501,7 @@ const CORE_LABS: Lab[] = [
         minutes: "8 min",
         visual: "iterate",
         body: c(
-          "Change one thing: a wider bottom, a tighter roll, or a second small tube. Test again. Measure.",
+          "Change one thing. Make the bottom wider, or roll it tighter. Count to ten again. Measure again.",
           "One change aimed at the fail mode. Retest 10 s. Did you trade height for a wider base?",
           "Optimization: height vs. stability. A shorter wider tower may score less and still be the better structure.",
         ),

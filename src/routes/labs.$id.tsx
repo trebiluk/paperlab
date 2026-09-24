@@ -2,7 +2,6 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, ClipboardList, Link2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LabSvg } from "@/components/lab-svg";
 import { pageTitle } from "@/lib/brand";
 import {
   FAMILIES,
@@ -312,10 +311,29 @@ function Stepper({
 
   if (!current) return null;
 
+  const showEasy = role === "student" || read === "easy";
+  const words = showEasy ? current.body.easy : pickRead(read, current.body);
+  const lines = words
+    .replace(/\s+/g, " ")
+    .split(/(?<=[.!?])\s+/)
+    .map((line) => line.replace(/[.]+$/, "").replace(/\byour name\b/gi, "your alias"))
+    .filter((line) => line.length > 0);
+  const picture = `${import.meta.env.BASE_URL}images/plans/${lab.id}/${String(step + 1).padStart(2, "0")}-${current.visual}.svg`;
+
   return (
-    <div className="mt-8 grid gap-8 overflow-hidden lg:grid-cols-[minmax(0,1fr)_20rem]">
-      <div className="flex flex-col gap-6">
-        <div className="flex items-center gap-3">
+    <div className="mt-8 flex flex-col gap-6">
+      <img
+        key={picture}
+        src={picture}
+        alt={`${current.title}. ${lines[0] ?? "Step picture"}.`}
+        width={800}
+        height={520}
+        className="h-auto w-full rounded-xl bg-white object-contain"
+        onError={(event) => {
+          event.currentTarget.style.display = "none";
+        }}
+      />
+      <div className="flex items-center gap-3">
           <div
             className="h-1 flex-1 overflow-hidden rounded-full bg-bg-warm"
             role="progressbar"
@@ -365,11 +383,20 @@ function Stepper({
             <p
               className={cn(
                 "mt-4 leading-relaxed",
-                read === "easy" ? "text-lg font-medium text-ink" : "text-ink-soft",
+                showEasy ? "sr-only" : "text-ink-soft",
               )}
             >
-              {pickRead(read, current.body)}
+              {words}
             </p>
+            {showEasy ? (
+              <ol className="mt-4 space-y-3">
+                {lines.map((line) => (
+                  <li key={line} className="text-lg font-medium leading-snug text-ink">
+                    {line}
+                  </li>
+                ))}
+              </ol>
+            ) : null}
             {current.tip ? (
               <p className="mt-4 rounded-lg bg-bg-warm px-4 py-3 text-sm text-ink-soft">
                 <span className="font-medium text-ink">Tip. </span>
@@ -415,20 +442,6 @@ function Stepper({
             {role !== "student" ? <CopyStepLink /> : null}
           </div>
         </article>
-      </div>
-      <aside className="order-first self-start lg:order-none lg:sticky lg:top-28">
-        <div className="lab-frame overflow-hidden rounded-xl p-2 sm:p-3">
-          <div className="mx-auto aspect-[4/3] w-full max-w-[22rem]">
-            <LabSvg visual={current.visual} />
-          </div>
-        </div>
-        <p className="mt-3 text-center text-sm font-medium text-ink-soft lg:hidden">{current.title}</p>
-        {role === "teacher" ? (
-          <p className="mt-2 text-center text-xs text-muted" title="Diagram id">
-            {current.visual}
-          </p>
-        ) : null}
-      </aside>
     </div>
   );
 }
