@@ -68,7 +68,7 @@ function LabPage() {
         {shopRule(lab)}
       </p>
 
-      {lab.steps.length === 0 ? <StudentStepGuide lab={lab} /> : null}
+      <StudentStepGuide lab={lab} />
 
       {lab.studio ? (
         <div className="mt-8 rounded-xl bg-surface p-5 shadow-card sm:p-7">
@@ -105,8 +105,6 @@ function LabPage() {
             ) : null}
           </div>
         </div>
-      ) : lab.steps.length > 0 ? (
-        <Stepper key={lab.id} lab={lab} nextId={next.id} nextName={next.name} />
       ) : null}
 
       <div className="mt-8 flex flex-wrap items-center justify-end gap-3">

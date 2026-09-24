@@ -2,18 +2,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>Two valleys, then open</title>
 <desc>Fold the tall sheet in half the long way and open it. Fold the bottom up to the middle and open it.</desc>
-<rect width="800" height="520" fill="#ffffff"/>
+<rect width="800" height="520" fill="#fbf8f1"/>
 <defs>
   <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#111111"/>
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
   </marker>
 </defs>
-<text x="200" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">1  Long fold, then open</text>
-<rect x="100" y="70" width="180" height="280" fill="#fffdf6" stroke="#111111" stroke-width="4"/>
-<line x1="190" y1="70" x2="190" y2="350" fill="none" stroke="#111111" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
-<line x1="120" y1="180" x2="175" y2="180" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="560" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">2  Cross fold, then open</text>
-<rect x="470" y="70" width="180" height="280" fill="#fffdf6" stroke="#111111" stroke-width="4"/>
-<line x1="470" y1="210" x2="650" y2="210" fill="none" stroke="#111111" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
-<line x1="560" y1="300" x2="560" y2="225" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="200" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">1  Long fold, then open</text>
+<rect x="100" y="70" width="180" height="280" fill="#fffdf6" stroke="#1c1915" stroke-width="4"/>
+<line x1="190" y1="70" x2="190" y2="350" fill="none" stroke="#1c1915" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
+<line x1="120" y1="180" x2="175" y2="180" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="560" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">2  Cross fold, then open</text>
+<rect x="470" y="70" width="180" height="280" fill="#fffdf6" stroke="#1c1915" stroke-width="4"/>
+<line x1="470" y1="210" x2="650" y2="210" fill="none" stroke="#1c1915" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
+<line x1="560" y1="300" x2="560" y2="225" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 </svg>

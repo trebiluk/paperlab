@@ -3,12 +3,12 @@
   <title id="title">Scrap flat on the desk</title>
   <desc id="desc">One rectangle of scrap paper. Point to the left edge and the right edge. Creases go on scrap only.</desc>
   <rect width="800" height="520" fill="#ffffff"/>
-  <rect x="230" y="90" width="340" height="260" fill="#fffef8" stroke="#111111" stroke-width="5"/>
-  <path d="M150 220 H218" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
-  <path d="M206 208 L224 220 L206 232" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="140" y="226" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#111111">left edge</text>
-  <path d="M650 220 H582" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
-  <path d="M594 208 L576 220 L594 232" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="660" y="226" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#111111">right edge</text>
-  <text x="400" y="430" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#111111">Scrap only. Save the good sheet.</text>
+  <rect x="230" y="90" width="340" height="260" fill="#fffef8" stroke="#1c1915" stroke-width="5"/>
+  <path d="M150 220 H218" fill="none" stroke="#1c1915" stroke-width="4" stroke-linecap="round"/>
+  <path d="M206 208 L224 220 L206 232" fill="none" stroke="#1c1915" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="140" y="226" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#1c1915">left edge</text>
+  <path d="M650 220 H582" fill="none" stroke="#1c1915" stroke-width="4" stroke-linecap="round"/>
+  <path d="M594 208 L576 220 L594 232" fill="none" stroke="#1c1915" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="660" y="226" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#1c1915">right edge</text>
+  <text x="400" y="430" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#1c1915">Scrap only. Save the good sheet.</text>
 </svg>

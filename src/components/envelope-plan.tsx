@@ -31,7 +31,7 @@ function Diagram({
       height={620}
       data-diagram={slot}
       data-diagram-file={file}
-      className="h-auto w-full rounded-xl bg-[#EEF2F7]"
+      className="h-auto w-full rounded-xl bg-surface"
     />
   );
 }
@@ -278,7 +278,7 @@ export function EnvelopeStudentPlan() {
           height={620}
           data-diagram="bonus"
           data-diagram-file={FILES.bonus}
-          className="mt-2 h-auto w-full rounded-xl bg-[#EEF2F7]"
+          className="mt-2 h-auto w-full rounded-xl bg-surface"
         />
       </figure>
     </div>

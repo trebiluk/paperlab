@@ -2,15 +2,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>Wings out</title>
 <desc>Fold a tiny head. Open the wings. The crane sits. Write an alias on the leftover strip.</desc>
-<rect width="800" height="520" fill="#ffffff"/>
+<rect width="800" height="520" fill="#fbf8f1"/>
 <defs>
   <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#111111"/>
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
   </marker>
 </defs>
-<polygon points="400,80 470,160 560,150 470,200 520,320 400,240 280,320 330,200 240,150 330,160" fill="#fffdf6" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
-<path d="M470 160 L520 120" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round"/>
-<text x="530" y="110" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">tiny head</text>
-<text x="400" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">wings out, it sits</text>
-<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">alias on the strip, no legal name</text>
+<polygon points="400,80 470,160 560,150 470,200 520,320 400,240 280,320 330,200 240,150 330,160" fill="#fffdf6" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
+<path d="M470 160 L520 120" fill="none" stroke="#1c1915" stroke-width="4" stroke-linecap="round"/>
+<text x="530" y="110" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">tiny head</text>
+<text x="400" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">wings out, it sits</text>
+<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">alias on the strip, no legal name</text>
 </svg>

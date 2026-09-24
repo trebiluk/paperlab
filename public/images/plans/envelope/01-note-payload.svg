@@ -4,33 +4,33 @@
   <desc id="desc">Cut-and-fold regular envelope net: body, LEFT and RIGHT side flaps, BOTTOM flap, and POINTTED TOP flap with banker V tip. Labels on all flaps. Dashed = crease; solid = outer cut edge.</desc>
   <defs>
     <style>
-      .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
-      .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
-      .crease { stroke:#0A0E17; stroke-width:4; stroke-dasharray:11 9; opacity:.75; stroke-linecap:round; fill:none; }
+      .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#1c1915; }
+      .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#3f3830; }
+      .crease { stroke:#1c1915; stroke-width:4; stroke-dasharray:11 9; opacity:.75; stroke-linecap:round; fill:none; }
     </style>
   </defs>
-  <rect x="0" y="0" width="800" height="620" fill="#EEF2F7"/>
-  <circle cx="88" cy="76" r="30" fill="#2563EB"/>
+  <rect x="0" y="0" width="800" height="620" fill="#fbf8f1"/>
+  <circle cx="88" cy="76" r="30" fill="#1f5c4e"/>
   <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">1</text>
   <text x="132" y="82" font-size="32" class="label">Flat net · pointed top</text>
   <text x="132" y="108" font-size="16" class="small">Regular / birthday-card envelope · banker V tip on top flap</text>
-  <rect x="56" y="126" width="688" height="410" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
+  <rect x="56" y="126" width="688" height="410" rx="24" fill="#fbf8f1" stroke="#d9d0c2" stroke-width="3"/>
 
   <!-- BODY -->
-  <rect x="260" y="250" width="280" height="180" fill="#F8FAFC"/>
+  <rect x="260" y="250" width="280" height="180" fill="#fffdf8"/>
 
   <!-- LEFT side flap (triangle) -->
-  <polygon points="260,250 150,340 260,430" fill="#DBEAFE"/>
+  <polygon points="260,250 150,340 260,430" fill="#d7ebe3"/>
   <!-- RIGHT side flap (triangle) -->
-  <polygon points="540,250 650,340 540,430" fill="#DBEAFE"/>
+  <polygon points="540,250 650,340 540,430" fill="#d7ebe3"/>
   <!-- BOTTOM flap -->
-  <polygon points="260,430 540,430 510,545 290,545" fill="#DBEAFE"/>
+  <polygon points="260,430 540,430 510,545 290,545" fill="#d7ebe3"/>
   <!-- POINTTED TOP flap (banker V) — tip clearly visible -->
-  <polygon points="260,250 540,250 400,125" fill="#DBEAFE"/>
+  <polygon points="260,250 540,250 400,125" fill="#d7ebe3"/>
 
   <!-- Outer cut edge solid -->
   <polygon points="400,125 540,250 650,340 540,430 510,545 290,545 260,430 150,340 260,250"
-           fill="none" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
+           fill="none" stroke="#1c1915" stroke-width="5" stroke-linejoin="round"/>
 
   <!-- Creases (body edges) -->
   <line x1="260" y1="250" x2="540" y2="250" class="crease"/>
@@ -39,7 +39,7 @@
   <line x1="540" y1="250" x2="540" y2="430" class="crease"/>
 
   <!-- NOTE on body -->
-  <rect x="300" y="290" width="200" height="100" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="6"/>
+  <rect x="300" y="290" width="200" height="100" rx="6" fill="#FFFFFF" stroke="#1f5c4e" stroke-width="6"/>
   <text x="400" y="340" text-anchor="middle" font-size="26" class="label">NOTE</text>
   <text x="400" y="368" text-anchor="middle" font-size="15" class="small">payload · your message</text>
 
@@ -49,13 +49,13 @@
   <text x="600" y="330" text-anchor="middle" font-size="14" class="label">RIGHT</text>
   <text x="600" y="348" text-anchor="middle" font-size="14" class="label">FLAP</text>
   <text x="400" y="185" text-anchor="middle" font-size="18" class="label">TOP FLAP</text>
-  <text x="400" y="205" text-anchor="middle" font-size="14" class="label" fill="#2563EB" style="fill:#2563EB">POINTED (V)</text>
+  <text x="400" y="205" text-anchor="middle" font-size="14" class="label" fill="#1f5c4e" style="fill:#1f5c4e">POINTED (V)</text>
   <text x="400" y="505" text-anchor="middle" font-size="16" class="label">BOTTOM FLAP</text>
 
   <!-- Tip callout -->
-  <circle cx="400" cy="125" r="8" fill="#2563EB"/>
-  <line x1="420" y1="115" x2="500" y2="95" stroke="#2563EB" stroke-width="3"/>
-  <text x="510" y="100" font-size="14" class="label" fill="#2563EB" style="fill:#2563EB">V TIP</text>
+  <circle cx="400" cy="125" r="8" fill="#1f5c4e"/>
+  <line x1="420" y1="115" x2="500" y2="95" stroke="#1f5c4e" stroke-width="3"/>
+  <text x="510" y="100" font-size="14" class="label" fill="#1f5c4e" style="fill:#1f5c4e">V TIP</text>
 
   <text x="400" y="575" text-anchor="middle" font-size="18" class="label">Leave flaps for a regular envelope (pointed top)</text>
 </svg>

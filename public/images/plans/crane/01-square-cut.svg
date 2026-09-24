@@ -2,18 +2,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>Make a square</title>
 <desc>Fold a short edge to a long edge. Cut the leftover strip. Open the square. Keep the strip.</desc>
-<rect width="800" height="520" fill="#ffffff"/>
+<rect width="800" height="520" fill="#fbf8f1"/>
 <defs>
   <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#111111"/>
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
   </marker>
 </defs>
-<text x="180" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">1  Short edge to long edge</text>
-<polygon points="60,80 220,80 220,280" fill="#fffdf6" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<text x="180" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">1  Short edge to long edge</text>
+<polygon points="60,80 220,80 220,280" fill="#fffdf6" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <rect x="60" y="80" width="220" height="280" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="8 6"/>
 <rect x="220" y="80" width="60" height="280" fill="#f3eee4" stroke="#111" stroke-width="3"/>
-<text x="250" y="230" text-anchor="middle" font-size="16" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">cut</text>
-<text x="560" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">2  Open the square</text>
-<rect x="460" y="100" width="220" height="220" fill="#fffdf6" stroke="#111111" stroke-width="4"/>
-<text x="570" y="380" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#111111" font-weight="700">keep the strip</text>
+<text x="250" y="230" text-anchor="middle" font-size="16" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">cut</text>
+<text x="560" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">2  Open the square</text>
+<rect x="460" y="100" width="220" height="220" fill="#fffdf6" stroke="#1c1915" stroke-width="4"/>
+<text x="570" y="380" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">keep the strip</text>
 </svg>
