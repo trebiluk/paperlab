@@ -8,6 +8,13 @@ export type ShopNote = {
 
 export const UPDATES: ShopNote[] = [
   {
+    date: "2026-09-24",
+    title: "Real valley and mountain pictures",
+    items: [
+      "Folding steps now use the public-domain valley and mountain pictures. A dashed line means valley.",
+    ],
+  },
+  {
     date: "2026-09-23",
     title: "Start here shows the steps",
     items: [

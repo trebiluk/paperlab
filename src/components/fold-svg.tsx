@@ -14,6 +14,23 @@ export function TechniqueSvg({
   id: FoldKind;
   className?: string;
 }) {
+  const free =
+    id === "valley"
+      ? "valley-fold.jpg"
+      : id === "mountain"
+        ? "mountain-fold.jpg"
+        : id === "unfold"
+          ? "fold-and-unfold.svg"
+          : null;
+  if (free) {
+    return (
+      <img
+        src={`${import.meta.env.BASE_URL}images/plans/folds/${free}`}
+        alt={label(id)}
+        className={cn("h-full w-full bg-white object-contain", className)}
+      />
+    );
+  }
   const uid = useId().replace(/:/g, "");
   const marker = `${uid}-arrow`;
   return (

@@ -1,48 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
-  <title id="title">Step 1: Scrap sheet flat on desk</title>
-  <desc id="desc">One rectangular scrap of paper flat on the desk. Point to the LEFT EDGE and the RIGHT EDGE. Creases go on scrap only — save the good sheet.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
-    </marker>
-    <style>
-      .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#0A0E17; }
-      .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#475569; }
-      .arrow { stroke:#2563EB; stroke-width:8; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
-    </style>
-  </defs>
-  <rect x="0" y="0" width="800" height="620" fill="#EEF2F7"/>
-  <circle cx="88" cy="76" r="30" fill="#2563EB"/>
-  <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">1</text>
-  <text x="132" y="82" font-size="32" class="label">Scrap flat on desk</text>
-  <text x="132" y="108" font-size="16" class="small">Point left edge · right edge · scrap only</text>
-  <rect x="56" y="126" width="688" height="410" rx="24" fill="#EEF2F7" stroke="#CBD5E1" stroke-width="3"/>
-
-  <!-- Desk surface hint -->
-  <rect x="120" y="420" width="560" height="70" rx="8" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
-  <text x="400" y="462" text-anchor="middle" font-size="14" class="small">DESK</text>
-
-  <!-- Rectangular scrap (shared silhouette W300 H220) -->
-  <rect x="250" y="180" width="300" height="220" fill="#F8FAFC" stroke="#0A0E17" stroke-width="5" stroke-linejoin="round"/>
-  <text x="400" y="295" text-anchor="middle" font-size="28" class="label">SCRAP</text>
-  <text x="400" y="325" text-anchor="middle" font-size="15" class="small">small piece · not the good sheet</text>
-
-  <!-- LEFT EDGE callout -->
-  <path d="M230 290 H180" class="arrow"/>
-  <rect x="70" y="250" width="110" height="70" rx="12" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3"/>
-  <text x="125" y="280" text-anchor="middle" font-size="15" class="label">LEFT</text>
-  <text x="125" y="302" text-anchor="middle" font-size="15" class="label">EDGE</text>
-
-  <!-- RIGHT EDGE callout -->
-  <path d="M570 290 H620" class="arrow"/>
-  <rect x="620" y="250" width="110" height="70" rx="12" fill="#DBEAFE" stroke="#0A0E17" stroke-width="3"/>
-  <text x="675" y="280" text-anchor="middle" font-size="15" class="label">RIGHT</text>
-  <text x="675" y="302" text-anchor="middle" font-size="15" class="label">EDGE</text>
-
-  <!-- Pointer dots on edges -->
-  <circle cx="250" cy="290" r="8" fill="#2563EB"/>
-  <circle cx="550" cy="290" r="8" fill="#2563EB"/>
-
-  <text x="400" y="575" text-anchor="middle" font-size="18" class="label">Press creases on scrap only · save the good sheet</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">Scrap flat on the desk</title>
+  <desc id="desc">One rectangle of scrap paper. Point to the left edge and the right edge. Creases go on scrap only.</desc>
+  <rect width="800" height="520" fill="#ffffff"/>
+  <rect x="230" y="90" width="340" height="260" fill="#fffef8" stroke="#111111" stroke-width="5"/>
+  <path d="M150 220 H218" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
+  <path d="M206 208 L224 220 L206 232" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="140" y="226" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#111111">left edge</text>
+  <path d="M650 220 H582" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round"/>
+  <path d="M594 208 L576 220 L594 232" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="660" y="226" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#111111">right edge</text>
+  <text x="400" y="430" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#111111">Scrap only. Save the good sheet.</text>
 </svg>

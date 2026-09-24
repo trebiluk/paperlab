@@ -22,6 +22,20 @@ function actionLines(text: string) {
     .filter((line) => line.length > 0);
 }
 
+function diagramFile(labId: string, index: number, visual: string) {
+  if (labId === "folds") {
+    const named: Record<string, string> = {
+      "scrap-flat": "01-scrap-flat.svg",
+      "valley-toward": "valley-fold.jpg",
+      "mountain-away": "mountain-fold.jpg",
+      "fold-unfold-tuck": "fold-and-unfold.svg",
+      "dashed-valley-match": "dashed-valley.svg",
+    };
+    if (named[visual]) return named[visual];
+  }
+  return `${String(index + 1).padStart(2, "0")}-${visual}.svg`;
+}
+
 function oneChange(problem: string) {
   const p = problem.toLowerCase();
   if (p.includes("cut")) return "Stop. Match the thick line. Cut only that.";
@@ -76,15 +90,7 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
 
   return (
     <div className="mt-6" data-student-guide={lab.id}>
-      {lab.id === "folds" ? (
-        <img
-          src={`${import.meta.env.BASE_URL}images/plans/folds/folds-steps-board.svg`}
-          alt="Overview of five fold diagrams: scrap flat, valley toward you, mountain away, fold-and-unfold plus tuck, and dashed equals valley."
-          width={1680}
-          height={440}
-          className="mb-8 h-auto w-full rounded-xl"
-        />
-      ) : lab.id === "wallet" ? (
+      {lab.id === "wallet" ? (
         <img
           src={`${import.meta.env.BASE_URL}images/plans/wallet/wallet-steps-board.svg`}
           alt="Overview of five billfold diagrams: portrait valleys, pocket cover hems, load cards, ten-shake prove, one change retest alias."
@@ -113,16 +119,18 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
           Steps
         </h2>
         <p className="mt-2 text-ink-soft">Follow in order. One action each line.</p>
-        {phases.map((phase, index) => (
+        {phases.map((phase, index) => {
+          const file = diagramFile(lab.id, index, phase.visual);
+          return (
           <figure key={`${phase.title}-${index}`} className="mt-8">
             <img
-              src={`${import.meta.env.BASE_URL}images/plans/${lab.id}/${String(index + 1).padStart(2, "0")}-${phase.visual}.svg`}
+              src={`${import.meta.env.BASE_URL}images/plans/${lab.id}/${file}`}
               alt={`Diagram ${index + 1}: ${phase.title}. ${phase.lines[0] ?? "Fold diagram"}.`}
               width={800}
-              height={620}
+              height={520}
               data-diagram={index + 1}
-              data-diagram-file={`${String(index + 1).padStart(2, "0")}-${phase.visual}.svg`}
-              className="h-auto w-full rounded-xl bg-bg-warm"
+              data-diagram-file={file}
+              className="h-auto w-full rounded-xl bg-white object-contain"
             />
             <figcaption className="mt-3 text-sm font-medium text-pine">
               Diagram {index + 1} · {phase.title}
@@ -138,7 +146,8 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
               })}
             </ol>
           </figure>
-        ))}
+          );
+        })}
       </section>
 
       <section className="mt-10" aria-labelledby="plan-done">
