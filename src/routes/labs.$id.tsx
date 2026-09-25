@@ -123,26 +123,28 @@ function LabPage() {
       </div>
       {done ? <LabWatch labId={lab.id} /> : null}
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-xl bg-surface p-4 shadow-card sm:p-5">
-          <p className="text-xs font-medium tracking-wide text-pine">On the desk</p>
-          <ul className="mt-2 flex flex-wrap gap-2">
-            {lab.materials.map((m) => (
-              <li key={m} className="rounded-full bg-bg-warm px-3 py-1.5 text-sm text-ink">
-                {m}
-              </li>
-            ))}
-          </ul>
+      {role === "student" ? null : (
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="rounded-xl bg-surface p-4 shadow-card sm:p-5">
+            <p className="text-xs font-medium tracking-wide text-pine">On the desk</p>
+            <ul className="mt-2 flex flex-wrap gap-2">
+              {lab.materials.map((m) => (
+                <li key={m} className="rounded-full bg-bg-warm px-3 py-1.5 text-sm text-ink">
+                  {m}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-xl bg-surface p-4 shadow-card sm:p-5">
+            <p className="text-xs font-medium tracking-wide text-pine">
+              {easy ? "The test" : lab.challenge ? "Challenge" : lab.spec ? "Spec" : "The make"}
+            </p>
+            <p className={cn("mt-2 text-ink-soft", easy ? "text-lg leading-relaxed" : "text-sm")}>
+              {lab.challenge ?? lab.spec ?? pickRead(read, lab.blurb)}
+            </p>
+          </div>
         </div>
-        <div className="rounded-xl bg-surface p-4 shadow-card sm:p-5">
-          <p className="text-xs font-medium tracking-wide text-pine">
-            {easy ? "The test" : lab.challenge ? "Challenge" : lab.spec ? "Spec" : "The make"}
-          </p>
-          <p className={cn("mt-2 text-ink-soft", easy ? "text-lg leading-relaxed" : "text-sm")}>
-            {lab.challenge ?? lab.spec ?? pickRead(read, lab.blurb)}
-          </p>
-        </div>
-      </div>
+      )}
 
       {role === "student" || easy || !lab.challenge || !lab.spec ? null : (
         <p className="mt-3 max-w-2xl rounded-lg bg-bg-warm px-4 py-3 text-sm text-ink-soft">
@@ -153,6 +155,7 @@ function LabPage() {
 
       {role !== "student" ? <RoomNotes labId={lab.id} /> : null}
 
+      {role === "student" ? null : (
       <section className="mt-10">
         <h2 className="font-display text-2xl font-semibold">Words</h2>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -167,8 +170,9 @@ function LabPage() {
           ))}
         </ul>
       </section>
+      )}
 
-      {easy ? (
+      {easy && role !== "student" ? (
         <section className="mt-10">
           <h2 className="font-display text-2xl font-semibold">Say it</h2>
           <p className="mt-2 max-w-2xl text-ink-soft">
@@ -184,7 +188,7 @@ function LabPage() {
         </section>
       ) : null}
 
-      {lab.steps.length > 0 ? (
+      {role !== "student" && lab.steps.length > 0 ? (
         <section className="mt-10">
           <h2 className="font-display text-2xl font-semibold">Design loop</h2>
           <ol className="mt-4 grid gap-2 sm:grid-cols-3 lg:grid-cols-6">

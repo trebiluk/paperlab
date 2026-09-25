@@ -9,6 +9,13 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-24",
+    title: "One page for the make",
+    items: [
+      "Students see the steps once. Done-when is plain language. Catapult and Möbius use the same pictures as the other labs.",
+    ],
+  },
+  {
+    date: "2026-09-24",
     title: "Every make shows its own move",
     items: [
       "The kite is a square on a point, not a cut that was never a diamond. Envelope, bag, copter, flake, flower, and frame each have a picture for the move.",

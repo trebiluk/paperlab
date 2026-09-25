@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Arm and pocket</title><desc>Fold a stiff arm with a small pocket at one end.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/></marker></defs>
+<rect x="160" y="220" width="360" height="28" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><polygon points="520,200 620,220 520,260" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><text x="400" y="360" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">stiff arm. Small pocket</text>
+</svg>

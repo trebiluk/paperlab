@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Set it</title><desc>Rest the arm on the pencil. The pocket points at the tape.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/></marker></defs>
+<rect x="140" y="250" width="220" height="36" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="250" y="220" width="16" height="80" fill="#1c1915" stroke="#1c1915" stroke-width="4"/><rect x="266" y="200" width="280" height="22" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><polygon points="520,175 600,200 520,230" fill="#e7f3ee" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><line x1="640" y1="230" x2="760" y2="230" stroke="#1c1915" stroke-width="8" stroke-linecap="round"/><text x="400" y="400" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">pocket points at the tape</text>
+</svg>

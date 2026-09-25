@@ -14,6 +14,21 @@ function kidLine(raw: string) {
     .replace(/\byour name\b/gi, "your alias");
 }
 
+function kidDone(raw: string) {
+  return kidLine(raw)
+    .replace(/\bHead inverted, not torn\b/g, "The head is a small fold, not a tear")
+    .replace(/\bFail mode named\b/g, "Say what went wrong")
+    .replace(/\bOral IPO\b/g, "Say what goes in, what the paper does, and what comes out")
+    .replace(/\bOral: input, process, output\b/g, "Say what goes in, what the paper does, and what comes out")
+    .replace(/\bOral: /g, "Say: ")
+    .replace(/\bF, E, V\b/g, "faces, edges, and corners")
+    .replace(/\bv2\b/g, "the second try")
+    .replace(/\bboth axes\b/g, "both ways")
+    .replace(/≥/g, "at least ")
+    .replace(/\blabeled as waste\b/g, "labeled leftover")
+    .replace(/\blabeled waste\b/g, "labeled leftover");
+}
+
 function actionLines(text: string) {
   return text
     .replace(/\s+/g, " ")
@@ -146,7 +161,7 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
           Done when
         </h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 text-lg text-ink">
-          {[...lab.plan.assessment.map(kidLine), "If you label it, write an alias. No legal name."].map((item) => (
+          {[...lab.plan.assessment.map(kidDone), "If you label it, write an alias. No legal name."].map((item) => (
             <li key={item} className="min-h-11">
               {item}
             </li>
@@ -197,7 +212,7 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
             <tr className="border-b border-line">
               <th className="py-2 pr-3 font-semibold">Word</th>
               <th className="py-2 pr-3 font-semibold">Means</th>
-              <th className="py-2 font-semibold">Spanish cognate</th>
+              <th className="py-2 font-semibold">Spanish</th>
             </tr>
           </thead>
           <tbody>
