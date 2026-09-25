@@ -9,9 +9,9 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-24",
-    title: "Start here is the first tap",
+    title: "Crane matches the real folds",
     items: [
-      "A student sees one job first: valley, then mountain, on scrap. Tap We made this when it matches. Teacher pages stay on the teacher room.",
+      "The crane now has every fold: square base, both petals, neck, tail, head, wings. Balloon, box, cup, boat, hat, frog, and teller got the same treatment.",
     ],
   },
   {

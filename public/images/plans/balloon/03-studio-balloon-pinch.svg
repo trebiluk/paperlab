@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
-<title>Collapse</title>
-<desc>Pinch the middles of the sides. The paper falls into a small triangle.</desc>
+<title>Waterbomb</title>
+<desc>Pinch the sides. The paper falls into a small triangle.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
 <defs>
   <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
     <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
   </marker>
 </defs>
-<rect x="250" y="80" width="300" height="300" fill="#fffdf6" stroke="#1c1915" stroke-width="4"/>
-<line x1="280" y1="230" x2="360" y2="230" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<line x1="520" y1="230" x2="440" y2="230" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<line x1="400" y1="110" x2="400" y2="180" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<line x1="400" y1="350" x2="400" y2="280" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<polygon points="620,200 760,280 620,360" fill="#fffdf6" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="450" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">pinch the sides — it falls into a triangle</text>
+<rect x="160" y="70" width="280" height="280" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
+<line x1="190" y1="210" x2="270" y2="210" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<line x1="410" y1="210" x2="330" y2="210" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<line x1="300" y1="100" x2="300" y2="170" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<line x1="300" y1="320" x2="300" y2="250" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<polygon points="560,180 700,260 560,340" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
+<text x="400" y="460" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">it falls into a triangle</text>
 </svg>

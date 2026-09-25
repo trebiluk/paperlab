@@ -53,29 +53,51 @@ export const STUDIO_GUIDES: Record<string, GuidePhase[]> = {
     },
     {
       visual: "box-star",
-      title: "Plus and X",
+      title: "Plus, then X",
       lines: [
-        "Fold the left edge to the right edge. Open it",
         "Fold the top edge to the bottom edge. Open it",
+        "Fold the left edge to the right edge. Open it",
+        "Turn the paper over",
         "Fold one corner to the opposite corner. Open it",
         "Fold the other corners together. Open it",
       ],
     },
     {
       visual: "studio-balloon-pinch",
-      title: "Collapse",
+      title: "Small triangle",
       lines: [
         "Pinch the middle of each side",
         "Let the paper fall into a small triangle",
-        "If it will not fall, unfold. Flip the X folds. Try again",
+        "If it will not fall, unfold. The X and the plus must be on opposite sides",
+      ],
+    },
+    {
+      visual: "balloon-up",
+      title: "Corners up",
+      lines: [
+        "Fold the left corner of the top layer up to the top point",
+        "Fold the right corner of the top layer up to the top point",
+        "Turn it over",
+        "Fold the two corners up on this side too",
+      ],
+    },
+    {
+      visual: "balloon-pockets",
+      title: "Pockets",
+      lines: [
+        "Fold the left side corner to the center",
+        "Fold the right side corner to the center",
+        "Turn it over",
+        "Fold the two side corners to the center on this side",
       ],
     },
     {
       visual: "studio-balloon-puff",
-      title: "Blow",
+      title: "Tuck and blow",
       lines: [
-        "Tuck one flap into a pocket",
+        "Tuck one small flap into a pocket",
         "Tuck the other three flaps",
+        "Find the hole at the bottom",
         "Blow once, slow",
         "No glue. It should puff into a cube",
       ],
