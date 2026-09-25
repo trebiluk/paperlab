@@ -102,7 +102,11 @@ function Home() {
           <div className="aspect-square w-full sm:aspect-[5/4]">
             <ShopStillLife />
           </div>
-          <p className="mt-1 pb-1 text-center text-sm text-muted">BertyBot · cut, fold, glue</p>
+          <p className="mt-1 pb-1 text-center text-sm text-muted">
+            <Link to="/labs/$id" params={{ id: "berty" }} search={{ step: 1 }} className="font-medium text-pine">
+              BertyBot · cut, fold, glue
+            </Link>
+          </p>
         </div>
       </section>
 

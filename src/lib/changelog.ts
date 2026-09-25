@@ -9,9 +9,9 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-24",
-    title: "Bertybot folds up",
+    title: "Berty folds up from his net",
     items: [
-      "A new make: one sheet becomes a robot that stands, packs flat, and stands again.",
+      "BertyBot is the cube on the home page. Six squares, face out, tabs inside, then a body so he stands.",
     ],
   },
   {

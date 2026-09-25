@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>He stands</title><desc>Arms at the sides, legs under the body. Count to ten.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/></marker></defs>
+<rect x="355" y="150" width="90" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><polygon points="370,80 450,80 475,115 395,115" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/><rect x="430" y="48" width="16" height="16" fill="#1f5c4e" stroke="#1c1915" stroke-width="2"/><rect x="250" y="175" width="90" height="16" fill="#e7f3ee" stroke="#1c1915" stroke-width="3"/><rect x="460" y="175" width="90" height="16" fill="#e7f3ee" stroke="#1c1915" stroke-width="3"/><rect x="370" y="220" width="16" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="3"/><rect x="414" y="220" width="16" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="3"/><text x="400" y="400" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">hands off. Count to ten</text>
+</svg>
