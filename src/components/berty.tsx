@@ -331,8 +331,8 @@ export function LogoMark({ className }: { className?: string }) {
 /** One letter sheet: head net, antenna, body, arms, and legs. Thick = cut. Dashed = fold. */
 export function BertySheet({ className }: { className?: string }) {
   const s = 132;
-  const ox = 210;
-  const oy = 210;
+  const ox = 290;
+  const oy = 300;
   const face = BERTY_FACE;
   const dash = "7 5";
   return (
@@ -398,23 +398,23 @@ export function BertySheet({ className }: { className?: string }) {
       <text x={ox + s / 2} y={oy - s - 44} textAnchor="middle" fontSize="13" fontWeight="700" fill="#1f5c4e" fontFamily="Arial, Helvetica, sans-serif">glue</text>
       <text x={ox - s - 8} y={oy + s / 2} textAnchor="end" fontSize="13" fontWeight="700" fill="#1f5c4e" fontFamily="Arial, Helvetica, sans-serif">glue</text>
 
-      <text x="425" y="620" textAnchor="middle" fontSize="16" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">
+      <text x="425" y="640" textAnchor="middle" fontSize="16" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">
         Cut these too. Fold only the dashed line on the body.
       </text>
-      <rect x="70" y="660" width="220" height="160" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
-      <line x1="70" y1="740" x2="290" y2="740" stroke="#1c1915" strokeWidth="2.5" strokeDasharray={dash} />
-      <text x="180" y="710" textAnchor="middle" fontSize="16" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">body</text>
+      <rect x="70" y="680" width="220" height="160" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
+      <line x1="70" y1="760" x2="290" y2="760" stroke="#1c1915" strokeWidth="2.5" strokeDasharray={dash} />
+      <text x="180" y="730" textAnchor="middle" fontSize="16" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">body</text>
 
-      <rect x="340" y="660" width="52" height="52" fill="#e7f3ee" stroke="#1c1915" strokeWidth="4" />
-      <text x="366" y="740" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">antenna</text>
+      <rect x="340" y="680" width="52" height="52" fill="#e7f3ee" stroke="#1c1915" strokeWidth="4" />
+      <text x="366" y="760" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">antenna</text>
 
-      <rect x="450" y="680" width="150" height="36" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
-      <rect x="450" y="740" width="150" height="36" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
-      <text x="525" y="800" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">arms</text>
+      <rect x="450" y="700" width="150" height="36" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
+      <rect x="450" y="760" width="150" height="36" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
+      <text x="525" y="820" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">arms</text>
 
-      <rect x="680" y="660" width="36" height="150" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
-      <rect x="740" y="660" width="36" height="150" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
-      <text x="728" y="840" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">legs</text>
+      <rect x="680" y="680" width="36" height="150" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
+      <rect x="740" y="680" width="36" height="150" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
+      <text x="728" y="860" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">legs</text>
     </svg>
   );
 }
