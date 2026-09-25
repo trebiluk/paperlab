@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Spine</title>
+<desc>Fold the top point to the bottom point and open it. That is the spine.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+  </marker>
+</defs>
+<polygon points="400,70 560,230 400,390 240,230" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
+<line x1="400" y1="70" x2="400" y2="390" fill="none" stroke="#1c1915" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
+<line x1="480" y1="160" x2="420" y2="250" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="400" y="460" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">top point to the bottom point, then open. That line is the spine</text>
+</svg>

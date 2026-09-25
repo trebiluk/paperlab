@@ -9,6 +9,13 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-24",
+    title: "Every make shows its own move",
+    items: [
+      "The kite is a square on a point, not a cut that was never a diamond. Envelope, bag, copter, flake, flower, and frame each have a picture for the move.",
+    ],
+  },
+  {
+    date: "2026-09-24",
     title: "Crane matches the real folds",
     items: [
       "The crane now has every fold: square base, both petals, neck, tail, head, wings. Balloon, box, cup, boat, hat, frog, and teller got the same treatment.",

@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img">
-  <title>Diagram 2: Set the height</title>
-  <desc>Fold diagram for Set the height. Paper, crease, and the one move.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-    </marker>
-  </defs>
-  <rect width="800" height="620" fill="#fbf8f1"/>
-  <circle cx="64" cy="64" r="28" fill="#1f5c4e"/>
-  <text x="64" y="74" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#FFFFFF">2</text>
-  <text x="108" y="74" font-size="32" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#1c1915">Set the height</text>
-  <rect x="40" y="112" width="720" height="440" rx="24" fill="#fbf8f1" stroke="#d9d0c2" stroke-width="3"/>
-  <g transform="translate(80,150)"><polygon points="60,240 520,240 520,270 60,270" fill="#b7cfc4" stroke="#1c1915" stroke-width="5" stroke-linejoin="round"/><polygon points="80,240 420,80 460,110 120,270" fill="#fffdf8" stroke="#1c1915" stroke-width="5" stroke-linejoin="round"/><rect x="300" y="50" width="40" height="24" rx="8" fill="#F4E6C8" stroke="#1c1915" stroke-width="5"/><text x="280" y="340" text-anchor="middle" font-size="18" font-family="Arial,Helvetica,sans-serif" font-weight="600" fill="#3f3830">same books · change the height</text></g>
-  <text x="400" y="582" text-anchor="middle" font-size="22" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#1c1915">Set the height</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>The height</title>
+<desc>One end on a book. The other on the desk.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+  </marker>
+</defs>
+<rect x="80" y="160" width="120" height="80" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
+<polygon points="200,200 680,280 680,310 200,230" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
+<text x="400" y="400" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">one end on a book. The height stays</text>
 </svg>

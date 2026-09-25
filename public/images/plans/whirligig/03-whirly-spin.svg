@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img">
-  <title>Diagram 3: Wind and pull</title>
-  <desc>Fold diagram for Wind and pull. Paper, crease, and the one move.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-    </marker>
-  </defs>
-  <rect width="800" height="620" fill="#fbf8f1"/>
-  <circle cx="64" cy="64" r="28" fill="#1f5c4e"/>
-  <text x="64" y="74" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#FFFFFF">3</text>
-  <text x="108" y="74" font-size="32" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#1c1915">Wind and pull</text>
-  <rect x="40" y="112" width="720" height="440" rx="24" fill="#fbf8f1" stroke="#d9d0c2" stroke-width="3"/>
-  <g transform="translate(80,150)"><circle cx="280" cy="160" r="90" fill="#fffdf8" stroke="#1c1915" stroke-width="5"/><line x1="190" y1="160" x2="370" y2="160" stroke="#1c1915" stroke-width="4" stroke-dasharray="12 9" stroke-linecap="round"/><line x1="380" y1="80" x2="420" y2="40" stroke="#1f5c4e" stroke-width="7" stroke-linecap="round" marker-end="url(#arrow)"/><text x="280" y="320" text-anchor="middle" font-size="18" font-family="Arial,Helvetica,sans-serif" font-weight="600" fill="#3f3830">disk · string · spin</text></g>
-  <text x="400" y="582" text-anchor="middle" font-size="22" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#1c1915">Wind and pull</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Pull</title>
+<desc>Wind the string, then pull your hands apart.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+  </marker>
+</defs>
+<circle cx="400" cy="200" r="80" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
+<line x1="200" y1="260" x2="300" y2="220" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<line x1="600" y1="260" x2="500" y2="220" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="400" y="400" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">wind it. Pull your hands apart</text>
 </svg>

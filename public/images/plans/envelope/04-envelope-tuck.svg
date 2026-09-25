@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
+  <title id="title">Step 4: Tuck lock — pointed top</title>
+  <desc id="desc">Pointed top flap folds DOWN and tucks under pocket lip (or seals). V tip clearly visible mid-fold.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+    </marker>
+    <style>
+      .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#1c1915; }
+      .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#3f3830; }
+      .crease { stroke:#1c1915; stroke-width:4; stroke-dasharray:11 9; opacity:.68; stroke-linecap:round; fill:none; }
+      .arrow { stroke:#1f5c4e; stroke-width:8; stroke-linecap:round; fill:none; marker-end:url(#arrow); }
+      .hidden { stroke:#1c1915; stroke-width:3; stroke-dasharray:8 7; opacity:.55; fill:none; stroke-linecap:round; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="800" height="620" fill="#fbf8f1"/>
+  <circle cx="88" cy="76" r="30" fill="#1f5c4e"/>
+  <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">4</text>
+  <text x="132" y="82" font-size="32" class="label">Tuck lock</text>
+  <text x="132" y="108" font-size="16" class="small">Pointed top FOLD DOWN · tuck tip UNDER pocket lip</text>
+  <rect x="56" y="126" width="688" height="410" rx="24" fill="#fbf8f1" stroke="#d9d0c2" stroke-width="3"/>
+
+  <!-- Packet body -->
+  <rect x="270" y="250" width="260" height="160" fill="#fffdf8" stroke="#1c1915" stroke-width="5"/>
+  <line x1="285" y1="250" x2="285" y2="410" stroke="#d9d0c2" stroke-width="3"/>
+  <line x1="515" y1="250" x2="515" y2="410" stroke="#d9d0c2" stroke-width="3"/>
+
+  <!-- Pocket front -->
+  <rect x="270" y="290" width="260" height="120" fill="#d7ebe3" stroke="#1c1915" stroke-width="5"/>
+  <line x1="278" y1="290" x2="522" y2="290" stroke="#1f5c4e" stroke-width="8" stroke-linecap="round"/>
+  <text x="400" y="282" text-anchor="middle" font-size="16" class="label" fill="#1f5c4e" style="fill:#1f5c4e">POCKET LIP</text>
+  <text x="400" y="360" text-anchor="middle" font-size="15" class="small">pocket</text>
+
+  <!-- POINTTED top flap still above, hinging down — V clearly visible -->
+  <polygon points="270,250 530,250 400,130" fill="#FFFFFF" stroke="#1c1915" stroke-width="5" stroke-linejoin="round"/>
+  <circle cx="400" cy="130" r="8" fill="#1f5c4e"/>
+  <line x1="270" y1="250" x2="530" y2="250" class="crease"/>
+  <text x="400" y="195" text-anchor="middle" font-size="18" class="label">POINTED TOP</text>
+  <text x="400" y="218" text-anchor="middle" font-size="15" class="label">FOLD DOWN (valley)</text>
+
+  <!-- Dashed tip under lip (V shape hidden) -->
+  <polyline points="320,290 400,350 480,290" class="hidden"/>
+  <text x="400" y="330" text-anchor="middle" font-size="12" class="small">V tip under (hidden)</text>
+
+  <path d="M400 235 V280" class="arrow"/>
+  <path d="M460 240 Q485 270 400 310" class="arrow"/>
+  <text x="545" y="300" text-anchor="start" font-size="14" class="label">TUCK / SEAL</text>
+  <text x="545" y="320" text-anchor="start" font-size="14" class="label">UNDER LIP</text>
+
+  <text x="400" y="580" text-anchor="middle" font-size="18" class="label">FOLD DOWN · pointed tip · TUCK UNDER LIP — the lock</text>
+</svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Walk</title>
+<desc>Walk, do not run. Count to five.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+  </marker>
+</defs>
+<polygon points="300,160 420,240 300,320 180,240" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
+<line x1="450" y1="240" x2="620" y2="240" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="400" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">walk. Do not run. Count to five</text>
+</svg>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
+  <title id="title">Step 5: Shake prove — pointed flap on BACK</title>
+  <desc id="desc">BACK view of closed regular envelope with pointed top seal flap sealed. Front is plain rectangle — no triangle painted on address face. 10× shake. No alias.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+    </marker>
+    <style>
+      .label { font-family:Arial,Helvetica,sans-serif; font-weight:700; fill:#1c1915; }
+      .small { font-family:Arial,Helvetica,sans-serif; font-weight:600; fill:#3f3830; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="800" height="620" fill="#fbf8f1"/>
+  <circle cx="88" cy="76" r="30" fill="#1f5c4e"/>
+  <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">5</text>
+  <text x="132" y="82" font-size="32" class="label">Shake prove</text>
+  <text x="132" y="108" font-size="16" class="small">BACK · pointed seal sealed · 10× · no alias yet</text>
+  <rect x="56" y="126" width="688" height="410" rx="24" fill="#fbf8f1" stroke="#d9d0c2" stroke-width="3"/>
+
+  <!-- BACK of closed envelope -->
+  <g transform="translate(250,175)">
+    <!-- Outer rect = envelope body from back -->
+    <rect x="0" y="40" width="300" height="220" rx="4" fill="#fffdf8" stroke="#1c1915" stroke-width="5"/>
+    <!-- Side flaps as triangles meeting at center (back geometry) -->
+    <polygon points="0,40 150,150 0,260" fill="#d7ebe3" stroke="#1c1915" stroke-width="4" stroke-linejoin="round" opacity="0.9"/>
+    <polygon points="300,40 150,150 300,260" fill="#d7ebe3" stroke="#1c1915" stroke-width="4" stroke-linejoin="round" opacity="0.9"/>
+    <!-- Bottom flap edge hint -->
+    <line x1="40" y1="240" x2="260" y2="240" stroke="#d9d0c2" stroke-width="3"/>
+    <!-- POINTTED TOP seal flap OVER sides — V tip clearly down -->
+    <polygon points="0,40 300,40 150,200" fill="#FFFFFF" stroke="#1c1915" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="150" cy="200" r="7" fill="#1f5c4e"/>
+    <text x="150" y="100" text-anchor="middle" font-size="18" class="label">POINTED</text>
+    <text x="150" y="122" text-anchor="middle" font-size="18" class="label">TOP SEAL</text>
+    <text x="150" y="145" text-anchor="middle" font-size="13" class="small">banker V · sealed</text>
+  </g>
+
+  <rect x="300" y="148" width="200" height="50" rx="25" fill="#1f5c4e"/>
+  <text x="400" y="182" text-anchor="middle" font-size="26" fill="#FFFFFF" font-family="Arial,Helvetica,sans-serif" font-weight="700">10× SHAKE</text>
+
+  <!-- Shake arrows -->
+  <path d="M190 280 q-28 -36 0 -72" fill="none" stroke="#1f5c4e" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M190 340 q-28 36 0 72" fill="none" stroke="#1f5c4e" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M610 280 q28 -36 0 -72" fill="none" stroke="#1f5c4e" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M610 340 q28 36 0 72" fill="none" stroke="#1f5c4e" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <rect x="170" y="450" width="90" height="36" rx="18" fill="#FEF3C7" stroke="#1c1915" stroke-width="3"/>
+  <text x="215" y="474" text-anchor="middle" font-size="15" class="label">BACK</text>
+  <text x="400" y="475" text-anchor="middle" font-size="15" class="small">Front = plain rect · triangle lives on BACK only</text>
+
+  <text x="400" y="580" text-anchor="middle" font-size="18" class="label">Shake prove first — alias comes after pass</text>
+</svg>

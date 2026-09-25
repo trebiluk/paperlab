@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>One joint</title>
+<desc>Fix the handle or the bottom. Walk again.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+  </marker>
+</defs>
+<text x="400" y="220" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">fix the part that tore</text>
+<text x="400" y="300" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">same load. Walk again</text>
+</svg>

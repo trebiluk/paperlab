@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img">
-  <title>Diagram 1: Cut strips</title>
-  <desc>Fold diagram for Cut strips. Paper, crease, and the one move.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-    </marker>
-  </defs>
-  <rect width="800" height="620" fill="#fbf8f1"/>
-  <circle cx="64" cy="64" r="28" fill="#1f5c4e"/>
-  <text x="64" y="74" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#FFFFFF">1</text>
-  <text x="108" y="74" font-size="32" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#1c1915">Cut strips</text>
-  <rect x="40" y="112" width="720" height="440" rx="24" fill="#fbf8f1" stroke="#d9d0c2" stroke-width="3"/>
-  <g transform="translate(80,150)"><rect x="60" y="120" width="56" height="90" rx="28" fill="#fffdf8" stroke="#1c1915" stroke-width="5"/><rect x="130" y="130" width="56" height="90" rx="28" fill="#fffdf8" stroke="#1c1915" stroke-width="5"/><rect x="200" y="120" width="56" height="90" rx="28" fill="#fffdf8" stroke="#1c1915" stroke-width="5"/><rect x="270" y="130" width="56" height="90" rx="28" fill="#fffdf8" stroke="#1c1915" stroke-width="5"/><rect x="340" y="120" width="56" height="90" rx="28" fill="#fffdf8" stroke="#1c1915" stroke-width="5"/><rect x="410" y="130" width="56" height="90" rx="28" fill="#fffdf8" stroke="#1c1915" stroke-width="5"/><text x="280" y="330" text-anchor="middle" font-size="18" font-family="Arial,Helvetica,sans-serif" font-weight="600" fill="#3f3830">loops linked</text></g>
-  <text x="400" y="582" text-anchor="middle" font-size="22" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#1c1915">Cut strips</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Strips</title>
+<desc>Cut even strips the short way. Eight or more.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+  </marker>
+</defs>
+<rect x="140" y="80" width="80" height="280" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
+<rect x="250" y="80" width="80" height="280" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
+<rect x="360" y="80" width="80" height="280" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
+<text x="560" y="200" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">eight or more</text>
+<text x="400" y="440" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">two fingers wide</text>
 </svg>

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img">
-  <title>Diagram 1: The card</title>
-  <desc>Fold diagram for The card. Paper, crease, and the one move.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-    </marker>
-  </defs>
-  <rect width="800" height="620" fill="#fbf8f1"/>
-  <circle cx="64" cy="64" r="28" fill="#1f5c4e"/>
-  <text x="64" y="74" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#FFFFFF">1</text>
-  <text x="108" y="74" font-size="32" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#1c1915">The card</text>
-  <rect x="40" y="112" width="720" height="440" rx="24" fill="#fbf8f1" stroke="#d9d0c2" stroke-width="3"/>
-  <g transform="translate(80,150)"><rect x="80" y="80" width="440" height="200" rx="8" fill="#fffdf8" stroke="#1c1915" stroke-width="5"/><polygon points="220,80 320,20 420,80" fill="#d7ebe3" stroke="#1c1915" stroke-width="5" stroke-linejoin="round"/><line x1="220" y1="80" x2="420" y2="80" stroke="#1c1915" stroke-width="4" stroke-dasharray="12 9" stroke-linecap="round"/><text x="300" y="340" text-anchor="middle" font-size="18" font-family="Arial,Helvetica,sans-serif" font-weight="600" fill="#3f3830">the step pops up</text></g>
-  <text x="400" y="582" text-anchor="middle" font-size="22" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#1c1915">The card</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>The card</title>
+<desc>Fold the paper in half. The fold is the hinge.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+  </marker>
+</defs>
+<rect x="220" y="80" width="360" height="280" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
+<line x1="400" y1="80" x2="400" y2="360" fill="none" stroke="#1c1915" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
+<line x1="280" y1="200" x2="380" y2="200" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="400" y="450" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">fold it in half like a book</text>
 </svg>

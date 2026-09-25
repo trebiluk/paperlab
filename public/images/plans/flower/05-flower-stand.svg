@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Stem</title>
+<desc>Roll the leftover strip and glue it to the back.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+  </marker>
+</defs>
+<polygon points="400,80 470,140 430,200 370,140" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
+<line x1="400" y1="200" x2="400" y2="380" stroke="#1c1915" stroke-width="8" stroke-linecap="round"/>
+<text x="400" y="450" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">roll the strip. Glue it to the back. Count to ten</text>
+</svg>

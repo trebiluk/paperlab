@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" role="img">
-  <title>Diagram 4: Check</title>
-  <desc>Fold diagram for Check. Paper, crease, and the one move.</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-    </marker>
-  </defs>
-  <rect width="800" height="620" fill="#fbf8f1"/>
-  <circle cx="64" cy="64" r="28" fill="#1f5c4e"/>
-  <text x="64" y="74" text-anchor="middle" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#FFFFFF">4</text>
-  <text x="108" y="74" font-size="32" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#1c1915">Check</text>
-  <rect x="40" y="112" width="720" height="440" rx="24" fill="#fbf8f1" stroke="#d9d0c2" stroke-width="3"/>
-  <g transform="translate(80,150)"><rect x="170" y="30" width="280" height="260" rx="8" fill="#fffdf8" stroke="#1c1915" stroke-width="5"/><line x1="170" y1="30" x2="450" y2="30" stroke="#1c1915" stroke-width="8" stroke-linecap="round"/><line x1="310" y1="30" x2="310" y2="290" stroke="#1c1915" stroke-width="4" stroke-dasharray="12 9" stroke-linecap="round"/><text x="300" y="340" text-anchor="middle" font-size="18" font-family="Arial,Helvetica,sans-serif" font-weight="600" fill="#3f3830">thick = cut · dash = fold</text></g>
-  <text x="400" y="582" text-anchor="middle" font-size="22" font-family="Arial,Helvetica,sans-serif" font-weight="700" fill="#1c1915">Check</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Check</title>
+<desc>A partner can tell what to cut without you talking.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+  </marker>
+</defs>
+<text x="400" y="200" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">show a partner</text>
+<text x="400" y="280" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">they should know what to cut</text>
 </svg>

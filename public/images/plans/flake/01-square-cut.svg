@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Make a square</title>
+<desc>Fold a short edge to a long edge, cut the strip, and open the square.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
+  </marker>
+</defs>
+<text x="180" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">Short side to long side</text>
+<polygon points="60,90 220,90 220,280" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
+<rect x="60" y="90" width="220" height="270" fill="none" stroke="#1c1915" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="220" y="90" width="60" height="270" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
+<text x="250" y="220" text-anchor="middle" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">cut</text>
+<rect x="420" y="120" width="220" height="220" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
+<text x="530" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">Open</text>
+</svg>
