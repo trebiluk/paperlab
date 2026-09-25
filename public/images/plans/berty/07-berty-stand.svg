@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>He stands</title><desc>Arms at the sides, legs under the body. Count to ten.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<rect x="340" y="160" width="120" height="90" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><polygon points="360,70 450,70 480,110 390,110" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/><rect x="430" y="36" width="22" height="22" fill="#1f5c4e" stroke="#1c1915" stroke-width="2"/><rect x="200" y="190" width="120" height="18" fill="#e7f3ee" stroke="#1c1915" stroke-width="3"/><rect x="480" y="190" width="120" height="18" fill="#e7f3ee" stroke="#1c1915" stroke-width="3"/><rect x="370" y="250" width="18" height="80" fill="#fffdf8" stroke="#1c1915" stroke-width="3"/><rect x="420" y="250" width="18" height="80" fill="#fffdf8" stroke="#1c1915" stroke-width="3"/><text x="400" y="430" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">hands off. Count to ten</text>
+</svg>

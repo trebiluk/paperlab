@@ -1,6 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, ClipboardList, Link2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ClipboardList, Link2, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { pageTitle } from "@/lib/brand";
 import {
@@ -19,6 +19,7 @@ import { ELL, SAFETY, SPED, TA, DESIGN_LOOP, loopPhaseFor } from "@/lib/supports
 import { LabWatch } from "@/components/lab-watch";
 import { LabStage } from "@/components/lab-stage";
 import { StudentStepGuide } from "@/components/student-steps";
+import { BertySheet } from "@/components/berty";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/labs/$id")({
@@ -63,6 +64,19 @@ function LabPage() {
 
   return (
     <LabStage lab={lab}>
+      {lab.id === "berty" ? (
+        <div className="print-net mb-8 bg-white">
+          <div className="no-print mb-3 flex flex-wrap items-center gap-3">
+            <Button type="button" onClick={() => window.print()}>
+              <Printer className="size-4" />
+              Print the sheet
+            </Button>
+            <p className="text-sm text-ink-soft">100% scale. Do not fit to page.</p>
+          </div>
+          <BertySheet />
+        </div>
+      ) : null}
+      <div className={lab.id === "berty" ? "no-print" : undefined}>
       <p className="max-w-2xl text-sm text-ink">
         <span className="font-medium">Shop rule. </span>
         {shopRule(lab)}
@@ -232,6 +246,7 @@ function LabPage() {
             <ArrowRight className="size-4" />
           </Link>
         </Button>
+      </div>
       </div>
     </LabStage>
   );

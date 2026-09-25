@@ -328,6 +328,97 @@ export function LogoMark({ className }: { className?: string }) {
   );
 }
 
+/** One letter sheet: head net, antenna, body, arms, and legs. Thick = cut. Dashed = fold. */
+export function BertySheet({ className }: { className?: string }) {
+  const s = 132;
+  const ox = 210;
+  const oy = 210;
+  const face = BERTY_FACE;
+  const dash = "7 5";
+  return (
+    <svg
+      viewBox="0 0 850 1100"
+      className={cn("h-auto w-full", className)}
+      role="img"
+      aria-label="BertyBot cut and fold sheet. Thick line means cut. Dashed line means fold."
+    >
+      <rect width="850" height="1100" fill="#fffdf8" />
+      <text x="425" y="48" textAnchor="middle" fontSize="28" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">
+        BertyBot
+      </text>
+      <text x="425" y="78" textAnchor="middle" fontSize="16" fontWeight="700" fill="#1f5c4e" fontFamily="Arial, Helvetica, sans-serif">
+        Thick line = cut. Dashed line = fold. Triangles glue inside.
+      </text>
+
+      <polygon points={`${ox + s / 2},${oy - s - 36} ${ox},${oy - s} ${ox + s},${oy - s}`} fill="#e7f3ee" stroke="#1c1915" strokeWidth="3" />
+      <polygon points={`${ox - s - 36},${oy + s / 2} ${ox - s},${oy} ${ox - s},${oy + s}`} fill="#e7f3ee" stroke="#1c1915" strokeWidth="3" />
+      <polygon points={`${ox + 3 * s + 36},${oy + s / 2} ${ox + 3 * s},${oy} ${ox + 3 * s},${oy + s}`} fill="#e7f3ee" stroke="#1c1915" strokeWidth="3" />
+      <polygon points={`${ox + s / 2},${oy + 2 * s + 36} ${ox},${oy + 2 * s} ${ox + s},${oy + 2 * s}`} fill="#e7f3ee" stroke="#1c1915" strokeWidth="3" />
+
+      <rect x={ox} y={oy - s} width={s} height={s} fill="#e7f3ee" />
+      <rect x={ox - s} y={oy} width={s} height={s} fill="#fffdf8" />
+      <rect x={ox} y={oy} width={s} height={s} fill="#f3efe4" />
+      <rect x={ox + s} y={oy} width={s} height={s} fill="#e7f3ee" />
+      <rect x={ox + 2 * s} y={oy} width={s} height={s} fill="#fffdf8" />
+      <rect x={ox} y={oy + s} width={s} height={s} fill="#fffdf8" />
+
+      {face.map((row, py) =>
+        row.map((c, px) =>
+          c ? (
+            <rect
+              key={`${px}-${py}`}
+              x={ox + (px * s) / 8 + 3}
+              y={oy + (py * s) / 8 + 3}
+              width={s / 8 - 6}
+              height={s / 8 - 6}
+              fill={c === 1 ? "#1c1915" : "#fffdf8"}
+            />
+          ) : null,
+        ),
+      )}
+
+      <polyline
+        points={`${ox},${oy - s} ${ox + s},${oy - s} ${ox + s},${oy} ${ox + 3 * s},${oy} ${ox + 3 * s},${oy + s} ${ox + s},${oy + s} ${ox + s},${oy + 2 * s} ${ox},${oy + 2 * s} ${ox},${oy + s} ${ox - s},${oy + s} ${ox - s},${oy} ${ox},${oy} ${ox},${oy - s}`}
+        fill="none"
+        stroke="#1c1915"
+        strokeWidth="4"
+        strokeLinejoin="round"
+      />
+      <line x1={ox} y1={oy} x2={ox + s} y2={oy} stroke="#1c1915" strokeWidth="2.5" strokeDasharray={dash} />
+      <line x1={ox} y1={oy + s} x2={ox + s} y2={oy + s} stroke="#1c1915" strokeWidth="2.5" strokeDasharray={dash} />
+      <line x1={ox} y1={oy} x2={ox} y2={oy + s} stroke="#1c1915" strokeWidth="2.5" strokeDasharray={dash} />
+      <line x1={ox + s} y1={oy} x2={ox + s} y2={oy + s} stroke="#1c1915" strokeWidth="2.5" strokeDasharray={dash} />
+      <line x1={ox + 2 * s} y1={oy} x2={ox + 2 * s} y2={oy + s} stroke="#1c1915" strokeWidth="2.5" strokeDasharray={dash} />
+
+      <text x={ox + s / 2} y={oy - s + 22} textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">top</text>
+      <text x={ox - s / 2} y={oy + 24} textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">left</text>
+      <text x={ox + s * 1.5} y={oy + 24} textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">right</text>
+      <text x={ox + s * 2.5} y={oy + 24} textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">back</text>
+      <text x={ox + s / 2} y={oy + s + 22} textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">bottom</text>
+      <text x={ox + s / 2} y={oy - s - 44} textAnchor="middle" fontSize="13" fontWeight="700" fill="#1f5c4e" fontFamily="Arial, Helvetica, sans-serif">glue</text>
+      <text x={ox - s - 8} y={oy + s / 2} textAnchor="end" fontSize="13" fontWeight="700" fill="#1f5c4e" fontFamily="Arial, Helvetica, sans-serif">glue</text>
+
+      <text x="425" y="620" textAnchor="middle" fontSize="16" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">
+        Cut these too. Fold only the dashed line on the body.
+      </text>
+      <rect x="70" y="660" width="220" height="160" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
+      <line x1="70" y1="740" x2="290" y2="740" stroke="#1c1915" strokeWidth="2.5" strokeDasharray={dash} />
+      <text x="180" y="710" textAnchor="middle" fontSize="16" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">body</text>
+
+      <rect x="340" y="660" width="52" height="52" fill="#e7f3ee" stroke="#1c1915" strokeWidth="4" />
+      <text x="366" y="740" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">antenna</text>
+
+      <rect x="450" y="680" width="150" height="36" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
+      <rect x="450" y="740" width="150" height="36" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
+      <text x="525" y="800" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">arms</text>
+
+      <rect x="680" y="660" width="36" height="150" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
+      <rect x="740" y="660" width="36" height="150" fill="#fffdf8" stroke="#1c1915" strokeWidth="4" />
+      <text x="728" y="840" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1c1915" fontFamily="Arial, Helvetica, sans-serif">legs</text>
+    </svg>
+  );
+}
+
 /** Home hero: assembled papercraft Berty + the printed head net on the desk. */
 export function ShopStillLife({ className }: { className?: string }) {
   return (

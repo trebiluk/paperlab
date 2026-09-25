@@ -223,7 +223,7 @@ export function LabStage({ lab, children }: { lab: Lab; children: ReactNode }) {
 
   return (
     <div className="flex h-dvh flex-col" data-make-stage={lab.id}>
-      <header className="flex shrink-0 items-center gap-2 border-b border-line bg-bg/95 px-3 py-2">
+      <header className="no-print flex shrink-0 items-center gap-2 border-b border-line bg-bg/95 px-3 py-2">
         <a
           href={TECH_ROOM_URL}
           className="inline-flex min-h-11 shrink-0 items-center rounded-md px-3 text-sm font-medium text-pine"

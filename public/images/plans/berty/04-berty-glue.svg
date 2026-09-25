@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Glue inside</title><desc>Glue the triangles inside. The face looks out.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<polygon points="330,140 450,140 490,180 370,180" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/><polygon points="330,140 370,180 370,310 330,270" fill="#f3efe4" stroke="#1c1915" stroke-width="4"/><rect x="348" y="190" width="16" height="16" fill="#fffdf8" stroke="#1c1915" stroke-width="2"/><text x="400" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">tabs inside. Face looks out</text>
+</svg>

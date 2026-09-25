@@ -19,8 +19,8 @@ export const UNITS: {
     name: "Make and package",
     days: "4–5 periods",
     grades: "3–8",
-    body: "A flat blank becomes a container, a wallet, a frame, or a solid. Tabs, locks, handles, and leftover strip as waste or a part.",
-    labs: ["cube", "box", "envelope", "cup", "hat", "solids", "bag", "wallet", "frame"],
+    body: "A flat blank becomes a container, Berty’s head, a wallet, a frame, or a solid. Tabs, locks, handles, and leftover strip as waste or a part.",
+    labs: ["cube", "berty", "box", "envelope", "cup", "hat", "solids", "bag", "wallet", "frame"],
   },
   {
     id: "flight",
