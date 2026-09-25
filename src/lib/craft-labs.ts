@@ -632,7 +632,7 @@ export const CRAFT_LABS: Lab[] = [
         minutes: "4 min",
         visual: "berty-sides",
         body: c(
-          "Draw one square to the left of the face. Draw one square to the right of the face. Draw one more square to the right of that.",
+          "Draw one square to the left of the face. Draw one square to the right of the face. Draw one more square to the right of that. Count the squares. You need six.",
           "Count the squares. You need six.",
           "The last square is the back of the head.",
         ),
