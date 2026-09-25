@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
+<title>Zigzag legs</title><desc>Fold the bottom into a short zigzag. Those are the legs.</desc>
+<rect width="800" height="520" fill="#fbf8f1"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/></marker></defs>
+<rect x="280" y="100" width="240" height="180" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><polygon points="280,280 360,330 280,370" fill="#e7f3ee" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><line x1="200" y1="320" x2="270" y2="320" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/><text x="400" y="450" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">up, back, up. A short zigzag</text>
+</svg>

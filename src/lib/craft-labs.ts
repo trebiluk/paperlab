@@ -590,4 +590,117 @@ export const CRAFT_LABS: Lab[] = [
       extend: "Rim-weighted disk vs. plain. Which spins longer?",
     },
   },
+  {
+    id: "berty",
+    name: "Bertybot",
+    family: "move",
+    teConcept: "A fold-up machine: a standing robot that packs flat and stands again",
+    grades: "2–6",
+    time: "25–35 min",
+    materials: ["1 sheet", "scissors", "pencil"],
+    mst: ["ED", "TR", "TS"],
+    blurb: c(
+      "Fold Bertybot. It stands. Then it folds flat. Then it stands again.",
+      "Bertybot is a mechanism. The zigzag legs are hinges. Open them and it stands. Close them and it packs.",
+      "A fold-up product has two states: deployed and packed. The head flap is a clip that holds the arms.",
+    ),
+    challenge: "Stands for a count of 10. Folds flat. Stands again. Arms stay on.",
+    spec: "10 s standing, a flat pack, then 10 s again. No glue if the head flap holds the arms.",
+    steps: [
+      {
+        title: "The body",
+        minutes: "3 min",
+        visual: "square-cut",
+        body: c(
+          "Fold a short edge onto a long edge. Cut the extra strip. Open the square. Keep the strip. The strip will be the arms.",
+          "A square body. The leftover is not trash.",
+          "A rectangle body is a different robot. Square first.",
+        ),
+      },
+      {
+        title: "Fold the body",
+        minutes: "2 min",
+        visual: "berty-body",
+        body: c(
+          "Fold the top edge down to the bottom edge. This wide rectangle is the body.",
+          "One book fold. Do not open it.",
+          "The fold is the top of the shoulders.",
+        ),
+      },
+      {
+        title: "The head",
+        minutes: "2 min",
+        visual: "berty-head",
+        body: c(
+          "Fold the top edge down about two fingers. That flap is the head. Leave it down.",
+          "The flap is a clip. It will hold the arms.",
+          "Too small and the arms slip. About two fingers.",
+        ),
+      },
+      {
+        title: "Two arms",
+        minutes: "4 min",
+        visual: "berty-arms",
+        body: c(
+          "Cut the leftover strip into two arms. Slide one arm under the head on the left. Slide the other arm under the head on the right.",
+          "The head flap pinches the arms. Press it.",
+          "If an arm slips, one small piece of tape on that arm only. Say that you used tape.",
+        ),
+      },
+      {
+        title: "The legs",
+        minutes: "4 min",
+        visual: "berty-legs",
+        body: c(
+          "Fold the bottom edge up a little. Fold it back down. Fold it up once more. That zigzag is the legs.",
+          "Three creases. Like a Z.",
+          "A tall zigzag falls over. Keep the folds short.",
+        ),
+      },
+      {
+        title: "Stand",
+        minutes: "3 min",
+        visual: "berty-stand",
+        body: c(
+          "Open the zigzag so Berty stands. Draw two eyes on the head. Hands off. Count to ten.",
+          "The legs are the stand. The body stays straight.",
+          "If it leans, the zigzag is not even. Match the two sides.",
+        ),
+      },
+      {
+        title: "Fold up",
+        minutes: "3 min",
+        visual: "berty-pack",
+        body: c(
+          "Fold the legs flat. Berty packs. Open the legs. It stands again. Count to ten.",
+          "Two states: flat, then standing.",
+          "Write an alias on the back if you want. No legal name.",
+        ),
+      },
+      {
+        title: "One change",
+        minutes: "4 min",
+        visual: "iterate",
+        body: c(
+          "If it fell, make the zigzag shorter. Stand it. Count to ten again.",
+          "One change: shorter legs.",
+          "Shorter legs stand more easily. Taller legs look bigger and fall.",
+        ),
+      },
+    ],
+    vocab: [
+      { term: "hinge", meaning: "A fold that opens and closes", es: "bisagra" },
+      { term: "pack", meaning: "Fold it flat so it can be put away", es: "guardar plano" },
+    ],
+    ell: "Square. Body. Head flap. Two arms under the head. Zigzag legs. Stand. Fold flat. Stand again.",
+    sped: "Teacher cuts the two arms. Student slides them under the head and folds the zigzag. A book can prop the body for the count.",
+    ta: "Do not hold Berty during the count. If the arms slip, one tape square, labeled, not a wrap.",
+    plan: {
+      hook: "A robot that folds flat can go in a pocket. Open the legs and it is back.",
+      objectives: ["Fold a standing paper robot.", "Pack it flat and stand it again.", "Name the zigzag as the hinge."],
+      assessment: ["Stands for 10 seconds.", "Folds flat, then stands again.", "Arms stay under the head."],
+      snags: ["Cutting the body for arms.", "A zigzag that is too tall.", "Tape wrapped around the whole robot."],
+      extend: "A second Berty with taller legs. Which one stands longer?",
+    },
+  },
 ];

@@ -9,6 +9,13 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-24",
+    title: "Bertybot folds up",
+    items: [
+      "A new make: one sheet becomes a robot that stands, packs flat, and stands again.",
+    ],
+  },
+  {
+    date: "2026-09-24",
     title: "One page for the make",
     items: [
       "Students see the steps once. Done-when is plain language. Catapult and Möbius use the same pictures as the other labs.",
