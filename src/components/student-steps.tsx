@@ -96,7 +96,7 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
 
   return (
     <div className="mt-6" data-student-guide={lab.id}>
-      <section aria-labelledby="plan-need">
+      <section className="sheet-section" aria-labelledby="plan-need">
         <h2 id="plan-need" className="font-display text-2xl font-semibold text-ink">
           You need
         </h2>
@@ -112,7 +112,7 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
       </section>
 
       {lab.vocab.length > 0 ? (
-        <section className="mt-10" aria-labelledby="plan-words">
+        <section className="sheet-section" aria-labelledby="plan-words">
           <h2 id="plan-words" className="font-display text-2xl font-semibold text-ink">
             Words
           </h2>
@@ -142,7 +142,7 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
         </section>
       ) : null}
 
-      <section className="mt-10" aria-labelledby="plan-steps">
+      <section className="sheet-section" aria-labelledby="plan-steps">
         <h2 id="plan-steps" className="font-display text-2xl font-semibold text-ink">
           Steps
         </h2>
@@ -174,7 +174,7 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
         })}
       </section>
 
-      <section className="mt-10" aria-labelledby="plan-done">
+      <section className="sheet-section" aria-labelledby="plan-done">
         <h2 id="plan-done" className="font-display text-2xl font-semibold text-ink">
           Done when
         </h2>
@@ -187,7 +187,7 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
         </ul>
       </section>
 
-      <section className="mt-10" aria-labelledby="plan-stuck">
+      <section className="sheet-section" aria-labelledby="plan-stuck">
         <h2 id="plan-stuck" className="font-display text-2xl font-semibold text-ink">
           Stuck? Try this
         </h2>

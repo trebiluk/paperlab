@@ -103,7 +103,7 @@ function TrackBtn({
       aria-checked={active}
       onClick={onClick}
       className={cn(
-        "min-h-11 rounded-[10px] px-4 py-2 text-sm font-medium",
+        "min-h-11 rounded-none px-4 py-2 text-sm font-medium",
         active ? "bg-surface text-ink shadow-card" : "text-muted",
       )}
     >

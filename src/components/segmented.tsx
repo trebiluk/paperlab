@@ -15,7 +15,7 @@ export function Segmented({
 }) {
   return (
     <div
-      className={cn("flex h-11 items-center rounded-md bg-bg-warm p-1", full && "w-full lg:w-auto")}
+      className={cn("flex h-11 items-center border-2 border-ink bg-bg-warm p-1", full && "w-full lg:w-auto")}
       role="radiogroup"
       aria-label={label}
       onKeyDown={(e) => {
@@ -48,7 +48,7 @@ export function Segmented({
             data-seg={o.id}
             onClick={() => onChange(o.id)}
             className={cn(
-              "min-h-11 rounded-[10px] px-2.5 text-sm font-medium transition-colors",
+              "min-h-11 rounded-none px-2.5 text-sm font-medium transition-colors",
               full && "flex-1 px-1.5 lg:px-2.5",
               on ? "bg-surface text-ink shadow-card" : "text-ink-soft hover:text-ink",
             )}

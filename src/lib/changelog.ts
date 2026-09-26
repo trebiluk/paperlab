@@ -9,6 +9,13 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-24",
+    title: "Sheets are cut sharp",
+    items: [
+      "Corners are square. A thick line is a cut. A dashed line between parts is a fold. Nothing on the page explains the line twice.",
+    ],
+  },
+  {
+    date: "2026-09-26",
     title: "Graph paper looks like graph paper",
     items: [
       "Card pictures sit on a ruled sheet: light squares, and a darker line every fifth square.",

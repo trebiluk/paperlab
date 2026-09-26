@@ -11,15 +11,14 @@ const buttonVariants = cva(
         primary:
           "bg-pine text-pine-fg shadow-[0_2px_0_#143d34] hover:bg-pine-hover active:shadow-none",
         secondary:
-          "border border-ink/15 bg-surface-2 text-ink shadow-[0_2px_0_rgb(28_25_21/0.14)] hover:bg-surface active:shadow-none",
+          "border-2 border-ink bg-surface-2 text-ink shadow-none hover:bg-surface",
         ghost: "text-ink-soft hover:bg-bg-warm hover:text-ink",
-        outline:
-          "border border-ink/20 bg-surface-2 text-ink hover:bg-surface",
+        outline: "border-2 border-ink bg-surface-2 text-ink hover:bg-surface",
       },
       size: {
-        sm: "h-9 rounded-[10px] px-3 text-sm",
-        md: "h-11 rounded-md px-4 text-sm",
-        lg: "h-12 rounded-lg px-5 text-base",
+        sm: "h-9 rounded-none px-3 text-sm",
+        md: "h-11 rounded-none px-4 text-sm",
+        lg: "h-12 rounded-none px-5 text-base",
       },
     },
     defaultVariants: {
