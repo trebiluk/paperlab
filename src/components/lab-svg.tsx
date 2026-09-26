@@ -70,9 +70,33 @@ function Scene({ id }: { id: string }) {
   if (id === "spec-line" || id === "fly-test") return <FlyTest />;
   if (id === "iterate") return <Iterate />;
   if (id === "system") return <System />;
+  if (id === "berty-sheet" || id.startsWith("berty-")) return <BertyNet />;
   const extra = ExtraScene(id);
   if (extra) return extra;
   return <DefaultPaper missing={id} />;
+}
+
+function BertyNet() {
+  const s = 26;
+  const x = 84;
+  const y = 62;
+  const face = "var(--color-face-front)";
+  const side = "var(--color-surface)";
+  const edge = { fill: "none" as const, stroke: "var(--color-ink)", strokeWidth: 2 };
+  return (
+    <g>
+      <rect x={x} y={y - s} width={s} height={s} fill="var(--color-face-top)" stroke="var(--color-ink)" strokeWidth={2} />
+      <rect x={x - s} y={y} width={s} height={s} fill={side} stroke="var(--color-ink)" strokeWidth={2} />
+      <rect x={x} y={y} width={s} height={s} fill={face} stroke="var(--color-ink)" strokeWidth={2} />
+      <rect x={x + s} y={y} width={s} height={s} fill={side} stroke="var(--color-ink)" strokeWidth={2} />
+      <rect x={x + s * 2} y={y} width={s} height={s} fill="var(--color-face-left)" stroke="var(--color-ink)" strokeWidth={2} />
+      <rect x={x} y={y + s} width={s} height={s} fill={side} stroke="var(--color-ink)" strokeWidth={2} />
+      <rect x={x + 5} y={y + 7} width={6} height={6} fill="var(--color-ink)" />
+      <rect x={x + 15} y={y + 7} width={6} height={6} fill="var(--color-ink)" />
+      <path d={`M ${x + 7} ${y + 18} H ${x + 19}`} {...edge} />
+      <Caption>His sheet</Caption>
+    </g>
+  );
 }
 
 function DefaultPaper({ missing }: { missing?: string }) {

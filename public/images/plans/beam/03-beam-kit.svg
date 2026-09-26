@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>The kit</title>
-<desc>Six papers, six sticks, one yard of tape. No borrowing.</desc>
+<desc>Six papers, six sticks, one yard of tape.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<text x="400" y="160" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">6 papers</text>
-<text x="400" y="230" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">6 sticks</text>
-<text x="400" y="300" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">36 inches of tape</text>
+<rect x="80" y="80" width="50" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="150" y="80" width="50" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="220" y="80" width="50" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="80" y="170" width="50" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="150" y="170" width="50" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="220" y="170" width="50" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><line x1="340" y1="100" x2="520" y2="100" stroke="#d7c4a8" stroke-width="8"/><line x1="340" y1="128" x2="520" y2="128" stroke="#d7c4a8" stroke-width="8"/><line x1="340" y1="156" x2="520" y2="156" stroke="#d7c4a8" stroke-width="8"/><line x1="340" y1="184" x2="520" y2="184" stroke="#d7c4a8" stroke-width="8"/><line x1="340" y1="212" x2="520" y2="212" stroke="#d7c4a8" stroke-width="8"/><line x1="340" y1="240" x2="520" y2="240" stroke="#d7c4a8" stroke-width="8"/><rect x="560" y="160" width="140" height="50" fill="#c9ae7a" stroke="#1c1915" stroke-width="4"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">6 papers, 6 sticks, one yard of tape</text>
 </svg>

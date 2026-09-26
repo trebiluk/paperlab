@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>One change</title>
-<desc>If it dropped, change the tips or the fastener.</desc>
+<desc>Change the tips or the fastener.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<text x="400" y="220" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">change the tips</text>
-<text x="400" y="300" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">or move the fastener</text>
+<rect x="180" y="220" width="180" height="28" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><rect x="440" y="220" width="180" height="28" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><circle cx="400" cy="234" r="18" fill="#c9ae7a" stroke="#1c1915" stroke-width="3"/><polygon points="180,220 140,180 180,248" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="620,220 660,180 620,248" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Change the tips, or the fastener</text>
 </svg>

@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>Input and output</title>
-<desc>You open the card. The picture stands.</desc>
+<desc>Open the card. The picture stands.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<text x="400" y="180" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">you open the card</text>
-<line x1="400" y1="210" x2="400" y2="270" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="330" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">the picture stands up</text>
+<rect x="120" y="160" width="250" height="200" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="370" y="160" width="250" height="200" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><polygon points="370,160 495,70 620,160" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><text x="245" y="270" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">open</text><text x="495" y="40" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">stands</text>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">You open it. The picture stands.</text>
 </svg>

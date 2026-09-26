@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>Not this</title>
-<desc>No corners means it is not a polyhedron.</desc>
+<desc>A smooth wrap is not a polyhedron.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<ellipse cx="400" cy="220" rx="160" ry="90" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="400" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">a smooth wrap is not a polyhedron</text>
+<polygon points="120,150 162,118 312,118 270,150" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="270,150 312,118 312,268 270,300" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><rect x="120" y="150" width="150" height="150" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><polygon points="430,200 620,200 640,250 450,250" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="620,200 640,250 640,380 620,330" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><circle cx="540" cy="290" r="70" fill="none" stroke="#1c1915" stroke-width="4"/><line x1="470" y1="220" x2="610" y2="360" stroke="#8f3d32" stroke-width="8"/><line x1="610" y1="220" x2="470" y2="360" stroke="#8f3d32" stroke-width="8"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">A smooth wrap is not this</text>
 </svg>

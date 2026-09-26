@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>Open</title>
-<desc>Open it and count how many times the cut shows.</desc>
+<desc>The cut repeats.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<polygon points="400,80 470,150 540,90 560,180 640,200 540,240 580,330 480,280 400,380 320,280 220,330 260,240 160,200 240,180 260,90 330,150" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="460" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">open gently. Count the copies</text>
+<polygon points="400,220 400,60 427,153" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 400,60 373,153" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 539,140 471,210" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 539,140 445,163" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 539,300 445,277" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 539,300 471,230" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 400,380 373,287" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 400,380 427,287" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 261,300 329,230" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 261,300 355,277" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 261,140 355,163" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 261,140 329,210" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><circle cx="400" cy="220" r="18" fill="#1f5c4e"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Open it. Count the copies.</text>
 </svg>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
-<title>Shorter legs</title><desc>If Berty fell, make the zigzag shorter and count to ten again.</desc>
+<title>Shorter legs</title>
+<desc>If Berty fell, shorten the legs.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/></marker></defs>
-<text x="400" y="200" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">shorter zigzag</text><text x="400" y="270" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">stand. Count to ten</text>
+<rect x="330" y="80" width="140" height="120" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><rect x="360" y="110" width="22" height="22" fill="#1c1915" stroke="#1c1915" stroke-width="0"/><rect x="418" y="110" width="22" height="22" fill="#1c1915" stroke="#1c1915" stroke-width="0"/><rect x="360" y="200" width="80" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="300" y="220" width="50" height="16" fill="#d7c4a8" stroke="#1c1915" stroke-width="4"/><rect x="450" y="220" width="50" height="16" fill="#d7c4a8" stroke="#1c1915" stroke-width="4"/><rect x="370" y="270" width="16" height="50" fill="#d7c4a8" stroke="#1c1915" stroke-width="4"/><rect x="414" y="270" width="16" height="50" fill="#d7c4a8" stroke="#1c1915" stroke-width="4"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Shorter legs. Then stand.</text>
 </svg>

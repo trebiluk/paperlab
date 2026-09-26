@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>Walk</title>
-<desc>Open the bottom, put the hat on, and walk ten steps with hands off.</desc>
+<desc>Hat on. Ten steps. Hands off.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<polygon points="220,150 400,100 580,150 540,230 260,230" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="360" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">open the bottom</text>
-<text x="400" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">put it on. Ten steps. Hands off</text>
+<polygon points="300,150 500,150 540,190 260,190" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><rect x="330" y="190" width="140" height="30" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><circle cx="400" cy="250" r="28" fill="#fffdf8" stroke="#1c1915" stroke-width="3"/><line x1="400" y1="278" x2="400" y2="360" stroke="#1c1915" stroke-width="6"/><line x1="400" y1="360" x2="360" y2="420" stroke="#1c1915" stroke-width="6"/><line x1="400" y1="360" x2="450" y2="420" stroke="#1c1915" stroke-width="6"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">On. Ten steps. Hands off.</text>
 </svg>

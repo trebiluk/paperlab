@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>First ring</title>
-<desc>Close the first strip into a ring.</desc>
+<desc>Overlap and glue.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<polygon points="250,160 450,160 500,260 300,260" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="380" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">overlap a thumb-width. Glue or tape</text>
+<circle cx="400" cy="230" r="90" fill="none" stroke="#1c1915" stroke-width="16"/><rect x="470" y="200" width="70" height="36" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Overlap a thumb-width</text>
 </svg>

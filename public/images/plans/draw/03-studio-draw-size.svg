@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>Size</title>
-<desc>An arrow for the size, and the number beside it.</desc>
+<desc>An arrow and a number.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<line x1="200" y1="200" x2="560" y2="200" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="280" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">a light arrow and a number</text>
+<rect x="250" y="110" width="300" height="260" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><line x1="250" y1="400" x2="550" y2="400" stroke="#1f5c4e" stroke-width="3"/><polygon points="250,400 268,390 268,410" fill="#1f5c4e" stroke="#1f5c4e" stroke-width="0" stroke-linejoin="round"/><polygon points="550,400 532,390 532,410" fill="#1f5c4e" stroke="#1f5c4e" stroke-width="0" stroke-linejoin="round"/><text x="400" y="390" text-anchor="middle" font-size="28" font-family="Georgia, serif" font-weight="700" fill="#1f5c4e">8 in</text>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Write the size</text>
 </svg>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
-<title>Floor tape</title><desc>The eraser goes to the tape on the floor, never at a person.</desc>
+<title>Floor tape</title>
+<desc>The eraser goes to the tape, never at a person.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/></marker></defs>
-<text x="400" y="160" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">eraser → the tape on the floor</text><text x="400" y="250" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">never at a person</text>
+<line x1="80" y1="400" x2="420" y2="400" stroke="#c9ae7a" stroke-width="14"/><rect x="200" y="300" width="40" height="28" fill="#f3c7c0" stroke="#1c1915" stroke-width="4"/><line x1="220" y1="300" x2="220" y2="200" stroke="#1f5c4e" stroke-width="4"/><circle cx="620" cy="180" r="36" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><line x1="580" y1="140" x2="660" y2="220" stroke="#8f3d32" stroke-width="8"/><line x1="660" y1="140" x2="580" y2="220" stroke="#8f3d32" stroke-width="8"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">At the tape. Never at a person.</text>
 </svg>

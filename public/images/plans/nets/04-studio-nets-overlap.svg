@@ -3,11 +3,6 @@
 <title>Point</title>
 <desc>Point to the square that collides.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<rect x="300" y="140" width="90" height="90" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="320" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">point to the square that collides</text>
+<rect x="220" y="120" width="160" height="160" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="320" y="200" width="160" height="160" fill="#f3c7c0" stroke="#1c1915" stroke-width="4"/><line x1="470" y1="180" x2="560" y2="140" stroke="#8f3d32" stroke-width="5"/><polygon points="560,140 538,138 548,158" fill="#8f3d32" stroke="#8f3d32" stroke-width="0" stroke-linejoin="round"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">These two squares hit</text>
 </svg>

@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>Float</title>
-<desc>Set the boat in the tray. Hands off. Count to ten.</desc>
+<desc>Boat in the tray. Hands off.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<polygon points="200,200 600,200 540,300 260,300" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="400" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">in the tray. Hands off. Count to ten</text>
+<rect x="140" y="220" width="520" height="160" fill="#d5e8f0" stroke="#1c1915" stroke-width="4"/><polygon points="260,250 400,190 540,250 400,230" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">In the tray. Hands off. Count to ten.</text>
 </svg>

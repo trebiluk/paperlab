@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>No flame</title>
-<desc>This lantern is paper. No candles.</desc>
+<desc>Paper only. No candles.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<text x="400" y="200" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">paper only</text>
-<text x="400" y="280" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">no candles</text>
+<rect x="330" y="80" width="140" height="200" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><line x1="350" y1="100" x2="450" y2="100" stroke="#1c1915" stroke-width="3" stroke-dasharray="8 6"/><line x1="350" y1="124" x2="450" y2="124" stroke="#1c1915" stroke-width="3" stroke-dasharray="8 6"/><line x1="350" y1="148" x2="450" y2="148" stroke="#1c1915" stroke-width="3" stroke-dasharray="8 6"/><line x1="350" y1="172" x2="450" y2="172" stroke="#1c1915" stroke-width="3" stroke-dasharray="8 6"/><line x1="350" y1="196" x2="450" y2="196" stroke="#1c1915" stroke-width="3" stroke-dasharray="8 6"/><line x1="350" y1="220" x2="450" y2="220" stroke="#1c1915" stroke-width="3" stroke-dasharray="8 6"/><circle cx="400" cy="360" r="22" fill="#8f3d32"/><line x1="370" y1="330" x2="430" y2="390" stroke="#8f3d32" stroke-width="8"/><line x1="430" y1="330" x2="370" y2="390" stroke="#8f3d32" stroke-width="8"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Paper only. No flame.</text>
 </svg>

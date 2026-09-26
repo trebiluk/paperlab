@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>One joint</title>
-<desc>Fix the handle or the bottom. Walk again.</desc>
+<desc>Fix the handle or the bottom.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<text x="400" y="220" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">fix the part that tore</text>
-<text x="400" y="300" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">same load. Walk again</text>
+<rect x="280" y="140" width="240" height="220" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><line x1="300" y1="140" x2="340" y2="70" stroke="#1c1915" stroke-width="8"/><line x1="500" y1="140" x2="460" y2="70" stroke="#1c1915" stroke-width="8"/><line x1="340" y1="70" x2="460" y2="70" stroke="#1c1915" stroke-width="8"/><line x1="300" y1="330" x2="500" y2="330" stroke="#8f3d32" stroke-width="6"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Fix the part that tore</text>
 </svg>

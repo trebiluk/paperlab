@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
 <title>Open</title>
-<desc>Open it. The cut repeats.</desc>
+<desc>The same shape on every petal.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<defs>
-  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/>
-  </marker>
-</defs>
-<polygon points="400,200 460,140 500,210 450,230 520,300 400,260 280,300 350,230 300,210 340,140" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="430" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">the same shape on every petal</text>
+<polygon points="400,220 400,70 425,157" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 400,70 375,157" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 543,174 467,224" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 543,174 452,177" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 488,341 417,285" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 488,341 457,256" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 312,341 343,256" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 312,341 383,285" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 257,174 348,177" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="400,220 257,174 333,224" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><circle cx="400" cy="220" r="18" fill="#1f5c4e"/>
+<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">The same shape on every petal</text>
 </svg>
