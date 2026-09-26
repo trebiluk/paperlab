@@ -429,8 +429,11 @@ export function ShopStillLife({ className }: { className?: string }) {
       aria-label="BertyBot papercraft figure and his cube-net foldable on a shop desk"
     >
       <defs>
-        <pattern id="still-grid" width="14" height="14" patternUnits="userSpaceOnUse">
-          <path d="M 14 0 L 0 0 0 14" fill="none" stroke="var(--color-line)" strokeWidth="0.6" />
+        <pattern id="still-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+          <path d="M 10 0 L 0 0 0 10" fill="none" stroke="var(--color-graph)" strokeWidth="0.45" />
+        </pattern>
+        <pattern id="still-grid-major" width="50" height="50" patternUnits="userSpaceOnUse">
+          <path d="M 50 0 L 0 0 0 50" fill="none" stroke="var(--color-graph-major)" strokeWidth="1" />
         </pattern>
         <pattern id="still-grain" width="7" height="7" patternUnits="userSpaceOnUse">
           <circle cx="1" cy="2" r="0.4" fill="var(--color-ink)" opacity="0.07" />
@@ -443,8 +446,9 @@ export function ShopStillLife({ className }: { className?: string }) {
           <feDropShadow dx="0" dy="2" stdDeviation="1.6" floodColor="rgb(28 25 21)" floodOpacity="0.18" />
         </filter>
       </defs>
-      <rect width="280" height="240" fill="var(--color-bg-warm)" />
-      <rect width="280" height="240" fill="url(#still-grid)" opacity="0.45" />
+      <rect width="280" height="240" fill="var(--color-graph-paper)" />
+      <rect width="280" height="240" fill="url(#still-grid)" />
+      <rect width="280" height="240" fill="url(#still-grid-major)" />
 
       <rect x="14" y="198" width="252" height="12" rx="2" fill="var(--color-face-right)" stroke="var(--color-ink)" strokeWidth="1.4" />
       <rect x="22" y="210" width="10" height="20" fill="var(--color-toy-right)" />

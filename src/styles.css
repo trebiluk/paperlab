@@ -18,7 +18,9 @@
   --color-crease: #c4b49a;
   --color-tape: #c9ae7a;
   --color-danger: #8f3d32;
-  --color-ok: #2f6b4f;
+  --color-graph-paper: #f4f7f4;
+  --color-graph: #b7cddd;
+  --color-graph-major: #6f97b2;
 
   --color-face-top: #c5e4d8;
   --color-face-left: #a9d0c4;
@@ -155,12 +157,26 @@
     box-shadow: var(--shadow-card-hover);
   }
 
-  .graph-paper {
-    background-color: var(--color-bg-warm);
+  .graph-paper,
+  .lab-frame {
+    background-color: var(--color-graph-paper);
     background-image:
-      linear-gradient(var(--color-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
-    background-size: 18px 18px;
+      linear-gradient(to right, var(--color-graph-major) 1.5px, transparent 1.5px),
+      linear-gradient(to bottom, var(--color-graph-major) 1.5px, transparent 1.5px),
+      linear-gradient(to right, var(--color-graph) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-graph) 1px, transparent 1px);
+    background-size:
+      80px 80px,
+      80px 80px,
+      16px 16px,
+      16px 16px;
+    background-position: -1px -1px;
+  }
+
+  .lab-frame {
+    box-shadow:
+      inset 0 0 0 1px rgb(28 25 21 / 0.08),
+      0 1px 2px rgb(28 25 21 / 0.04);
   }
 
   .paper-stack {
@@ -228,9 +244,8 @@
   }
 
   .lab-frame {
-    background: var(--color-bg-warm);
     box-shadow:
-      inset 0 0 0 1px rgb(28 25 21 / 0.06),
+      inset 0 0 0 1px rgb(28 25 21 / 0.08),
       0 1px 2px rgb(28 25 21 / 0.04);
   }
 

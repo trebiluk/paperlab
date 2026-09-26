@@ -28,8 +28,11 @@ export function useShadow() {
 export function LabDefs({ uid = "lab" }: { uid?: string }) {
   return (
     <defs>
-      <pattern id={`${uid}-grid`} width="12" height="12" patternUnits="userSpaceOnUse">
-        <path d="M 12 0 L 0 0 0 12" fill="none" stroke="var(--color-line)" strokeWidth="0.55" />
+      <pattern id={`${uid}-grid`} width="8" height="8" patternUnits="userSpaceOnUse">
+        <path d="M 8 0 L 0 0 0 8" fill="none" stroke="var(--color-graph)" strokeWidth="0.45" />
+      </pattern>
+      <pattern id={`${uid}-grid-major`} width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--color-graph-major)" strokeWidth="0.9" />
       </pattern>
       <pattern id={`${uid}-grain`} width="7" height="7" patternUnits="userSpaceOnUse">
         <circle cx="1.1" cy="2.2" r="0.42" fill="var(--color-ink)" opacity="0.08" />
@@ -64,8 +67,9 @@ export function LabBackdrop({ uid }: { uid?: string }) {
   const id = uid ?? ctx;
   return (
     <g aria-hidden>
-      <rect width="240" height="180" fill={`url(#${id}-desk)`} />
-      <rect width="240" height="180" fill={`url(#${id}-grid)`} opacity="0.5" />
+      <rect width="240" height="180" fill="var(--color-graph-paper)" />
+      <rect width="240" height="180" fill={`url(#${id}-grid)`} />
+      <rect width="240" height="180" fill={`url(#${id}-grid-major)`} />
       <rect
         x="4"
         y="12"
