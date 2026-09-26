@@ -12,12 +12,14 @@ export function LabCard({
   done,
   compact,
   titleAs,
+  showStandards = true,
 }: {
   lab: Lab;
   read: ReadLevel;
   done?: boolean;
   compact?: boolean;
   titleAs?: "h2" | "h3";
+  showStandards?: boolean;
 }) {
   const Title = titleAs ?? (compact ? "h3" : "h2");
   return (
@@ -46,7 +48,7 @@ export function LabCard({
           {lab.name}
         </Title>
         <p className="text-sm text-ink-soft">{pickRead(read, lab.blurb)}</p>
-        {compact ? null : (
+        {compact || !showStandards ? null : (
           <p className="mt-auto pt-2 text-xs text-muted">{lab.mst.map(mstName).join(" · ")}</p>
         )}
       </div>

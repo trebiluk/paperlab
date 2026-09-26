@@ -3,10 +3,10 @@ import { ArrowRight } from "lucide-react";
 import { LabCard } from "@/components/lab-card";
 import { Button } from "@/components/ui/button";
 import { pageTitle } from "@/lib/brand";
-import { FAMILIES, GRADE_BANDS, LABS, getLab, labFitsBand, parseGradeBand, type GradeBandId, type LabFamily } from "@/lib/labs";
-import { useReadLevel, useRole } from "@/lib/lesson";
-import { countDone, nextUndoneId, useDoneLabs } from "@/lib/progress";
-import { PERIOD_PATH, UNITS } from "@/lib/units";
+import { FAMILIES, GRADE_BANDS, LABS, getLab, labFitsBand, parseGradeBand, pathFor, type GradeBandId, type LabFamily } from "@/lib/labs";
+import { setGradeBand, useGradeBand, useReadLevel, useRole } from "@/lib/lesson";
+import { clearDone, countDone, nextUndoneId, useDoneLabs } from "@/lib/progress";
+import { UNITS } from "@/lib/units";
 import { goldXp, xpIntoLevel } from "@/lib/skills";
 import { cn } from "@/lib/utils";
 
@@ -27,17 +27,21 @@ export const Route = createFileRoute("/labs/")({
 });
 
 function LabsIndex() {
-  const read = useReadLevel();
+  const readLevel = useReadLevel();
   const student = useRole() === "student";
-  const { family, grade } = Route.useSearch();
+  const read = student ? "easy" : readLevel;
+  const storedGrade = useGradeBand();
+  const { family, grade: searchGrade } = Route.useSearch();
+  const grade = searchGrade ?? storedGrade;
+  const path = pathFor(grade);
   const doneSet = useDoneLabs();
   const list = family
     ? LABS.filter((l) => l.family === family && labFitsBand(l, grade))
     : null;
-  const made = countDone(PERIOD_PATH, doneSet);
-  const nextId = nextUndoneId(PERIOD_PATH, doneSet);
+  const made = countDone(path, doneSet);
+  const nextId = nextUndoneId(path, doneSet);
   const next = getLab(nextId);
-  const allMade = made === PERIOD_PATH.length && made > 0;
+  const allMade = made === path.length && made > 0;
   const gold = xpIntoLevel(goldXp(doneSet));
 
   return (
@@ -50,7 +54,7 @@ function LabsIndex() {
       </h1>
       <p className="mt-4 max-w-2xl text-ink-soft">
         {student
-          ? "Open one lab. Follow the picture. One move each line. Tap We made this when it matches."
+          ? "Open one lab. Follow the picture. Check the test before We made this."
           : "Every lab is one sheet (or a square cut from one), a written spec, and a test. Switch Easy / Class / Stretch in the bar. Helpers see extra notes on the lab page."}
       </p>
 
@@ -58,7 +62,7 @@ function LabsIndex() {
         <div className="min-w-[12rem] flex-1">
           <p className="text-sm text-ink-soft">
             <span className="font-medium text-ink tabular-nums">
-              {made} of {PERIOD_PATH.length}
+              {made} of {path.length}
             </span>{" "}
             made on this Chromebook
             {gold.xp > 0 ? (
@@ -74,14 +78,14 @@ function LabsIndex() {
             className="mt-2 h-1 max-w-sm overflow-hidden rounded-full bg-bg-warm"
             role="progressbar"
             aria-valuemin={0}
-            aria-valuemax={PERIOD_PATH.length}
+            aria-valuemax={path.length}
             aria-valuenow={made}
-            aria-valuetext={`${made} of ${PERIOD_PATH.length} labs made`}
+            aria-valuetext={`${made} of ${path.length} labs made`}
             aria-label="Labs made on this device"
           >
             <div
               className="h-full origin-left bg-pine"
-              style={{ transform: `scaleX(${PERIOD_PATH.length ? made / PERIOD_PATH.length : 0})` }}
+              style={{ transform: `scaleX(${path.length ? made / path.length : 0})` }}
             />
           </div>
         </div>
@@ -94,9 +98,20 @@ function LabsIndex() {
             </Link>
           </Button>
         ) : allMade ? (
-          <p className="text-sm font-medium text-ok">All {PERIOD_PATH.length} made on this Chromebook.</p>
+          <p className="text-sm font-medium text-ok">All {path.length} made on this Chromebook.</p>
         ) : null}
       </div>
+      {student ? null : (
+        <button
+          type="button"
+          className="mt-3 text-sm font-medium text-pine"
+          onClick={() => {
+            if (window.confirm("Clear every made mark on this Chromebook?")) clearDone();
+          }}
+        >
+          Clear this Chromebook
+        </button>
+      )}
 
       <nav className="mt-6 flex flex-wrap gap-2" aria-label="Lab family">
         <Link
@@ -134,7 +149,7 @@ function LabsIndex() {
               key={b.id}
               to="/labs"
               search={{ family, step: undefined, grade: b.id === "all" ? undefined : b.id }}
-              aria-current={on ? "page" : undefined}
+              onClick={() => setGradeBand(b.id === "all" ? undefined : b.id)}
               className={cn(
                 "flex h-11 items-center rounded-md px-3 text-sm font-medium",
                 on ? "bg-bg-warm text-ink" : "text-muted hover:text-ink",
@@ -153,7 +168,7 @@ function LabsIndex() {
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {list.map((lab) => (
             <li key={lab.id}>
-              <LabCard lab={lab} read={read} done={doneSet.has(lab.id)} />
+              <LabCard lab={lab} read={read} done={doneSet.has(lab.id)} showStandards={!student} />
             </li>
           ))}
         </ul>
@@ -174,7 +189,7 @@ function LabsIndex() {
             <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {labs.map((lab) => (
                   <li key={lab.id}>
-                    <LabCard lab={lab} read={read} done={doneSet.has(lab.id)} titleAs="h3" />
+                    <LabCard lab={lab} read={read} done={doneSet.has(lab.id)} titleAs="h3" showStandards={!student} />
                   </li>
               ))}
             </ul>

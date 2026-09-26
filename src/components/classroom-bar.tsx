@@ -32,13 +32,15 @@ export function ClassroomBar({
           onChange={(id) => setReadLevel(id as ReadLevel)}
         />
       )}
-      <Segmented
-        label="Room"
-        value={role}
-        full={stacked}
-        options={ROOM_ROLES.map((r) => ({ id: r.id, name: r.name, title: r.note }))}
-        onChange={(id) => setRole(id as RoomRole)}
-      />
+      {role === "student" ? null : (
+        <Segmented
+          label="Room"
+          value={role}
+          full={stacked}
+          options={ROOM_ROLES.map((r) => ({ id: r.id, name: r.name, title: r.note }))}
+          onChange={(id) => setRole(id as RoomRole)}
+        />
+      )}
     </div>
   );
 }

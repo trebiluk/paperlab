@@ -1220,8 +1220,17 @@ export function labsInPath() {
   return PERIOD_PATH.map((id) => getLab(id)).filter((l): l is Lab => Boolean(l));
 }
 
-export function labNeighbors(id: string) {
-  const path = PERIOD_PATH.includes(id) ? PERIOD_PATH : LAB_IDS;
+export function pathFor(band?: GradeBandId) {
+  if (!band) return PERIOD_PATH;
+  return PERIOD_PATH.filter((id) => {
+    const lab = getLab(id);
+    return lab ? labFitsBand(lab, band) : false;
+  });
+}
+
+export function labNeighbors(id: string, band?: GradeBandId) {
+  const base = pathFor(band);
+  const path = base.includes(id) ? base : PERIOD_PATH.includes(id) ? PERIOD_PATH : LAB_IDS;
   const i = path.indexOf(id);
   const prevId = path[(i - 1 + path.length) % path.length];
   const nextId = path[(i + 1) % path.length];

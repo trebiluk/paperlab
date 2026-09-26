@@ -25,7 +25,7 @@ const UNITS: { id: string; label: string }[] = [
   { id: "draw", label: "Draw" },
 ];
 
-const START_IDS = ["folds", "crane", "draw", "balloon"];
+const START_IDS = ["folds", "balloon", "hat", "cup", "pinwheel"];
 
 function unitFor(lab: Lab) {
   if (START_IDS.includes(lab.id)) return "start";

@@ -47,6 +47,13 @@ export function toggleLabDone(id: string) {
   setLabDone(id, !done.has(id));
 }
 
+export function clearDone() {
+  if (done.size === 0) return;
+  done = new Set();
+  persist();
+  emit();
+}
+
 export function useDoneLabs() {
   return useSyncExternalStore(
     (cb) => {

@@ -13,7 +13,7 @@ import {
   parseStepParam,
   type Lab,
 } from "@/lib/labs";
-import { pickRead, useReadLevel, useRole } from "@/lib/lesson";
+import { pickRead, useGradeBand, useReadLevel, useRole } from "@/lib/lesson";
 import { toggleLabDone, useLabDone } from "@/lib/progress";
 import { ELL, SAFETY, SPED, TA, DESIGN_LOOP, loopPhaseFor } from "@/lib/supports";
 import { LabWatch } from "@/components/lab-watch";
@@ -39,6 +39,7 @@ function LabPage() {
   const lab = getLab(id);
   const read = useReadLevel();
   const role = useRole();
+  const grade = useGradeBand();
   const done = useLabDone(id);
 
   if (!lab || !isLabId(id)) {
@@ -54,7 +55,7 @@ function LabPage() {
     );
   }
 
-  const { prev, next } = labNeighbors(lab.id);
+  const { prev, next } = labNeighbors(lab.id, grade);
   const family = FAMILIES.find((f) => f.id === lab.family);
   const easy = read === "easy";
   const stepI = clampStepIndex(search.step, lab.steps.length);
@@ -121,20 +122,7 @@ function LabPage() {
         </div>
       ) : null}
 
-      <div className="mt-8 flex flex-wrap items-center justify-end gap-3">
-        <button
-          type="button"
-          onClick={() => toggleLabDone(lab.id)}
-          aria-pressed={done}
-          className={cn(
-            "inline-flex min-h-11 items-center gap-2 rounded-md px-4 text-sm font-medium shadow-[0_2px_0_rgb(28_25_21/0.18)]",
-            done ? "bg-ok/15 text-ok" : "bg-pine text-pine-fg",
-          )}
-        >
-          <Check className="size-4" aria-hidden />
-          {done ? "Made on this Chromebook" : "We made this · +1 Gold"}
-        </button>
-      </div>
+      <MadeMark lab={lab} done={done} />
       {done ? <LabWatch labId={lab.id} /> : null}
 
       {role === "student" ? null : (
@@ -249,6 +237,53 @@ function LabPage() {
       </div>
       </div>
     </LabStage>
+  );
+}
+
+function MadeMark({ lab, done }: { lab: Lab; done: boolean }) {
+  const [didLast, setDidLast] = useState(false);
+  const [passed, setPassed] = useState(false);
+  const ready = didLast && passed;
+  return (
+    <div className="mt-8 rounded-xl bg-surface p-4 shadow-card sm:p-5">
+      {done ? null : (
+        <fieldset className="space-y-3">
+          <legend className="text-sm font-medium text-ink">Before it counts</legend>
+          <label className="flex min-h-11 items-center gap-3 text-base text-ink">
+            <input
+              type="checkbox"
+              className="size-5 accent-pine"
+              checked={didLast}
+              onChange={(e) => setDidLast(e.target.checked)}
+            />
+            I did the last step.
+          </label>
+          <label className="flex min-h-11 items-center gap-3 text-base text-ink">
+            <input
+              type="checkbox"
+              className="size-5 accent-pine"
+              checked={passed}
+              onChange={(e) => setPassed(e.target.checked)}
+            />
+            The test passed.
+          </label>
+          <p className="text-sm text-ink-soft">{lab.challenge ?? lab.spec}</p>
+        </fieldset>
+      )}
+      <button
+        type="button"
+        onClick={() => toggleLabDone(lab.id)}
+        disabled={!done && !ready}
+        aria-pressed={done}
+        className={cn(
+          "mt-4 inline-flex min-h-11 items-center gap-2 rounded-md px-4 text-sm font-medium shadow-[0_2px_0_rgb(28_25_21/0.18)] disabled:cursor-not-allowed disabled:opacity-40",
+          done ? "bg-ok/15 text-ok" : "bg-pine text-pine-fg",
+        )}
+      >
+        <Check className="size-4" aria-hidden />
+        {done ? "Made on this Chromebook" : "We made this"}
+      </button>
+    </div>
   );
 }
 

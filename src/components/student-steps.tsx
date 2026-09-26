@@ -53,16 +53,21 @@ function diagramFile(labId: string, index: number, visual: string) {
 
 function oneChange(problem: string) {
   const p = problem.toLowerCase();
-  if (p.includes("cut")) return "Stop. Match the thick line. Cut only that.";
+  if (p.includes("cut")) return "Stop. Cut only the thick line.";
+  if (p.includes("dashed")) return "That line is a fold. Tape it if you cut it.";
+  if (p.includes("valley") || p.includes("mountain")) return "A valley folds toward you. A mountain folds away.";
+  if (p.includes("square")) return "The sides have to match. Refold the corner before you cut.";
+  if (p.includes("face")) return "The face stays on the outside. Unfold and flip those folds.";
   if (p.includes("name")) return "Write the alias bigger. No legal name.";
-  if (p.includes("wet glue")) return "Wait until the glue is dry. Then test.";
+  if (p.includes("wet glue") || p.includes("glue")) return "Glue the tab only. Press. Wait until it holds.";
   if (p.includes("throw") && p.includes("drop")) return "Drop it. Do not throw.";
-  if (p.includes("glue") || p.includes("tab")) return "Glue the tab only. Press. Wait.";
   if (p.includes("tear") || p.includes("rip")) return "Ask for scrap. Start that fold again.";
-  if (p.includes("throw")) return "Throw softer. Change one thing only.";
+  if (p.includes("throw") || p.includes("fly") || p.includes("flight")) return "Change one thing only. Throw it the same way.";
+  if (p.includes("span") || p.includes("brick") || p.includes("sag")) return "Make the top stiffer. Do not add tape you do not have.";
+  if (p.includes("spin") || p.includes("pin")) return "Loosen the pin. The blades have to move.";
   if (p.includes("diagonal") || p.includes("plus")) return "Unfold. Flip those folds. Try the pinch again.";
   if (p.includes("pocket") || p.includes("flap")) return "Open the pocket. Tuck once more.";
-  return "Undo that step. Match the picture. Try once more.";
+  return "Match the picture for this step. Change one thing only.";
 }
 
 function phasesOf(lab: Lab): GuidePhase[] {
@@ -78,26 +83,12 @@ function phasesOf(lab: Lab): GuidePhase[] {
   }));
 }
 
-function Badge({ n }: { n: number }) {
-  return (
-    <span className="flex size-11 items-center justify-center rounded-full bg-pine text-base font-semibold text-pine-fg tabular-nums">
-      {n}
-    </span>
-  );
-}
-
-function Step({ n, children }: { n: number; children: string }) {
-  return (
-    <li className="grid grid-cols-[2.75rem_minmax(0,1fr)] items-start gap-3 text-lg font-medium leading-snug text-ink">
-      <Badge n={n} />
-      <span className="pt-2">{children}</span>
-    </li>
-  );
+function StepLine({ children }: { children: string }) {
+  return <li className="text-lg font-medium leading-snug text-ink">{children}</li>;
 }
 
 export function StudentStepGuide({ lab }: { lab: Lab }) {
   const phases = phasesOf(lab);
-  let n = 0;
   const goal = kidLine(lab.challenge ?? lab.ell);
   const stuck = lab.plan.snags.length
     ? lab.plan.snags
@@ -120,37 +111,64 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
         </p>
       </section>
 
+      {lab.vocab.length > 0 ? (
+        <section className="mt-10" aria-labelledby="plan-words">
+          <h2 id="plan-words" className="font-display text-2xl font-semibold text-ink">
+            Words
+          </h2>
+          <p className="mt-2 text-ink-soft">You will use these. A fold toward you is a valley. A fold away from you is a mountain.</p>
+          <table className="mt-4 w-full text-left text-base text-ink">
+            <thead>
+              <tr className="border-b border-line">
+                <th className="py-2 pr-3 font-semibold">Word</th>
+                <th className="py-2 pr-3 font-semibold">Means</th>
+                <th className="py-2 font-semibold">Spanish</th>
+              </tr>
+            </thead>
+            <tbody>
+              {lab.vocab.map((word) => (
+                <tr key={word.term} className="border-b border-line/70 align-top">
+                  <th scope="row" className="py-3 pr-3 font-semibold">
+                    {word.term}
+                  </th>
+                  <td className="py-3 pr-3">{word.meaning}</td>
+                  <td className="py-3" lang="es">
+                    {word.es}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      ) : null}
+
       <section className="mt-10" aria-labelledby="plan-steps">
         <h2 id="plan-steps" className="font-display text-2xl font-semibold text-ink">
           Steps
         </h2>
-        <p className="mt-2 text-ink-soft">Follow in order. One action each line.</p>
+        <p className="mt-2 text-ink-soft">Follow in order. The number is the picture. One action each line.</p>
         {phases.map((phase, index) => {
           const file = diagramFile(lab.id, index, phase.visual);
+          const stepNo = index + 1;
           return (
           <figure key={`${phase.title}-${index}`} className="mt-8">
             <img
               src={`${import.meta.env.BASE_URL}images/plans/${lab.id}/${file}`}
-              alt={`Diagram ${index + 1}: ${phase.title}. ${phase.lines[0] ?? "Fold diagram"}.`}
+              alt={`Step ${stepNo}: ${phase.title}. ${phase.lines[0] ?? "Fold diagram"}.`}
               width={800}
               height={520}
-              data-diagram={index + 1}
+              data-diagram={stepNo}
               data-diagram-file={file}
               className="h-auto w-full rounded-xl bg-surface object-contain"
             />
             <figcaption className="mt-3 text-sm font-medium text-pine">
-              Diagram {index + 1} · {phase.title}
+              Step {stepNo} · {phase.title}
             </figcaption>
-            <ol className="mt-4 space-y-3">
-              {phase.lines.map((line) => {
-                n += 1;
-                return (
-                  <Step key={n} n={n}>
-                    {line}
-                  </Step>
-                );
-              })}
-            </ol>
+            <ul className="mt-4 list-disc space-y-2 pl-5">
+              {phase.lines.map((line, lineIndex) => (
+                <StepLine key={`${stepNo}-${lineIndex}`}>{line}</StepLine>
+              ))}
+            </ul>
           </figure>
           );
         })}
@@ -194,41 +212,12 @@ export function StudentStepGuide({ lab }: { lab: Lab }) {
         </table>
         <p className="mt-4 text-lg text-ink">
           <span className="font-semibold">Help path. </span>
-          Try the table → ask a peer → ask Mr. K.
+          Try the table. Then ask a partner. Then ask the teacher.
         </p>
         <p className="mt-2 text-lg text-ink">
           <span className="font-semibold">Pause. </span>
-          Put paper down · breathe · come back to the same step number.
+          Put the paper down. Breathe. Come back to the same step.
         </p>
-      </section>
-
-      <section className="mt-10" aria-labelledby="plan-words">
-        <h2 id="plan-words" className="font-display text-2xl font-semibold text-ink">
-          Words
-        </h2>
-        <p className="mt-2 text-ink-soft">Say once.</p>
-        <table className="mt-4 w-full text-left text-base text-ink">
-          <thead>
-            <tr className="border-b border-line">
-              <th className="py-2 pr-3 font-semibold">Word</th>
-              <th className="py-2 pr-3 font-semibold">Means</th>
-              <th className="py-2 font-semibold">Spanish</th>
-            </tr>
-          </thead>
-          <tbody>
-            {lab.vocab.map((word) => (
-              <tr key={word.term} className="border-b border-line/70 align-top">
-                <th scope="row" className="py-3 pr-3 font-semibold">
-                  {word.term}
-                </th>
-                <td className="py-3 pr-3">{word.meaning}</td>
-                <td className="py-3" lang="es">
-                  {word.es}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </section>
     </div>
   );

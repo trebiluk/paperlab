@@ -61,8 +61,9 @@ function isRole(v: string): v is RoomRole {
 }
 
 let paper: PaperId = DEFAULT_PAPER;
-let readLevel: ReadLevel = "class";
+let readLevel: ReadLevel = "easy";
 let role: RoomRole = "student";
+let gradeBand: "24" | "56" | "78" | undefined;
 const listeners = new Set<() => void>();
 
 if (typeof window !== "undefined") {
@@ -72,6 +73,8 @@ if (typeof window !== "undefined") {
   if (savedRead && isReadLevel(savedRead)) readLevel = savedRead;
   const savedRole = window.sessionStorage.getItem(ROLE_KEY);
   if (savedRole && isRole(savedRole)) role = savedRole;
+  const savedGrade = window.localStorage.getItem("ppl-grade-v1");
+  if (savedGrade === "24" || savedGrade === "56" || savedGrade === "78") gradeBand = savedGrade;
 }
 
 function emit() {
@@ -110,7 +113,7 @@ export function setReadLevel(next: ReadLevel) {
   emit();
 }
 export function useReadLevel() {
-  return useSyncExternalStore(subscribe, () => readLevel, () => "class" as ReadLevel);
+  return useSyncExternalStore(subscribe, () => readLevel, () => "easy" as ReadLevel);
 }
 
 export function getRole() {
@@ -124,6 +127,28 @@ export function setRole(next: RoomRole) {
 }
 export function useRole() {
   return useSyncExternalStore(subscribe, () => role, () => "student" as RoomRole);
+}
+
+export function getGradeBand() {
+  return gradeBand;
+}
+export function setGradeBand(next: "24" | "56" | "78" | undefined) {
+  if (gradeBand === next) return;
+  gradeBand = next;
+  try {
+    if (next) window.localStorage.setItem("ppl-grade-v1", next);
+    else window.localStorage.removeItem("ppl-grade-v1");
+  } catch {
+    /* ignore */
+  }
+  emit();
+}
+export function useGradeBand() {
+  return useSyncExternalStore(
+    subscribe,
+    () => gradeBand,
+    () => undefined as "24" | "56" | "78" | undefined,
+  );
 }
 
 function subscribe(cb: () => void) {

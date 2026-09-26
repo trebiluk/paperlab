@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { PAPERS, PAPER_IDS, type PaperId } from "@/lib/paper";
-import { setPaper, usePaper, useRole } from "@/lib/lesson";
+import { setRole, setPaper, usePaper, useRole } from "@/lib/lesson";
 import { APP_KICKER, APP_SHORT } from "@/lib/brand";
 import { LogoMark } from "@/components/berty";
 import { ClassroomBar } from "@/components/classroom-bar";
@@ -102,7 +102,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="cut-rule mb-6 max-w-xs" />
         <p>BertyBot’s PaperLab · one sheet of printer paper.</p>
         {slim ? (
-          <p className="mt-1">Mark a lab made on this Chromebook. That is Gold.</p>
+          <>
+            <p className="mt-1">Finish the steps and pass the test. Then it counts.</p>
+            <p className="mt-2">
+              <button type="button" className="font-medium text-pine" onClick={() => setRole("teacher")}>
+                Teacher desk
+              </button>
+            </p>
+          </>
         ) : (
           <>
             <p className="mt-1">NYSED MST Standard 5 · Grades 2–8 · scissors, glue, and a period.</p>

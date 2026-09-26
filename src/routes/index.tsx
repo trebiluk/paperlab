@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/button";
 import { LabSvg } from "@/components/lab-svg";
 import { APP_NAME, APP_TAGLINE } from "@/lib/brand";
 import { LATEST_UPDATE } from "@/lib/changelog";
-import { FAMILIES, LABS, getLab } from "@/lib/labs";
+import { FAMILIES, GRADE_BANDS, LABS, getLab, pathFor } from "@/lib/labs";
 import { MST5_STATEMENT } from "@/lib/mst";
-import { useReadLevel, useRole } from "@/lib/lesson";
+import { setGradeBand, useGradeBand, useReadLevel, useRole } from "@/lib/lesson";
 import { countDone, nextUndoneId, useDoneLabs } from "@/lib/progress";
-import { PERIOD_PATH, UNITS } from "@/lib/units";
+import { UNITS } from "@/lib/units";
 import { goldXp, xpIntoLevel } from "@/lib/skills";
 import { TECHWORKS_NAME, TECHWORKS_URL } from "@/lib/room";
 
@@ -25,13 +25,16 @@ export const Route = createFileRoute("/")({
 const FEATURED = ["kite", "bag", "flower", "grabber", "wallet", "frame", "beam", "whirligig"];
 
 function Home() {
-  const read = useReadLevel();
+  const readLevel = useReadLevel();
   const role = useRole();
   const student = role === "student";
+  const read = student ? "easy" : readLevel;
+  const grade = useGradeBand();
+  const path = pathFor(grade);
   const doneSet = useDoneLabs();
-  const made = countDone(PERIOD_PATH, doneSet);
-  const next = getLab(nextUndoneId(PERIOD_PATH, doneSet));
-  const allMade = made === PERIOD_PATH.length && made > 0;
+  const made = countDone(path, doneSet);
+  const next = getLab(nextUndoneId(path, doneSet));
+  const allMade = made === path.length && made > 0;
   const gold = xpIntoLevel(goldXp(doneSet));
 
   return (
@@ -46,7 +49,7 @@ function Home() {
           </h1>
           <p className="max-w-xl text-lg text-ink-soft">
             {student
-              ? "Tap Start here. The first job is a valley fold, then a mountain fold, on scrap."
+              ? "Tap Start here. Fold the scrap so it matches the picture."
               : `${APP_TAGLINE} ${LABS.length} paper labs — kites, bags, frames, grabbers, darts, boats — with a written challenge on every make, Easy / Class / Stretch reading, ELL frames, extra-help notes, and helper cards for a teaching assistant.`}
           </p>
           <ul className="flex flex-wrap gap-2">
@@ -88,15 +91,32 @@ function Home() {
           </div>
           <p className="text-sm text-muted">
             {student && made === 0
-              ? "When the fold matches the picture, tap We made this."
+              ? "Do every step. Check the test. Then tap We made this."
               : made === 0
               ? "Start the shop with folding techniques — valley and mountain on scrap."
               : allMade
-                ? `All ${PERIOD_PATH.length} made on this Chromebook.`
-                : `${made} of ${PERIOD_PATH.length} made on this Chromebook · next is ${next?.name ?? "the labs"}.`}
+                ? `All ${path.length} made on this Chromebook.`
+                : `${made} of ${path.length} made on this Chromebook · next is ${next?.name ?? "the labs"}.`}
             {student || gold.xp === 0 ? "" : ` · ${gold.xp} Gold · ${gold.band}`}
             {!student && gold.xp === 0 ? " Gold XP starts when you mark a lab made." : ""}
           </p>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Grade band for this Chromebook">
+            {GRADE_BANDS.map((b) => {
+              const id = b.id === "all" ? undefined : b.id;
+              const on = grade === id;
+              return (
+                <button
+                  key={b.id}
+                  type="button"
+                  aria-pressed={on}
+                  onClick={() => setGradeBand(id)}
+                  className={`flex h-11 items-center rounded-md px-3 text-sm font-medium ${on ? "bg-pine text-pine-fg" : "bg-surface text-ink-soft shadow-card"}`}
+                >
+                  {b.name}
+                </button>
+              );
+            })}
+          </div>
         </div>
         <div className="relative overflow-hidden rounded-xl bg-bg-warm p-2 shadow-card sm:p-3">
           <div className="aspect-square w-full sm:aspect-[5/4]">
