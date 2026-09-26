@@ -642,7 +642,7 @@ export const CRAFT_LABS: Lab[] = [
         minutes: "5 min",
         visual: "berty-glue",
         body: c(
-          "Put glue on the triangles. Tuck them inside the cube. Press. Wait. The face looks out.",
+          "Put glue on the triangles. Tuck them inside the cube. Press until the face looks out.",
           "Glue one triangle at a time.",
           "Do not glue the face.",
         ),

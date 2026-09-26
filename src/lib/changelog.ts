@@ -9,6 +9,13 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-09-24",
+    title: "Berty’s later pictures match the words",
+    items: [
+      "The head is his face, not a diamond. The body step shows fold, then glue the head on. The last picture is Berty standing.",
+    ],
+  },
+  {
+    date: "2026-09-24",
     title: "Berty’s sheet prints",
     items: [
       "Bertybot is on the year path. Print the sheet at 100%, or trace it. Cut the thick line. Fold the dashes.",
