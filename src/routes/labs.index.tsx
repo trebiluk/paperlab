@@ -104,7 +104,7 @@ function LabsIndex() {
           search={{ family: undefined, step: undefined, grade }}
           aria-current={!family ? "page" : undefined}
           className={cn(
-            "flex h-11 items-center rounded-full px-4 text-sm font-medium",
+            "flex h-11 items-center rounded-md px-4 text-sm font-medium",
             !family ? "bg-pine text-pine-fg" : "bg-surface text-ink-soft shadow-card",
           )}
         >
@@ -117,7 +117,7 @@ function LabsIndex() {
             search={{ family: f.id, step: undefined, grade }}
             aria-current={family === f.id ? "page" : undefined}
             className={cn(
-              "flex h-11 items-center rounded-full px-4 text-sm font-medium",
+              "flex h-11 items-center rounded-md px-4 text-sm font-medium",
               family === f.id ? "bg-pine text-pine-fg" : "bg-surface text-ink-soft shadow-card",
             )}
           >
@@ -136,7 +136,7 @@ function LabsIndex() {
               search={{ family, step: undefined, grade: b.id === "all" ? undefined : b.id }}
               aria-current={on ? "page" : undefined}
               className={cn(
-                "flex h-11 items-center rounded-full px-3 text-sm font-medium",
+                "flex h-11 items-center rounded-md px-3 text-sm font-medium",
                 on ? "bg-bg-warm text-ink" : "text-muted hover:text-ink",
               )}
             >

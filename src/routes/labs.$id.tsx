@@ -127,7 +127,7 @@ function LabPage() {
           onClick={() => toggleLabDone(lab.id)}
           aria-pressed={done}
           className={cn(
-            "inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-sm font-medium",
+            "inline-flex min-h-11 items-center gap-2 rounded-md px-4 text-sm font-medium shadow-[0_2px_0_rgb(28_25_21/0.18)]",
             done ? "bg-ok/15 text-ok" : "bg-pine text-pine-fg",
           )}
         >
@@ -428,7 +428,7 @@ function Stepper({
                 onClick={() => toggleLabDone(lab.id)}
                 aria-pressed={done}
                 className={cn(
-                  "inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-sm font-medium",
+                  "inline-flex min-h-11 items-center gap-2 rounded-md px-4 text-sm font-medium shadow-[0_2px_0_rgb(28_25_21/0.18)]",
                   done ? "bg-ok/15 text-ok" : "bg-bg-warm text-ink",
                 )}
               >

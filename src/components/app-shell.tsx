@@ -51,7 +51,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       {onMake ? null : (
-      <header className="no-print sticky top-0 z-40 border-b border-line/80 bg-bg/85 backdrop-blur-md">
+      <header className="sheet-bar no-print sticky top-0 z-40">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2 sm:px-6 lg:py-3">
           <Link
             to="/"
@@ -79,8 +79,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                   className={cn(
                     "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     active
-                      ? "bg-bg-warm text-ink"
-                      : "text-muted hover:bg-bg-warm hover:text-ink",
+                      ? "text-ink shadow-[inset_0_-2px_0_#1c1915]"
+                      : "text-muted hover:text-ink",
                   )}
                 >
                   {item.label}
@@ -174,7 +174,7 @@ function SiteMenu({
                 onClick={() => setOpen(false)}
                 className={cn(
                   "flex min-h-11 items-center rounded-md px-3 text-sm font-medium",
-                  active ? "bg-bg-warm text-ink" : "text-ink-soft hover:bg-bg-warm hover:text-ink",
+                  active ? "text-ink shadow-[inset_3px_0_0_#1c1915]" : "text-ink-soft hover:bg-bg-warm hover:text-ink",
                 )}
               >
                 {item.label}

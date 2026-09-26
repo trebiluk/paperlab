@@ -53,7 +53,7 @@ function Home() {
             {["One sheet", "Scissors", "Glue", "A period"].map((chip) => (
               <li
                 key={chip}
-                className="rounded-full bg-surface px-3 py-1.5 text-sm font-medium text-ink-soft shadow-card"
+                className="rounded-md bg-surface px-3 py-1.5 text-sm font-medium text-ink-soft shadow-card"
               >
                 {chip}
               </li>

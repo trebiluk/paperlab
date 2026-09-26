@@ -11,7 +11,7 @@ export function GoldChip({ compact }: { compact?: boolean }) {
       to="/skills"
       title="Gold XP on this Chromebook. Watch slip on Skills. The 1–4 mark lives in TechWorks."
       className={cn(
-        "inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-sm font-medium text-ink no-underline",
+        "inline-flex min-h-11 items-center gap-2 rounded-md px-3 text-sm font-medium text-ink no-underline",
         compact ? "bg-bg-warm" : "bg-surface shadow-card",
       )}
     >

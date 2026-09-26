@@ -4,16 +4,17 @@ import type { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors transition-transform duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:pointer-events-none disabled:opacity-40 active:scale-[0.96]",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:pointer-events-none disabled:opacity-40 active:translate-y-px",
   {
     variants: {
       variant: {
-        primary: "bg-pine text-pine-fg hover:bg-pine-hover",
+        primary:
+          "bg-pine text-pine-fg shadow-[0_2px_0_#143d34] hover:bg-pine-hover active:shadow-none",
         secondary:
-          "bg-surface text-ink shadow-card hover:bg-surface-2",
+          "border border-ink/15 bg-surface-2 text-ink shadow-[0_2px_0_rgb(28_25_21/0.14)] hover:bg-surface active:shadow-none",
         ghost: "text-ink-soft hover:bg-bg-warm hover:text-ink",
         outline:
-          "border border-line bg-transparent text-ink hover:bg-surface",
+          "border border-ink/20 bg-surface-2 text-ink hover:bg-surface",
       },
       size: {
         sm: "h-9 rounded-[10px] px-3 text-sm",

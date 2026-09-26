@@ -17,7 +17,7 @@ export const Route = createRootRoute({
       { title: APP_NAME },
       { name: "description", content: APP_TAGLINE },
       { name: "paperlab-rev", content: APP_REV },
-      { name: "theme-color", content: "#1f5c4e" },
+      { name: "theme-color", content: "#f3eee4" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: publicAsset("/favicon.svg") },
