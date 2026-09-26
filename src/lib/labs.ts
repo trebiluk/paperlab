@@ -163,7 +163,7 @@ const CORE_LABS: Lab[] = [
       "In geometry it is a net. In technical drawing it is a development — true size, agreed line types.",
       "A working drawing is a communication system. Craftsmanship on the drawing predicts the product.",
     ),
-    challenge: "A development another class could cut: thick = cut, dashed = fold, six legal tabs, letters A–G.",
+    challenge: "A partner can point to the thick cut, the dashed fold, and one size. No talking.",
     spec: "Pass: conventions quiz 3/4 and a development with legal tabs. Stretch: title block and scale 1:1.",
     studio: { to: "/draw" },
     steps: [],
@@ -196,7 +196,7 @@ const CORE_LABS: Lab[] = [
       "Only 11 of 35 hexominoes fold into a cube. Faces that stack in space fail.",
       "A net is a spanning tree of faces. Overlap is a geometric constraint, not a taste.",
     ),
-    challenge: "Mark 3 valid and 3 invalid hexominoes. Fold one cheat so the overlap is the proof.",
+    challenge: "Say pass or fail for the net in the picture. If it fails, point to the square that hits another.",
     spec: "Pass: fold-or-fail quiz plus one valid net that is not the Latin cross.",
     studio: { to: "/nets" },
     steps: [],
@@ -222,22 +222,22 @@ const CORE_LABS: Lab[] = [
     teConcept: "Tetrahedron, pyramid, prism, cylinder, cone — polyhedra vs. solids with curves",
     grades: "4–8",
     time: "20–40 min",
-    materials: ["1 sheet", "scissors", "glue"],
+    materials: ["1 sheet", "scissors", "glue stick", "the Foldables page"],
     mst: ["TR", "TS", "ED"],
     blurb: c(
       "After the cube: triangle solid, pyramid, prism, tube, cone. Same sheet.",
       "Five more developments on the same paper size. Cylinder and cone add a curved edge — Euler’s formula does not apply the same way.",
       "Curved developments introduce circumference = πd. Tabs still follow one per glue seam, never on a fold.",
     ),
-    challenge: "One extra solid from a development with legal tabs. Name whether F − E + V = 2 applies.",
+    challenge: "Make one shape from Foldables. It closes. Name it. Count the faces, the edges, and the corners.",
     spec: "Pass: finished solid and a correct “polyhedron / curved” call. Stretch: leftover compared to the cube as process waste.",
     studio: { to: "/foldables" },
     steps: [],
     vocab: [
-      { term: "polyhedron", meaning: "A solid with only flat faces", es: "poliedro" },
-      { term: "cylinder", meaning: "Two circles and a wrap", es: "cilindro" },
+      { term: "face", meaning: "One flat side of the shape", es: "cara" },
+      { term: "tab", meaning: "The flap that glues inside", es: "solapa" },
     ],
-    ell: "Flat faces = polyhedron. A wrap = not a polyhedron.",
+    ell: "Thick line, cut. Dashed line, fold. Tabs go inside.",
     sped: "Pick one extra solid, not five. Tetrahedron is the smallest cut.",
     ta: "Same tab rules as the cube.",
     plan: {
@@ -262,7 +262,7 @@ const CORE_LABS: Lab[] = [
       "A classic dart is a fast prototype. The spec is a distance on the floor. After three flights, change one input and test again.",
       "Variables: mass distribution, dihedral, angle of attack, launch. Change one. A data table beats a story about “it flew better.”",
     ),
-    challenge: "One sheet. Spec: pass a taped line 4 m away, 2 of 3 flights.",
+    challenge: "The plane flies past the tape on the floor, 2 throws out of 3.",
     spec: "2 of 3 flights pass the 4 m line after one documented change.",
     steps: [
       {
@@ -687,7 +687,7 @@ const CORE_LABS: Lab[] = [
       "A pinwheel is a rotary system. Wind is the input. Vanes catch it. A shaft holds the center. Too tight a pin = too much friction.",
       "Convert airflow to rotation. Friction at the axle is a loss. History: windmills. Impact: a toy, and a model of a turbine.",
     ),
-    challenge: "Spins from a breath. If it does not, say whether the pin is tight or the vanes are wrong.",
+    challenge: "It spins from one breath. If it does not, say if the pin is tight or the blades are wrong.",
     spec: "Pass: rotation from a breath, leftover strip reused or labeled as waste. Stretch: two vane sizes, which starts easier?",
     steps: [
       {
@@ -834,7 +834,7 @@ const CORE_LABS: Lab[] = [
       "The hopper is a stored-energy system. Your finger is the input. The folded back legs are a spring. Output is a jump.",
       "A sharper reverse-fold on the legs stores more. A data table of three presses beats “it hops.”",
     ),
-    challenge: "Three hops recorded. After one spring change, the median hop grows or it lands upright more often.",
+    challenge: "Three hops. Change the spring once. It hops farther, or it lands right side up more often.",
     spec: "Three hops recorded. After one crease improvement, median hop increases or the frog lands upright more often.",
     steps: [
       {
@@ -979,7 +979,7 @@ const CORE_LABS: Lab[] = [
       "The fortune teller is a four-pocket mechanism and an interface. Fill it with lab vocab, not fortunes.",
       "An information system in paper. Layers hide data until a sequence of choices reveals it — a menu, different material.",
     ),
-    challenge: "Opens on both axes. Loaded with this week’s tech words. A partner runs it with no extra talk.",
+    challenge: "It opens both ways. A partner can use it without you talking.",
     spec: "Pass: both axes, accurate vocab under the flaps. Stretch: a quiz teller — questions on top, answers under.",
     steps: [
       {

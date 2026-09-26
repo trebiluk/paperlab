@@ -8,7 +8,14 @@ export type ShopNote = {
 
 export const UPDATES: ShopNote[] = [
   {
-    date: "2026-09-24",
+    date: "2026-09-26",
+    title: "Every lab was walked",
+    items: [
+      "39 labs, 228 steps, every picture opens. The tests now match the steps: fold a square before the cube, make one shape from Foldables, and the goal line is something a student can do.",
+    ],
+  },
+  {
+    date: "2026-09-26",
     title: "Blank pictures now show the paper",
     items: [
       "Steps that were only words now show the sheet, the solid, or the test. Berty’s card shows his net.",

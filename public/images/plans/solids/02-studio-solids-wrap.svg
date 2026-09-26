@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
-<title>Not this</title>
-<desc>A smooth wrap is not a polyhedron.</desc>
+<title>Cut</title>
+<desc>Cut the thick line. Do not cut a dash.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<polygon points="120,150 162,118 312,118 270,150" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="270,150 312,118 312,268 270,300" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><rect x="120" y="150" width="150" height="150" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><polygon points="430,200 620,200 640,250 450,250" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="620,200 640,250 640,380 620,330" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><circle cx="540" cy="290" r="70" fill="none" stroke="#1c1915" stroke-width="4"/><line x1="470" y1="220" x2="610" y2="360" stroke="#8f3d32" stroke-width="8"/><line x1="610" y1="220" x2="470" y2="360" stroke="#8f3d32" stroke-width="8"/>
-<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">A smooth wrap is not this</text>
+<rect x="330" y="70" width="120" height="120" fill="#c5e4d8" stroke="#1c1915" stroke-width="4"/><rect x="210" y="190" width="120" height="120" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="330" y="190" width="120" height="120" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><rect x="450" y="190" width="120" height="120" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="330" y="310" width="120" height="120" fill="#d7c4a8" stroke="#1c1915" stroke-width="4"/><line x1="330" y1="190" x2="450" y2="190" stroke="#1c1915" stroke-width="3" stroke-dasharray="14 10"/><line x1="330" y1="310" x2="450" y2="310" stroke="#1c1915" stroke-width="3" stroke-dasharray="14 10"/><line x1="330" y1="190" x2="330" y2="310" stroke="#1c1915" stroke-width="3" stroke-dasharray="14 10"/><line x1="450" y1="190" x2="450" y2="310" stroke="#1c1915" stroke-width="3" stroke-dasharray="14 10"/><polyline points="330,70 450,70 450,190 570,190 570,310 450,310 450,430 330,430 330,310 210,310 210,190 330,190 330,70" fill="none" stroke="#1c1915" stroke-width="8" stroke-linejoin="round"/>
+<text x="400" y="490" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Thick line. Cut. Dashed line. Fold.</text>
 </svg>

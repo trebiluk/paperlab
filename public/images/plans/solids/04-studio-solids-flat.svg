@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img">
-<title>Name it</title>
-<desc>Name the solid and point to a face.</desc>
+<title>Name</title>
+<desc>Say the name. Count faces, edges, and corners.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<polygon points="230,140 272,108 472,108 430,140" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="430,140 472,108 472,308 430,340" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><rect x="230" y="140" width="200" height="200" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><line x1="520" y1="250" x2="640" y2="210" stroke="#1f5c4e" stroke-width="5"/><polygon points="640,210 618,208 628,228" fill="#1f5c4e" stroke="#1f5c4e" stroke-width="0" stroke-linejoin="round"/>
-<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Cube, box, or prism</text>
+<polygon points="220,150 450,150 510,200 160,200" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="160,200 510,200 510,370 160,370" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="510,200 570,150 570,320 510,370" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><text x="335" y="290" text-anchor="middle" font-size="28" font-family="Georgia, serif" font-weight="700" fill="#1c1915">face</text><line x1="560" y1="180" x2="680" y2="120" stroke="#1f5c4e" stroke-width="5"/><polygon points="680,120 658,122 670,142" fill="#1f5c4e" stroke="#1c1915" stroke-width="0" stroke-linejoin="round"/>
+<text x="400" y="490" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Name it. Then count.</text>
 </svg>

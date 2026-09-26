@@ -589,7 +589,7 @@ export const MORE_LABS: Lab[] = [
       "The crane is a sequence of named bases. Miss a mountain/valley and the head will not invert. History: a peace and gift object.",
       "A process document (this lab) is a computer model of folds. The paper still has to take the crease. Craftsmanship is reversible until you press.",
     ),
-    challenge: "A crane that sits on the desk. Head inverted, not torn. Leftover strip named — bookmark or chain link.",
+    challenge: "A crane that sits on the desk. The head is a small fold, not a tear. The leftover strip gets an alias.",
     spec: "Pass: sits, head inverted. Stretch: who is it for? That need is the spec.",
     steps: [
       {
@@ -757,7 +757,7 @@ export const MORE_LABS: Lab[] = [
       "Kirigami + radial folds. One cut becomes six or eight. You are manufacturing identical features.",
       "A die-cut in a factory is this idea in metal. Constraints: do not cut the folded spine completely or the product falls apart.",
     ),
-    challenge: "One flake that stays in one piece, with a repeating cut you can point to in every sector.",
+    challenge: "One flake in one piece. Point to the same cut on every point.",
     spec: "Opens as one piece. A visitor can name the repeating shape without help.",
     steps: [
       {
@@ -1224,7 +1224,7 @@ export const MORE_LABS: Lab[] = [
         minutes: "4 min",
         visual: "beam-crew",
         body: c(
-          "Find 2 or 3 people. Pick a Crew Leader for now. Who is absent today? Write the names.",
+          "Find 2 or 3 people. Pick a leader. Write aliases only. No legal names.",
           "Crew of 2 or 3. Decide: who is Crew Leader for this period? Who is absent? The Leader calls the test. Everyone still builds.",
           "Roles are for the period, not forever. Leader = calls GO, records the count, watches the circle. Absent partners get a named job when they return: tester or sketcher.",
         ),

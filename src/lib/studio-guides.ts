@@ -8,9 +8,11 @@ export const STUDIO_GUIDES: Record<string, GuidePhase[]> = {
       visual: "studio-cube-grid",
       title: "Mark the cross",
       lines: [
-        "Get one sheet, a pencil, scissors, and glue",
-        "Turn the paper tall",
-        "Mark six equal squares in a cross",
+        "Fold a short edge onto a long edge",
+        "Cut the leftover strip. Open the square",
+        "Fold the top to the bottom. Open it. Fold the left to the right. Open it",
+        "Fold each edge to a middle line. Open it",
+        "Outline six squares in a cross",
       ],
     },
     {
@@ -19,7 +21,7 @@ export const STUDIO_GUIDES: Record<string, GuidePhase[]> = {
       lines: [
         "Draw a thick line where you will cut",
         "Draw a dashed line where you will fold",
-        "Add a tab on each edge that glues",
+        "Add a tab on every edge that does not touch another square",
       ],
     },
     {
@@ -187,7 +189,7 @@ export const STUDIO_GUIDES: Record<string, GuidePhase[]> = {
     {
       visual: "studio-nets-overlap",
       title: "Overlap test",
-      lines: ["Fold it in your mind", "If two squares land on the same spot, it fails"],
+      lines: ["Look at the net in the picture", "If two squares would stack, it fails"],
     },
     {
       visual: "studio-nets-pass",
@@ -203,23 +205,23 @@ export const STUDIO_GUIDES: Record<string, GuidePhase[]> = {
   solids: [
     {
       visual: "studio-solids-flat",
-      title: "Flat faces",
-      lines: ["Point to a flat face", "A solid with flat faces is a polyhedron"],
+      title: "Pick",
+      lines: ["Open Foldables", "Pick one shape that is not the cube", "Print it, or trace it"],
     },
     {
       visual: "studio-solids-wrap",
-      title: "Not this",
-      lines: ["A smooth wrap with no corners is not a polyhedron", "Say which one you are holding"],
+      title: "Cut",
+      lines: ["Cut on the thick line", "Do not cut a dashed line"],
     },
     {
       visual: "studio-cube-close",
-      title: "Count",
-      lines: ["Count the faces", "Count the edges", "Count the corners"],
+      title: "Glue",
+      lines: ["Fold every dashed line", "Put glue on the tabs", "Tuck the tabs inside"],
     },
     {
       visual: "studio-solids-flat",
-      title: "Name it",
-      lines: ["Name the solid: cube, box, or prism", "Point to the face you counted first"],
+      title: "Name",
+      lines: ["Say the name of your shape", "Count the faces, the edges, and the corners"],
     },
   ],
 };
