@@ -37,6 +37,33 @@ function Home() {
   const allMade = made === path.length && made > 0;
   const gold = xpIntoLevel(goldXp(doneSet));
 
+  if (student) {
+    const startId = next?.id ?? "folds";
+    return (
+      <AppShell>
+        <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-8 sm:px-6 lg:grid-cols-2 lg:py-12">
+          <div>
+            <p className="max-w-md font-display text-3xl leading-tight font-semibold text-ink sm:text-4xl">
+              Pick a lab. Fold the paper to match the picture.
+            </p>
+            <Button asChild size="lg" className="mt-6 h-12 min-h-12 px-8 text-lg">
+              <Link to="/labs/$id" params={{ id: startId }} search={{ step: 1 }}>
+                Start
+              </Link>
+            </Button>
+          </div>
+          <img
+            src={`${import.meta.env.BASE_URL}images/plans/folds/01-scrap-flat.svg`}
+            alt="The first picture. Fold your paper so it matches."
+            width={800}
+            height={520}
+            className="w-full border-2 border-ink bg-surface object-contain"
+          />
+        </section>
+      </AppShell>
+    );
+  }
+
   return (
     <AppShell>
       <section className="mx-auto grid max-w-6xl items-center gap-10 overflow-x-clip px-4 py-10 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:py-16">

@@ -1,7 +1,8 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
-import { APP_NAME, APP_REV, APP_TAGLINE } from "@/lib/brand";
+import { APP_NAME, APP_REV, APP_TAGLINE, APP_VERSION } from "@/lib/brand";
+import { FoldHelp } from "@/components/fold-help";
 import appCss from "../styles.css?url";
 
 /** Public file URL. Vite `base` is `/` in dev and `/paperlab/` in the hub build. */
@@ -31,9 +32,17 @@ export const Route = createRootRoute({
     <html lang="en" className="antialiased" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script
+          src="/shared/kulibert-bar.js"
+          data-app="paperlab"
+          data-version={APP_VERSION}
+          data-help="#pl-help"
+          defer
+        />
       </head>
       <body>
         <PreviewHostBridge />
+        <FoldHelp />
         <AuthProvider>
           <Outlet />
         </AuthProvider>

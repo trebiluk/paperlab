@@ -1,9 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { PAPERS, PAPER_IDS, type PaperId } from "@/lib/paper";
 import { setRole, setPaper, usePaper, useRole } from "@/lib/lesson";
-import { APP_KICKER, APP_SHORT } from "@/lib/brand";
+import { APP_KICKER, APP_SHORT, APP_VERSION } from "@/lib/brand";
+import { HelpButton } from "@/components/fold-help";
 import { LogoMark } from "@/components/berty";
 import { ClassroomBar } from "@/components/classroom-bar";
 import { GoldChip } from "@/components/gold-chip";
@@ -50,9 +50,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       >
         Skip to content
       </a>
-      {onMake ? null : (
       <header className="sheet-bar no-print sticky top-0 z-40">
-        <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2 sm:px-6 lg:py-3">
+        <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-2 sm:px-6">
+          <SiteMenu pathname={pathname} paper={paper} links={links} />
           <Link
             to="/"
             className="flex min-w-0 items-center gap-2 text-ink no-underline"
@@ -68,34 +68,20 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               </span>
             </span>
           </Link>
-          <nav className="ml-2 hidden items-center gap-1 lg:flex" aria-label="Main">
-            {links.map((item) => {
-              const active = isNavActive(pathname, item.to);
-              return (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                    active
-                      ? "text-ink shadow-[inset_0_-2px_0_#1c1915]"
-                      : "text-muted hover:text-ink",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-          <SiteMenu pathname={pathname} paper={paper} links={links} />
+          <span className="border-2 border-ink px-2 py-1 text-xs font-medium tabular-nums text-ink" data-version-plate>
+            {APP_VERSION}
+          </span>
+          <span className="ml-auto" />
+          {slim ? <GoldChip compact /> : null}
+          <HelpButton />
         </div>
+        {slim ? null : (
         <div className="mx-auto hidden max-w-6xl gap-2 px-4 pb-2 sm:px-6 lg:flex lg:flex-row lg:items-center lg:justify-between">
           <ClassroomBar compact={slim} />
           <PaperToggle paper={paper} full />
         </div>
+        )}
       </header>
-      )}
       <main id="main" tabIndex={-1}>{children}</main>
       {onMake ? null : (
       <footer className="no-print mx-auto max-w-6xl px-4 py-12 text-sm text-muted sm:px-6">
@@ -158,11 +144,13 @@ function SiteMenu({
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md bg-surface px-3 text-sm font-medium text-ink shadow-card lg:hidden">
-        <Menu className="size-4" aria-hidden />
-        Menu
+      <SheetTrigger
+        className="inline-flex size-11 shrink-0 items-center justify-center border-2 border-ink bg-surface text-xl leading-none text-ink"
+        aria-label="Menu"
+      >
+        <span aria-hidden>≡</span>
       </SheetTrigger>
-      <SheetContent side="right" className="w-full max-w-sm gap-0 overflow-y-auto p-0">
+      <SheetContent side="left" className="w-full max-w-sm gap-0 overflow-y-auto p-0">
         <SheetHeader className="border-b border-line pr-14">
           <SheetTitle>Menu</SheetTitle>
           <SheetDescription>Pages, reading, and paper size.</SheetDescription>
@@ -180,7 +168,7 @@ function SiteMenu({
                 aria-current={active ? "page" : undefined}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "flex min-h-11 items-center rounded-md px-3 text-sm font-medium",
+                  "flex min-h-11 items-center border-b border-line px-4 text-base font-medium",
                   active ? "text-ink shadow-[inset_3px_0_0_#1c1915]" : "text-ink-soft hover:bg-bg-warm hover:text-ink",
                 )}
               >

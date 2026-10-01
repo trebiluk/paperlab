@@ -8,10 +8,12 @@ export type ShopNote = {
 
 export const UPDATES: ShopNote[] = [
   {
-    date: "2026-09-26",
-    title: "Every lab was walked",
+    date: "2026-10-01",
+    title: "PL 1.0.0",
     items: [
-      "39 labs, 228 steps, every picture opens. The tests now match the steps: fold a square before the cube, make one shape from Foldables, and the goal line is something a student can do.",
+      "The hub bar carries Home and the alias. PaperLab no longer has its own Back to hub link.",
+      "Labs, Skills, and Studio sit in the left menu. Start opens the picture and step 1. Words stay behind Words.",
+      "We made this sends a make record when the hub is connected. Gold reads those records when they exist.",
     ],
   },
   {

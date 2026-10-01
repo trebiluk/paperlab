@@ -18,9 +18,12 @@ import { toggleLabDone, useLabDone } from "@/lib/progress";
 import { ELL, SAFETY, SPED, TA, DESIGN_LOOP, loopPhaseFor } from "@/lib/supports";
 import { LabWatch } from "@/components/lab-watch";
 import { LabStage } from "@/components/lab-stage";
+import { AppShell } from "@/components/app-shell";
 import { StudentStepGuide } from "@/components/student-steps";
 import { BertySheet } from "@/components/berty";
 import { cn } from "@/lib/utils";
+import { recordMake } from "@/lib/hub-record";
+import { STUDIO_GUIDES } from "@/lib/studio-guides";
 
 export const Route = createFileRoute("/labs/$id")({
   component: LabPage,
@@ -64,6 +67,7 @@ function LabPage() {
     : null;
 
   return (
+    <AppShell>
     <LabStage lab={lab}>
       {lab.id === "berty" ? (
         <div className="print-net mb-8 bg-white">
@@ -83,7 +87,7 @@ function LabPage() {
         {shopRule(lab)}
       </p>
 
-      <StudentStepGuide lab={lab} />
+      <StudentStepGuide lab={lab} onlyStep={role === "student" ? Math.max(0, (search.step ?? 1) - 1) : undefined} />
 
       {lab.studio ? (
         <div className="mt-8 rounded-xl bg-surface p-5 shadow-card sm:p-7">
@@ -237,12 +241,19 @@ function LabPage() {
       </div>
       </div>
     </LabStage>
+    </AppShell>
   );
+}
+
+function stepMax(lab: Lab) {
+  if (lab.steps.length > 0) return lab.steps.length;
+  return STUDIO_GUIDES[lab.id]?.length ?? 1;
 }
 
 function MadeMark({ lab, done }: { lab: Lab; done: boolean }) {
   const [didLast, setDidLast] = useState(false);
   const [passed, setPassed] = useState(false);
+  const started = useRef(Date.now());
   const ready = didLast && passed;
   return (
     <div className="mt-8 rounded-xl bg-surface p-4 shadow-card sm:p-5">
@@ -272,7 +283,20 @@ function MadeMark({ lab, done }: { lab: Lab; done: boolean }) {
       )}
       <button
         type="button"
-        onClick={() => toggleLabDone(lab.id)}
+        onClick={() => {
+          if (!done) {
+            const max = stepMax(lab);
+            recordMake({
+              level: lab.id,
+              score: max,
+              max,
+              stars: 3,
+              xp: 1,
+              ms: Date.now() - started.current,
+            });
+          }
+          toggleLabDone(lab.id);
+        }}
         disabled={!done && !ready}
         aria-pressed={done}
         className={cn(

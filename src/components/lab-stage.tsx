@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/sheet";
 import { READ_LEVELS, setReadLevel, useReadLevel, type ReadLevel } from "@/lib/lesson";
 import { LABS, getLab, type Lab } from "@/lib/labs";
-import { TECH_ROOM_URL } from "@/lib/room";
 import { SHOP_SKILLS, skillsOfLab, type SkillId } from "@/lib/skills";
 import { TA } from "@/lib/supports";
 import { cn } from "@/lib/utils";
@@ -222,14 +221,8 @@ export function LabStage({ lab, children }: { lab: Lab; children: ReactNode }) {
   );
 
   return (
-    <div className="flex h-dvh flex-col" data-make-stage={lab.id}>
-      <header className="sheet-bar no-print flex shrink-0 items-center gap-2 px-3 py-2">
-        <a
-          href={TECH_ROOM_URL}
-          className="inline-flex min-h-11 shrink-0 items-center rounded-md px-3 text-sm font-medium text-pine"
-        >
-          Back to hub
-        </a>
+    <div className="flex min-h-0 flex-col" data-make-stage={lab.id}>
+      <header className="no-print flex shrink-0 items-center gap-2 px-3 py-2">
         <h1 className="min-w-0 flex-1 truncate font-display text-xl font-semibold text-ink sm:text-2xl">
           {lab.name}
         </h1>

@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import type { Lab } from "@/lib/labs";
 import { STUDIO_GUIDES, type GuidePhase } from "@/lib/studio-guides";
 
@@ -83,12 +85,105 @@ function phasesOf(lab: Lab): GuidePhase[] {
   }));
 }
 
+function WordsTable({ lab }: { lab: Lab }) {
+  return (
+    <table className="mt-4 w-full text-left text-base text-ink">
+      <thead>
+        <tr className="border-b border-line">
+          <th className="py-2 pr-3 font-semibold">Word</th>
+          <th className="py-2 pr-3 font-semibold">Means</th>
+          <th className="py-2 font-semibold">Spanish</th>
+        </tr>
+      </thead>
+      <tbody>
+        {lab.vocab.map((word) => (
+          <tr key={word.term} className="border-b border-line/70 align-top">
+            <th scope="row" className="py-3 pr-3 font-semibold">
+              {word.term}
+            </th>
+            <td className="py-3 pr-3">{word.meaning}</td>
+            <td className="py-3" lang="es">
+              {word.es}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 function StepLine({ children }: { children: string }) {
   return <li className="text-lg font-medium leading-snug text-ink">{children}</li>;
 }
 
-export function StudentStepGuide({ lab }: { lab: Lab }) {
+export function StudentStepGuide({ lab, onlyStep }: { lab: Lab; onlyStep?: number }) {
   const phases = phasesOf(lab);
+  const [wordsOn, setWordsOn] = useState(false);
+  const focused = onlyStep != null && phases.length > 0;
+  const index = focused ? Math.min(Math.max(onlyStep ?? 0, 0), phases.length - 1) : 0;
+
+  if (focused) {
+    const phase = phases[index];
+    const file = diagramFile(lab.id, index, phase.visual);
+    const stepNo = index + 1;
+    return (
+      <div className="mt-4" data-student-guide={lab.id} data-step={stepNo}>
+        <figure>
+          <img
+            src={`${import.meta.env.BASE_URL}images/plans/${lab.id}/${file}`}
+            alt={`Step ${stepNo}: ${phase.title}. ${phase.lines[0] ?? "Fold diagram"}.`}
+            width={800}
+            height={520}
+            data-diagram={stepNo}
+            data-diagram-file={file}
+            className="h-auto w-full border-2 border-ink bg-surface object-contain"
+          />
+          <figcaption className="mt-3 text-sm font-medium text-pine">
+            Step {stepNo} · {phase.title}
+          </figcaption>
+          <ul className="mt-4 list-disc space-y-2 pl-5">
+            {phase.lines.map((line, lineIndex) => (
+              <StepLine key={`${stepNo}-${lineIndex}`}>{line}</StepLine>
+            ))}
+          </ul>
+        </figure>
+        <div className="mt-6 flex flex-wrap gap-3">
+          {index > 0 ? (
+            <Link
+              to="/labs/$id"
+              params={{ id: lab.id }}
+              search={{ step: index }}
+              className="inline-flex min-h-11 items-center border-2 border-ink px-4 text-sm font-medium text-ink"
+            >
+              Back
+            </Link>
+          ) : null}
+          {index < phases.length - 1 ? (
+            <Link
+              to="/labs/$id"
+              params={{ id: lab.id }}
+              search={{ step: index + 2 }}
+              className="inline-flex h-12 items-center bg-pine px-5 text-base font-medium text-pine-fg"
+            >
+              Next step
+            </Link>
+          ) : null}
+          {lab.vocab.length > 0 ? (
+            <button
+              type="button"
+              className="inline-flex min-h-11 items-center border-2 border-ink px-4 text-sm font-medium"
+              aria-expanded={wordsOn}
+              onClick={() => setWordsOn((open) => !open)}
+            >
+              Words
+            </button>
+          ) : null}
+        </div>
+        {wordsOn ? <WordsTable lab={lab} /> : null}
+      </div>
+    );
+  }
+
   const goal = kidLine(lab.challenge ?? lab.ell);
   const stuck = lab.plan.snags.length
     ? lab.plan.snags

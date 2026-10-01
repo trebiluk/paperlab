@@ -1,11 +1,28 @@
 import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { goldFromRecords } from "@/lib/hub-record";
 import { useDoneLabs } from "@/lib/progress";
 import { goldXp, xpIntoLevel } from "@/lib/skills";
 import { cn } from "@/lib/utils";
 
 export function GoldChip({ compact }: { compact?: boolean }) {
   const done = useDoneLabs();
-  const { xp, band } = xpIntoLevel(goldXp(done));
+  const local = xpIntoLevel(goldXp(done));
+  const [fromRecords, setFromRecords] = useState<number | null>(null);
+
+  useEffect(() => {
+    const read = () => setFromRecords(goldFromRecords());
+    read();
+    window.addEventListener("pl-gold", read);
+    window.addEventListener("storage", read);
+    return () => {
+      window.removeEventListener("pl-gold", read);
+      window.removeEventListener("storage", read);
+    };
+  }, []);
+
+  const xp = fromRecords ?? local.xp;
+  const band = fromRecords == null ? local.band : xpIntoLevel(fromRecords).band;
   return (
     <Link
       to="/skills"
