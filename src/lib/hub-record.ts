@@ -14,34 +14,40 @@ export type MakeRecord = {
   ms: number;
 };
 
-type WhoRecord = {
-  record?: (row: MakeRecord) => void;
+type WhoApi = {
+  record?: (row: MakeRecord) => unknown;
+  mark?: (appId: string, line: string) => unknown;
 };
 
-function who(): WhoRecord | undefined {
+function who(): WhoApi | undefined {
   if (typeof window === "undefined") return undefined;
-  const kw = (window as Window & { KulibertWho?: WhoRecord }).KulibertWho;
+  const kw = (window as Window & { KulibertWho?: WhoApi }).KulibertWho;
   return kw;
 }
 
-/** Hub owns the row. No call unless KulibertWho.record exists. */
+/** One finish. Prefer the v2 record. Fall back to a short mark if record is missing. */
 export function recordMake(input: { level: string; score: number; max: number; stars: number; xp: number; ms: number }) {
   const kw = who();
-  if (!kw || typeof kw.record !== "function") return;
-  const stars = Math.min(3, Math.max(1, input.stars));
-  kw.record({
-    v: 2,
-    app: "paperlab",
-    version: APP_VERSION,
-    event: "make",
-    level: input.level,
-    score: input.score,
-    max: input.max,
-    stars,
-    xp: input.xp,
-    skill: "paper-engineering",
-    ms: Math.max(0, input.ms),
-  });
+  if (!kw) return;
+  const stars = Math.min(3, Math.max(0, Math.round(input.stars)));
+  if (typeof kw.record === "function") {
+    kw.record({
+      v: 2,
+      app: "paperlab",
+      version: APP_VERSION,
+      event: "make",
+      level: input.level,
+      score: input.score,
+      max: input.max,
+      stars,
+      xp: input.xp,
+      skill: "paper-engineering",
+      ms: Math.max(0, input.ms),
+    });
+  } else if (typeof kw.mark === "function") {
+    const line = `${input.level} ${input.score}/${input.max}`.slice(0, 32);
+    kw.mark("paperlab", line);
+  }
   window.dispatchEvent(new Event("pl-gold"));
 }
 

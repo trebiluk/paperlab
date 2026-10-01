@@ -9,6 +9,13 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-10-01",
+    title: "PL 1.0.1",
+    items: [
+      "We made this sends one TechWorks row. App id is paperlab. If the hub has no record yet, it sends a short mark instead.",
+    ],
+  },
+  {
+    date: "2026-10-01",
     title: "PL 1.0.0",
     items: [
       "The hub bar carries Home and the alias. PaperLab no longer has its own Back to hub link.",
