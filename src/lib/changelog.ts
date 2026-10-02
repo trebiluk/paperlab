@@ -8,6 +8,13 @@ export type ShopNote = {
 
 export const UPDATES: ShopNote[] = [
   {
+    date: "2026-10-02",
+    title: "PL 1.1.1",
+    items: [
+      "PL 1.1.1: Menu has What's new and Settings.",
+    ],
+  },
+  {
     date: "2026-10-01",
     title: "PL 1.1.0",
     items: [

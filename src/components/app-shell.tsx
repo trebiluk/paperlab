@@ -11,7 +11,6 @@ import { Segmented } from "@/components/segmented";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -19,7 +18,8 @@ import {
 import { cn } from "@/lib/utils";
 import { TECHWORKS_NAME, TECHWORKS_URL } from "@/lib/room";
 import { useCopy } from "@/lib/copy";
-import { useHubT } from "@/lib/hub-lang";
+import { UPDATES } from "@/lib/changelog";
+import { useHubLang, useHubT, type HubLang } from "@/lib/hub-lang";
 
 const NAV = [
   { to: "/labs", label: "Labs" },
@@ -31,6 +31,24 @@ const NAV = [
 ] as const;
 
 const STUDENT_NAV = NAV.filter((item) => item.to === "/labs" || item.to === "/skills" || item.to === "/studio");
+
+/** Drawer language chips. UA is Ukrainian (`uk`). Dari is `fa-AF`. */
+const HUB_LANG_PICK: { id: HubLang; label: string }[] = [
+  { id: "en", label: "EN" },
+  { id: "uk", label: "UA" },
+  { id: "ru", label: "RU" },
+  { id: "es", label: "ES" },
+  { id: "ar", label: "AR" },
+  { id: "fa-AF", label: "Dari" },
+  { id: "rw", label: "RW" },
+  { id: "ti", label: "TI" },
+  { id: "simple", label: "Simple" },
+];
+
+function pickHubLang(id: HubLang) {
+  const prefs = (window as Window & { KulibertPrefs?: { acceptLang?: (lang: string) => unknown } }).KulibertPrefs;
+  prefs?.acceptLang?.(id);
+}
 
 function isNavActive(pathname: string, to: string) {
   return pathname === to || pathname.startsWith(`${to}/`);
@@ -146,7 +164,9 @@ function SiteMenu({
   links: readonly { to: string; label: string }[];
 }) {
   const [open, setOpen] = useState(false);
+  const lang = useHubLang();
   const t = useHubT();
+  const release = UPDATES[0]?.items[0] ?? "";
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
@@ -168,8 +188,48 @@ function SiteMenu({
       <SheetContent side="left" className="w-full max-w-sm gap-0 overflow-y-auto p-0">
         <SheetHeader className="border-b border-line pr-14">
           <SheetTitle>{t("menu", "Menu")}</SheetTitle>
-          <SheetDescription>{t("appsFollow", "Your apps will use this language.")}</SheetDescription>
         </SheetHeader>
+        <div className="border-b border-line px-4 py-3">
+          <Link
+            to="/updates"
+            onClick={() => setOpen(false)}
+            className="text-base font-medium text-ink"
+          >
+            {t("whatsNew", "What's new")}
+          </Link>
+          <p className="mt-1 text-sm text-ink-soft">
+            <bdi>{release}</bdi>
+          </p>
+        </div>
+        <div className="border-b border-line px-4 py-3">
+          <p className="text-base font-medium text-ink">{t("settings", "Settings")}</p>
+          <p className="mt-2 text-xs font-medium tracking-wide text-pine">{t("language", "Language")}</p>
+          <div
+            dir="ltr"
+            className="mt-2 grid grid-cols-4 gap-2"
+            role="group"
+            aria-label={t("language", "Language")}
+          >
+            {HUB_LANG_PICK.map((item) => {
+              const on = lang === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  aria-pressed={on}
+                  onClick={() => pickHubLang(item.id)}
+                  className={cn(
+                    "inline-flex min-h-11 items-center justify-center border-2 border-ink px-1 text-sm font-medium",
+                    on ? "bg-pine text-pine-fg" : "bg-surface text-ink",
+                  )}
+                >
+                  <bdi>{item.label}</bdi>
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-2 text-xs text-ink-soft">{t("appsFollow", "Your apps will use this language.")}</p>
+        </div>
         <div className="border-b border-line p-4" onClick={() => setOpen(false)}>
           <GoldChip />
         </div>
