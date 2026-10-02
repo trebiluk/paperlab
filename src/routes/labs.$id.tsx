@@ -23,7 +23,7 @@ import { BertySheet } from "@/components/berty";
 import { cn } from "@/lib/utils";
 import { recordMake } from "@/lib/hub-record";
 import { STUDIO_GUIDES } from "@/lib/studio-guides";
-import { useCopy } from "@/lib/copy";
+import { useCopy, useLine } from "@/lib/copy";
 
 export const Route = createFileRoute("/labs/$id")({
   component: LabPage,
@@ -93,24 +93,28 @@ function LabPage() {
         <div className="mt-8 rounded-xl bg-surface p-5 shadow-card sm:p-7">
           <h2 className="font-display text-2xl font-semibold">
             {lab.id === "folds"
-              ? "Fold quiz"
+              ? copy("quiz")
               : lab.steps.length === 0
                 ? "See a move bigger"
                 : "Open the studio"}
           </h2>
           <p className="mt-2 text-ink-soft">
-            {lab.id === "folds"
-              ? "Do the folds above on scrap. Then answer the quiz. Pass is 3 out of 4."
-              : lab.steps.length === 0
-                ? "Do the steps above on scrap. Tap a move if you want the picture bigger."
-                : family
-                  ? `Diagrams, a stepper, and printables for this ${family.name.toLowerCase()} lab live in the studio.`
-                  : "Diagrams, a stepper, and printables for this lab live in the studio."}
+            {lab.id === "folds" ? (
+              copy("quizDo")
+            ) : (
+              <bdi>
+                {lab.steps.length === 0
+                  ? "Do the steps above on scrap. Tap a move if you want the picture bigger."
+                  : family
+                    ? `Diagrams, a stepper, and printables for this ${family.name.toLowerCase()} lab live in the studio.`
+                    : "Diagrams, a stepper, and printables for this lab live in the studio."}
+              </bdi>
+            )}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button asChild>
               <Link to={lab.studio.to} search={lab.studio.search}>
-                {lab.id === "folds" ? "Fold quiz" : lab.steps.length === 0 ? "Bigger picture" : "Start the make"}
+                {lab.id === "folds" ? copy("quiz") : lab.steps.length === 0 ? "Bigger picture" : "Start the make"}
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
@@ -254,6 +258,7 @@ function MadeMark({ lab, done }: { lab: Lab; done: boolean }) {
   const [passed, setPassed] = useState(false);
   const started = useRef(Date.now());
   const copy = useCopy();
+  const line = useLine();
   const ready = didLast && passed;
   return (
     <div className="mt-8 rounded-xl bg-surface p-4 shadow-card sm:p-5">
@@ -278,7 +283,7 @@ function MadeMark({ lab, done }: { lab: Lab; done: boolean }) {
             />
             {copy("passed")}
           </label>
-          <p className="text-sm text-ink-soft">{lab.challenge ?? lab.spec}</p>
+          <p className="text-sm text-ink-soft">{lab.challenge ? line(lab.challenge) : lab.spec}</p>
         </fieldset>
       )}
       <button
