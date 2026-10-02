@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 
 export const HUB_LANGS = ["en", "simple", "uk", "ru", "es", "ar", "fa-AF", "rw", "ti"] as const;
 export type HubLang = (typeof HUB_LANGS)[number];
@@ -130,22 +130,34 @@ function subscribe(cb: () => void) {
   return () => listeners.delete(cb);
 }
 
+/**
+ * English on the hydration render of this component, including a route that
+ * hydrates after HubLangBoot's effect. A module flag flips too early and
+ * React #418s the later text.
+ */
+function useAfterPaint<T>(read: () => T, server: T): T {
+  const on = useRef(false);
+  const value = useSyncExternalStore(
+    subscribe,
+    () => (on.current ? read() : server),
+    () => server,
+  );
+  useEffect(() => {
+    on.current = true;
+    emit();
+  }, []);
+  return value;
+}
+
 export function useHubLang() {
-  const live = useSyncExternalStore(subscribe, () => lang, () => "en" as HubLang);
-  const ready = useSyncExternalStore(subscribe, () => hydrated, () => false);
-  return ready ? live : "en";
+  return useAfterPaint(() => lang, "en" as HubLang);
 }
 
 export function useHubDir() {
-  const live = useSyncExternalStore(subscribe, () => dir, () => "ltr" as const);
-  const ready = useSyncExternalStore(subscribe, () => hydrated, () => false);
-  return ready ? live : "ltr";
+  return useAfterPaint(() => dir, "ltr" as const);
 }
 
-/** Shared chrome words. Empty or missing keys fall back. Never a raw key. English until mounted. */
-export function hubT(key: string, fallback: string) {
-  if (!hydrated) return fallback;
-  void tick;
+function translate(key: string, fallback: string) {
   try {
     const value = i18n()?.t?.(key);
     if (value) return value;
@@ -155,8 +167,19 @@ export function hubT(key: string, fallback: string) {
   return fallback;
 }
 
+/** Shared chrome words. Empty or missing keys fall back. Never a raw key. English until mounted. */
+export function hubT(key: string, fallback: string) {
+  if (!hydrated) return fallback;
+  void tick;
+  return translate(key, fallback);
+}
+
 export function useHubT() {
-  useHubLang();
-  useSyncExternalStore(subscribe, () => tick + (hydrated ? 1 : 0), () => 0);
-  return hubT;
+  const on = useRef(false);
+  useSyncExternalStore(subscribe, () => (on.current ? tick : 0), () => 0);
+  useEffect(() => {
+    on.current = true;
+    emit();
+  }, []);
+  return (key: string, fallback: string) => (on.current ? translate(key, fallback) : fallback);
 }
