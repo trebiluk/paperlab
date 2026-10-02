@@ -9,6 +9,13 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-10-02",
+    title: "PL 1.1.3",
+    items: [
+      "PL 1.1.3: What's new and Settings are back in the left menu.",
+    ],
+  },
+  {
+    date: "2026-10-02",
     title: "PL 1.1.2",
     items: [
       "PaperLab is fully in your language, and Teacher desk is easier to tap.",

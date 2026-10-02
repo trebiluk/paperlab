@@ -13,7 +13,7 @@ const COPY = {
     gold: "Gold",
     oneSheet: "one sheet of printer paper.",
     appTitle: "PaperLab",
-    whatsNewLine: "PaperLab is fully in your language, and Teacher desk is easier to tap.",
+    whatsNewLine: "PL 1.1.3: What's new and Settings are back in the left menu.",
     firstPicture: "The first picture. Fold your paper so it matches.",
     words: "Words",
     nextStep: "Next step",

@@ -41,6 +41,7 @@ export const Route = createRootRoute({
           data-app="paperlab"
           data-version={APP_VERSION}
           data-help="#pl-help"
+          data-menu="#pl-menu"
           defer
         />
       </head>
