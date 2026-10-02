@@ -8,5 +8,6 @@ export const APP_VERSION = "PL 1.1.2";
 export const APP_REV = "2026-10-02-pl-1.1.2";
 
 export function pageTitle(page?: string) {
-  return page ? `${page} · ${APP_NAME}` : APP_NAME;
+  const name = page ? `${page} · ${APP_NAME}` : APP_NAME;
+  return `${name} · ${APP_VERSION}`;
 }

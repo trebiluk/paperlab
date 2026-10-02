@@ -5,7 +5,7 @@ import { ShopStillLife } from "@/components/berty";
 import { LabCard } from "@/components/lab-card";
 import { Button } from "@/components/ui/button";
 import { LabSvg } from "@/components/lab-svg";
-import { APP_NAME, APP_TAGLINE } from "@/lib/brand";
+import { APP_NAME, APP_TAGLINE, APP_VERSION } from "@/lib/brand";
 import { LATEST_UPDATE } from "@/lib/changelog";
 import { FAMILIES, GRADE_BANDS, LABS, getLab, pathFor } from "@/lib/labs";
 import { MST5_STATEMENT } from "@/lib/mst";
@@ -19,7 +19,7 @@ import { useCopy } from "@/lib/copy";
 export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
-    meta: [{ title: APP_NAME }],
+    meta: [{ title: `${APP_NAME} · ${APP_VERSION}` }],
   }),
 });
 
