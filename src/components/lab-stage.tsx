@@ -12,6 +12,7 @@ import { READ_LEVELS, setReadLevel, useReadLevel, type ReadLevel } from "@/lib/l
 import { LABS, getLab, type Lab } from "@/lib/labs";
 import { SHOP_SKILLS, skillsOfLab, type SkillId } from "@/lib/skills";
 import { TA } from "@/lib/supports";
+import { useCopy } from "@/lib/copy";
 import { cn } from "@/lib/utils";
 
 const UNITS: { id: string; label: string }[] = [
@@ -193,6 +194,7 @@ function PaneBody({
 }
 
 export function LabStage({ lab, children }: { lab: Lab; children: ReactNode }) {
+  const copy = useCopy();
   const [unit, setUnit] = useState(() => unitFor(lab));
   const [query, setQuery] = useState("");
   const [skill, setSkill] = useState<SkillId | null>(null);
@@ -228,11 +230,11 @@ export function LabStage({ lab, children }: { lab: Lab; children: ReactNode }) {
         </h1>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger className="inline-flex min-h-11 items-center rounded-md bg-surface px-3 text-sm font-medium text-ink shadow-card">
-            Labs
+            {copy("labs")}
           </SheetTrigger>
           <SheetContent side="left" className="w-80 gap-0 overflow-y-auto p-0">
             <SheetHeader className="border-b border-line pr-14">
-              <SheetTitle>Labs</SheetTitle>
+              <SheetTitle>{copy("labs")}</SheetTitle>
               <SheetDescription>Units, filters, skills, helper, and search.</SheetDescription>
             </SheetHeader>
             {pane}

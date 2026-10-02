@@ -22,6 +22,7 @@ const COPY = {
     stopLine: "Do not cut a dashed line.",
     finish: "Finish the steps and pass the test. Then it counts.",
     shopRule: "Shop rule.",
+    scissors: "Scissors stay on the desk. Pass them closed, handle first.",
     step: "Step",
   },
   simple: {
@@ -44,6 +45,7 @@ const COPY = {
     stopLine: "Do not cut a dashed line.",
     finish: "Do the steps. Pass the test. Then it counts.",
     shopRule: "Shop rule.",
+    scissors: "Scissors stay on the desk. Pass them closed, handles first.",
     step: "Step",
   },
   uk: {
@@ -66,6 +68,7 @@ const COPY = {
     stopLine: "Пунктир не ріж.",
     finish: "Зроби всі кроки і пройди перевірку. Тоді зарахує.",
     shopRule: "Правило майстерні.",
+    scissors: "Ножиці лишаються на столі. Передавай їх закритими, ручками вперед.",
     step: "Крок",
   },
   ru: {
@@ -88,6 +91,7 @@ const COPY = {
     stopLine: "Пунктир не режь.",
     finish: "Сделай все шаги и пройди проверку. Тогда засчитают.",
     shopRule: "Правило мастерской.",
+    scissors: "Ножницы остаются на столе. Передавай их закрытыми, ручками вперёд.",
     step: "Шаг",
   },
   es: {
@@ -110,6 +114,7 @@ const COPY = {
     stopLine: "No cortes una línea de rayas.",
     finish: "Termina los pasos y pasa la prueba. Entonces cuenta.",
     shopRule: "Regla del taller.",
+    scissors: "Las tijeras se quedan en la mesa. Pásalas cerradas, el mango primero.",
     step: "Paso",
   },
   ar: {
@@ -132,6 +137,7 @@ const COPY = {
     stopLine: "لا تقص الخط المتقطع.",
     finish: "أنهِ الخطوات وانجح في الاختبار. عندها يُحتسب.",
     shopRule: "قاعدة الورشة.",
+    scissors: "المقص يبقى على الطاولة. مرّره مغلقاً، المقبض أولاً.",
     step: "خطوة",
   },
   "fa-AF": {
@@ -154,6 +160,7 @@ const COPY = {
     stopLine: "خط قطعه‌قطعه را نبر.",
     finish: "قدم‌ها را تمام کن و آزمون را بگذران. بعد حساب می‌شود.",
     shopRule: "قانون کارگاه.",
+    scissors: "قیچی روی میز می‌ماند. آن را بسته بده، دسته اول.",
     step: "قدم",
   },
   rw: {
@@ -176,6 +183,7 @@ const COPY = {
     stopLine: "Ntucagagure umurongo w'uduce.",
     finish: "Rangiza intambwe kandi utsinde ikizamini. Hanyuma birabarwa.",
     shopRule: "Itegeko ry'ikoro.",
+    scissors: "Imakasi ziguma ku meza. Zitangire zifunze, umukono mbere.",
     step: "Intambwe",
   },
   ti: {
@@ -198,6 +206,7 @@ const COPY = {
     stopLine: "ዝተቆረጸ መስመር ኣይትቑረጽ።",
     finish: "ስጉምትታት ወድእ እሞ ፈተና ሕለፍ። እዚኣ እዩ ዝቑጸር።",
     shopRule: "ሕጊ መደበር።",
+    scissors: "መቐዝ ኣብ ሰደቓ ይጽናሕ። ዕጹው ሃቦ፣ ኢድ መጀመርታ።",
     step: "ስጉምቲ",
   },
 } as const;

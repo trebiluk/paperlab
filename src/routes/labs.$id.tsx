@@ -18,7 +18,6 @@ import { toggleLabDone, useLabDone } from "@/lib/progress";
 import { ELL, SAFETY, SPED, TA, DESIGN_LOOP, loopPhaseFor } from "@/lib/supports";
 import { LabWatch } from "@/components/lab-watch";
 import { LabStage } from "@/components/lab-stage";
-import { AppShell } from "@/components/app-shell";
 import { StudentStepGuide } from "@/components/student-steps";
 import { BertySheet } from "@/components/berty";
 import { cn } from "@/lib/utils";
@@ -69,7 +68,6 @@ function LabPage() {
     : null;
 
   return (
-    <AppShell>
     <LabStage lab={lab}>
       {lab.id === "berty" ? (
         <div className="print-net mb-8 bg-white">
@@ -86,7 +84,7 @@ function LabPage() {
       <div className={lab.id === "berty" ? "no-print" : undefined}>
       <p className="max-w-2xl text-sm text-ink">
         <span className="font-medium">{copy("shopRule")} </span>
-        {shopRule(lab)}
+        <bdi>{shopRule(lab) === SAFETY[0] ? copy("scissors") : shopRule(lab)}</bdi>
       </p>
 
       <StudentStepGuide lab={lab} onlyStep={role === "student" ? Math.max(0, (search.step ?? 1) - 1) : undefined} />
@@ -243,7 +241,6 @@ function LabPage() {
       </div>
       </div>
     </LabStage>
-    </AppShell>
   );
 }
 
