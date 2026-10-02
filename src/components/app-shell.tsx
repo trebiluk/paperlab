@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { TECHWORKS_NAME, TECHWORKS_URL } from "@/lib/room";
+import { useCopy } from "@/lib/copy";
+import { useHubT } from "@/lib/hub-lang";
 
 const NAV = [
   { to: "/labs", label: "Labs" },
@@ -39,7 +41,19 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const role = useRole();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const slim = role === "student";
-  const links = slim ? STUDENT_NAV : NAV;
+  const copy = useCopy();
+  const t = useHubT();
+  const links = (slim ? STUDENT_NAV : NAV).map((item) => ({
+    ...item,
+    label:
+      item.to === "/labs"
+        ? copy("labs")
+        : item.to === "/skills"
+          ? copy("skills")
+          : item.to === "/studio"
+            ? copy("studio")
+            : item.label,
+  }));
   const onMake = /^\/labs\/[^/]+$/.test(pathname);
 
   return (
@@ -50,7 +64,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       >
         Skip to content
       </a>
-      <header className="sheet-bar no-print sticky top-0 z-40">
+      <header dir="ltr" className="sheet-bar no-print sticky top-0 z-40">
         <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-2 sm:px-6">
           <SiteMenu pathname={pathname} paper={paper} links={links} />
           <Link
@@ -61,10 +75,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <LogoMark />
             <span className="min-w-0 leading-tight">
               <span className="block text-xs font-medium tracking-wide text-pine">
-                {APP_KICKER}
+                <bdi>{APP_KICKER}</bdi>
               </span>
               <span className="block truncate font-display text-lg font-semibold tracking-tight">
-                {APP_SHORT}
+                <bdi>{APP_SHORT}</bdi>
               </span>
             </span>
           </Link>
@@ -89,10 +103,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <p>BertyBot’s PaperLab · one sheet of printer paper.</p>
         {slim ? (
           <>
-            <p className="mt-1">Finish the steps and pass the test. Then it counts.</p>
+            <p className="mt-1">{copy("finish")}</p>
             <p className="mt-2">
               <button type="button" className="font-medium text-pine" onClick={() => setRole("teacher")}>
-                Teacher desk
+                {copy("teacher")}
               </button>
             </p>
           </>
@@ -132,6 +146,7 @@ function SiteMenu({
   links: readonly { to: string; label: string }[];
 }) {
   const [open, setOpen] = useState(false);
+  const t = useHubT();
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
@@ -146,14 +161,14 @@ function SiteMenu({
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         className="inline-flex size-11 shrink-0 items-center justify-center border-2 border-ink bg-surface text-xl leading-none text-ink"
-        aria-label="Menu"
+        aria-label={t("menu", "Menu")}
       >
         <span aria-hidden>≡</span>
       </SheetTrigger>
       <SheetContent side="left" className="w-full max-w-sm gap-0 overflow-y-auto p-0">
         <SheetHeader className="border-b border-line pr-14">
-          <SheetTitle>Menu</SheetTitle>
-          <SheetDescription>Pages, reading, and paper size.</SheetDescription>
+          <SheetTitle>{t("menu", "Menu")}</SheetTitle>
+          <SheetDescription>{t("appsFollow", "Your apps will use this language.")}</SheetDescription>
         </SheetHeader>
         <div className="border-b border-line p-4" onClick={() => setOpen(false)}>
           <GoldChip />

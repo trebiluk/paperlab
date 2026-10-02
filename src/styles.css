@@ -63,7 +63,7 @@
   }
 
   body {
-    font-family: var(--font-sans);
+    font-family: var(--kp-font), var(--font-sans);
     color: var(--color-ink);
     line-height: 1.5;
     background-color: #e6dccb;
@@ -83,6 +83,18 @@
   .font-display {
     font-family: var(--font-display);
     text-wrap: balance;
+  }
+
+  html[lang="ar"] :is(h1, h2, h3, .font-display, body),
+  html[lang="fa-AF"] :is(h1, h2, h3, .font-display, body),
+  html[lang="ti"] :is(h1, h2, h3, .font-display, body) {
+    font-family: var(--kp-font), "Noto Sans Arabic", "Noto Sans Ethiopic", var(--font-sans);
+    line-height: 1.5;
+  }
+
+  [data-fold-diagram] {
+    direction: ltr;
+    text-align: start;
   }
 
   h1,

@@ -1,7 +1,11 @@
 import { useEffect } from "react";
+import { useCopy } from "@/lib/copy";
+import { useHubT } from "@/lib/hub-lang";
 
 /** Three pictures: thick cut, dashed valley, do not cut a dash. The hub bar opens #pl-help. */
 export function FoldHelp() {
+  const copy = useCopy();
+  const t = useHubT();
   useEffect(() => {
     const open = () => {
       if (window.location.hash !== "#pl-help") return;
@@ -21,7 +25,7 @@ export function FoldHelp() {
     >
       <div className="flex items-center justify-between gap-3 border-b-2 border-ink px-4 py-3">
         <h2 id="pl-help-title" className="font-display text-xl font-semibold">
-          How to read the lines
+          {copy("linesTitle")}
         </h2>
         <button
           type="button"
@@ -31,21 +35,21 @@ export function FoldHelp() {
             if (dialog instanceof HTMLDialogElement) dialog.close();
           }}
         >
-          Close
+          {t("close", "Close")}
         </button>
       </div>
       <ol className="grid gap-4 p-4 sm:grid-cols-3">
         <li>
           <LinePicture kind="cut" />
-          <p className="mt-2 text-sm font-medium">1. A thick line is a cut.</p>
+          <p className="mt-2 text-sm font-medium">1. {copy("cutLine")}</p>
         </li>
         <li>
           <LinePicture kind="fold" />
-          <p className="mt-2 text-sm font-medium">2. A dashed line is a fold toward you.</p>
+          <p className="mt-2 text-sm font-medium">2. {copy("foldLine")}</p>
         </li>
         <li>
           <LinePicture kind="stop" />
-          <p className="mt-2 text-sm font-medium">3. Do not cut a dashed line.</p>
+          <p className="mt-2 text-sm font-medium">3. {copy("stopLine")}</p>
         </li>
       </ol>
     </dialog>
@@ -53,11 +57,12 @@ export function FoldHelp() {
 }
 
 export function HelpButton() {
+  const t = useHubT();
   return (
     <button
       type="button"
       className="inline-flex size-11 shrink-0 items-center justify-center border-2 border-ink bg-surface text-lg font-semibold text-ink"
-      aria-label="Help. How to read fold lines."
+      aria-label={t("help", "Help. How to read fold lines.")}
       onClick={() => {
         const dialog = document.getElementById("pl-help");
         if (dialog instanceof HTMLDialogElement) dialog.showModal();

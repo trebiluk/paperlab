@@ -14,6 +14,7 @@ import { countDone, nextUndoneId, useDoneLabs } from "@/lib/progress";
 import { UNITS } from "@/lib/units";
 import { goldXp, xpIntoLevel } from "@/lib/skills";
 import { TECHWORKS_NAME, TECHWORKS_URL } from "@/lib/room";
+import { useCopy } from "@/lib/copy";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -36,6 +37,7 @@ function Home() {
   const next = getLab(nextUndoneId(path, doneSet));
   const allMade = made === path.length && made > 0;
   const gold = xpIntoLevel(goldXp(doneSet));
+  const copy = useCopy();
 
   if (student) {
     const startId = next?.id ?? "folds";
@@ -44,11 +46,11 @@ function Home() {
         <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-8 sm:px-6 lg:grid-cols-2 lg:py-12">
           <div>
             <p className="max-w-md font-display text-3xl leading-tight font-semibold text-ink sm:text-4xl">
-              Pick a lab. Fold the paper to match the picture.
+              {copy("pick")}
             </p>
             <Button asChild size="lg" className="mt-6 h-12 min-h-12 px-8 text-lg">
               <Link to="/labs/$id" params={{ id: startId }} search={{ step: 1 }}>
-                Start
+                {copy("start")}
               </Link>
             </Button>
           </div>

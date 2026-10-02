@@ -9,6 +9,15 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-10-01",
+    title: "PL 1.1.0",
+    items: [
+      "PaperLab follows the Hub language.",
+      "Needs a native check: دری (fa-AF), Ikinyarwanda, and ትግርኛ. Do not treat those lines as finished.",
+      "Arabic and Dari run right to left. Fold pictures stay left to right. The left menu stays on the left. Flagged for Diego.",
+    ],
+  },
+  {
+    date: "2026-10-01",
     title: "PL 1.0.1",
     items: [
       "We made this sends one TechWorks row. App id is paperlab. If the hub has no record yet, it sends a short mark instead.",

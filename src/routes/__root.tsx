@@ -3,6 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { APP_NAME, APP_REV, APP_TAGLINE, APP_VERSION } from "@/lib/brand";
 import { FoldHelp } from "@/components/fold-help";
+import { HubLangBoot } from "@/components/hub-lang-boot";
 import appCss from "../styles.css?url";
 
 /** Public file URL. Vite `base` is `/` in dev and `/paperlab/` in the hub build. */
@@ -23,6 +24,7 @@ export const Route = createRootRoute({
     links: [
       { rel: "icon", type: "image/svg+xml", href: publicAsset("/favicon.svg") },
       { rel: "stylesheet", href: publicAsset("/fonts/lab.css") },
+      { rel: "stylesheet", href: "/fonts/room.css?v=2026-10-04-i18n" },
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: publicAsset("/__grok/manifest.webmanifest") },
       { rel: "apple-touch-icon", href: publicAsset("/__grok/icon-180.png") },
@@ -32,6 +34,8 @@ export const Route = createRootRoute({
     <html lang="en" className="antialiased" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script src="/shared/kulibert-prefs.js?v=2026-10-04-i18n" defer />
+        <script src="/shared/kulibert-i18n.js?v=2026-10-04-i18n" defer />
         <script
           src="/shared/kulibert-bar.js"
           data-app="paperlab"
@@ -42,6 +46,7 @@ export const Route = createRootRoute({
       </head>
       <body>
         <PreviewHostBridge />
+        <HubLangBoot />
         <FoldHelp />
         <AuthProvider>
           <Outlet />

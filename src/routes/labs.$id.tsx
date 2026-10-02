@@ -24,6 +24,7 @@ import { BertySheet } from "@/components/berty";
 import { cn } from "@/lib/utils";
 import { recordMake } from "@/lib/hub-record";
 import { STUDIO_GUIDES } from "@/lib/studio-guides";
+import { useCopy } from "@/lib/copy";
 
 export const Route = createFileRoute("/labs/$id")({
   component: LabPage,
@@ -44,6 +45,7 @@ function LabPage() {
   const role = useRole();
   const grade = useGradeBand();
   const done = useLabDone(id);
+  const copy = useCopy();
 
   if (!lab || !isLabId(id)) {
     return (
@@ -83,7 +85,7 @@ function LabPage() {
       ) : null}
       <div className={lab.id === "berty" ? "no-print" : undefined}>
       <p className="max-w-2xl text-sm text-ink">
-        <span className="font-medium">Shop rule. </span>
+        <span className="font-medium">{copy("shopRule")} </span>
         {shopRule(lab)}
       </p>
 
@@ -254,12 +256,13 @@ function MadeMark({ lab, done }: { lab: Lab; done: boolean }) {
   const [didLast, setDidLast] = useState(false);
   const [passed, setPassed] = useState(false);
   const started = useRef(Date.now());
+  const copy = useCopy();
   const ready = didLast && passed;
   return (
     <div className="mt-8 rounded-xl bg-surface p-4 shadow-card sm:p-5">
       {done ? null : (
         <fieldset className="space-y-3">
-          <legend className="text-sm font-medium text-ink">Before it counts</legend>
+          <legend className="text-sm font-medium text-ink">{copy("before")}</legend>
           <label className="flex min-h-11 items-center gap-3 text-base text-ink">
             <input
               type="checkbox"
@@ -267,7 +270,7 @@ function MadeMark({ lab, done }: { lab: Lab; done: boolean }) {
               checked={didLast}
               onChange={(e) => setDidLast(e.target.checked)}
             />
-            I did the last step.
+            {copy("didLast")}
           </label>
           <label className="flex min-h-11 items-center gap-3 text-base text-ink">
             <input
@@ -276,7 +279,7 @@ function MadeMark({ lab, done }: { lab: Lab; done: boolean }) {
               checked={passed}
               onChange={(e) => setPassed(e.target.checked)}
             />
-            The test passed.
+            {copy("passed")}
           </label>
           <p className="text-sm text-ink-soft">{lab.challenge ?? lab.spec}</p>
         </fieldset>
@@ -305,7 +308,7 @@ function MadeMark({ lab, done }: { lab: Lab; done: boolean }) {
         )}
       >
         <Check className="size-4" aria-hidden />
-        {done ? "Made on this Chromebook" : "We made this"}
+        {done ? copy("made") : copy("weMade")}
       </button>
     </div>
   );

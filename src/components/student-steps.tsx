@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import type { Lab } from "@/lib/labs";
+import { useCopy, useLine } from "@/lib/copy";
+import { useHubT } from "@/lib/hub-lang";
+import { ReadAloud } from "@/components/read-aloud";
 import { STUDIO_GUIDES, type GuidePhase } from "@/lib/studio-guides";
 
 /** Same bar as the locking envelope: a diagram, then one action per line. */
@@ -121,6 +124,9 @@ export function StudentStepGuide({ lab, onlyStep }: { lab: Lab; onlyStep?: numbe
   const [wordsOn, setWordsOn] = useState(false);
   const focused = onlyStep != null && phases.length > 0;
   const index = focused ? Math.min(Math.max(onlyStep ?? 0, 0), phases.length - 1) : 0;
+  const copy = useCopy();
+  const line = useLine();
+  const t = useHubT();
 
   if (focused) {
     const phase = phases[index];
@@ -128,10 +134,10 @@ export function StudentStepGuide({ lab, onlyStep }: { lab: Lab; onlyStep?: numbe
     const stepNo = index + 1;
     return (
       <div className="mt-4" data-student-guide={lab.id} data-step={stepNo}>
-        <figure>
+        <figure data-fold-diagram dir="ltr">
           <img
             src={`${import.meta.env.BASE_URL}images/plans/${lab.id}/${file}`}
-            alt={`Step ${stepNo}: ${phase.title}. ${phase.lines[0] ?? "Fold diagram"}.`}
+            alt={`${copy("step")} ${stepNo}: ${line(phase.title)}. ${line(phase.lines[0] ?? "Fold diagram")}.`}
             width={800}
             height={520}
             data-diagram={stepNo}
@@ -139,14 +145,15 @@ export function StudentStepGuide({ lab, onlyStep }: { lab: Lab; onlyStep?: numbe
             className="h-auto w-full border-2 border-ink bg-surface object-contain"
           />
           <figcaption className="mt-3 text-sm font-medium text-pine">
-            Step {stepNo} · {phase.title}
+            {copy("step")} {stepNo} · {line(phase.title)}
           </figcaption>
           <ul className="mt-4 list-disc space-y-2 pl-5">
-            {phase.lines.map((line, lineIndex) => (
-              <StepLine key={`${stepNo}-${lineIndex}`}>{line}</StepLine>
+            {phase.lines.map((raw, lineIndex) => (
+              <StepLine key={`${stepNo}-${lineIndex}`}>{line(raw)}</StepLine>
             ))}
           </ul>
         </figure>
+        <ReadAloud text={phase.lines.map((raw) => line(raw)).join(". ")} />
         <div className="mt-6 flex flex-wrap gap-3">
           {index > 0 ? (
             <Link
@@ -155,7 +162,7 @@ export function StudentStepGuide({ lab, onlyStep }: { lab: Lab; onlyStep?: numbe
               search={{ step: index }}
               className="inline-flex min-h-11 items-center border-2 border-ink px-4 text-sm font-medium text-ink"
             >
-              Back
+              {t("back", "Back")}
             </Link>
           ) : null}
           {index < phases.length - 1 ? (
@@ -165,7 +172,7 @@ export function StudentStepGuide({ lab, onlyStep }: { lab: Lab; onlyStep?: numbe
               search={{ step: index + 2 }}
               className="inline-flex h-12 items-center bg-pine px-5 text-base font-medium text-pine-fg"
             >
-              Next step
+              {copy("nextStep")}
             </Link>
           ) : null}
           {lab.vocab.length > 0 ? (
@@ -175,7 +182,7 @@ export function StudentStepGuide({ lab, onlyStep }: { lab: Lab; onlyStep?: numbe
               aria-expanded={wordsOn}
               onClick={() => setWordsOn((open) => !open)}
             >
-              Words
+              {copy("words")}
             </button>
           ) : null}
         </div>
