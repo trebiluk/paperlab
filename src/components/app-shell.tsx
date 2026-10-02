@@ -18,7 +18,6 @@ import {
 import { cn } from "@/lib/utils";
 import { TECHWORKS_NAME, TECHWORKS_URL } from "@/lib/room";
 import { useCopy } from "@/lib/copy";
-import { UPDATES } from "@/lib/changelog";
 import { useHubLang, useHubT, type HubLang } from "@/lib/hub-lang";
 
 const NAV = [
@@ -80,10 +79,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-pine focus:px-3 focus:py-2 focus:text-pine-fg"
       >
-        Skip to content
+        {copy("skip")}
       </a>
       <header dir="ltr" className="sheet-bar no-print sticky top-0 z-40">
-        <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-2 sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-2 gap-y-1 px-2 py-2 sm:px-6">
           <SiteMenu pathname={pathname} paper={paper} links={links} />
           <Link
             to="/"
@@ -96,7 +95,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 <bdi>{APP_KICKER}</bdi>
               </span>
               <span className="block truncate font-display text-lg font-semibold tracking-tight">
-                <bdi>{APP_SHORT}</bdi>
+                <bdi>{copy("appTitle")}</bdi>
               </span>
             </span>
           </Link>
@@ -118,12 +117,22 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {onMake ? null : (
       <footer className="no-print mx-auto max-w-6xl px-4 py-12 text-sm text-muted sm:px-6">
         <div className="cut-rule mb-6 max-w-xs" />
-        <p>BertyBot’s PaperLab · one sheet of printer paper.</p>
+        <p>
+          <bdi>{APP_KICKER}</bdi>
+          {" · "}
+          <bdi>{APP_SHORT}</bdi>
+          {" · "}
+          {copy("oneSheet")}
+        </p>
         {slim ? (
           <>
             <p className="mt-1">{copy("finish")}</p>
             <p className="mt-2">
-              <button type="button" className="font-medium text-pine" onClick={() => setRole("teacher")}>
+              <button
+                type="button"
+                className="inline-flex min-h-11 items-center px-3 font-medium text-pine"
+                onClick={() => setRole("teacher")}
+              >
                 {copy("teacher")}
               </button>
             </p>
@@ -166,7 +175,7 @@ function SiteMenu({
   const [open, setOpen] = useState(false);
   const lang = useHubLang();
   const t = useHubT();
-  const release = UPDATES[0]?.items[0] ?? "";
+  const copy = useCopy();
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
@@ -180,10 +189,11 @@ function SiteMenu({
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        className="inline-flex size-11 shrink-0 items-center justify-center border-2 border-ink bg-surface text-xl leading-none text-ink"
+        className="inline-flex min-h-11 shrink-0 items-center gap-1 whitespace-nowrap border-2 border-ink bg-surface px-2 text-sm font-medium text-ink"
         aria-label={t("menu", "Menu")}
       >
         <span aria-hidden>≡</span>
+        <span>{t("menu", "Menu")}</span>
       </SheetTrigger>
       <SheetContent side="left" className="w-full max-w-sm gap-0 overflow-y-auto p-0">
         <SheetHeader className="border-b border-line pr-14">
@@ -198,7 +208,7 @@ function SiteMenu({
             {t("whatsNew", "What's new")}
           </Link>
           <p className="mt-1 text-sm text-ink-soft">
-            <bdi>{release}</bdi>
+            <bdi>{copy("whatsNewLine")}</bdi>
           </p>
         </div>
         <div className="border-b border-line px-4 py-3">

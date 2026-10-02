@@ -56,7 +56,7 @@ function Home() {
           </div>
           <img
             src={`${import.meta.env.BASE_URL}images/plans/folds/01-scrap-flat.svg`}
-            alt="The first picture. Fold your paper so it matches."
+            alt={copy("firstPicture")}
             width={800}
             height={520}
             className="w-full border-2 border-ink bg-surface object-contain"

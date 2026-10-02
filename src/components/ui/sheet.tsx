@@ -2,6 +2,7 @@ import * as React from "react"
 import * as SheetPrimitive from "@radix-ui/react-dialog"
 import { XIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useHubT } from "@/lib/hub-lang"
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />
@@ -51,6 +52,7 @@ function SheetContent({
   side?: "top" | "right" | "bottom" | "left"
   showCloseButton?: boolean
 }) {
+  const t = useHubT()
   return (
     <SheetPortal>
       <SheetOverlay />
@@ -74,7 +76,7 @@ function SheetContent({
         {showCloseButton && (
           <SheetPrimitive.Close className="absolute top-3 right-3 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-ink hover:bg-bg-warm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine/40">
             <XIcon className="size-4" />
-            <span className="sr-only" data-i18n="close">Close</span>
+            <span className="sr-only">{t("close", "Close")}</span>
           </SheetPrimitive.Close>
         )}
       </SheetPrimitive.Content>

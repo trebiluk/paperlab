@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { goldFromRecords } from "@/lib/hub-record";
 import { useDoneLabs } from "@/lib/progress";
 import { goldXp, xpIntoLevel } from "@/lib/skills";
+import { useCopy } from "@/lib/copy";
 import { cn } from "@/lib/utils";
 
 export function GoldChip({ compact }: { compact?: boolean }) {
@@ -23,6 +24,7 @@ export function GoldChip({ compact }: { compact?: boolean }) {
 
   const xp = fromRecords ?? local.xp;
   const band = fromRecords == null ? local.band : xpIntoLevel(fromRecords).band;
+  const copy = useCopy();
   return (
     <Link
       to="/skills"
@@ -37,7 +39,7 @@ export function GoldChip({ compact }: { compact?: boolean }) {
         aria-hidden
       />
       <span className="tabular-nums">
-        {xp} Gold
+        {xp} {copy("gold")}
       </span>
       {compact ? null : <span className="text-muted">{band}</span>}
     </Link>

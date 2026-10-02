@@ -20,6 +20,8 @@ type I18n = {
 let lang: HubLang = "en";
 let dir: "ltr" | "rtl" = "ltr";
 let tick = 0;
+/** False until after hydration, so the first client render matches the English server HTML. */
+let hydrated = false;
 const listeners = new Set<() => void>();
 let booted = false;
 
@@ -119,32 +121,30 @@ export function bootHubLang() {
     }
   }, 200);
   window.setTimeout(() => window.clearInterval(wait), 4000);
+  hydrated = true;
+  emit();
+}
+
+function subscribe(cb: () => void) {
+  listeners.add(cb);
+  return () => listeners.delete(cb);
 }
 
 export function useHubLang() {
-  return useSyncExternalStore(
-    (cb) => {
-      listeners.add(cb);
-      return () => listeners.delete(cb);
-    },
-    () => lang,
-    () => "en" as HubLang,
-  );
+  const live = useSyncExternalStore(subscribe, () => lang, () => "en" as HubLang);
+  const ready = useSyncExternalStore(subscribe, () => hydrated, () => false);
+  return ready ? live : "en";
 }
 
 export function useHubDir() {
-  return useSyncExternalStore(
-    (cb) => {
-      listeners.add(cb);
-      return () => listeners.delete(cb);
-    },
-    () => dir,
-    () => "ltr" as const,
-  );
+  const live = useSyncExternalStore(subscribe, () => dir, () => "ltr" as const);
+  const ready = useSyncExternalStore(subscribe, () => hydrated, () => false);
+  return ready ? live : "ltr";
 }
 
-/** Shared chrome words. Empty or missing keys fall back. Never a raw key. */
+/** Shared chrome words. Empty or missing keys fall back. Never a raw key. English until mounted. */
 export function hubT(key: string, fallback: string) {
+  if (!hydrated) return fallback;
   void tick;
   try {
     const value = i18n()?.t?.(key);
@@ -157,13 +157,6 @@ export function hubT(key: string, fallback: string) {
 
 export function useHubT() {
   useHubLang();
-  useSyncExternalStore(
-    (cb) => {
-      listeners.add(cb);
-      return () => listeners.delete(cb);
-    },
-    () => tick,
-    () => 0,
-  );
+  useSyncExternalStore(subscribe, () => tick + (hydrated ? 1 : 0), () => 0);
   return hubT;
 }

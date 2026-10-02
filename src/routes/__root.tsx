@@ -16,7 +16,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: APP_NAME },
+      { title: `${APP_NAME} · ${APP_VERSION}` },
       { name: "description", content: APP_TAGLINE },
       { name: "paperlab-rev", content: APP_REV },
       { name: "theme-color", content: "#f3eee4" },
@@ -34,10 +34,10 @@ export const Route = createRootRoute({
     <html lang="en" className="antialiased" suppressHydrationWarning>
       <head>
         <HeadContent />
-        <script src="/shared/kulibert-prefs.js?v=2026-10-04-i18n" defer />
-        <script src="/shared/kulibert-i18n.js?v=2026-10-04-i18n" defer />
+        <script src={`/shared/kulibert-prefs.js?v=${APP_REV}`} defer />
+        <script src={`/shared/kulibert-i18n.js?v=${APP_REV}`} defer />
         <script
-          src="/shared/kulibert-bar.js"
+          src={`/shared/kulibert-bar.js?v=${APP_REV}`}
           data-app="paperlab"
           data-version={APP_VERSION}
           data-help="#pl-help"

@@ -9,6 +9,14 @@ export type ShopNote = {
 export const UPDATES: ShopNote[] = [
   {
     date: "2026-10-02",
+    title: "PL 1.1.2",
+    items: [
+      "PaperLab is fully in your language, and Teacher desk is easier to tap.",
+      "Menu and Help show their names. New fa-AF, Kinyarwanda, and Tigrinya lines still need a native check.",
+    ],
+  },
+  {
+    date: "2026-10-02",
     title: "PL 1.1.1",
     items: [
       "PL 1.1.1: Menu has What's new and Settings.",

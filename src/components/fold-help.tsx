@@ -61,14 +61,15 @@ export function HelpButton() {
   return (
     <button
       type="button"
-      className="inline-flex size-11 shrink-0 items-center justify-center border-2 border-ink bg-surface text-lg font-semibold text-ink"
-      aria-label={t("help", "Help. How to read fold lines.")}
+      className="inline-flex min-h-11 shrink-0 items-center gap-1 whitespace-nowrap border-2 border-ink bg-surface px-2 text-sm font-semibold text-ink"
+      aria-label={t("help", "Help")}
       onClick={() => {
         const dialog = document.getElementById("pl-help");
         if (dialog instanceof HTMLDialogElement) dialog.showModal();
       }}
     >
-      ?
+      <span aria-hidden>?</span>
+      <span>{t("help", "Help")}</span>
     </button>
   );
 }
