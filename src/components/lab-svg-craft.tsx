@@ -210,10 +210,7 @@ function Frame({ step }: { step: string }) {
       <Desk y={150} />
       <Sheet x={62} y={28} w={116} h={108} />
       <rect x="86" y="48" width="68" height="52" fill="var(--color-toy-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
-      <text x="120" y="78" textAnchor="middle" fontSize="11" fontWeight={700} fill="var(--color-ink)" fontFamily="Figtree, sans-serif">
-        3×5
-      </text>
-      <Caption>Hands off · count ten</Caption>
+            <Caption>Hands off · count ten</Caption>
     </g>
   );
 }

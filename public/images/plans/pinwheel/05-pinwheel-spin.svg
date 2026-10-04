@@ -10,5 +10,5 @@
 </defs>
 <polygon points="300,200 500,180 470,300 330,280" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="560" y1="200" x2="500" y2="230" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">blow at the vanes, not at the edge</text>
+
 </svg>

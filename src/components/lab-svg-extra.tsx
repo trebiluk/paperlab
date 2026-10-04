@@ -1,4 +1,5 @@
 import { CraftScene } from "@/components/lab-svg-craft";
+import { FoldScene } from "@/components/fold-scenes";
 import { StudioPlanScene } from "@/components/studio-plan-scenes";
 import {
   Caption,
@@ -19,6 +20,8 @@ function Sheet(props: { x: number; y: number; w: number; h: number; fill?: strin
 }
 
 export function ExtraScene(id: string) {
+  const fold = FoldScene(id);
+  if (fold) return fold;
   const studio = StudioPlanScene(id);
   if (studio) return studio;
   if (id.startsWith("boat")) return <Boat step={id} />;
@@ -81,10 +84,7 @@ function Catapult({ step }: { step: string }) {
         <rect x="36" y="118" width="12" height="28" fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth={1} />
         <Desk y={144} />
         <rect x="92" y="96" width="28" height="18" rx="3" fill="var(--color-toy-right)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <text x="120" y="62" textAnchor="middle" fontSize="13" fontWeight={700} fill="var(--color-danger)" fontFamily="Figtree, sans-serif">
-          Floor tape only
-        </text>
-        <Caption>Never at people</Caption>
+                <Caption>Never at people</Caption>
       </g>
     );
   }
@@ -262,10 +262,7 @@ function Envelope({ step }: { step: string }) {
       <g>
         <ViewChip label="DEV" />
         <Sheet x={58} y={48} w={124} h={80} fill="var(--color-surface-2)" />
-        <text x="120" y="94" textAnchor="middle" fontSize="12" fontWeight={700} fill="var(--color-ink)" fontFamily="Figtree, sans-serif">
-          a note
-        </text>
-        <Caption>The product sets the size</Caption>
+                <Caption>The product sets the size</Caption>
       </g>
     );
   }
@@ -491,10 +488,7 @@ function Mobius({ step }: { step: string }) {
       <g>
         <ViewChip label="DEV" />
         <Sheet x={50} y={36} w={140} h={100} fill="var(--color-surface-2)" />
-        <text x="120" y="90" textAnchor="middle" fontSize="13" fontWeight={700} fill="var(--color-ink)" fontFamily="Figtree, sans-serif">
-          I think I will get ___
-        </text>
-        <Caption>Write it · then cut</Caption>
+                <Caption>Write it · then cut</Caption>
       </g>
     );
   }
@@ -633,16 +627,10 @@ function Beam({ step }: { step: string }) {
         <line x1="76" y1="88" x2="164" y2="88" stroke="var(--color-pine)" strokeWidth={2.6} />
         <line x1="76" y1="84" x2="76" y2="92" stroke="var(--color-pine)" strokeWidth={2} />
         <line x1="164" y1="84" x2="164" y2="92" stroke="var(--color-pine)" strokeWidth={2} />
-        <text x="120" y="82" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
-          short
-        </text>
-        <line x1="24" y1="18" x2="216" y2="18" stroke="var(--color-danger)" strokeWidth={2.4} />
+                <line x1="24" y1="18" x2="216" y2="18" stroke="var(--color-danger)" strokeWidth={2.4} />
         <line x1="24" y1="14" x2="24" y2="22" stroke="var(--color-danger)" strokeWidth={2} />
         <line x1="216" y1="14" x2="216" y2="22" stroke="var(--color-danger)" strokeWidth={2} />
-        <text x="120" y="14" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-danger)" fontFamily="Figtree, sans-serif">
-          long
-        </text>
-        <Hanger stickY={32} circleCy={108} />
+                <Hanger stickY={32} circleCy={108} />
         <Caption>Pick a span · circle must hang free</Caption>
       </g>
     );
@@ -670,10 +658,7 @@ function Beam({ step }: { step: string }) {
           />
         ))}
         <rect x={28} y={122} width={90} height={22} rx={11} fill="var(--color-tape)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <text x="73" y="137" textAnchor="middle" fontSize="11" fontWeight={700} fill="var(--color-ink)" fontFamily="Figtree, sans-serif">
-          36″
-        </text>
-        <Caption>6 sheets · 6 sticks · one yard of tape</Caption>
+                <Caption>6 sheets · 6 sticks · one yard of tape</Caption>
       </g>
     );
   }
@@ -684,10 +669,7 @@ function Beam({ step }: { step: string }) {
         <rect x={28} y={70} width={70} height={50} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
         <rect x={28} y={58} width={70} height={12} fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.6} />
         <rect x={28} y={120} width={70} height={12} fill="var(--color-toy-left)" stroke="var(--color-ink)" strokeWidth={1.6} />
-        <text x="63" y="100" textAnchor="middle" fontSize="12" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
-          I
-        </text>
-        <polygon points="140,128 158,46 176,128 194,46 212,128" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
+                <polygon points="140,128 158,46 176,128 194,46 212,128" fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
         <line x1="140" y1="128" x2="212" y2="128" stroke="var(--color-ink)" strokeWidth={2} />
         <Caption>I-beam or triangle · anything that spans</Caption>
       </g>
@@ -714,10 +696,7 @@ function Beam({ step }: { step: string }) {
         <CanyonCart />
         <rect x={28} y={30} width={184} height={14} rx={2} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={1.6} />
         <Hanger stickY={30} circleCy={100} bricks={1} />
-        <text x="120" y="152" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
-          air — not the shelf
-        </text>
-        <Caption>Hang free · stay flat · 1 brick · count 7</Caption>
+                <Caption>Hang free · stay flat · 1 brick · count 7</Caption>
       </g>
     );
   }

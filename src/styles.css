@@ -386,3 +386,137 @@
     height: var(--sheet-h, 11in) !important;
   }
 }
+
+body:has([data-kid-lab]) {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.pl-body {
+  min-height: 0;
+}
+
+.pl-fig {
+  flex: 1 1 auto;
+  max-height: 42dvh;
+  min-height: 6rem;
+}
+
+.pl-side {
+  min-height: 0;
+}
+
+@media (min-aspect-ratio: 1.2) {
+  .pl-body {
+    flex-direction: row;
+  }
+
+  .pl-fig {
+    width: 55%;
+    max-height: none;
+    height: 100%;
+    flex: none;
+  }
+
+  .pl-side {
+    width: 45%;
+  }
+}
+
+.pl-lines {
+  font-size: 1.125rem;
+  line-height: 1.3;
+}
+
+@media (max-height: 760px) {
+  .pl-lines {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+
+.pl-coin {
+  position: fixed;
+  z-index: 80;
+  left: 42%;
+  top: 38%;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: #a16207;
+  box-shadow: inset 0 0 0 3px #f6e7b2;
+  animation: pl-coin 900ms ease-in forwards;
+  pointer-events: none;
+}
+
+@keyframes pl-coin {
+  to {
+    transform: translate(42vw, -46vh) scale(0.35);
+    opacity: 0;
+  }
+}
+
+.pl-stamp-mark {
+  animation: pl-thud 400ms ease-out both;
+}
+
+.pl-bit {
+  position: absolute;
+  top: -8px;
+  width: 8px;
+  height: 12px;
+  animation: pl-fall 1.5s ease-in forwards;
+}
+
+.pl-spin {
+  animation: pl-spin 2s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+.pl-wiggle {
+  animation: pl-wiggle 500ms ease-in-out 2;
+  transform-origin: 50% 80%;
+}
+
+@keyframes pl-thud {
+  from { transform: scale(1.4) rotate(-12deg); opacity: 0; }
+  to { transform: scale(1) rotate(-8deg); opacity: 1; }
+}
+
+@keyframes pl-fall {
+  to { transform: translateY(240px) rotate(40deg); opacity: 0; }
+}
+
+@keyframes pl-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pl-wiggle {
+  50% { transform: rotate(4deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pl-stamp-mark,
+  .pl-bit,
+  .pl-spin,
+  .pl-wiggle,
+  .pl-coin {
+    animation: none;
+  }
+
+  .pl-coin {
+    display: none;
+  }
+}
+
+html[data-kp-contrast="1"] [data-step-card],
+html[data-kp-contrast="1"] [data-step-diagram] {
+  background: #fff !important;
+  color: #000;
+}
+
+html[data-kp-contrast="1"] .pl-next {
+  background: #000 !important;
+  color: #fff !important;
+}
+

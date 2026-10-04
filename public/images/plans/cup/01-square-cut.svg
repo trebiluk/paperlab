@@ -12,5 +12,5 @@
 <polygon points="80,100 200,100 200,280" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <rect x="280" y="100" width="80" height="260" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
 <rect x="460" y="140" width="220" height="220" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="460" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">open the square</text>
+
 </svg>

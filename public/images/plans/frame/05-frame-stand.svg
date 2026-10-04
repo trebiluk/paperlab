@@ -10,5 +10,5 @@
 </defs>
 <rect x="250" y="80" width="300" height="240" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <polygon points="430,260 560,320 430,360" fill="#e7f3ee" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="440" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">a triangle stand on the back</text>
+
 </svg>

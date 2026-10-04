@@ -14,5 +14,5 @@
 <line x1="300" y1="100" x2="300" y2="170" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 <line x1="300" y1="320" x2="300" y2="250" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 <polygon points="560,180 700,260 560,340" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="460" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">it falls into a triangle</text>
+
 </svg>

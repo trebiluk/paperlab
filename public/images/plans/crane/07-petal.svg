@@ -3,14 +3,14 @@
 <title>Petal fold</title><desc>Lift the bottom point. The sides come in. Flatten to a long diamond.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
 <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/></marker></defs>
-<text x="150" y="36" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">1  The marks</text>
+
 <polygon points="150,70 230,150 150,230 70,150" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="70" y1="150" x2="230" y2="150" stroke="#1c1915" stroke-width="2" stroke-linecap="round"/>
-<text x="400" y="36" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">2  Lift the bottom</text>
+
 <polygon points="400,70 480,150 400,230 320,150" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="400" y1="210" x2="400" y2="120" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="640" y="36" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">3  Sides come in</text>
+
 <polygon points="640,50 690,160 640,300 590,160" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="590" y1="160" x2="750" y2="160" stroke="#1c1915" stroke-width="2" stroke-linecap="round"/>
-<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">flatten. You have a long diamond</text>
+
 </svg>

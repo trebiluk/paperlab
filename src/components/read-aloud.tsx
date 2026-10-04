@@ -14,10 +14,10 @@ export function ReadAloud({ text }: { text: string }) {
   const note = t("noVoice", "No voice yet. Read the words.");
 
   return (
-    <div className="mt-4">
+    <div>
       <button
         type="button"
-        className="inline-flex min-h-11 items-center border-2 border-ink px-4 text-sm font-medium"
+        className="inline-flex min-h-11 min-w-11 items-center gap-1 border-2 border-ink px-2 text-sm font-medium"
         onClick={() => {
           const prefs = (window as Window & { KulibertPrefs?: Who }).KulibertPrefs;
           const voice = prefs?.voiceFor?.(lang);
@@ -30,6 +30,7 @@ export function ReadAloud({ text }: { text: string }) {
           prefs.say(text);
         }}
       >
+        <span aria-hidden>🔊</span>
         {t("readAloud", "Read aloud")}
       </button>
       {quiet || miss ? <p className="mt-2 text-sm text-ink-soft">{note}</p> : null}

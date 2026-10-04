@@ -10,5 +10,5 @@
 </defs>
 <polygon points="300,140 430,230 300,320 170,230" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <rect x="270" y="330" width="120" height="16" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="430" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">longer tail, or move the lower tape</text>
+
 </svg>

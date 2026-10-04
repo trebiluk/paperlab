@@ -4,5 +4,5 @@
 <desc>Same object on a friend's balance.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
 <line x1="160" y1="250" x2="300" y2="250" stroke="#1c1915" stroke-width="8"/><circle cx="230" cy="270" r="16" fill="#d7c4a8" stroke="#1c1915" stroke-width="4"/><rect x="140" y="210" width="50" height="30" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><rect x="270" y="210" width="50" height="30" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><line x1="480" y1="250" x2="620" y2="250" stroke="#1c1915" stroke-width="8"/><circle cx="550" cy="270" r="16" fill="#d7c4a8" stroke="#1c1915" stroke-width="4"/><rect x="460" y="210" width="50" height="30" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><rect x="590" y="210" width="50" height="30" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Same object. Same number?</text>
+
 </svg>

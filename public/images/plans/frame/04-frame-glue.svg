@@ -10,5 +10,5 @@
 </defs>
 <rect x="200" y="100" width="180" height="260" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <rect x="380" y="100" width="180" height="260" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="430" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">glue three sides. Leave one side open</text>
+
 </svg>

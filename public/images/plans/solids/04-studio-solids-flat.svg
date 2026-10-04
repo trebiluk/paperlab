@@ -3,6 +3,6 @@
 <title>Name</title>
 <desc>Say the name. Count faces, edges, and corners.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<polygon points="220,150 450,150 510,200 160,200" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="160,200 510,200 510,370 160,370" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="510,200 570,150 570,320 510,370" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><text x="335" y="290" text-anchor="middle" font-size="28" font-family="Georgia, serif" font-weight="700" fill="#1c1915">face</text><line x1="560" y1="180" x2="680" y2="120" stroke="#1f5c4e" stroke-width="5"/><polygon points="680,120 658,122 670,142" fill="#1f5c4e" stroke="#1c1915" stroke-width="0" stroke-linejoin="round"/>
-<text x="400" y="490" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Name it. Then count.</text>
+<polygon points="220,150 450,150 510,200 160,200" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="160,200 510,200 510,370 160,370" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="510,200 570,150 570,320 510,370" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><line x1="560" y1="180" x2="680" y2="120" stroke="#1f5c4e" stroke-width="5"/><polygon points="680,120 658,122 670,142" fill="#1f5c4e" stroke="#1c1915" stroke-width="0" stroke-linejoin="round"/>
+
 </svg>

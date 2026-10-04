@@ -12,6 +12,6 @@
 <line x1="280" y1="280" x2="320" y2="220" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 <line x1="520" y1="280" x2="480" y2="220" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 <polygon points="400,160 470,250 400,340 330,250" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">Pull the bottom open</text>
-<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">flatten into a square</text>
+
+
 </svg>

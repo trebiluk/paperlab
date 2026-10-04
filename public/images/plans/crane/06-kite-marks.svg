@@ -13,5 +13,5 @@
 <line x1="250" y1="240" x2="400" y2="300" fill="none" stroke="#1c1915" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
 <line x1="550" y1="240" x2="400" y2="300" fill="none" stroke="#1c1915" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
 <line x1="280" y1="150" x2="520" y2="150" fill="none" stroke="#1c1915" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
-<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">mark these three, then unfold them</text>
+
 </svg>

@@ -13,5 +13,5 @@
 <rect x="230" y="300" width="340" height="50" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
 <line x1="400" y1="110" x2="400" y2="160" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 <line x1="400" y1="400" x2="400" y2="340" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">fold those edges back in, over the sides</text>
+
 </svg>

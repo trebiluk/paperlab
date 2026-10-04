@@ -11,5 +11,5 @@
 <rect x="200" y="140" width="400" height="200" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <line x1="400" y1="140" x2="400" y2="340" fill="none" stroke="#1c1915" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
 <line x1="280" y1="240" x2="380" y2="240" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="450" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">left to right, then open. The middle line stays</text>
+
 </svg>

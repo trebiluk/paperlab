@@ -10,5 +10,5 @@
 </defs>
 <rect x="120" y="230" width="560" height="28" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <line x1="400" y1="200" x2="400" y2="290" stroke="#1c1915" stroke-width="3" stroke-linecap="round"/>
-<text x="400" y="380" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">a stiff strip. Mark the exact middle</text>
+
 </svg>

@@ -9,8 +9,8 @@
   </marker>
 </defs>
 <polygon points="120,200 200,140 120,260" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="160" y="320" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">tubes</text>
+
 <polygon points="480,140 560,200 480,260 520,260 600,200 520,140" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="540" y="320" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">zigzag</text>
-<text x="400" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">draw both. Circle one</text>
+
+
 </svg>

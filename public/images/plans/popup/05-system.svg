@@ -3,6 +3,6 @@
 <title>Input and output</title>
 <desc>Open the card. The picture stands.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<rect x="120" y="160" width="250" height="200" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="370" y="160" width="250" height="200" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><polygon points="370,160 495,70 620,160" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><text x="245" y="270" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">open</text><text x="495" y="40" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">stands</text>
-<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">You open it. The picture stands.</text>
+<rect x="120" y="160" width="250" height="200" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="370" y="160" width="250" height="200" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><polygon points="370,160 495,70 620,160" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
+
 </svg>

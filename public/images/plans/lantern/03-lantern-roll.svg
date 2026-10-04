@@ -11,5 +11,5 @@
 <polygon points="300,120 460,120 500,180 340,180" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <polygon points="340,180 500,180 500,340 340,340" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="560" y1="220" x2="500" y2="220" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="430" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">roll a tube. Tape the long edge</text>
+
 </svg>

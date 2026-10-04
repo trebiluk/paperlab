@@ -4,6 +4,7 @@ import type { Lab } from "@/lib/labs";
 import { useCopy, useLine } from "@/lib/copy";
 import { useHubT } from "@/lib/hub-lang";
 import { ReadAloud } from "@/components/read-aloud";
+import { StepCard } from "@/components/step-card";
 import { STUDIO_GUIDES, type GuidePhase } from "@/lib/studio-guides";
 
 /** Same bar as the locking envelope: a diagram, then one action per line. */
@@ -129,67 +130,9 @@ export function StudentStepGuide({ lab, onlyStep }: { lab: Lab; onlyStep?: numbe
   const t = useHubT();
 
   if (focused) {
-    const phase = phases[index];
-    const file = diagramFile(lab.id, index, phase.visual);
-    const stepNo = index + 1;
-    return (
-      <div className="mt-4" data-student-guide={lab.id} data-step={stepNo}>
-        <figure data-fold-diagram dir="ltr">
-          <img
-            src={`${import.meta.env.BASE_URL}images/plans/${lab.id}/${file}`}
-            alt={`${copy("step")} ${stepNo}: ${line(phase.title)}. ${line(phase.lines[0] ?? "Fold diagram")}.`}
-            width={800}
-            height={520}
-            data-diagram={stepNo}
-            data-diagram-file={file}
-            className="h-auto w-full border-2 border-ink bg-surface object-contain"
-          />
-          <figcaption className="mt-3 text-sm font-medium text-pine">
-            {copy("step")} {stepNo} · {line(phase.title)}
-          </figcaption>
-          <ul className="mt-4 list-disc space-y-2 pl-5">
-            {phase.lines.map((raw, lineIndex) => (
-              <StepLine key={`${stepNo}-${lineIndex}`}>{line(raw)}</StepLine>
-            ))}
-          </ul>
-        </figure>
-        <ReadAloud text={phase.lines.map((raw) => line(raw)).join(". ")} />
-        <div className="mt-6 flex flex-wrap gap-3">
-          {index > 0 ? (
-            <Link
-              to="/labs/$id"
-              params={{ id: lab.id }}
-              search={{ step: index }}
-              className="inline-flex min-h-11 items-center border-2 border-ink px-4 text-sm font-medium text-ink"
-            >
-              {t("back", "Back")}
-            </Link>
-          ) : null}
-          {index < phases.length - 1 ? (
-            <Link
-              to="/labs/$id"
-              params={{ id: lab.id }}
-              search={{ step: index + 2 }}
-              className="inline-flex h-12 items-center bg-pine px-5 text-base font-medium text-pine-fg"
-            >
-              {copy("nextStep")}
-            </Link>
-          ) : null}
-          {lab.vocab.length > 0 ? (
-            <button
-              type="button"
-              className="inline-flex min-h-11 items-center border-2 border-ink px-4 text-sm font-medium"
-              aria-expanded={wordsOn}
-              onClick={() => setWordsOn((open) => !open)}
-            >
-              {copy("words")}
-            </button>
-          ) : null}
-        </div>
-        {wordsOn ? <WordsTable lab={lab} /> : null}
-      </div>
-    );
+    return <StepCard lab={lab} index={index} phases={phases} />;
   }
+
 
   const goal = kidLine(lab.challenge ?? lab.ell);
   const stuck = lab.plan.snags.length

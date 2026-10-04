@@ -12,5 +12,5 @@
 <polygon points="320,100 480,100 480,280 320,280" fill="#e7f3ee" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <polygon points="390,300 410,300 400,420" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="400" y1="400" x2="400" y2="240" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">push this point up between the layers</text>
+
 </svg>

@@ -12,5 +12,5 @@
 <polygon points="320,240 560,200 520,340 280,300" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="400" y1="100" x2="400" y2="150" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 <line x1="400" y1="400" x2="400" y2="330" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="450" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">push the ends together</text>
+
 </svg>

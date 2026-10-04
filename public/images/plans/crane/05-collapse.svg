@@ -12,9 +12,9 @@
 <line x1="160" y1="150" x2="220" y2="300" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 <line x1="280" y1="150" x2="220" y2="300" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 <line x1="220" y1="120" x2="220" y2="200" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="220" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">Three corners come down</text>
+
 <polygon points="560,160 650,250 560,340 470,250" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="560" y1="160" x2="560" y2="340" stroke="#1c1915" stroke-width="3" stroke-linecap="round"/>
-<text x="560" y="40" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">Smaller square</text>
-<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">closed point on top, open flaps at the bottom</text>
+
+
 </svg>

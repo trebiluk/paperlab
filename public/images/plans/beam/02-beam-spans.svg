@@ -12,5 +12,5 @@
 <rect x="520" y="200" width="200" height="40" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <line x1="280" y1="160" x2="520" y2="160" stroke="#1c1915" stroke-width="4" stroke-linecap="round"/>
 <rect x="370" y="175" width="50" height="40" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="360" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">the stick sits on your structure. The circle hangs</text>
+
 </svg>

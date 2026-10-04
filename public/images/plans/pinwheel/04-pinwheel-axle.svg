@@ -11,5 +11,5 @@
 <polygon points="330,180 470,180 450,300 350,300" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="400" y1="160" x2="400" y2="400" stroke="#1c1915" stroke-width="6" stroke-linecap="round"/>
 <rect x="370" y="390" width="60" height="40" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="460" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">pin through the stack into the eraser. A little loose</text>
+
 </svg>

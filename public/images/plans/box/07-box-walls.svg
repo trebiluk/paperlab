@@ -13,5 +13,5 @@
 <polygon points="550,200 590,240 590,420 550,380" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <polygon points="250,200 550,200 550,380 250,380" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="180" y1="300" x2="230" y2="280" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">lift the walls. Tuck each side triangle into the pocket</text>
+
 </svg>

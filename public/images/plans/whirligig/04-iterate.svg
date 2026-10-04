@@ -10,7 +10,7 @@
 </defs>
 <circle cx="300" cy="210" r="80" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <circle cx="500" cy="210" r="80" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
-<text x="300" y="215" text-anchor="middle" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">bird</text>
-<text x="500" y="215" text-anchor="middle" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">cage</text>
-<text x="400" y="400" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">spin. Do they become one?</text>
+
+
+
 </svg>

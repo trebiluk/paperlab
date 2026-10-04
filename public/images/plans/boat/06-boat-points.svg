@@ -12,5 +12,5 @@
 <line x1="220" y1="330" x2="220" y2="200" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 <polygon points="560,140 640,250 560,360 480,250" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <rect x="500" y="250" width="120" height="16" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="460" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">bottom point up. Turn over. Other point up</text>
+
 </svg>

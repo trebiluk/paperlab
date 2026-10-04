@@ -10,5 +10,5 @@
 </defs>
 <rect x="80" y="160" width="120" height="80" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <polygon points="200,200 680,280 680,310 200,230" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="400" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">one end on a book. The height stays</text>
+
 </svg>

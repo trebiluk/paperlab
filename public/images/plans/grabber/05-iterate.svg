@@ -4,5 +4,5 @@
 <desc>Change the tips or the fastener.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
 <rect x="180" y="220" width="180" height="28" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><rect x="440" y="220" width="180" height="28" fill="#f4e6c8" stroke="#1c1915" stroke-width="4"/><circle cx="400" cy="234" r="18" fill="#c9ae7a" stroke="#1c1915" stroke-width="3"/><polygon points="180,220 140,180 180,248" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="620,220 660,180 620,248" fill="#d7c4a8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Change the tips, or the fastener</text>
+
 </svg>

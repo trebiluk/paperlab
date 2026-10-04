@@ -3,6 +3,6 @@
 <title>Size</title>
 <desc>An arrow and a number.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
-<rect x="250" y="110" width="300" height="260" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><line x1="250" y1="400" x2="550" y2="400" stroke="#1f5c4e" stroke-width="3"/><polygon points="250,400 268,390 268,410" fill="#1f5c4e" stroke="#1f5c4e" stroke-width="0" stroke-linejoin="round"/><polygon points="550,400 532,390 532,410" fill="#1f5c4e" stroke="#1f5c4e" stroke-width="0" stroke-linejoin="round"/><text x="400" y="390" text-anchor="middle" font-size="28" font-family="Georgia, serif" font-weight="700" fill="#1f5c4e">8 in</text>
-<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Write the size</text>
+<rect x="250" y="110" width="300" height="260" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><line x1="250" y1="400" x2="550" y2="400" stroke="#1f5c4e" stroke-width="3"/><polygon points="250,400 268,390 268,410" fill="#1f5c4e" stroke="#1f5c4e" stroke-width="0" stroke-linejoin="round"/><polygon points="550,400 532,390 532,410" fill="#1f5c4e" stroke="#1f5c4e" stroke-width="0" stroke-linejoin="round"/>
+
 </svg>

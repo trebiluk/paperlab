@@ -1,6 +1,6 @@
 /** Shared shop-drawing kit for lab diagrams: grain, grid, folds, views. */
 
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, useContext, useLayoutEffect, type ReactNode } from "react";
 
 const FONT = "Figtree, sans-serif";
 
@@ -56,7 +56,7 @@ export function LabDefs({ uid = "lab" }: { uid?: string }) {
         markerHeight="6"
         orient="auto"
       >
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-pine)" />
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--step-accent, var(--color-pine))" />
       </marker>
     </defs>
   );
@@ -94,48 +94,28 @@ export function LabBackdrop({ uid }: { uid?: string }) {
   );
 }
 
-export function Caption({ children, y = 170 }: { children: string; y?: number }) {
-  return (
-    <text
-      x="120"
-      y={y}
-      textAnchor="middle"
-      fontSize="13"
-      fill="var(--color-ink)"
-      fontFamily={FONT}
-      fontWeight={700}
-    >
-      {children}
-    </text>
-  );
+const ViewSink = createContext<((label: string) => void) | null>(null);
+
+export function ViewSinkProvider({ onView, children }: { onView: (label: string) => void; children: ReactNode }) {
+  return <ViewSink.Provider value={onView}>{children}</ViewSink.Provider>;
+}
+
+export function Caption({ children: _children, y: _y }: { children: string; y?: number }) {
+  return null;
 }
 
 export function ViewChip({
   label,
-  x = 10,
-  y = 12,
 }: {
   label: "ISO" | "TOP" | "FRONT" | "SIDE" | "NET" | "DEV";
   x?: number;
   y?: number;
 }) {
-  return (
-    <g>
-      <rect x={x} y={y} width="34" height="13" rx="2" fill="var(--color-pine)" />
-      <text
-        x={x + 17}
-        y={y + 10}
-        textAnchor="middle"
-        fontSize="8"
-        fontWeight={700}
-        fill="var(--color-pine-fg)"
-        fontFamily={FONT}
-        letterSpacing="0.4"
-      >
-        {label}
-      </text>
-    </g>
-  );
+  const sink = useContext(ViewSink);
+  useLayoutEffect(() => {
+    sink?.(label);
+  }, [label, sink]);
+  return null;
 }
 
 export function PaperSheet({
@@ -201,10 +181,10 @@ export function Valley({
       y1={y1}
       x2={x2}
       y2={y2}
-      stroke="var(--color-pine)"
-      strokeWidth={1.9}
       strokeDasharray="8 5"
       strokeLinecap="round"
+      stroke="var(--step-accent, var(--color-pine))"
+      strokeWidth={1.9}
     />
   );
 }
@@ -226,7 +206,7 @@ export function Mountain({
       y1={y1}
       x2={x2}
       y2={y2}
-      stroke="var(--color-ink-soft)"
+      stroke="var(--step-accent, var(--color-ink-soft))"
       strokeWidth={1.9}
       strokeDasharray="14 4 2.5 4"
       strokeLinecap="round"
@@ -271,7 +251,7 @@ export function FoldArrow({
     <path
       d={d}
       fill="none"
-      stroke="var(--color-pine)"
+      stroke="var(--step-accent, var(--color-pine))"
       strokeWidth={2.2}
       strokeLinecap="round"
       markerEnd={`url(#${id}-arrow)`}
@@ -306,22 +286,7 @@ export function CrewPerson({
       <circle cx={cx + 5} cy="60" r="2.2" fill="var(--color-ink)" />
       <path d={`M${cx - 6} 68 Q${cx} 72 ${cx + 6} 68`} fill="none" stroke="var(--color-ink)" strokeWidth={1.4} />
       <rect x={cx - 18} y="80" width="36" height="42" rx="10" fill={body} stroke="var(--color-ink)" strokeWidth={1.8} />
-      {leader ? (
-        <g>
-          <rect x={cx - 8} y="90" width="16" height="11" rx="2" fill="var(--color-pine)" />
-          <text
-            x={cx}
-            y="99"
-            textAnchor="middle"
-            fontSize="8"
-            fontWeight={700}
-            fill="var(--color-pine-fg)"
-            fontFamily={FONT}
-          >
-            L
-          </text>
-        </g>
-      ) : null}
+      {leader ? <rect x={cx - 8} y="90" width="16" height="11" rx="2" fill="var(--color-pine)" /> : null}
     </g>
   );
 }

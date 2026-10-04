@@ -67,6 +67,14 @@ function LabPage() {
     ? loopPhaseFor(lab.steps[stepI]?.visual ?? "", stepI, lab.steps.length)
     : null;
 
+  if (role === "student") {
+    return (
+      <LabStage lab={lab}>
+        <StudentStepGuide lab={lab} onlyStep={Math.max(0, (search.step ?? 1) - 1)} />
+      </LabStage>
+    );
+  }
+
   return (
     <LabStage lab={lab}>
       {lab.id === "berty" ? (
@@ -87,7 +95,7 @@ function LabPage() {
         <bdi>{shopRule(lab) === SAFETY[0] ? copy("scissors") : shopRule(lab)}</bdi>
       </p>
 
-      <StudentStepGuide lab={lab} onlyStep={role === "student" ? Math.max(0, (search.step ?? 1) - 1) : undefined} />
+      <StudentStepGuide lab={lab} />
 
       {lab.studio ? (
         <div className="mt-8 rounded-xl bg-surface p-5 shadow-card sm:p-7">
@@ -118,14 +126,12 @@ function LabPage() {
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
-            {role !== "student" ? (
-              <Button asChild variant="secondary">
-                <Link to="/plans/$id" params={{ id: lab.id }}>
-                  <ClipboardList className="size-4" />
-                  Lesson plan
-                </Link>
-              </Button>
-            ) : null}
+            <Button asChild variant="secondary">
+              <Link to="/plans/$id" params={{ id: lab.id }}>
+                <ClipboardList className="size-4" />
+                Lesson plan
+              </Link>
+            </Button>
           </div>
         </div>
       ) : null}
@@ -133,8 +139,7 @@ function LabPage() {
       <MadeMark lab={lab} done={done} />
       {done ? <LabWatch labId={lab.id} /> : null}
 
-      {role === "student" ? null : (
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+      <div className="mt-6 grid gap-3 sm:grid-cols-2">
           <div className="rounded-xl bg-surface p-4 shadow-card sm:p-5">
             <p className="text-xs font-medium tracking-wide text-pine">On the desk</p>
             <ul className="mt-2 flex flex-wrap gap-2">
@@ -154,18 +159,16 @@ function LabPage() {
             </p>
           </div>
         </div>
-      )}
 
-      {role === "student" || easy || !lab.challenge || !lab.spec ? null : (
+      {easy || !lab.challenge || !lab.spec ? null : (
         <p className="mt-3 max-w-2xl rounded-lg bg-bg-warm px-4 py-3 text-sm text-ink-soft">
           <span className="font-medium text-ink">Spec. </span>
           {lab.spec}
         </p>
       )}
 
-      {role !== "student" ? <RoomNotes labId={lab.id} /> : null}
+      <RoomNotes labId={lab.id} />
 
-      {role === "student" ? null : (
       <section className="mt-10">
         <h2 className="font-display text-2xl font-semibold">Words</h2>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -180,9 +183,8 @@ function LabPage() {
           ))}
         </ul>
       </section>
-      )}
 
-      {easy && role !== "student" ? (
+      {easy ? (
         <section className="mt-10">
           <h2 className="font-display text-2xl font-semibold">Say it</h2>
           <p className="mt-2 max-w-2xl text-ink-soft">
@@ -198,7 +200,7 @@ function LabPage() {
         </section>
       ) : null}
 
-      {role !== "student" && lab.steps.length > 0 ? (
+      {lab.steps.length > 0 ? (
         <section className="mt-10">
           <h2 className="font-display text-2xl font-semibold">Design loop</h2>
           <ol className="mt-4 grid gap-2 sm:grid-cols-3 lg:grid-cols-6">
@@ -229,13 +231,11 @@ function LabPage() {
             {prev.name}
           </Link>
         </Button>
-        {role !== "student" ? (
           <Button asChild variant="ghost">
             <Link to="/plans/$id" params={{ id: lab.id }}>
               Lesson plan
             </Link>
           </Button>
-        ) : null}
         <Button asChild variant="secondary">
           <Link to="/labs/$id" params={{ id: next.id }} search={{ step: 1 }}>
             {next.name}

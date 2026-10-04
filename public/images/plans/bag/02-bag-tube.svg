@@ -10,5 +10,5 @@
 </defs>
 <polygon points="300,80 460,80 500,140 340,140" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <polygon points="340,140 500,140 500,400 340,400" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="460" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">glue the long edges. A tube</text>
+
 </svg>

@@ -1,20 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCopy } from "@/lib/copy";
 import { useHubT } from "@/lib/hub-lang";
+import { FOLD_SYMBOLS, FoldIcon, symbolCopyKey, type FoldSymbol } from "@/components/fold-icons";
 
 /** Three pictures: thick cut, dashed valley, do not cut a dash. The hub bar opens #pl-help. */
 export function FoldHelp() {
   const copy = useCopy();
   const t = useHubT();
+  const [mark, setMark] = useState<FoldSymbol | null>(null);
   useEffect(() => {
     const open = () => {
       if (window.location.hash !== "#pl-help") return;
       const dialog = document.getElementById("pl-help");
       if (dialog instanceof HTMLDialogElement && !dialog.open) dialog.showModal();
     };
+    const onSymbol = (event: Event) => {
+      const id = (event as CustomEvent).detail as FoldSymbol;
+      setMark(id);
+      window.setTimeout(() => document.getElementById(`pl-symbol-${id}`)?.focus(), 0);
+    };
     open();
     window.addEventListener("hashchange", open);
-    return () => window.removeEventListener("hashchange", open);
+    window.addEventListener("pl-help-symbol", onSymbol);
+    return () => {
+      window.removeEventListener("hashchange", open);
+      window.removeEventListener("pl-help-symbol", onSymbol);
+    };
   }, []);
 
   return (
@@ -22,6 +33,9 @@ export function FoldHelp() {
       id="pl-help"
       className="w-[min(100%,40rem)] border-2 border-ink bg-surface p-0 text-ink backdrop:bg-ink/40"
       aria-labelledby="pl-help-title"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) event.currentTarget.close();
+      }}
     >
       <div className="flex items-center justify-between gap-3 border-b-2 border-ink px-4 py-3">
         <h2 id="pl-help-title" className="font-display text-xl font-semibold">
@@ -38,20 +52,16 @@ export function FoldHelp() {
           {t("close", "Close")}
         </button>
       </div>
-      <ol className="grid gap-4 p-4 sm:grid-cols-3">
-        <li>
-          <LinePicture kind="cut" />
-          <p className="mt-2 text-sm font-medium">1. {copy("cutLine")}</p>
-        </li>
-        <li>
-          <LinePicture kind="fold" />
-          <p className="mt-2 text-sm font-medium">2. {copy("foldLine")}</p>
-        </li>
-        <li>
-          <LinePicture kind="stop" />
-          <p className="mt-2 text-sm font-medium">3. {copy("stopLine")}</p>
-        </li>
-      </ol>
+      <ul className="grid grid-cols-2 gap-2 p-3 sm:grid-cols-4">
+        {FOLD_SYMBOLS.map((id) => (
+          <li key={id} id={`pl-symbol-${id}`} tabIndex={-1} className={mark === id ? "bg-bg-warm" : undefined}>
+            <div className="flex min-h-11 flex-col items-center gap-1 px-1 py-2 text-center text-sm font-medium">
+              <FoldIcon id={id} />
+              <span>{copy(symbolCopyKey(id) as "valley")}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
     </dialog>
   );
 }

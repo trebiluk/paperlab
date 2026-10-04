@@ -14,5 +14,5 @@
 <line x1="300" y1="190" x2="400" y2="190" stroke="#1c1915" stroke-width="3" stroke-linecap="round"/>
 <line x1="300" y1="240" x2="400" y2="240" stroke="#1c1915" stroke-width="3" stroke-linecap="round"/>
 <line x1="300" y1="290" x2="400" y2="290" stroke="#1c1915" stroke-width="3" stroke-linecap="round"/>
-<text x="400" y="450" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">cut from the fold. Stop before the edge</text>
+
 </svg>

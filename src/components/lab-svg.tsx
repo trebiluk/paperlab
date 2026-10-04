@@ -193,10 +193,7 @@ function Tower({ step }: { step: string }) {
         <Sheet x={40} y={50} w={70} h={90} />
         <line x1={158} y1={28} x2={158} y2={150} stroke="var(--color-pine)" strokeWidth={3} />
         <polygon points="158,28 151,42 165,42" fill="var(--color-pine)" />
-        <text x="174" y="92" fontSize="11" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
-          up
-        </text>
-        <Caption>Tallest that stands</Caption>
+                <Caption>Tallest that stands</Caption>
       </g>
     );
   }
@@ -233,18 +230,7 @@ function Tower({ step }: { step: string }) {
       <rect x={102} y={28} width={36} height={120} fill="var(--color-face-front)" stroke="var(--color-ink)" strokeWidth={2} />
       <rect x={102} y={28} width={36} height={120} fill={grain} />
       <line x1={84} y1={28} x2={84} y2={148} stroke="var(--color-pine)" strokeWidth={2} />
-      <text
-        x="74"
-        y="100"
-        fontSize="11"
-        fill="var(--color-pine)"
-        fontWeight={700}
-        transform="rotate(-90 74 100)"
-        fontFamily="Figtree, sans-serif"
-      >
-        cm
-      </text>
-      <Caption>Hands off · count ten</Caption>
+            <Caption>Hands off · count ten</Caption>
     </g>
   );
 }
@@ -266,10 +252,7 @@ function Bridge({ step }: { step: string }) {
         <ViewChip label="FRONT" />
         {books}
         <Dash x1={72} y1={126} x2={168} y2={126} />
-        <text x="120" y="118" textAnchor="middle" fontSize="10" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
-          span
-        </text>
-        <Caption>Span the gap</Caption>
+                <Caption>Span the gap</Caption>
       </g>
     );
   }
@@ -614,10 +597,7 @@ function Teller({ step }: { step: string }) {
       <g>
         <ViewChip label="TOP" />
         {petals}
-        <text x="120" y="62" textAnchor="middle" fontSize="11" fontWeight={700} fill="var(--color-ink)" fontFamily="Figtree, sans-serif">
-          word
-        </text>
-        <Caption>Colors · numbers · facts</Caption>
+                <Caption>Colors · numbers · facts</Caption>
       </g>
     );
   }
@@ -762,15 +742,9 @@ function Iterate() {
     <g>
       <ViewChip label="DEV" />
       <Sheet x={28} y={40} w={70} h={90} fill="var(--color-surface-2)" />
-      <text x="63" y="88" textAnchor="middle" fontSize="14" fontWeight={700} fill="var(--color-muted)" fontFamily="Figtree, sans-serif">
-        v1
-      </text>
-      <FoldArrow d="M108 85 L132 85" />
+            <FoldArrow d="M108 85 L132 85" />
       <Sheet x={142} y={40} w={70} h={90} />
-      <text x="177" y="88" textAnchor="middle" fontSize="14" fontWeight={700} fill="var(--color-pine)" fontFamily="Figtree, sans-serif">
-        v2
-      </text>
-      <Caption>Change one thing</Caption>
+            <Caption>Change one thing</Caption>
     </g>
   );
 }
@@ -797,18 +771,7 @@ function System() {
             strokeWidth={2}
             filter={shadow}
           />
-          <text
-            x={Number(x) + 26}
-            y={88}
-            textAnchor="middle"
-            fontSize="11"
-            fontWeight={700}
-            fill="var(--color-ink)"
-            fontFamily="Figtree, sans-serif"
-          >
-            {label}
-          </text>
-        </g>
+                  </g>
       ))}
       <FoldArrow d="M80 84 H96" />
       <FoldArrow d="M150 84 H166" />

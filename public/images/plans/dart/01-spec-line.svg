@@ -9,8 +9,8 @@
   </marker>
 </defs>
 <rect x="80" y="300" width="640" height="8" fill="#1c1915"/>
-<text x="400" y="360" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">tape on the floor</text>
+
 <polygon points="250,250 330,180 410,250" fill="#fffdf6" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="430" y1="210" x2="620" y2="210" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="520" y="180" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">fly past it</text>
+
 </svg>

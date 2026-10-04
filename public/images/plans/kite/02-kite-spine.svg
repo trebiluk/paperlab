@@ -11,5 +11,5 @@
 <polygon points="400,70 560,230 400,390 240,230" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="400" y1="70" x2="400" y2="390" fill="none" stroke="#1c1915" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
 <line x1="480" y1="160" x2="420" y2="250" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="460" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">top point to the bottom point, then open. That line is the spine</text>
+
 </svg>

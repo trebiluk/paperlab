@@ -10,5 +10,5 @@
 </defs>
 <polygon points="300,160 420,240 300,320 180,240" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <line x1="450" y1="240" x2="620" y2="240" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">walk. Do not run. Count to five</text>
+
 </svg>

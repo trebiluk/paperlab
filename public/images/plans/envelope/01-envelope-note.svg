@@ -11,9 +11,9 @@
   </defs>
   <rect x="0" y="0" width="800" height="620" fill="#fbf8f1"/>
   <circle cx="88" cy="76" r="30" fill="#1f5c4e"/>
-  <text x="88" y="88" text-anchor="middle" font-size="30" class="label" fill="#FFFFFF" style="fill:#FFFFFF">1</text>
-  <text x="132" y="82" font-size="32" class="label">Flat net · pointed top</text>
-  <text x="132" y="108" font-size="16" class="small">Regular / birthday-card envelope · banker V tip on top flap</text>
+  
+  
+  
   <rect x="56" y="126" width="688" height="410" rx="24" fill="#fbf8f1" stroke="#d9d0c2" stroke-width="3"/>
 
   <!-- BODY -->
@@ -40,22 +40,22 @@
 
   <!-- NOTE on body -->
   <rect x="300" y="290" width="200" height="100" rx="6" fill="#FFFFFF" stroke="#1f5c4e" stroke-width="6"/>
-  <text x="400" y="340" text-anchor="middle" font-size="26" class="label">NOTE</text>
-  <text x="400" y="368" text-anchor="middle" font-size="15" class="small">payload · your message</text>
+  
+  
 
   <!-- Fat labels -->
-  <text x="200" y="330" text-anchor="middle" font-size="14" class="label">LEFT</text>
-  <text x="200" y="348" text-anchor="middle" font-size="14" class="label">FLAP</text>
-  <text x="600" y="330" text-anchor="middle" font-size="14" class="label">RIGHT</text>
-  <text x="600" y="348" text-anchor="middle" font-size="14" class="label">FLAP</text>
-  <text x="400" y="185" text-anchor="middle" font-size="18" class="label">TOP FLAP</text>
-  <text x="400" y="205" text-anchor="middle" font-size="14" class="label" fill="#1f5c4e" style="fill:#1f5c4e">POINTED (V)</text>
-  <text x="400" y="505" text-anchor="middle" font-size="16" class="label">BOTTOM FLAP</text>
+  
+  
+  
+  
+  
+  
+  
 
   <!-- Tip callout -->
   <circle cx="400" cy="125" r="8" fill="#1f5c4e"/>
   <line x1="420" y1="115" x2="500" y2="95" stroke="#1f5c4e" stroke-width="3"/>
-  <text x="510" y="100" font-size="14" class="label" fill="#1f5c4e" style="fill:#1f5c4e">V TIP</text>
+  
 
-  <text x="400" y="575" text-anchor="middle" font-size="18" class="label">Leave flaps for a regular envelope (pointed top)</text>
+  
 </svg>

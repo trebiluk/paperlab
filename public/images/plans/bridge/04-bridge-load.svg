@@ -12,5 +12,5 @@
 <rect x="620" y="210" width="110" height="50" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <polygon points="180,200 260,230 180,260 220,260 300,230 220,200" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <rect x="360" y="160" width="50" height="36" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="380" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">hands off. Count to ten</text>
+
 </svg>

@@ -73,17 +73,50 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             : item.label,
   }));
   const onMake = /^\/labs\/[^/]+$/.test(pathname);
+  const [full, setFull] = useState(false);
+  const [short, setShort] = useState(false);
+  const [canFull, setCanFull] = useState(true);
+
+  useEffect(() => {
+    const onFs = () => setFull(Boolean(document.fullscreenElement));
+    const fit = () => setShort(window.innerHeight <= 480);
+    const framed = window.parent !== window;
+    setCanFull(Boolean(document.fullscreenEnabled) || framed);
+    document.addEventListener("fullscreenchange", onFs);
+    window.addEventListener("resize", fit);
+    window.addEventListener("orientationchange", fit);
+    fit();
+    return () => {
+      document.removeEventListener("fullscreenchange", onFs);
+      window.removeEventListener("resize", fit);
+      window.removeEventListener("orientationchange", fit);
+    };
+  }, []);
+
+  async function toggleFull() {
+    const root = document.getElementById("pl-app") ?? document.documentElement;
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await root.requestFullscreen();
+    } catch {
+      try {
+        window.parent?.postMessage({ type: "kb-fullscreen" }, "*");
+      } catch {
+        /* framed page blocked the call */
+      }
+    }
+  }
 
   return (
-    <div className="paper-grain min-h-dvh">
+    <div id="pl-app" className={cn("paper-grain min-h-dvh", onMake && "flex h-dvh flex-col overflow-hidden")} data-kid-lab={onMake ? "1" : undefined}>
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-pine focus:px-3 focus:py-2 focus:text-pine-fg"
       >
         {copy("skip")}
       </a>
-      <header dir="ltr" className="sheet-bar no-print sticky top-0 z-40">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-2 gap-y-1 px-2 py-2 sm:px-6">
+      <header dir="ltr" className={cn("sheet-bar no-print sticky top-0 z-40 shrink-0", short && "h-[52px] overflow-hidden")}>
+        <div className={cn("mx-auto flex max-w-6xl items-center gap-x-2 px-2 sm:px-6", short ? "h-full flex-nowrap py-0" : "flex-wrap gap-y-1 py-2")}>
           <SiteMenu pathname={pathname} paper={paper} links={links} />
           <Link
             to="/"
@@ -91,8 +124,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             aria-label={`${APP_KICKER} ${APP_SHORT} home`}
           >
             <LogoMark />
-            <span className="min-w-0 leading-tight">
-              <span className="block text-xs font-medium tracking-wide text-pine">
+            <span className={cn("min-w-0 leading-tight", short && "sr-only")}>
+              <span className="block text-sm font-medium tracking-wide text-pine">
                 <bdi>{APP_KICKER}</bdi>
               </span>
               <span className="block truncate font-display text-lg font-semibold tracking-tight">
@@ -100,11 +133,21 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               </span>
             </span>
           </Link>
-          <span className="border-2 border-ink px-2 py-1 text-xs font-medium tabular-nums text-ink" data-version-plate>
+          <span className="border-2 border-ink px-2 py-1 text-sm font-medium tabular-nums text-ink" data-version-plate>
             {APP_VERSION}
           </span>
           <span className="ml-auto" />
           {slim ? <GoldChip compact /> : null}
+          {canFull ? (
+          <button
+            type="button"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center border-2 border-ink bg-surface px-2 text-sm font-medium"
+            onClick={() => void toggleFull()}
+          >
+            <span aria-hidden>{full ? "⤢" : "⛶"}</span>
+            <span className="ml-1">{full ? copy("exitFull") : copy("fullScreen")}</span>
+          </button>
+          ) : null}
           <HelpButton />
         </div>
         {slim ? null : (
@@ -114,7 +157,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </div>
         )}
       </header>
-      <main id="main" tabIndex={-1}>{children}</main>
+      <main id="main" tabIndex={-1} className={onMake ? "min-h-0 flex-1 overflow-hidden" : undefined}>{children}</main>
+      <ToastHost />
       {onMake ? null : (
       <footer className="no-print mx-auto max-w-6xl px-4 py-12 text-sm text-muted sm:px-6">
         <div className="cut-rule mb-6 max-w-xs" />
@@ -271,6 +315,25 @@ function SiteMenu({
         </div>
       </SheetContent>
     </Sheet>
+  );
+}
+
+function ToastHost() {
+  const [text, setText] = useState("");
+  useEffect(() => {
+    const onToast = (event: Event) => {
+      const next = String((event as CustomEvent).detail || "");
+      setText(next);
+      window.setTimeout(() => setText(""), 1600);
+    };
+    window.addEventListener("pl-toast", onToast);
+    return () => window.removeEventListener("pl-toast", onToast);
+  }, []);
+  if (!text) return null;
+  return (
+    <p className="pointer-events-none fixed top-16 left-1/2 z-[80] -translate-x-1/2 border-2 border-ink bg-surface px-3 py-2 text-sm font-medium text-ink" role="status">
+      {text}
+    </p>
   );
 }
 

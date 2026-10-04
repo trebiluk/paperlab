@@ -4,5 +4,5 @@
 <desc>Stay up for a count of three.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
 <line x1="60" y1="400" x2="740" y2="400" stroke="#c9ae7a" stroke-width="10"/><polygon points="180,250 360,220 180,280" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/><polygon points="360,220 520,235 360,250" fill="#c5e4d8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Stay up for a count of three</text>
+
 </svg>

@@ -3,5 +3,5 @@
 <title>Thick base</title><desc>Fold a sheet into a thick pad that does not hop.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
 <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1f5c4e"/></marker></defs>
-<rect x="180" y="200" width="440" height="50" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="180" y="180" width="440" height="20" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/><text x="400" y="340" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">fold it over and over</text>
+<rect x="180" y="200" width="440" height="50" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/><rect x="180" y="180" width="440" height="20" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
 </svg>

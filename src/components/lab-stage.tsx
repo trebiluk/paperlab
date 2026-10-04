@@ -13,6 +13,7 @@ import { LABS, getLab, type Lab } from "@/lib/labs";
 import { SHOP_SKILLS, skillsOfLab, type SkillId } from "@/lib/skills";
 import { TA } from "@/lib/supports";
 import { useCopy } from "@/lib/copy";
+import { useRole } from "@/lib/lesson";
 import { cn } from "@/lib/utils";
 
 const UNITS: { id: string; label: string }[] = [
@@ -57,7 +58,7 @@ function Chip({
       aria-pressed={pressed ?? on}
       onClick={onClick}
       className={cn(
-        "inline-flex min-h-11 items-center rounded-md px-3 text-sm font-medium",
+        "inline-flex min-h-11 min-w-11 items-center rounded-md px-3 text-sm font-medium",
         on ? "bg-pine text-pine-fg" : "bg-surface text-ink shadow-card",
       )}
     >
@@ -195,6 +196,8 @@ function PaneBody({
 
 export function LabStage({ lab, children }: { lab: Lab; children: ReactNode }) {
   const copy = useCopy();
+  const role = useRole();
+  const kid = role === "student";
   const [unit, setUnit] = useState(() => unitFor(lab));
   const [query, setQuery] = useState("");
   const [skill, setSkill] = useState<SkillId | null>(null);
@@ -223,13 +226,27 @@ export function LabStage({ lab, children }: { lab: Lab; children: ReactNode }) {
   );
 
   return (
-    <div className="flex min-h-0 flex-col" data-make-stage={lab.id}>
+    <div className={cn("relative flex min-h-0 flex-col", kid && "h-full")} data-make-stage={lab.id} data-kid-lab={kid ? lab.id : undefined}>
+      {kid ? (
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger className="absolute top-1 right-1 z-20 inline-flex min-h-11 min-w-11 items-center rounded-md bg-surface px-3 text-sm font-medium text-ink shadow-card">
+            {copy("labs")}
+          </SheetTrigger>
+            <SheetContent side="left" className="w-80 gap-0 overflow-y-auto p-0">
+              <SheetHeader className="border-b border-line pr-14">
+                <SheetTitle>{copy("labs")}</SheetTitle>
+                <SheetDescription>Units, filters, skills, helper, and search.</SheetDescription>
+              </SheetHeader>
+              {pane}
+            </SheetContent>
+          </Sheet>
+      ) : (
       <header className="no-print flex shrink-0 items-center gap-2 px-3 py-2">
         <h1 className="min-w-0 flex-1 truncate font-display text-xl font-semibold text-ink sm:text-2xl">
           {lab.name}
         </h1>
         <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger className="inline-flex min-h-11 items-center rounded-md bg-surface px-3 text-sm font-medium text-ink shadow-card">
+          <SheetTrigger className="inline-flex min-h-11 min-w-11 items-center rounded-md bg-surface px-3 text-sm font-medium text-ink shadow-card">
             {copy("labs")}
           </SheetTrigger>
           <SheetContent side="left" className="w-80 gap-0 overflow-y-auto p-0">
@@ -241,7 +258,8 @@ export function LabStage({ lab, children }: { lab: Lab; children: ReactNode }) {
           </SheetContent>
         </Sheet>
       </header>
-      <div className="min-h-0 flex-1 overflow-y-auto px-4 py-6 sm:px-6">{children}</div>
+      )}
+      <div className={kid ? "min-h-0 flex-1 overflow-hidden" : "min-h-0 flex-1 overflow-y-auto px-4 py-6 sm:px-6"}>{children}</div>
     </div>
   );
 }

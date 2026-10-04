@@ -14,5 +14,5 @@
 <rect x="260" y="250" width="70" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <rect x="190" y="110" width="70" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <rect x="330" y="110" width="70" height="70" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">count the squares. A cube needs 6</text>
+
 </svg>

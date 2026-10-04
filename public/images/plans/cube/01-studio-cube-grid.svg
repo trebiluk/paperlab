@@ -14,6 +14,6 @@
 <rect x="330" y="274" width="78" height="78" fill="#fffdf6" stroke="#1c1915" stroke-width="4"/>
 <rect x="252" y="118" width="78" height="78" fill="#fffdf6" stroke="#1c1915" stroke-width="4"/>
 <rect x="408" y="118" width="78" height="78" fill="#fffdf6" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="430" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">six squares in a cross</text>
-<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">fold the square first</text>
+
+
 </svg>

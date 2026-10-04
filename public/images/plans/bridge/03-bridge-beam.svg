@@ -4,5 +4,5 @@
 <desc>A zigzag or a thick strip.</desc>
 <rect width="800" height="520" fill="#fbf8f1"/>
 <rect x="80" y="240" width="70" height="100" fill="#d7c4a8" stroke="#1c1915" stroke-width="4"/><rect x="650" y="240" width="70" height="100" fill="#d7c4a8" stroke="#1c1915" stroke-width="4"/><polygon points="150,230 200,180 250,230 300,180 350,230 400,180 450,230 500,180 550,230 600,180 650,230 650,255 150,255" fill="#f4e6c8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="492" text-anchor="middle" font-size="22" font-family="Georgia, serif" font-weight="700" fill="#1c1915">Fold a beam</text>
+
 </svg>

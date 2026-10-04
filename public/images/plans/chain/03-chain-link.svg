@@ -10,5 +10,5 @@
 </defs>
 <polygon points="180,180 340,180 380,260 220,260" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <polygon points="360,200 540,200 580,280 400,280" fill="#e7f3ee" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="400" y="400" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">through the last ring, then close it</text>
+
 </svg>

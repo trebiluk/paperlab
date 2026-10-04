@@ -11,5 +11,5 @@
 <rect x="150" y="200" width="500" height="18" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <rect x="130" y="150" width="60" height="50" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <rect x="610" y="140" width="70" height="40" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="360" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">clips on the right until it sits level</text>
+
 </svg>

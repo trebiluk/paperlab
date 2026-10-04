@@ -13,5 +13,5 @@
 <polygon points="550,180 590,220 590,400 550,360" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <polygon points="250,180 550,180 550,360 250,360" fill="#fffdf8" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <rect x="340" y="230" width="120" height="70" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="460" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">an eraser in the box. Shake ten times over the desk</text>
+
 </svg>

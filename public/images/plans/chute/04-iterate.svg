@@ -11,5 +11,5 @@
 <rect x="180" y="140" width="160" height="160" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <line x1="380" y1="220" x2="460" y2="220" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 <rect x="500" y="120" width="200" height="200" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="420" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">smaller square, or a hole in the middle</text>
+
 </svg>

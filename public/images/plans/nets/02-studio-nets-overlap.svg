@@ -11,5 +11,5 @@
 <rect x="250" y="80" width="80" height="80" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
 <rect x="330" y="80" width="80" height="80" fill="#e7f3ee" stroke="#1c1915" stroke-width="4"/>
 <rect x="250" y="160" width="80" height="80" fill="#fffdf8" stroke="#1c1915" stroke-width="4"/>
-<text x="400" y="360" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">two squares on the same spot fails</text>
+
 </svg>

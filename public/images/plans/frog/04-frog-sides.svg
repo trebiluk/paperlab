@@ -12,5 +12,5 @@
 <line x1="400" y1="160" x2="400" y2="340" fill="none" stroke="#1c1915" stroke-width="3" stroke-dasharray="12 8" stroke-linecap="round"/>
 <line x1="250" y1="250" x2="370" y2="250" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
 <line x1="550" y1="250" x2="430" y2="250" fill="none" stroke="#1f5c4e" stroke-width="4" stroke-linecap="round" marker-end="url(#arr)"/>
-<text x="400" y="450" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#1c1915">both side edges to the middle</text>
+
 </svg>

@@ -15,6 +15,6 @@
 <polygon points="470,100 600,100 650,140 520,140" fill="#f3eee4" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <polygon points="470,100 520,140 520,280 470,240" fill="#fffdf6" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
 <polygon points="520,140 650,140 650,280 520,280" fill="#fff" stroke="#1c1915" stroke-width="4" stroke-linejoin="round"/>
-<text x="560" y="400" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">glue the tabs inside</text>
-<text x="400" y="470" text-anchor="middle" font-size="20" font-family="Arial, Helvetica, sans-serif" fill="#1c1915" font-weight="700">count 6 faces</text>
+
+
 </svg>

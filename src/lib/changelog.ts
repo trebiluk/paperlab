@@ -8,6 +8,14 @@ export type ShopNote = {
 
 export const UPDATES: ShopNote[] = [
   {
+    date: "2026-10-03",
+    title: "PL 1.1.4",
+    items: [
+      "PL 1.1.4: Each step fits on one screen with a clear colour picture, big Next and Back buttons, and a stamp when you finish.",
+      "New fa-AF, Kinyarwanda, and Tigrinya step lines still need a native check.",
+    ],
+  },
+  {
     date: "2026-10-02",
     title: "PL 1.1.3",
     items: [
