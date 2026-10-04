@@ -234,12 +234,20 @@ function SiteMenu({
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         id="pl-menu"
+        className="sr-only"
+        aria-label={t("menu", "Menu")}
+      >
+        {t("menu", "Menu")}
+      </SheetTrigger>
+      <button
+        type="button"
         className="inline-flex min-h-11 shrink-0 items-center gap-1 whitespace-nowrap border-2 border-ink bg-surface px-2 text-sm font-medium text-ink"
         aria-label={t("menu", "Menu")}
+        onClick={() => setOpen(true)}
       >
         <span aria-hidden>≡</span>
         <span>{t("menu", "Menu")}</span>
-      </SheetTrigger>
+      </button>
       <SheetContent side="left" className="w-full max-w-sm gap-0 overflow-y-auto p-0">
         <SheetHeader className="border-b border-line pr-14">
           <SheetTitle>{t("menu", "Menu")}</SheetTitle>
