@@ -387,9 +387,16 @@
   }
 }
 
+html:has([data-kid-lab]),
 body:has([data-kid-lab]) {
   height: 100dvh;
   overflow: hidden;
+}
+
+body:has([data-kid-lab]) #pl-app {
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
 }
 
 .pl-body {
@@ -397,13 +404,15 @@ body:has([data-kid-lab]) {
 }
 
 .pl-fig {
-  flex: 1 1 auto;
+  flex: 1 100 0;
   max-height: 42dvh;
-  min-height: 6rem;
+  min-height: 0;
 }
 
 .pl-side {
+  flex: 0 1 auto;
   min-height: 0;
+  overflow: hidden;
 }
 
 @media (min-aspect-ratio: 1.2) {
